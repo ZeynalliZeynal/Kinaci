@@ -5,7 +5,6 @@ export default {
     container: {
       center: true,
       padding: '1rem',
-      height: '100%',
     },
     extend: {
       fontFamily: {
@@ -23,7 +22,7 @@ export default {
         '4xl': '22px',
         '5xl': '24px',
         '6xl': '55px',
-        
+
         h2: '30px',
         h1: '56px',
 
@@ -41,7 +40,6 @@ export default {
           50: '#e9f3f9',
           400: '#00a2e5',
           500: '#3491d0',
-          600: '#2582C1',
           700: '#2582c1',
           800: ' #1a3a50',
           900: '#052841',
@@ -53,7 +51,7 @@ export default {
         },
         orange: {
           200: '#ffe2d3',
-          500: '#ed6b2c',
+          550: '#ed6b2c',
         },
         red: {
           600: '#E21743',
@@ -63,6 +61,9 @@ export default {
         navbar: '0 10px 10px 0 rgba(0, 0, 0, 0.03)',
         'navbar-box': '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
         'filter-box': '0 10px 40px 0 rgba(24, 26, 32, 0.07)',
+      },
+      borderRadius: {
+        button: '.375rem',
       },
     },
   },
