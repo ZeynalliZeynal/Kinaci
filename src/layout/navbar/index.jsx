@@ -11,7 +11,7 @@ export default function Navbar() {
           <div className="flex items-center h-full">
             <div className="w-7/12">
               <div className="flex items-center gap-2.5">
-                <div className="sidebar-icon">
+                <div className="sidebar-icon ">
                   <button className="size-6">
                     <HiBars3BottomLeft />
                   </button>

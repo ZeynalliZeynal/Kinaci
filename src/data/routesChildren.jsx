@@ -9,7 +9,7 @@ import NotFound from '~/pages/notFound'
 
 const routesChildren = [
   {
-    index: true,
+    index: 'home',
     element: <Home />,
   },
   {

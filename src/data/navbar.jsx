@@ -36,11 +36,26 @@ export const langOptions = [
   {
     flag: `${UsaIcon}`,
     title: 'English',
-    availability: false,
+    availability: true,
   },
   {
     flag: `${TrIcon}`,
     title: 'Türkçe',
+    availability: false,
+  },
+]
+
+export const valueOptions = [
+  {
+    title: 'AZN',
+    availability: true,
+  },
+  {
+    title: 'USD',
+    availability: false,
+  },
+  {
+    title: 'TRY',
     availability: false,
   },
 ]
