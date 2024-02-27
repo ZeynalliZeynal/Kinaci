@@ -30,7 +30,7 @@ export const links = [
 export const langOptions = [
   {
     flag: `${AzeIcon}`,
-    title: 'Azerbaijani',
+    title: 'Azərbaycanca',
     availability: true,
   },
   {
@@ -40,7 +40,7 @@ export const langOptions = [
   },
   {
     flag: `${TrIcon}`,
-    title: 'Turkish',
+    title: 'Türkçe',
     availability: false,
   },
 ]
