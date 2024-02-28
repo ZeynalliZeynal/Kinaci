@@ -62,6 +62,7 @@ export default {
         'navbar-box': '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
         'filter-box': '0 10px 40px 0 rgba(24, 26, 32, 0.07)',
         language: '0 0px 20px -1px rgba(0, 0, 0, 0.2)',
+        nestedLink: '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
       },
       borderRadius: {
         button: '.375rem',

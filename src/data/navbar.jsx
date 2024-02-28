@@ -30,17 +30,17 @@ export const links = [
 export const langOptions = [
   {
     flag: `${AzeIcon}`,
-    title: 'Azərbaycanca',
+    title: 'AZE',
     availability: true,
   },
   {
     flag: `${UsaIcon}`,
-    title: 'English',
+    title: 'ENG',
     availability: true,
   },
   {
     flag: `${TrIcon}`,
-    title: 'Türkçe',
+    title: 'TR',
     availability: false,
   },
 ]
@@ -52,7 +52,7 @@ export const valueOptions = [
   },
   {
     title: 'USD',
-    availability: false,
+    availability: true,
   },
   {
     title: 'TRY',
@@ -62,7 +62,7 @@ export const valueOptions = [
 
 export const navLinks = [
   {
-    to: '/home',
+    to: '/',
     pathName: 'Ana Səhifə',
   },
   {
