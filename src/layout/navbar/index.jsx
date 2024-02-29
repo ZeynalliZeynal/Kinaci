@@ -1,5 +1,5 @@
-import NavTop from '~/layout/navbar/navTop/index.jsx'
-import NavBottom from '~/layout/navbar/navBottom/index.jsx'
+import NavTop from './navTop'
+import NavBottom from './navBottom'
 
 export default function Navbar() {
   return (

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { langOptions } from '~/data/navbar.jsx'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
 import PropTypes from 'prop-types'
 

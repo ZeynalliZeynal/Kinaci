@@ -1,4 +1,4 @@
-import { links } from '~/data/navbar.jsx'
+import { links } from '~/data/navbar/links.jsx'
 import ContactLink from './contactLink'
 
 export default function ContactLinks() {

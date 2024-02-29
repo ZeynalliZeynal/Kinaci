@@ -2,7 +2,7 @@ import { HiBars3BottomLeft } from 'react-icons/hi2'
 import ContactLinks from '~/layout/navbar/navTop/contactLinks'
 import LangSelects from '~/layout/navbar/navTop/langSelects'
 import FavoriteButton from '~/layout/navbar/navTop/favouriteButton'
-import { langOptions, valueOptions } from '~/data/navbar.jsx'
+import { langOptions, valueOptions } from '~/data/navbar/langOptions.jsx'
 
 export default function NavTop() {
   return (
@@ -11,7 +11,7 @@ export default function NavTop() {
         <div className="flex items-center h-full">
           <div className="w-4/12 xl:w-7/12">
             <div className="flex items-center gap-2.5">
-              <div className="sidebar-icon ">
+              <div className="sidebar-icon block xl:hidden">
                 <button className="size-6">
                   <HiBars3BottomLeft />
                 </button>

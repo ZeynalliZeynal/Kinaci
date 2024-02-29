@@ -5,14 +5,14 @@ import ExtendedLinks from './extendedLinks'
 
 export default function NavBottomLink({ props }) {
   return (
-    <li className="h-full relative">
+    <li className="h-full relative group group">
       <NavLink to={props.to} className="font-semibold h-full">
         {({ isActive }) => (
           <span
             className={classNames(
-              'relative h-full inline-flex items-center gap-2',
+              'relative h-full inline-flex items-center gap-2 group-hover:text-orange-500',
               {
-                "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-orange-500":
+                "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:rounded after:bg-orange-500 text-orange-500":
                   isActive,
               },
             )}

@@ -1,5 +1,5 @@
 import NavBottomLink from './navBottomLink'
-import { navLinks } from '~/data/navbar.jsx'
+import { navLinks } from '~/data/navbar/navLinks.jsx'
 
 export default function NavBottomLinks() {
   return (
