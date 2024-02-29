@@ -1,3 +1,3 @@
 export default function Comments() {
-  return <div>Comments page</div>
+  return <main>Comments page</main>
 }

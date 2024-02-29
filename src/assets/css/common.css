@@ -2,6 +2,10 @@
     transition: all 0.2s ease-in-out;
 }
 
+::-webkit-scrollbar{
+    display: none;
+}
+
 body {
     height: 100vh;
 }
