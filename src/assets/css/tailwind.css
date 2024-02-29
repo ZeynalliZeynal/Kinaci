@@ -12,3 +12,15 @@ body {
 .primary-button {
     @apply py-1.5 px-3 font-semibold rounded-button gap-2.5
 }
+
+.sidebar-active{
+    @apply translate-x-0 z-30
+}
+
+.overlay-active{
+    @apply backdrop-blur-sm z-30 visible
+}
+
+.sidebar-container, .overlay{
+    transition: all 0.3s cubic-bezier(0.81, 0.17, 0.54, 0.72);
+}

@@ -56,6 +56,10 @@ export default {
         red: {
           600: '#E21743',
         },
+        gray: {
+          100: '#f7f7f7',
+          200: '#e9e9e9',
+        },
       },
       boxShadow: {
         navbar: '0 10px 10px 0 rgba(0, 0, 0, 0.03)',

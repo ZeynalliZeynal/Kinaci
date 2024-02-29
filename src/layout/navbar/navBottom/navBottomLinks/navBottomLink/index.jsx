@@ -5,7 +5,7 @@ import ExtendedLinks from './extendedLinks'
 
 export default function NavBottomLink({ props }) {
   return (
-    <li className="h-full relative group group">
+    <li className="h-full relative group">
       <NavLink to={props.to} className="font-semibold h-full">
         {({ isActive }) => (
           <span
