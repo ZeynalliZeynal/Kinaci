@@ -26,33 +26,17 @@ body {
 }
 
 .twitter {
-    @apply text-icons-twitter
-}
-
-.twitter:hover {
-    @apply bg-icons-twitter text-white
+    @apply text-icons-twitter hover:bg-icons-twitter hover:text-white
 }
 
 .facebook {
-    @apply text-icons-facebook
-}
-
-.facebook:hover {
-    @apply bg-icons-facebook text-white
+    @apply text-icons-facebook hover:bg-icons-facebook hover:text-white
 }
 
 .linkedin {
-    @apply text-icons-linkedin
-}
-
-.linkedin:hover {
-    @apply bg-icons-linkedin text-white
+    @apply text-icons-linkedin hover:bg-icons-linkedin hover:text-white
 }
 
 .instagram {
-    @apply text-icons-instagram
-}
-
-.instagram:hover {
-    @apply bg-icons-instagram text-white
+    @apply text-icons-instagram hover:bg-icons-instagram hover:text-white
 }
