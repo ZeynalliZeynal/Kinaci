@@ -5,13 +5,10 @@ export default function ContactIcons() {
     <ul className="justify-end gap-0.5 md:gap-2">
       {contactLinks.map((link, index) => (
         <li
-          className={`p-2 rounded-full hover:bg-icons-${link.type} group transition-colors`}
+          className={`contact-icons p-2 rounded-full ${link.type}`}
           key={index}
         >
-          <a
-            href="#"
-            className={`size-[18px] text-icons-${link.type} group-hover:text-white`}
-          >
+          <a href="#" className={`size-[18px]`}>
             {link.icon}
           </a>
         </li>

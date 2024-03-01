@@ -13,14 +13,46 @@ body {
     @apply py-1.5 px-3 font-semibold rounded-button gap-2.5
 }
 
-.sidebar-active{
+.sidebar-active {
     @apply translate-x-0 z-30
 }
 
-.overlay-active{
+.overlay-active {
     @apply backdrop-blur-sm z-30 visible
 }
 
-.sidebar-container, .overlay{
+.sidebar-container, .overlay {
     transition: all 0.3s cubic-bezier(0.81, 0.17, 0.54, 0.72);
+}
+
+.twitter {
+    @apply text-icons-twitter
+}
+
+.twitter:hover {
+    @apply bg-icons-twitter text-white
+}
+
+.facebook {
+    @apply text-icons-facebook
+}
+
+.facebook:hover {
+    @apply bg-icons-facebook text-white
+}
+
+.linkedin {
+    @apply text-icons-linkedin
+}
+
+.linkedin:hover {
+    @apply bg-icons-linkedin text-white
+}
+
+.instagram {
+    @apply text-icons-instagram
+}
+
+.instagram:hover {
+    @apply bg-icons-instagram text-white
 }
