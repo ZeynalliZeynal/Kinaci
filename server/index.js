@@ -1,22 +1,22 @@
 const express = require('express');
 const data = require('./db');
-const server = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
-server.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send("Helloou!");
 });
 
-server.get('/data', (req, res) => {
+app.get('/data', (req, res) => {
   res.status(200).json(data);
 });
 
-server.get('/data/estates', (req, res) => {
+app.get('/data/estates', (req, res) => {
   const estates = data.data.estates;
   res.json(estates);
 });
 
-server.get('/data/estates/:id', (req, res) => {
+app.get('/data/estates/:id', (req, res) => {
   const { id } = req.params;
   const estate = data.data.estates.find(estate => estate.id === parseInt(id));
 
@@ -27,6 +27,8 @@ server.get('/data/estates/:id', (req, res) => {
   }
 });
 
-server.listen(port, () => {
+app.listen(port, () => {
   console.log('http://localhost:3000');
 });
+
+module.exports = app;
