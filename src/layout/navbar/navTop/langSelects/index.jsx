@@ -21,13 +21,12 @@ export default function LangSelects({ data }) {
       >
         <span>
           {isOpen ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
-        </span>
+        </span>{' '}
         {selectedFlag && (
           <span className="size-4">
             <img src={selectedFlag} alt={selectedLang} />
           </span>
         )}
-
         {selectedLang}
       </button>
       {isOpen && (
@@ -43,7 +42,7 @@ export default function LangSelects({ data }) {
                   <span className="size-4">
                     <img src={item.flag} alt={item.title} />
                   </span>
-                )}
+                )}{' '}
                 {item.title}
               </button>
             </li>
