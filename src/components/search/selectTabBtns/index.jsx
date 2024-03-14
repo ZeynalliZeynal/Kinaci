@@ -1,6 +1,13 @@
 import classNames from 'classnames'
+import { useState } from 'react'
 
 export default function SelectTabBtns() {
+  const [activeButton, setActiveButton] = useState('all')
+
+  function handleSetActive(btnValue) {
+    setActiveButton(btnValue.dataset.label)
+  }
+
   return (
     <div className="tab-btns text-blue-900 font-semibold text-md flex rounded-t-selectBtn overflow-hidden">
       <button
