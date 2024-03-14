@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import LoginForm from '~/components/loginForm/index.jsx'
+import { useState } from 'react'
 
 export default function LinkBtn({
   onAction,
@@ -8,25 +10,31 @@ export default function LinkBtn({
   children,
   to,
 }) {
+  const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
 
   function handleNavigate() {
     navigate(to)
   }
 
-  function handleClick() {
-    console.log('success')
+  function handleModal() {
+    setIsOpen(!isOpen)
+    console.log(isOpen)
   }
 
   return (
-    <li>
-      <button
-        className={`primary-button text-${color} bg-${bgColor}`}
-        onClick={to ? handleNavigate : handleClick}
-      >
-        {children}
-      </button>
-    </li>
+    <>
+      <li>
+        <button
+          className={`primary-button text-${color} bg-${bgColor}`}
+          onClick={to ? handleNavigate : handleModal}
+        >
+          {children}
+        </button>
+      </li>
+      {}
+      <LoginForm isOpen={isOpen} closeModal={handleModal} />
+    </>
   )
 }
 

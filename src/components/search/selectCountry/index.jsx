@@ -36,7 +36,7 @@ export default function SelectCountry() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-50"
           >
-            <Listbox.Options className="text-white absolute mt-2 flex-col rounded-selectBtn overflow-hidden p-2 bg-orange-500">
+            <Listbox.Options className="text-white absolute mt-2 flex-col rounded-selectBtn overflow-hidden p-2 bg-orange-500 z-50">
               {countries.map((country) => (
                 <Listbox.Option
                   className="relative w-full"
