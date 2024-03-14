@@ -1,13 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import logo from '~/assets/img/logo.svg'
 import ModalForm from '~/components/loginForm/modalForm/index.jsx'
-import closeAnimation from '~/assets/icon/close-animation.json'
-import Lottie from 'lottie-react'
+import { IoClose } from 'react-icons/io5'
 
 export default function LoginForm({ isOpen, closeModal }) {
-  const closeRef = useRef(null)
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -47,12 +45,10 @@ export default function LoginForm({ isOpen, closeModal }) {
                   </Dialog.Title>
                   <ModalForm />
                 </Dialog.Panel>
-                <button className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5">
-                  <Lottie
-                    animationData={closeAnimation}
-                    lottieRef={closeRef}
-                    className="size-6 text-blue-900"
-                  />
+                <button className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5 group">
+                  <span className="size-6 text-white">
+                    <IoClose />
+                  </span>
                 </button>
               </div>
             </Transition.Child>

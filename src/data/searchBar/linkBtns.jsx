@@ -1,21 +1,21 @@
 export const linkBtns = [
   {
     text: 'Axtarış tələb edin',
-    bgColor: 'blue-700',
+    bgColor: 'blue-link-btn',
     to: '/estate',
   },
   {
     text: 'Türk vətəndaşlığı',
-    bgColor: 'orange-500',
+    bgColor: 'orange-link-btn',
     to: '/estate',
   },
   {
     text: 'Məlumat Turunuza Başla',
-    bgColor: 'teal-500',
+    bgColor: 'teal-link-btn',
     to: '/services/studyTour',
   },
   {
     text: 'Sual ver',
-    bgColor: 'red-600',
+    bgColor: 'red-link-btn',
   },
 ]

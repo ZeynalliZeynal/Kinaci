@@ -26,14 +26,13 @@ export default function LinkBtn({
     <>
       <li>
         <button
-          className={`primary-button text-${color} bg-${bgColor}`}
+          className={`primary-button text-${color} ${bgColor}`}
           onClick={to ? handleNavigate : handleModal}
         >
           {children}
         </button>
       </li>
-      {}
-      <LoginForm isOpen={isOpen} closeModal={handleModal} />
+      {} <LoginForm isOpen={isOpen} closeModal={handleModal} />
     </>
   )
 }

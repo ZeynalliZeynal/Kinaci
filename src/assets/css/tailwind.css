@@ -52,3 +52,19 @@ button:active {
 section {
     @apply pt-6
 }
+
+.blue-link-btn {
+    @apply bg-blue-500
+}
+
+.orange-link-btn {
+    @apply bg-orange-500
+}
+
+.teal-link-btn {
+    @apply bg-teal-600
+}
+
+.red-link-btn {
+    @apply bg-red-600
+}
