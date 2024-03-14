@@ -32,8 +32,8 @@ export default function LoginForm({ isOpen, closeModal }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="relative max-w-[400px] lg:max-w-[500px] xl:max-w-[742px] transition-all">
-                <Dialog.Panel className="w-full max-h-[500px] overflow-y-scroll transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-20 text-blue-900">
+              <div className="relative w-[742px] transition-all">
+                <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-20 text-blue-900">
                   <Dialog.Title
                     as="h3"
                     className="text-[30px] font-semibold mb-3"

@@ -1,7 +1,7 @@
 import Logo from '~/assets/img/logo.svg'
 import { NavLink } from 'react-router-dom'
 import NavBottomLinks from './navBottomLinks'
-import ContactIcons from './contactIcons'
+import ContactIcons from '../../../components/contactIcons'
 
 export default function NavBottom() {
   return (
@@ -16,8 +16,10 @@ export default function NavBottom() {
           <div className="w-7/12 h-full hidden xl:block">
             <NavBottomLinks />
           </div>
-          <div className="w-1/2 xl:w-4/12">
-            <ContactIcons />
+          <div className="w-1/2 xl:w-4/12 text-end">
+            <div className="flex justify-end">
+              <ContactIcons />
+            </div>
           </div>
         </div>
       </div>

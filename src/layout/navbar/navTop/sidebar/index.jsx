@@ -1,5 +1,5 @@
 import SidebarLink from './sidebarLinks'
-import ContactIcons from '~/layout/navbar/navBottom/contactIcons/index.jsx'
+import ContactIcons from '~/components/contactIcons/index.jsx'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 

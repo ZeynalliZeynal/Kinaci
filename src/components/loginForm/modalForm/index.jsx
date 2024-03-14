@@ -37,6 +37,7 @@ export default function ModalForm() {
           />
         </span>
       </div>
+      {/*
       <div className="grid gap-4">
         <label htmlFor="estate">Əmlak növü</label>
         <span className="border border-blue-900/25 rounded-button p-[18px]">
@@ -81,7 +82,7 @@ export default function ModalForm() {
             />
           </span>
         </div>
-      </div>
+      </div>*/}
       <button
         type="submit"
         className="w-full bg-orange-500 rounded-[12px] text-white font-medium p-4 mt-3 hover:bg-orange-600"
