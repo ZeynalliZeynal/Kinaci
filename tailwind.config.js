@@ -70,7 +70,7 @@ export default {
         nestedLink: '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
       },
       borderRadius: {
-        button: '.375rem',
+        button: '6px',
         selectBtn: '10px',
       },
     },
