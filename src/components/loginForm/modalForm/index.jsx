@@ -1,41 +1,23 @@
+import DefaultInput from '~/components/loginForm/defaultInput/index.jsx'
+import DefaultBtn from '~/components/defaultBtn/index.jsx'
+
 export default function ModalForm() {
   return (
     <form className="flex flex-col gap-4 py-2">
       <div className="grid gap-4">
         <label htmlFor="fullname">Ad & Soyad</label>
-        <span className="border border-blue-900/25 rounded-button p-[18px]">
-          <input
-            className="placeholder:text-blue-900/50"
-            type="text"
-            name="name"
-            id="fullname"
-            placeholder="Adınızı və soyadınızı daxil edin..."
-          />
-        </span>
+        <DefaultInput
+          placeholder="Adınızı və soyadınızı daxil edin..."
+          type="name"
+        />
       </div>
       <div className="grid gap-4">
         <label htmlFor="tel">Telefon nömrəsi</label>
-        <span className="border border-blue-900/25 rounded-button p-[18px]">
-          <input
-            className="placeholder:text-blue-900/50"
-            type="tel"
-            name="tel"
-            id="tel"
-            placeholder="+994** *** ****"
-          />
-        </span>
+        <DefaultInput placeholder="+994** *** ****" type="tel" />
       </div>
       <div className="grid gap-4">
         <label htmlFor="email">E-Mail</label>
-        <span className="border border-blue-900/25 rounded-button p-[18px]">
-          <input
-            className="placeholder:text-blue-900/50"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="johndoe@example.com"
-          />
-        </span>
+        <DefaultInput placeholder="johndoe@example.com" type="email" />
       </div>
       {/*
       <div className="grid gap-4">
@@ -83,12 +65,9 @@ export default function ModalForm() {
           </span>
         </div>
       </div>*/}
-      <button
-        type="submit"
-        className="w-full bg-orange-500 rounded-[12px] text-white font-medium p-4 mt-3 hover:bg-orange-600"
-      >
-        Saxla və Göndər
-      </button>
+      <div className="text-xxl">
+        <DefaultBtn type="submit">Saxla və Göndər</DefaultBtn>
+      </div>
     </form>
   )
 }
