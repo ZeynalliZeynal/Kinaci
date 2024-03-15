@@ -1,9 +1,17 @@
 import DefaultInput from '~/components/loginForm/defaultInput/index.jsx'
 import DefaultBtn from '~/components/defaultBtn/index.jsx'
 
-export default function ModalForm() {
+export default function ModalForm({ onClose }) {
+  function handleSubmit(e) {
+    e.preventDefault()
+    onClose()
+  }
+
   return (
-    <form className="flex flex-col gap-4 py-2">
+    <form
+      className="flex flex-col gap-4 py-2"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <div className="grid gap-4">
         <label htmlFor="fullname">Ad & Soyad</label>
         <DefaultInput

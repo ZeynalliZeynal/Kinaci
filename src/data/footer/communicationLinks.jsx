@@ -22,10 +22,36 @@ export const communicationLinks = [
         />
       </svg>
     ),
+    variants: {
+      initial: { y: 0 },
+      hovering: { y: [0, -6, 0, -3, 0] },
+    },
   },
   {
     text: adminInfo.email,
     link: `mailto:${adminInfo.email}`,
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Outline"
+        viewBox="0 0 24 24"
+        width="512"
+        height="512"
+      >
+        <path
+          fill="currentColor"
+          d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"
+        />
+      </svg>
+    ),
+    variants: {
+      initial: { scale: 1 },
+      hovering: { scale: 1.2 },
+    },
+  },
+  {
+    text: adminInfo.tel,
+    link: `tel:${adminInfo.tel}`,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,23 +67,15 @@ export const communicationLinks = [
         />
       </svg>
     ),
-  },
-  {
-    text: adminInfo.tel,
-    link: `tel:${adminInfo.tel}`,
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="Outline"
-        viewBox="0 0 24 24"
-        width="512"
-        height="512"
-      >
-        <path
-          fill="currentColor"
-          d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"
-        />
-      </svg>
-    ),
+    variants: {
+      initial: {
+        x: 0,
+        rotate: 0,
+      },
+      hovering: {
+        x: [0, -4, 3, -3, 2, -1, 0],
+        rotate: [-10, 10, -7.5, 5, -2.5, 0],
+      },
+    },
   },
 ]

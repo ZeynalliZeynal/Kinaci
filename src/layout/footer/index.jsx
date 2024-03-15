@@ -6,7 +6,7 @@ import CommunicationLinks from '~/layout/footer/communication/index.jsx'
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white p-20">
+    <footer className="bg-blue-900 text-white p-0 sm:p-10 lg:p-20">
       <div className="container">
         <div className="flex flex-wrap divide-y divide-blue-50/10 lg:divide-y-0">
           <div className="w-full lg:w-1/2 xl:my-0 mb-8 pt-8 xl:w-1/4 px-3">

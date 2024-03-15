@@ -4,8 +4,11 @@ import PropTypes from 'prop-types'
 import logo from '~/assets/img/logo.svg'
 import ModalForm from '~/components/loginForm/modalForm/index.jsx'
 import { IoClose } from 'react-icons/io5'
+import { motion } from 'framer-motion'
 
 export default function LoginForm({ isOpen, closeModal }) {
+  const [isHovering, setIsHovering] = useState(false)
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -43,12 +46,27 @@ export default function LoginForm({ isOpen, closeModal }) {
                     </div>
                     Randevu Al
                   </Dialog.Title>
-                  <ModalForm />
+                  <ModalForm onClose={closeModal} />
                 </Dialog.Panel>
-                <button className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5 group">
-                  <span className="size-6 text-white">
+                <button
+                  className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5 group"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  <motion.span
+                    animate={isHovering ? 'hovering' : 'initial'}
+                    variants={{
+                      hovering: {
+                        rotate: 90,
+                      },
+                      initial: {
+                        rotate: 0,
+                      },
+                    }}
+                    className="size-6 text-white"
+                  >
                     <IoClose />
-                  </span>
+                  </motion.span>
                 </button>
               </div>
             </Transition.Child>

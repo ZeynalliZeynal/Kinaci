@@ -9,6 +9,7 @@ export default function DefaultInput({ placeholder, type }) {
         name={type}
         id={type}
         placeholder={placeholder}
+        required
       />
     </span>
   )
