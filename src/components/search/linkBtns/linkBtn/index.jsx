@@ -19,7 +19,6 @@ export default function LinkBtn({
 
   function handleModal() {
     setIsOpen(!isOpen)
-    console.log(isOpen)
   }
 
   return (
@@ -32,7 +31,7 @@ export default function LinkBtn({
           {children}
         </button>
       </li>
-      {} <LoginForm isOpen={isOpen} closeModal={handleModal} />
+      <LoginForm isOpen={isOpen} closeModal={handleModal} />
     </>
   )
 }
