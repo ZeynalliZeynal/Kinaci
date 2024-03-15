@@ -16,10 +16,16 @@ const routesChildren = [
   {
     path: 'estate',
     element: <Estate />,
-  },
-  {
-    path: 'estate/forSale',
-    element: <ForSale />,
+    children: [
+      {
+        path: 'forSale',
+        element: <ForSale />,
+      },
+      {
+        path: 'forRent',
+        element: <ForSale />,
+      },
+    ],
   },
   {
     path: 'about',
