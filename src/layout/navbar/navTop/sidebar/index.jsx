@@ -8,11 +8,12 @@ export default function Sidebar({ isOpen, onClose }) {
     <>
       <div
         className={classNames(
-          'overlay fixed size-full backdrop-blur-sm -z-10 invisible',
+          'overlay fixed size-full backdrop-blur-sm z-10 invisible',
           {
             'overlay-active': isOpen,
           },
         )}
+        onClick={() => onClose((prev) => !prev)}
       ></div>
       <div
         className={classNames(

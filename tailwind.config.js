@@ -5,6 +5,9 @@ export default {
     container: {
       center: true,
       padding: '1rem',
+      screens: {
+        DEFAULT: '1170px',
+      },
     },
     extend: {
       fontFamily: {

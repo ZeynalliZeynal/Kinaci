@@ -1,7 +1,8 @@
-import SelectCountry from '~/components/search/selectCountry/index.jsx'
+import SelectCountry from '~/components/search/selectCountry'
 import { useState } from 'react'
-import SelectTabBtns from '~/components/search/selectTabBtns/index.jsx'
-import LinkBtns from '~/components/search/linkBtns/index.jsx'
+import SelectTabBtns from '~/components/search/selectTabBtns'
+import LinkBtns from '~/components/search/linkBtns'
+import SearchBar from '~/components/search/searchBar'
 
 export default function SearchContainer() {
   return (

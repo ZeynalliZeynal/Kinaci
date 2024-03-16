@@ -8,15 +8,15 @@ export default function NavBottom() {
     <nav className="h-[95px] shadow-navbar">
       <div className="container h-full">
         <div className="flex justify-between items-center h-full">
-          <div className="w-1/2 xl:w-1/6">
+          <div className="w-1/2 lg:w-1/6">
             <NavLink to="/" className="logo h-[65px]">
               <img className="object-contain" src={`${Logo}`} alt="Kinaci" />
             </NavLink>
           </div>
-          <div className="w-7/12 h-full hidden xl:block">
+          <div className="w-7/12 h-full hidden lg:block">
             <NavBottomLinks />
           </div>
-          <div className="w-1/2 xl:w-4/12 text-end">
+          <div className="w-1/2 lg:w-4/12 text-end">
             <div className="flex justify-end">
               <ContactIcons />
             </div>

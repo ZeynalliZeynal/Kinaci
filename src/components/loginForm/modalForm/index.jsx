@@ -1,5 +1,6 @@
 import DefaultInput from '~/components/loginForm/defaultInput/index.jsx'
 import DefaultBtn from '~/components/defaultBtn/index.jsx'
+import PropTypes from 'prop-types'
 
 export default function ModalForm({ onClose }) {
   function handleSubmit(e) {
@@ -78,4 +79,8 @@ export default function ModalForm({ onClose }) {
       </div>
     </form>
   )
+}
+
+ModalForm.propTypes = {
+  onClose: PropTypes.func,
 }
