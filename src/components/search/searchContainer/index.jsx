@@ -1,8 +1,6 @@
 import SelectCountry from '~/components/search/selectCountry'
-import { useState } from 'react'
 import SelectTabBtns from '~/components/search/selectTabBtns'
 import LinkBtns from '~/components/search/linkBtns'
-import SearchBar from '~/components/search/searchBar'
 
 export default function SearchContainer() {
   return (
