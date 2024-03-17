@@ -20,7 +20,6 @@ export default function LangSelects({ data }) {
       <button
         className="primary-button bg-white"
         onClick={() => setIsOpen((open) => !open)}
-        onBlur={() => setIsOpen((open) => !open)}
       >
         <span>
           {isOpen ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
