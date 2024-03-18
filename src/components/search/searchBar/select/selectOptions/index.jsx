@@ -26,7 +26,7 @@ export default function SelectOptions({
         ease: 'easeInOut',
         duration: 0.3,
       }}
-      className="origin-top gap-2 absolute z-50 mt-2 flex-col top-full left-0 items-start bg-white w-full px-2.5 py-4 rounded-button border border-blue-900/25"
+      className="origin-top gap-2 absolute z-50 mt-2 flex-col top-full left-0 items-start bg-white w-full px-2.5 py-4 rounded-button border border-blue-900/25 overflow-y-scroll"
     >
       {options.map((option, index) => (
         <li
@@ -55,4 +55,8 @@ export default function SelectOptions({
 SelectOptions.propTypes = {
   isOpen: PropTypes.bool,
   options: PropTypes.array,
+  onSelectOption: PropTypes.func,
+  isOptionSelected: PropTypes.func,
+  highlightedIndex: PropTypes.number,
+  setHighlightedIndex: PropTypes.func,
 }

@@ -65,11 +65,11 @@ export default function Select({ multiple, value, onChange, options }) {
     <div
       ref={containerRef}
       tabIndex={0}
-      className="relative transition-colors px-2.5 py-4 rounded-button border border-blue-900/25 focus:border-blue-900 w-full flex cursor-pointer text-xs"
+      className="relative transition-colors px-2.5 py-4 rounded-button border border-blue-900/25 focus:border-blue-900 bg-white w-full flex cursor-pointer text-xs"
       onClick={() => setIsOpen((prev) => !prev)}
       onBlur={() => setIsOpen(false)}
     >
-      <span className="grow ps-2.5 flex flex-wrap gap-2 overflow-auto max-h-[75px]">
+      <span className="grow ps-2.5 flex flex-wrap gap-2 overflow-auto max-h-[100px]">
         {multiple
           ? value.map((v) => (
               <SelectBadge
@@ -81,7 +81,9 @@ export default function Select({ multiple, value, onChange, options }) {
           : value?.label}
       </span>
       <div className="flex">
-        <ClearButton onClearOptions={handleClearOptions} />
+        {value.length !== 0 && (
+          <ClearButton onClearOptions={handleClearOptions} />
+        )}
         <span className="mx-2 w-0.5 bg-blue-900/20"></span>
         <Caret isOpen={isOpen} />
       </div>

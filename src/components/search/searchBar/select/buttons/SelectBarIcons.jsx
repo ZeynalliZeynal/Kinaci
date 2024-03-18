@@ -58,37 +58,39 @@ export function Caret({ isOpen }) {
 export function SelectBadge({ v, handleSelectOption }) {
   return (
     <button
-      className="px-2 py-1 flex-nowrap rounded-selectBtn border-2 border-blue-900/20 hover:bg-blue-900/5"
+      className="px-2 py-1 flex-nowrap text-left rounded-selectBtn border-2 border-blue-900/20 hover:bg-blue-900/5"
       key={v.id}
       onClick={(e) => {
         e.stopPropagation()
         handleSelectOption(v)
       }}
     >
-      {v.label}{' '}
-      <span className="size-4">
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 64 64"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="64" height="64" rx="32" fill="none" />
-          <path
-            d="M20.4 44.2L44.4 20.2"
-            stroke="black"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-          <path
-            d="M44 44L20 20"
-            stroke="black"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-        </svg>
-      </span>
+      {v.label}
+      <div className="w-4/12 flex">
+        <span className="size-4">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="64" height="64" rx="32" fill="none" />
+            <path
+              d="M20.4 44.2L44.4 20.2"
+              stroke="black"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M44 44L20 20"
+              stroke="black"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          </svg>
+        </span>
+      </div>
     </button>
   )
 }
