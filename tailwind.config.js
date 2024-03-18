@@ -33,6 +33,9 @@ export default {
       },
       colors: {
         // colors are written as 'color-shade', for example blue-900-10
+        section: {
+          newestates: '#2582c1',
+        },
         icons: {
           twitter: '#00a2e5',
           facebook: '#006af7',
@@ -42,7 +45,7 @@ export default {
         blue: {
           50: '#e9f3f9',
           400: '#00a2e5',
-          500: '#3491d0',
+          500: '#3472d0',
           700: '#2563EBFF',
           800: ' #1a3a50',
           900: '#052841',
