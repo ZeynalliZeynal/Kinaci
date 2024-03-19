@@ -2,9 +2,9 @@ import cssImg from '~/assets/img/css.png'
 import reactImg from '~/assets/img/react.png'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ActionBtns from '~/pages/home/newEstates/actionBtns/index.jsx'
-import Details from '~/pages/home/newEstates/details/index.jsx'
-import Dots from '~/pages/home/newEstates/dots/index.jsx'
+import ActionBtns from '~/components/estateCards/actionBtns'
+import Details from '~/components/estateCards/details'
+import Dots from '~/components/estateCards/dots'
 
 const images = [
   {

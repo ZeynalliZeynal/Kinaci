@@ -1,6 +1,6 @@
-import Search from '~/components/search/index.jsx'
 import { useEffect } from 'react'
 import NewEstates from '~/pages/home/newEstates/index.jsx'
+import Carousel from './carousel'
 
 export default function Home() {
   useEffect(() => {
@@ -8,9 +8,7 @@ export default function Home() {
   }, [])
   return (
     <main>
-      <section>
-        {/*! Slider burda olmalidi.*/} <Search />
-      </section>
+      <Carousel />
       <NewEstates />
     </main>
   )

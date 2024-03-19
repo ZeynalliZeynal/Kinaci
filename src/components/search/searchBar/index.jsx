@@ -50,8 +50,8 @@ export default function SearchBar() {
   return (
     <form className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none">
       <div className="flex gap-3 flex-wrap">
-        <div className="flex w-full gap-3">
-          <div className="flex w-1/3 gap-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
+          <div className="flex gap-3">
             <div className="w-7/12">
               <SelectContainer
                 value={estateTypeValue}
@@ -69,7 +69,7 @@ export default function SearchBar() {
               />
             </div>
           </div>
-          <div className="flex w-1/3 gap-3">
+          <div className="flex gap-3">
             <div className="w-1/2">
               <SelectContainer
                 value={placeValue}
@@ -87,7 +87,7 @@ export default function SearchBar() {
               />
             </div>
           </div>
-          <div className="flex-col w-1/3 gap-3">
+          <div className="flex-col gap-3">
             <label className="cursor-default text-sm mb-3 inline-block">
               Qiymət
             </label>
@@ -117,8 +117,8 @@ export default function SearchBar() {
             ease: 'easeInOut',
           }}
         >
-          <div className="flex w-full gap-3">
-            <div className="flex-col w-1/3 gap-3">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
+            <div className="flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Ölçü (m<sup>2</sup>)
               </label>
@@ -131,7 +131,7 @@ export default function SearchBar() {
                 </div>
               </div>
             </div>
-            <div className="flex-col w-1/3 gap-3">
+            <div className="flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Mərtəbələrin sayı
               </label>
@@ -144,7 +144,7 @@ export default function SearchBar() {
                 </div>
               </div>
             </div>
-            <div className="flex w-1/3 gap-3">
+            <div className="flex gap-3">
               <div className="w-full">
                 <SelectContainer
                   value={featureValue}
@@ -155,8 +155,8 @@ export default function SearchBar() {
               </div>
             </div>
           </div>
-          <div className="flex w-full gap-3">
-            <div className="flex-col w-1/3 gap-3">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
+            <div className="flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Daşınmaz əmlak ID
               </label>
@@ -164,7 +164,7 @@ export default function SearchBar() {
                 <SearchInput type="text" placeholder="Nümunə: 5398" />
               </div>
             </div>
-            <div className="constructor-year flex-col w-1/3 gap-3">
+            <div className="constructor-year flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Tikinti ili
               </label>
@@ -182,7 +182,7 @@ export default function SearchBar() {
                 </div>
               </div>
             </div>
-            <div className="distance-sea flex-col w-1/3 gap-3">
+            <div className="distance-sea flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Dənizə Məsafə
               </label>
@@ -195,7 +195,7 @@ export default function SearchBar() {
                 </div>
               </div>
             </div>
-            <div className="distance-airport flex-col w-1/3 gap-3">
+            <div className="distance-airport flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Hava limanına məsafə (km)
               </label>
@@ -211,7 +211,7 @@ export default function SearchBar() {
           </div>
         </motion.div>
       </div>
-      <div className="buttons w-full flex justify-between pt-5">
+      <div className="buttons w-full flex flex-col md:flex-row justify-between pt-5">
         <div className="flex text-xs gap-2.5 py-2">
           <button
             type="button"
