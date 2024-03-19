@@ -29,6 +29,8 @@ export default {
         h2: '30px',
         h1: '56px',
 
+        newBadge: '24px',
+
         // 30, 24, 56, 32
       },
       colors: {
@@ -61,7 +63,7 @@ export default {
           600: '#e84900',
         },
         red: {
-          600: '#E21743',
+          600: '#e21717',
         },
         gray: {
           100: '#f7f7f7',

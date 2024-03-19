@@ -6,7 +6,8 @@ import Contact from '~/pages/contact'
 import Comments from '~/pages/comments'
 import Blog from '~/pages/blog'
 import NotFound from '~/pages/notFound'
-import ForSale from '~/pages/estate/forSale/index.jsx'
+import ForSale from '~/pages/estate/forSale'
+import EstateItem from '~/pages/estate/estateItem/index.jsx'
 
 const routesChildren = [
   {
@@ -26,6 +27,10 @@ const routesChildren = [
         element: <ForSale />,
       },
     ],
+  },
+  {
+    path: 'estate/:id',
+    element: <EstateItem />,
   },
   {
     path: 'about',

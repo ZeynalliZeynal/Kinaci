@@ -81,7 +81,7 @@ export default function Details() {
           </div>
         </div>
       </div>
-      <div className="grid gap-2.5 justify-center w-2/3">
+      <div className="grid gap-2.5 justify-end w-2/3">
         <p className="text-center">
           <del>{currencyFormat(161000)}</del>
         </p>

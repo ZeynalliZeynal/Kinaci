@@ -1,8 +1,9 @@
 import TabBtns from '~/pages/home/newEstates/tabBtns/index.jsx'
 import { useState } from 'react'
 import EstateCards from '~/components/estateCards/index.jsx'
+import PropTypes from 'prop-types'
 
-export default function NewEstates() {
+export default function NewEstates({ estates }) {
   const [activeTab, setActiveTab] = useState('Satılır')
   return (
     <section className="bg-blue-700/5">
@@ -26,17 +27,17 @@ export default function NewEstates() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div>
-            <EstateCards />
-          </div>
-          <div>
-            <EstateCards />
-          </div>
-          <div>
-            <EstateCards />
-          </div>
+          {estates.map((estate) => (
+            <div key={estate.id}>
+              <EstateCards estate={estate} />
+            </div>
+          ))}
         </div>
       </div>
     </section>
   )
+}
+
+NewEstates.propTypes = {
+  estates: PropTypes.array,
 }
