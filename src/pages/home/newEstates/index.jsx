@@ -1,12 +1,13 @@
 import TabBtns from '~/pages/home/newEstates/tabBtns/index.jsx'
 import { useState } from 'react'
+import EstateCards from '~/components/estateCards/index.jsx'
 
 export default function NewEstates() {
   const [activeTab, setActiveTab] = useState('Satılır')
   return (
-    <section className="bg-section-newestates/10">
+    <section className="bg-blue-700/5">
       <div className="container">
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-8">
           <div className="header text-blue-900">
             <h2 className="text-h2 font-semibold">Yeni Əmlaklar</h2>
             <p className="text-sm">En son eklenen gayrimenkuller</p>
@@ -22,6 +23,17 @@ export default function NewEstates() {
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-8">
+          <div>
+            <EstateCards />
+          </div>
+          <div>
+            <EstateCards />
+          </div>
+          <div>
+            <EstateCards />
           </div>
         </div>
       </div>
