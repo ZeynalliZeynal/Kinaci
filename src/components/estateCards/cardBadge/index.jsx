@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function CardBadge({ estate }) {
   return (
     <span
@@ -6,4 +8,8 @@ export default function CardBadge({ estate }) {
       {estate.feature?.toUpperCase()}
     </span>
   )
+}
+
+CardBadge.propTypes = {
+  estate: PropTypes.object,
 }

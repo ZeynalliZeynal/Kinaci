@@ -26,11 +26,9 @@ export default function NewEstates({ estates }) {
             />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 items-stretch md:grid-cols-2 lg:grid-cols-3 gap-8">
           {estates.map((estate) => (
-            <div key={estate.id}>
-              <EstateCards estate={estate} />
-            </div>
+            <EstateCards estate={estate} key={estate.id} />
           ))}
         </div>
       </div>

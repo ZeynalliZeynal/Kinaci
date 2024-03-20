@@ -16,7 +16,7 @@ export default function EstateCards({ estate }) {
   const navigate = useNavigate()
 
   return (
-    <div className="card bg-white p-4 rounded-selectBtn hover:shadow-lg transition-shadow">
+    <div className="card bg-white p-4 rounded-selectBtn hover:shadow-lg transition-shadow grid">
       <div className="card-head">
         <div className="card-img-slider-container flex overflow-hidden relative rounded-selectBtn">
           {preview.map((image, index) => (
@@ -72,11 +72,11 @@ export default function EstateCards({ estate }) {
           </span>
         </div>
       </div>
-      <div className="card-body text-blue-900">
+      <div className="card-body text-blue-900 grid">
         <h4 className="card-title text-md font-semibold py-5">
           {estate.title}
         </h4>
-        <Details />
+        <Details estate={estate} />
         <ActionBtns />
       </div>
     </div>

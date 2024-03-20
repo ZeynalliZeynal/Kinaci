@@ -9,7 +9,7 @@ const defaultOptions = {
 
 export default function Loader() {
   return (
-    <section className="size-[250px] grid justify-center w-full">
+    <section className="size-[250px] grid justify-center w-full pointer-events-none">
       <Lottie options={defaultOptions} />
     </section>
   )
