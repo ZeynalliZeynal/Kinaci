@@ -2,7 +2,7 @@ import Svg from '~/components/Svg.jsx'
 
 export default function Actions() {
   return (
-    <div className="px-8 py-6 grid justify-center gap-3">
+    <div className="print-hidden py-6 grid justify-center gap-3">
       <p>
         Bu əmlak və onun <b>qiymət siyahısı</b>, satınalma prosedurunun
         mərhələləri, mümkün <b>endirimlər</b> və s. haqqında tam məlumat

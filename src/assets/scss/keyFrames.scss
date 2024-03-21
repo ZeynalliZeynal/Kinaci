@@ -1,0 +1,26 @@
+.special-badge {
+  background: linear-gradient(
+    120deg,
+    #f55683,
+    #ffe32a,
+    #2a84ff,
+    #6d5bf5,
+    #f55683,
+    #f55683,
+    #ffe32a,
+    #2a84ff,
+    #6d5bf5,
+    #f55683
+  );
+  background-size: 1000%;
+  animation: smooth-animation 10s linear infinite alternate;
+}
+
+@keyframes smooth-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100%; // Move position beyond 100% for smooth looping
+  }
+}

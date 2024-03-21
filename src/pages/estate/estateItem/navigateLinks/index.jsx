@@ -15,7 +15,7 @@ export default function NavigateLinks() {
   return (
     <>
       {isOpen && <LoginForm isOpen={isOpen} closeModal={handleModal} />}
-      <div className="grid grid-cols-3 gap-4 text-white text-sm font-semibold mt-9 mb-8">
+      <div className="print-hidden grid grid-cols-3 gap-4 text-white text-sm font-semibold mt-9 mb-8">
         {Array.from({ length: 3 }, (_, index) => (
           <span className="w-full" key={index}>
             {index === 0 ? (
