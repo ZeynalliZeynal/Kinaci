@@ -69,7 +69,7 @@ export default function Select({ multiple, value, onChange, options }) {
       onClick={() => setIsOpen((prev) => !prev)}
       onBlur={() => setIsOpen(false)}
     >
-      <span className="grow ps-2.5 flex flex-wrap gap-2 overflow-auto max-h-[100px]">
+      <span className="grow ps-2.5 flex flex-wrap gap-2 overflow-y-scroll max-h-[100px]">
         {multiple
           ? value.map((v) => (
               <SelectBadge
@@ -83,7 +83,7 @@ export default function Select({ multiple, value, onChange, options }) {
       <div className="flex">
         {value.length !== 0 && (
           <ClearButton onClearOptions={handleClearOptions} />
-        )}
+        )}{' '}
         <span className="mx-2 w-0.5 bg-blue-900/20"></span>
         <Caret isOpen={isOpen} />
       </div>

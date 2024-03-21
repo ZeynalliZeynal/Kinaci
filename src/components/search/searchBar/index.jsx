@@ -15,12 +15,12 @@ export default function SearchBar() {
   const [room, setRoom] = useState([])
   const [place, setPlace] = useState([])
   const [city, setCity] = useState([])
-  const [feature, setFeature] = useState([])
+  const [badge, setBadge] = useState([])
   const [estateTypeValue, setEstateTypeValue] = useState([])
   const [roomValue, setRoomValue] = useState([])
   const [cityValue, setCityValue] = useState([])
   const [placeValue, setPlaceValue] = useState([])
-  const [featureValue, setFeatureValue] = useState([])
+  const [badgeValue, setBadgeValue] = useState([])
   const [isExpanded, setIsExpanded] = useState(false)
   useEffect(() => {
     async function fetchData() {
@@ -30,7 +30,7 @@ export default function SearchBar() {
         setEstateType(data.estateTypes)
         setRoom(data.rooms)
         setPlace(data.location)
-        setFeature(data.features)
+        setBadge(data.badges)
       } catch (err) {
         console.warn(err)
       }
@@ -50,7 +50,7 @@ export default function SearchBar() {
   return (
     <form className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none">
       <div className="flex gap-3 flex-wrap">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
           <div className="flex gap-3">
             <div className="w-7/12">
               <SelectContainer
@@ -100,6 +100,19 @@ export default function SearchBar() {
               </div>
             </div>
           </div>
+          <div className="flex-col gap-3">
+            <label className="cursor-default text-sm mb-3 inline-block">
+              Ölçü (m<sup>2</sup>)
+            </label>
+            <div className="flex">
+              <div className="w-1/2">
+                <SearchInput type="text" placeholder="0'dan" />
+              </div>
+              <div className="w-1/2">
+                <SearchInput type="text" placeholder="100.000'ə qədər" />
+              </div>
+            </div>
+          </div>
         </div>
         <motion.div
           className="expanded-filter w-full gap-3 flex-col origin-top flex"
@@ -120,19 +133,6 @@ export default function SearchBar() {
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Ölçü (m<sup>2</sup>)
-              </label>
-              <div className="flex">
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="0'dan" />
-                </div>
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="100.000'ə qədər" />
-                </div>
-              </div>
-            </div>
-            <div className="flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
                 Mərtəbələrin sayı
               </label>
               <div className="flex">
@@ -147,15 +147,13 @@ export default function SearchBar() {
             <div className="flex gap-3">
               <div className="w-full">
                 <SelectContainer
-                  value={featureValue}
-                  options={feature}
-                  setValue={setFeatureValue}
-                  label="Əmlak növü"
+                  value={badgeValue}
+                  options={badge}
+                  setValue={setBadgeValue}
+                  label="Etiketlər"
                 />
               </div>
             </div>
-          </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Daşınmaz əmlak ID
@@ -164,6 +162,8 @@ export default function SearchBar() {
                 <SearchInput type="text" placeholder="Nümunə: 5398" />
               </div>
             </div>
+          </div>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="constructor-year flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
                 Tikinti ili

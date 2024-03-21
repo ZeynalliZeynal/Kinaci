@@ -26,9 +26,9 @@ export default function SelectOptions({
         ease: 'easeInOut',
         duration: 0.3,
       }}
-      className="origin-top gap-2 absolute z-50 mt-2 flex-col top-full left-0 items-start bg-white w-full px-2.5 py-4 rounded-button border border-blue-900/25 overflow-y-scroll"
+      className="origin-top gap-2 absolute z-50 mt-2 flex-col top-full left-0 items-start bg-white w-full px-2.5 py-4 rounded-button border border-blue-900/25 overflow-y-scroll max-h-[200px] justify-start"
     >
-      {options.map((option, index) => (
+      {options?.map((option, index) => (
         <li
           key={option.id}
           className={classNames(

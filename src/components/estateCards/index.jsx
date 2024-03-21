@@ -28,7 +28,7 @@ export default function EstateCards({ estate }) {
             >
               <img src={image} alt={`Image ${index + 1}`} />
             </motion.div>
-          ))}
+          ))}{' '}
           <Dots
             images={preview}
             imageIndex={imageIndex}
@@ -66,7 +66,7 @@ export default function EstateCards({ estate }) {
               />
             </motion.svg>
           </button>
-          {estate.feature && <CardBadge estate={estate} />}
+          {estate.feature && <CardBadge estate={estate} />}{' '}
           <span className="rounded-button absolute bottom-2 left-2 bg-orange-500 text-white text-md font-medium px-3 py-1">
             KNC-{estate.id}
           </span>
@@ -77,7 +77,7 @@ export default function EstateCards({ estate }) {
           {estate.title}
         </h4>
         <Details estate={estate} />
-        <ActionBtns />
+        <ActionBtns estateItemID={estate.id} />
       </div>
     </div>
   )

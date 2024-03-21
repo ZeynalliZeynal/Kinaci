@@ -1,5 +1,5 @@
 import Lottie from 'react-lottie'
-import animationData from '~/assets/icon/loading.json'
+import animationData from '~/assets/img/loading.json'
 
 const defaultOptions = {
   loop: true, // Set to true for continuous looping
@@ -9,7 +9,7 @@ const defaultOptions = {
 
 export default function Loader() {
   return (
-    <section className="size-[250px] grid justify-center w-full pointer-events-none">
+    <section className="size-[500px] grid justify-center w-full pointer-events-none">
       <Lottie options={defaultOptions} />
     </section>
   )

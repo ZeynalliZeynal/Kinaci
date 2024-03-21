@@ -3,6 +3,12 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Loader from '~/components/loader.jsx'
 import ImgSlider from '~/pages/estate/estateItem/imgSlider/index.jsx'
+import Svg from '~/components/Svg.jsx'
+import ShortInfo from '~/pages/estate/estateItem/shortInfo/index.jsx'
+import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo/index.jsx'
+import ActionBtns from '~/components/estateCards/actionBtns/index.jsx'
+import Actions from '~/pages/estate/estateItem/actions/index.jsx'
+import NavigateLinks from '~/pages/estate/estateItem/navigateLinks/index.jsx'
 
 export default function EstateItem() {
   const [estateItem, setEstateItem] = useState(null)
@@ -28,11 +34,6 @@ export default function EstateItem() {
     fetchEstateItem()
   }, [id])
 
-  const {
-    title,
-    location: { city, place },
-  } = estateItem
-
   return (
     <>
       {isLoading ? (
@@ -43,18 +44,28 @@ export default function EstateItem() {
             <div className="grid grid-cols-[8fr_4fr]">
               <div className="grid gap-3 text-blue-900">
                 <div className="header">
-                  <h2 className="text-5xl font-semibold">{title}</h2>
+                  <h2 className="text-5xl font-semibold">
+                    {estateItem?.title}
+                  </h2>
                   <p className="text-md">
-                    {city}
-                    {place && `/${place}`}
+                    {estateItem?.location.city}{' '}
+                    {estateItem?.location.place &&
+                      `/${estateItem?.location.place}`}
                   </p>
                 </div>
-
                 <ImgSlider
                   estateItem={estateItem}
                   imageIndex={imageIndex}
                   setImageIndex={setImageIndex}
                 />
+                <Actions />
+                <ShortInfo estateItem={estateItem} />
+                <InfrastructureInfo estateItem={estateItem} />
+                <NavigateLinks />
+                <div className="text-blue-900 grid gap-5">
+                  <h2 className="text-5xl">Şərh</h2>
+                  {estateItem?.description.replace(/\n/g, '<br>')}
+                </div>
               </div>
               <div>salam</div>
             </div>

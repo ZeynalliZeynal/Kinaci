@@ -60,6 +60,7 @@ export function SelectBadge({ v, handleSelectOption }) {
     <button
       className="px-2 py-1 flex-nowrap text-left rounded-selectBtn border-2 border-blue-900/20 hover:bg-blue-900/5"
       key={v.id}
+      type="button"
       onClick={(e) => {
         e.stopPropagation()
         handleSelectOption(v)
