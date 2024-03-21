@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Loader from '~/components/loader.jsx'
-import ImgSlider from '~/pages/estate/estateItem/imgSlider/index.jsx'
-import Svg from '~/components/Svg.jsx'
-import ShortInfo from '~/pages/estate/estateItem/shortInfo/index.jsx'
-import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo/index.jsx'
-import ActionBtns from '~/components/estateCards/actionBtns/index.jsx'
-import Actions from '~/pages/estate/estateItem/actions/index.jsx'
-import NavigateLinks from '~/pages/estate/estateItem/navigateLinks/index.jsx'
+import ImgSlider from '~/pages/estate/estateItem/imgSlider'
+import ShortInfo from '~/pages/estate/estateItem/shortInfo'
+import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo'
+import Actions from '~/pages/estate/estateItem/actions'
+import NavigateLinks from '~/pages/estate/estateItem/navigateLinks'
 
 export default function EstateItem() {
   const [estateItem, setEstateItem] = useState(null)
