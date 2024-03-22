@@ -3,8 +3,8 @@ import Svg from '~/components/Svg.jsx'
 
 export default function Features({ estateItem }) {
   return (
-    <div className="features">
-      <ul className="px-8 py-4 gap-8 text-md flex-wrap justify-start border-b border-blue-900/10">
+    <div className="features px-8">
+      <ul className="py-4 gap-8 text-md flex-wrap justify-start border-b border-blue-900/10">
         {estateItem?.bedrooms && (
           <li className="gap-4">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">

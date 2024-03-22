@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 export default function SelectOptions({
   isOpen,
@@ -19,8 +19,8 @@ export default function SelectOptions({
     <motion.ul
       animate={isOpen ? 'open' : 'initial'}
       variants={{
-        initial: { rotateX: -90, opacity: 0, visibility: 'hidden' },
-        open: { rotateX: 0, opacity: 1, visibility: 'visible' },
+        initial: { rotateX: -90, opacity: 0 },
+        open: { rotateX: 0, opacity: 1 },
       }}
       transition={{
         ease: 'easeInOut',

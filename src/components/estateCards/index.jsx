@@ -66,7 +66,11 @@ export default function EstateCards({ estate }) {
               />
             </motion.svg>
           </button>
-          {estate.feature && <CardBadge estate={estate} />}{' '}
+          {estate.feature && (
+            <span className="absolute top-2 right-2 text-md">
+              <CardBadge estate={estate} />
+            </span>
+          )}
           <span className="rounded-button absolute bottom-2 left-2 bg-orange-500 text-white text-md font-medium px-3 py-1">
             KNC-{estate.id}
           </span>

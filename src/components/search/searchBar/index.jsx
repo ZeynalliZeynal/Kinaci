@@ -44,11 +44,14 @@ export default function SearchBar() {
     setRoomValue([])
     setCityValue([])
     setPlaceValue([])
-    setFeatureValue([])
+    setBadgeValue([])
   }
 
   return (
-    <form className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none">
+    <form
+      className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <div className="flex gap-3 flex-wrap">
         <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
           <div className="flex gap-3">

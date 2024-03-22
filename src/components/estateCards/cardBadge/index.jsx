@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 export default function CardBadge({ estate }) {
   return (
     <span
-      className={`rounded-button absolute top-2 right-2 ${estate.feature === 'Yeni' ? 'bg-blue-700' : estate.feature === 'Sərfəli' ? 'bg-red-600' : estate.feature === 'Dəbdəbəli' ? 'special-badge' : 'bg-orange-500'} text-white text-md font-medium px-3 py-1`}
+      className={classNames(`rounded-button text-white font-medium px-3 py-1`, {
+        'bg-blue-700': estate?.feature === 'Yeni',
+        'bg-red-600': estate?.feature === 'Sərfəli',
+        'special-badge': estate?.feature === 'Dəbdəbəli',
+        'bg-teal-500': estate?.feature === 'Mərkəz',
+        'bg-blue-400': estate?.feature.includes('endirim'),
+      })}
     >
-      {estate.feature?.toUpperCase()}
+      {estate?.feature.toUpperCase()}
     </span>
   )
 }

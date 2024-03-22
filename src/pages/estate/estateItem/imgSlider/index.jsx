@@ -1,12 +1,22 @@
 import { GoPlay, GoZoomIn } from 'react-icons/go'
 import PropTypes from 'prop-types'
 import Features from './features'
+import CardBadge from '~/components/estateCards/cardBadge/index.jsx'
 
 export default function ImgSlider({ estateItem, imageIndex, setImageIndex }) {
   return (
     <div className="img-slider">
-      <div className="img-container aspect-video rounded overflow-hidden">
-        <img src={estateItem?.assets?.img[imageIndex]} alt="Carousel" />
+      <div className="img-container relative rounded overflow-hidden">
+        <div className="img h-[530px] backdrop-blur-xl bg-blue-900/10">
+          <img
+            src={estateItem?.assets?.img[imageIndex]}
+            alt="Carousel"
+            className="object-contain"
+          />
+        </div>
+        <div className="absolute top-4 left-4 text-5xl">
+          <CardBadge estate={estateItem} />
+        </div>
       </div>
       <div className="print-hidden w-full bg-gradient-to-b from-[#fefefe] to-[#ededed] text-[#039] text-xxs grid grid-cols-2 py-2">
         <button className="py-2.5 font-medium flex gap-2 border-r border-[#ddd]">

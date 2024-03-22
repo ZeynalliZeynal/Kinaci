@@ -30,8 +30,6 @@ export default {
         h1: '56px',
 
         newBadge: '24px',
-
-        // 30, 24, 56, 32
       },
       colors: {
         // colors are written as 'color-shade', for example blue-900-10
@@ -47,9 +45,9 @@ export default {
         blue: {
           50: '#e9f3f9',
           400: '#00a2e5',
-          500: '#3472d0',
+          500: '#3677F9FF',
           700: '#2563EBFF',
-          800: ' #1a3a50',
+          800: '#1a3a50',
           900: '#052841',
           '900-10': '#05284119', // opacity of blue-900
           '900-50': '#0528417F',
@@ -77,6 +75,7 @@ export default {
         language: '0 0px 20px -1px rgba(0, 0, 0, 0.2)',
         nestedLink: '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
         section: '0 1px 4px 0 rgba(24, 26, 32, 0.07)',
+        tooltip: '0 2px 4px -3px rgba(0, 0, 0, 0.3)',
       },
       borderRadius: {
         button: '6px',
