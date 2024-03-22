@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import 'common';
-@import "keyFrames";
+@import 'keyFrames';
 
 @tailwind base;
 @tailwind components;
@@ -32,15 +32,34 @@ body {
 }
 
 .facebook {
-  @apply text-icons-facebook hover:bg-icons-facebook hover:text-white;
+  @apply text-icons-facebook;
+  &:hover {
+    color: white;
+    background: linear-gradient(to bottom, #21b1fe, #0868e3);
+  }
 }
 
 .linkedin {
   @apply text-icons-linkedin hover:bg-icons-linkedin hover:text-white;
 }
 
+.youtube {
+  @apply text-icons-youtube hover:bg-icons-youtube hover:text-white;
+}
+
 .instagram {
-  @apply text-icons-instagram hover:bg-icons-instagram hover:text-white;
+  @apply text-icons-instagram;
+  &:hover {
+    color: white;
+    background: linear-gradient(
+      30deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+  }
 }
 
 button:active {
@@ -80,14 +99,15 @@ section {
 }
 
 @media print {
-  header, footer, .print-hidden {
-    @apply hidden
+  header,
+  footer,
+  .print-hidden {
+    @apply hidden;
   }
-  #printed-section{
-    @apply break-after-avoid text-[0.5em] py-4
+  #printed-section {
+    @apply break-after-avoid text-[0.5em] py-4;
   }
-  .estate-description{
-    @apply py-4
+  .estate-description {
+    @apply py-4;
   }
-
 }

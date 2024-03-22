@@ -4,7 +4,7 @@ export default function ShortInfo({ estateItem }) {
   return (
     <div className="text-blue-900 grid gap-5">
       <h3 className="text-5xl">Qısa məlumat</h3>
-      <ul className="grid grid-cols-3 gap-2.5">
+      <ul className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-2.5">
         <li className="justify-start">
           {estateItem?.location.city}{' '}
           {estateItem?.location.place && ` / ${estateItem?.location.place}`}

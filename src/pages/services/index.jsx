@@ -6,10 +6,8 @@ export default function Services() {
     document.title = 'Kinaci - Xidmətlər'
   }, [])
   return (
-    <main>
-      <section>
-        <Search />
-      </section>
-    </main>
+    <section>
+      <Search />
+    </section>
   )
 }

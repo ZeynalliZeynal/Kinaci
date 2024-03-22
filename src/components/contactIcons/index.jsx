@@ -5,11 +5,11 @@ export default function ContactIcons() {
     <ul className="gap-0.5 md:gap-2">
       {contactLinks.map((link, index) => (
         <li
-          className={`contact-icons p-2 rounded-full ${link.type}`}
+          className={`contact-icons rounded-full overflow-hidden ${link.type}`}
           key={index}
         >
-          <a href="#" className={`size-[18px]`}>
-            {link.icon}
+          <a href="#" className="p-2 rounded-full">
+            <span className="size-[18px]">{link.icon}</span>
           </a>
         </li>
       ))}

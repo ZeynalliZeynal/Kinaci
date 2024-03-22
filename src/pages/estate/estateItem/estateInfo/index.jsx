@@ -42,7 +42,7 @@ export default function EstateInfo() {
                 {estateItem?.location.place && `/${estateItem?.location.place}`}
               </p>
             </div>
-            <div id="printed-section" className="grid grid-cols-[8fr_4fr]">
+            <div id="printed-section" className="grid md:grid-cols-[8fr_4fr]">
               <LeftSection estateItem={estateItem} />
               <AsideSection estateItem={estateItem} />
             </div>

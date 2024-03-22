@@ -3,6 +3,7 @@ import {
   RiInstagramLine,
   RiLinkedinFill,
   RiTwitterFill,
+  RiYoutubeLine,
 } from 'react-icons/ri'
 
 export const contactLinks = [
@@ -21,5 +22,9 @@ export const contactLinks = [
   {
     icon: <RiLinkedinFill />,
     type: 'linkedin',
+  },
+  {
+    icon: <RiYoutubeLine />,
+    type: 'youtube',
   },
 ]

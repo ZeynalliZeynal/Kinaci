@@ -16,7 +16,7 @@ export default function LeftSection({ estateItem }) {
     window.print()
   }
   return (
-    <div className="grid gap-3 text-blue-900 px-2">
+    <div className="grid gap-3 text-blue-900 px-2 order-2 md:order-first">
       <div className="rounded-xl bg-white shadow-section">
         <ImgSlider
           estateItem={estateItem}
@@ -27,12 +27,14 @@ export default function LeftSection({ estateItem }) {
           <Actions />
           <ShortInfo estateItem={estateItem} />
           <InfrastructureInfo estateItem={estateItem} />
-          <NavigateLinks />
-          <div className="estate-description text-blue-900 grid gap-5 whitespace-pre-wrap leading-[200%]">
+          <div className="md:block hidden">
+            <NavigateLinks />
+          </div>
+          <div className="estate-description text-blue-900 mt-5 grid gap-5 whitespace-pre-wrap leading-[200%]">
             <h2 className="text-5xl">Şərh</h2>
             {estateItem?.description}
           </div>
-          <div className="print-hidden py-8 text-md flex justify-center gap-8">
+          <div className="print-hidden py-8 text-md flex flex-col md:flex-row justify-center gap-8">
             <a
               href="#"
               className={`rounded-xl px-12 py-4 border hover:text-white hover:bg-orange-500 border-orange-500 text-orange-500`}

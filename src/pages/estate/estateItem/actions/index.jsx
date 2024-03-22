@@ -8,7 +8,7 @@ export default function Actions() {
         mərhələləri, mümkün <b>endirimlər</b> və s. haqqında tam məlumat
         alacaqsınız.
       </p>
-      <div className="favourite text-md flex justify-start gap-4">
+      <div className="favourite text-md md:flex-row flex-col flex justify-start gap-4">
         {Array.from({ length: 2 }, (_, index) => (
           <button
             className={`rounded-xl px-5 py-3 border hover:text-white ${index === 0 ? 'border-blue-400 text-blue-400 hover:bg-blue-400' : 'border-red-600 text-red-600 hover:bg-red-600'}`}

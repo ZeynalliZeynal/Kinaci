@@ -4,9 +4,9 @@ import Svg from '~/components/Svg.jsx'
 export default function Features({ estateItem }) {
   return (
     <div className="features px-8">
-      <ul className="py-4 gap-8 text-md flex-wrap justify-start border-b border-blue-900/10">
+      <ul className="py-4 grid grid-cols-1 sm:grid-cols-2 md:flex gap-8 text-md flex-wrap justify-start border-b border-blue-900/10">
         {estateItem?.bedrooms && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="bed" />
             </span>
@@ -21,7 +21,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.bath && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="bath" />
             </span>
@@ -32,7 +32,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.garage && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="garage" />
             </span>
@@ -43,7 +43,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.area && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="area" />
             </span>
@@ -54,7 +54,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.land_area && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="landArea" />
             </span>
@@ -67,7 +67,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.type && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="type" />
             </span>
@@ -78,7 +78,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.rooms && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="room" />
             </span>
@@ -93,7 +93,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.balcony && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="balcony" />
             </span>
@@ -106,7 +106,7 @@ export default function Features({ estateItem }) {
           </li>
         )}{' '}
         {estateItem?.constructor_date && (
-          <li className="gap-4">
+          <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
               <Svg svgType="year" />
             </span>

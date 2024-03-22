@@ -39,8 +39,9 @@ export default {
         icons: {
           twitter: '#00a2e5',
           facebook: '#006af7',
-          instagram: '#e80138',
+          instagram: '#bc1888',
           linkedin: '#0059b1',
+          youtube: '#FF0000',
         },
         blue: {
           50: '#e9f3f9',
@@ -56,6 +57,7 @@ export default {
           500: '#0D9470FF',
         },
         orange: {
+          100: '#fdf0ea',
           200: '#ffe2d3',
           500: '#FF5300FF',
           600: '#e84900',
@@ -76,6 +78,7 @@ export default {
         nestedLink: '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
         section: '0 1px 4px 0 rgba(24, 26, 32, 0.07)',
         tooltip: '0 2px 4px -3px rgba(0, 0, 0, 0.3)',
+        button: '0 2px 8px 0 rgba(0, 0, 0, 0.14)',
       },
       borderRadius: {
         button: '6px',
