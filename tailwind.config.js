@@ -77,7 +77,7 @@ export default {
         language: '0 0px 20px -1px rgba(0, 0, 0, 0.2)',
         nestedLink: '0 4px 22px 0 rgba(5, 40, 65, 0.1)',
         section: '0 1px 4px 0 rgba(24, 26, 32, 0.07)',
-        tooltip: '0 2px 4px -3px rgba(0, 0, 0, 0.3)',
+        tooltip: '0 2px 4px  rgba(0, 0, 0, 0.3)',
         button: '0 2px 8px 0 rgba(0, 0, 0, 0.14)',
       },
       borderRadius: {

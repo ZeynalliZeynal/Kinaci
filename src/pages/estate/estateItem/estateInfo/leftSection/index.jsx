@@ -26,7 +26,9 @@ export default function LeftSection({ estateItem }) {
         <div className="body px-8">
           <Actions />
           <ShortInfo estateItem={estateItem} />
-          <InfrastructureInfo estateItem={estateItem} />
+          {estateItem?.facility_infrastructure && (
+            <InfrastructureInfo estateItem={estateItem} />
+          )}
           <div className="md:block hidden">
             <NavigateLinks />
           </div>
