@@ -14,7 +14,7 @@ export default function EstateItem() {
   }, [scrollToTop])
   return (
     <main className="bg-gray-100 pb-8">
-      <section className="bg-blue-900 py-6">
+      <section className="print-hidden bg-blue-900 py-6">
         <Search />
       </section>
       <EstateInfo />

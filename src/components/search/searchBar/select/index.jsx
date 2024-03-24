@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import {
   Caret,
   ClearButton,
@@ -97,11 +96,4 @@ export default function Select({ multiple, value, onChange, options }) {
       />
     </div>
   )
-}
-
-Select.propTypes = {
-  multiple: PropTypes.bool,
-  options: PropTypes.array,
-  onChange: PropTypes.func,
-  value: PropTypes.any,
 }

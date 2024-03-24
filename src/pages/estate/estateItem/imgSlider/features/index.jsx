@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import Svg from '~/components/Svg.jsx'
 
 export default function Features({ estateItem }) {
@@ -114,8 +113,4 @@ export default function Features({ estateItem }) {
       </ul>
     </div>
   )
-}
-
-Features.propTypes = {
-  estateItem: PropTypes.object,
 }

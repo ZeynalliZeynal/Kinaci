@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export default function CardBadge({ estate }) {
@@ -15,8 +14,4 @@ export default function CardBadge({ estate }) {
       {estate?.feature.toUpperCase()}
     </span>
   )
-}
-
-CardBadge.propTypes = {
-  estate: PropTypes.object,
 }

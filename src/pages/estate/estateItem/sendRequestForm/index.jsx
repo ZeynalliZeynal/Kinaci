@@ -20,7 +20,7 @@ export default function SendRequestForm() {
     fetchData()
   }, [])
   return (
-    <section>
+    <section className="print-hidden">
       <div className="container">
         <form className="px-12 lg:px-[200px] md:px-[100px] py-12 rounded-xl shadow-section bg-white text-blue-900">
           <h3 className="w-full text-4xl font-semibold text-start sm:text-center">

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 export default function ShortInfo({ estateItem }) {
   return (
     <div className="text-blue-900 grid gap-5">
@@ -35,13 +33,13 @@ export default function ShortInfo({ estateItem }) {
           <li className="justify-start">
             `Dənizə: ${estateItem.distances.sea}km`
           </li>
-        )}
+        )}{' '}
         {estateItem?.constructor_date && (
           <li className="justify-start">
-            `Tikinti ili: $
+            `Tikinti ili: ${' '}
             {new Intl.DateTimeFormat('az-AZ', {
               year: 'numeric',
-            }).format(new Date(estateItem.constructor_date))}
+            }).format(new Date(estateItem.constructor_date))}{' '}
             `
           </li>
         )}
@@ -54,8 +52,4 @@ export default function ShortInfo({ estateItem }) {
       </ul>
     </div>
   )
-}
-
-ShortInfo.propTypes = {
-  estateItem: PropTypes.object,
 }

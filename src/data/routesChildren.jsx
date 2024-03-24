@@ -28,10 +28,8 @@ const routesChildren = [
       },
     ],
   },
-  {
-    path: 'estate/:id',
-    element: <EstateItem />,
-  },
+  { path: 'estate/:sellingType/:id', element: <EstateItem /> },
+  { path: 'estate/:sellingType/:id', element: <EstateItem /> },
   {
     path: 'about',
     element: <About />,

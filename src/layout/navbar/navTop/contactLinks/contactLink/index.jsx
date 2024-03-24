@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useState } from 'react'
 import LoginForm from '~/components/loginForm/index.jsx'
 
@@ -25,8 +24,4 @@ export default function ContactLink({ data }) {
       )}
     </li>
   )
-}
-
-ContactLink.propTypes = {
-  data: PropTypes.object,
 }

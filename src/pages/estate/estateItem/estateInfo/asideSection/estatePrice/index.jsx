@@ -1,10 +1,10 @@
 import CurrencyDropdown from '~/pages/estate/estateItem/estateInfo/asideSection/currencyDropdown/index.jsx'
 import { useState } from 'react'
 import currencyData from '~/data/currencyData.jsx'
-import PropTypes from 'prop-types'
 
 export default function EstatePrice({ estateItem }) {
   const [selectedCurrency, setSelectedCurrency] = useState(currencyData[0])
+
   function convertCurrency(currency) {
     const currencyConverted = new Intl.NumberFormat(selectedCurrency.local, {
       style: 'currency',
@@ -18,6 +18,7 @@ export default function EstatePrice({ estateItem }) {
           : currency,
     )
   }
+
   return (
     <div className="px-4 py-[18px] bg-white rounded-button shadow-section grid gap-2.5">
       <div className="p-2 rounded-xl bg-blue-900 text-white flex justify-between items-center">
@@ -59,13 +60,10 @@ export default function EstatePrice({ estateItem }) {
                     100
               : estateItem?.price,
           )}{' '}
-          {estateItem?.forRent && `/${estateItem?.payment_type}`}
+          {estateItem?.selling_type === 'forRent' &&
+            `/${estateItem?.payment_type}`}
         </div>
       </div>
     </div>
   )
-}
-
-EstatePrice.propTypes = {
-  estateItem: PropTypes.object,
 }

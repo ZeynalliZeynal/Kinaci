@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 export default function InfrastructureInfo({ estateItem }) {
   return (
     <div className="text-blue-900 grid gap-5 mt-11">
@@ -13,8 +11,4 @@ export default function InfrastructureInfo({ estateItem }) {
       </ul>
     </div>
   )
-}
-
-InfrastructureInfo.propTypes = {
-  estateItem: PropTypes.object,
 }

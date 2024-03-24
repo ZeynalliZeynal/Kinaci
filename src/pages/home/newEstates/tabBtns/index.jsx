@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 export default function TabBtns({ text, activeTab, setActiveTab }) {
   return (
@@ -15,10 +14,4 @@ export default function TabBtns({ text, activeTab, setActiveTab }) {
       {text}
     </button>
   )
-}
-
-TabBtns.propTypes = {
-  text: PropTypes.string,
-  activeTab: PropTypes.string,
-  setActiveTab: PropTypes.func,
 }

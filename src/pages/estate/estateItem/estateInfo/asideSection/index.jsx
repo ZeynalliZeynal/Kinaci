@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import ButtonWithTooltip from '~/pages/estate/estateItem/estateInfo/asideSection/buttonWithTooltip/index.jsx'
 import EstatePrice from '~/pages/estate/estateItem/estateInfo/asideSection/estatePrice/index.jsx'
 import UserInfo from './userInfo'
@@ -34,7 +33,7 @@ export default function AsideSection({ estateItem }) {
           <EstatePrice estateItem={estateItem} />
           <ButtonWithTooltip />
           <UserInfo estateItem={estateItem} />
-          <div className="shadow-section rounded-xl p-[30px] bg-white">
+          <div className="print-hidden shadow-section rounded-xl p-[30px] bg-white">
             <h3 className="text-4xl font-semibold">Məzmunu Paylaşın</h3>
             <div className="flex justify-start w-full mt-2">
               <ContactIcons />
@@ -64,8 +63,4 @@ export default function AsideSection({ estateItem }) {
       </div>
     </aside>
   )
-}
-
-AsideSection.propTypes = {
-  estateItem: PropTypes.object,
 }

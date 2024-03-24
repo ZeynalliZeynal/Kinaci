@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 export function ClearButton({ onClearOptions }) {
   return (
     <button
@@ -94,12 +92,4 @@ export function SelectBadge({ v, handleSelectOption }) {
       </div>
     </button>
   )
-}
-
-Caret.propTypes = {
-  isOpen: PropTypes.bool,
-}
-SelectBadge.propTypes = {
-  v: PropTypes.object,
-  handleSelectOption: PropTypes.func,
 }

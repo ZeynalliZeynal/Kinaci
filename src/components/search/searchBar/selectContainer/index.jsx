@@ -1,5 +1,4 @@
 import Select from '~/components/search/searchBar/select/index.jsx'
-import PropTypes from 'prop-types'
 
 export default function SelectContainer({ label, value, options, setValue }) {
   return (
@@ -15,11 +14,4 @@ export default function SelectContainer({ label, value, options, setValue }) {
       />
     </div>
   )
-}
-
-SelectContainer.propTypes = {
-  label: PropTypes.string,
-  value: PropTypes.array,
-  options: PropTypes.array,
-  setValue: PropTypes.func,
 }

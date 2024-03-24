@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 export default function SidebarLink({ props }) {
   return (
@@ -17,10 +16,4 @@ export default function SidebarLink({ props }) {
       </NavLink>{' '}
     </li>
   )
-}
-
-SidebarLink.propTypes = {
-  props: PropTypes.object,
-  to: PropTypes.string,
-  pathName: PropTypes.string,
 }

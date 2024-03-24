@@ -1,7 +1,6 @@
 import TabBtns from '~/pages/home/newEstates/tabBtns/index.jsx'
 import { useState } from 'react'
 import EstateCards from '~/components/estateCards/index.jsx'
-import PropTypes from 'prop-types'
 
 export default function NewEstates({ estates }) {
   const [activeTab, setActiveTab] = useState('Satılır')
@@ -34,8 +33,4 @@ export default function NewEstates({ estates }) {
       </div>
     </section>
   )
-}
-
-NewEstates.propTypes = {
-  estates: PropTypes.array,
 }

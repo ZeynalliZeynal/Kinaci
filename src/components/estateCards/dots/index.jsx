@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import PropTypes from 'prop-types'
 
 export default function Dots({ images, imageIndex, setImageIndex }) {
   return (
@@ -39,10 +38,4 @@ export default function Dots({ images, imageIndex, setImageIndex }) {
       ))}
     </div>
   )
-}
-
-Dots.propTypes = {
-  images: PropTypes.array,
-  imageIndex: PropTypes.number,
-  setImageIndex: PropTypes.func,
 }

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { MdBalcony } from 'react-icons/md'
 import { TbResize } from 'react-icons/tb'
 
@@ -124,9 +123,4 @@ export default function Svg({ fill = 'currentColor', svgType }) {
   ) : svgType === 'landArea' ? (
     <TbResize />
   ) : null
-}
-
-Svg.propTypes = {
-  fill: PropTypes.string,
-  svgType: PropTypes.string.isRequired,
 }

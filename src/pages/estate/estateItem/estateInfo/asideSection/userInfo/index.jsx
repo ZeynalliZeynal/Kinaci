@@ -1,5 +1,4 @@
 import UserSocialLinks from '../userSocialLinks'
-import { PropTypes } from 'prop-types'
 
 export default function UserInfo({ estateItem }) {
   return (
@@ -21,7 +20,7 @@ export default function UserInfo({ estateItem }) {
           </div>
           {estateItem?.property_seller.social_links && (
             <UserSocialLinks estateItem={estateItem} />
-          )}
+          )}{' '}
           {estateItem?.property_seller.email && (
             <div>
               E-mail:{' '}
@@ -37,8 +36,4 @@ export default function UserInfo({ estateItem }) {
       </div>
     </div>
   )
-}
-
-UserInfo.propTypes = {
-  estateItem: PropTypes.object,
 }

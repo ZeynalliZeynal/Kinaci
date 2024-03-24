@@ -1,5 +1,4 @@
 import { LiaInstagram, LiaTelegram, LiaWhatsapp } from 'react-icons/lia'
-import PropTypes from 'prop-types'
 
 export default function UserSocialLinks({ estateItem }) {
   return (
@@ -39,8 +38,4 @@ export default function UserSocialLinks({ estateItem }) {
       </a>
     </div>
   )
-}
-
-UserSocialLinks.propTypes = {
-  estateItem: PropTypes.object,
 }

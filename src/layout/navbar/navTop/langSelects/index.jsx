@@ -1,8 +1,5 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
-import PropTypes from 'prop-types'
-import { Listbox, Transition } from '@headlessui/react'
-import { langOptions } from '~/data/navbar/langOptions.jsx'
 
 export default function LangSelects({ data }) {
   const [selectedLang, setSelectedLang] = useState(data[0].title)
@@ -54,11 +51,3 @@ export default function LangSelects({ data }) {
     </div>
   )
 }
-
-LangSelects.propTypes = {
-  data: PropTypes.array,
-}
-
-/*
-  
-*/

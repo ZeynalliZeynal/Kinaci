@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import LoginForm from '~/components/loginForm/index.jsx'
 import { useState } from 'react'
@@ -34,11 +33,4 @@ export default function LinkBtn({
       <LoginForm isOpen={isOpen} closeModal={handleModal} />
     </>
   )
-}
-
-LinkBtn.propTypes = {
-  children: PropTypes.string.isRequired,
-  onAction: PropTypes.func,
-  color: PropTypes.string,
-  bgColor: PropTypes.string,
 }

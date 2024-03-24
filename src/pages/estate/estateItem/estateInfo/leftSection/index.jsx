@@ -5,27 +5,21 @@ import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo/ind
 import NavigateLinks from '~/pages/estate/estateItem/navigateLinks/index.jsx'
 import { FaDownload } from 'react-icons/fa6'
 import { TfiPrinter } from 'react-icons/tfi'
-import { useState } from 'react'
-import PropTypes from 'prop-types'
 
 export default function LeftSection({ estateItem }) {
-  const [imageIndex, setImageIndex] = useState(0)
   function handlePrint() {
     const sectionToPrint = document.getElementById('printed-section') // Replace with your ID
     sectionToPrint.focus() // Focus the element for better printing behavior
     window.print()
   }
+
   return (
     <div className="grid gap-3 text-blue-900 px-2 order-2 md:order-first">
       <div className="rounded-xl bg-white shadow-section">
-        <ImgSlider
-          estateItem={estateItem}
-          imageIndex={imageIndex}
-          setImageIndex={setImageIndex}
-        />
+        <ImgSlider estateItem={estateItem} />
         <div className="body px-8">
           <Actions />
-          <ShortInfo estateItem={estateItem} />
+          <ShortInfo estateItem={estateItem} />{' '}
           {estateItem?.facility_infrastructure && (
             <InfrastructureInfo estateItem={estateItem} />
           )}
@@ -65,8 +59,4 @@ export default function LeftSection({ estateItem }) {
       </div>
     </div>
   )
-}
-
-LeftSection.propTypes = {
-  estateItem: PropTypes.object,
 }

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { useEffect } from 'react'
 
@@ -50,13 +49,4 @@ export default function SelectOptions({
       ))}
     </motion.ul>
   )
-}
-
-SelectOptions.propTypes = {
-  isOpen: PropTypes.bool,
-  options: PropTypes.array,
-  onSelectOption: PropTypes.func,
-  isOptionSelected: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  setHighlightedIndex: PropTypes.func,
 }

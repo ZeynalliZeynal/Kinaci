@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
 import Svg from '~/components/Svg'
 import Tooltip from '~/components/Tooltip'
@@ -46,6 +45,7 @@ export default function Details({ estate }) {
           : currency,
     )
   }
+
   return (
     <div className="details grid grid-cols-2">
       <div className="text-xs grid gap-2.5">
@@ -56,7 +56,7 @@ export default function Details({ estate }) {
           <div className="icon flex gap-2">
             <span className="size-4">
               <Svg svgType={'room'} />
-            </span>
+            </span>{' '}
             {estate?.rooms}
           </div>
           <div className="icon flex gap-2">
@@ -69,7 +69,7 @@ export default function Details({ estate }) {
             <div className="icon flex gap-2">
               <span className="size-4">
                 <Svg svgType="bed" />
-              </span>
+              </span>{' '}
               {estate.bedrooms}
             </div>
           )}{' '}
@@ -93,7 +93,7 @@ export default function Details({ estate }) {
           <p className="text-center">
             <del>{convertCurrency(estate?.price)}</del>
           </p>
-        )}
+        )}{' '}
         <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button">
           {convertCurrency(
             estate?.feature.includes('endirim')
@@ -102,8 +102,8 @@ export default function Details({ estate }) {
                     parseInt(estate?.feature.split(' ')[0].slice(0))) /
                     100
               : estate?.price,
-          )}
-          {estate?.forRent && `/${estate?.payment_type}`}
+          )}{' '}
+          {estate?.selling_type === 'forRent' && `/${estate?.payment_type}`}
         </span>
         <Tooltip position="bottom" isHovering={isHovering}>
           Digər valyuta dəyərlərini görmək üçün klikləyin
@@ -111,8 +111,4 @@ export default function Details({ estate }) {
       </button>
     </div>
   )
-}
-
-Details.propTypes = {
-  estate: PropTypes.object,
 }

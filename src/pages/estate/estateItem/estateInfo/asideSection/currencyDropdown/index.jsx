@@ -1,5 +1,4 @@
 import { Listbox, Transition } from '@headlessui/react'
-import PropTypes from 'prop-types'
 import { IoChevronDown } from 'react-icons/io5'
 import { Fragment } from 'react'
 import currencyData from '~/data/currencyData.jsx'
@@ -46,9 +45,4 @@ export default function CurrencyDropdown({
       </div>
     </Listbox>
   )
-}
-
-CurrencyDropdown.propTypes = {
-  selectedCurrency: PropTypes.object,
-  setSelectedCurrency: PropTypes.func,
 }

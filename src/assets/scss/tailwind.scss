@@ -94,6 +94,7 @@ section {
 ::-webkit-scrollbar {
   @apply size-1;
 }
+
 ::-webkit-scrollbar-thumb {
   @apply bg-orange-500 rounded-full;
 }
@@ -110,4 +111,8 @@ section {
   .estate-description {
     @apply py-4;
   }
+}
+
+.container-3d {
+  perspective: 1000px;
 }

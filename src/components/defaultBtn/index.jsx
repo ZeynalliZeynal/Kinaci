@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 export default function DefaultBtn({ type, children }) {
   return (
@@ -15,9 +14,4 @@ export default function DefaultBtn({ type, children }) {
       {children}
     </button>
   )
-}
-
-DefaultBtn.propTypes = {
-  type: PropTypes.oneOf(['submit', 'button']),
-  children: PropTypes.any.isRequired,
 }

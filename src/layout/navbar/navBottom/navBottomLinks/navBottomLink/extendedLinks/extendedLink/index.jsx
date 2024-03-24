@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export default function ExtendedLink({ props }) {
@@ -14,10 +13,4 @@ export default function ExtendedLink({ props }) {
       </NavLink>
     </li>
   )
-}
-
-ExtendedLink.propTypes = {
-  props: PropTypes.object,
-  to: PropTypes.string,
-  pathName: PropTypes.string,
 }

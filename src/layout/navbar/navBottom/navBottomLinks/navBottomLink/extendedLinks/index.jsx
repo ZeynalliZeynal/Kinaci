@@ -1,5 +1,4 @@
 import ExtendedLink from './extendedLink'
-import PropTypes from 'prop-types'
 
 export default function ExtendedLinks({ props }) {
   return (
@@ -9,9 +8,4 @@ export default function ExtendedLinks({ props }) {
       ))}
     </ul>
   )
-}
-
-ExtendedLinks.propTypes = {
-  props: PropTypes.array,
-  map: PropTypes.func,
 }

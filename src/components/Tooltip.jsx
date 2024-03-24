@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 
 export default function Tooltip({ position, isHovering, children }) {
@@ -29,10 +28,4 @@ export default function Tooltip({ position, isHovering, children }) {
       {children}
     </motion.div>
   )
-}
-
-Tooltip.propTypes = {
-  position: PropTypes.oneOf(['right', 'bottom', 'left', 'top']),
-  children: PropTypes.string,
-  isHovering: PropTypes.bool,
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function ContuctUsSection() {
   return (
-    <section className="bg-orange-100 py-[50px] text-blue-900">
+    <section className="print-hidden bg-orange-100 py-[50px] text-blue-900">
       <div className="container">
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
           <div className="grid gap-3 text-center sm:text-start">
@@ -32,7 +32,7 @@ export default function ContuctUsSection() {
             >
               <span className="size-4">
                 <BsTelephoneFill />
-              </span>
+              </span>{' '}
               {adminInfo.tel}
             </a>
           </div>

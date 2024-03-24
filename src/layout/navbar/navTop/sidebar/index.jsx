@@ -1,7 +1,6 @@
 import SidebarLink from './sidebarLinks'
 import ContactIcons from '~/components/contactIcons/index.jsx'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 export default function Sidebar({ isOpen, onClose }) {
   return (
@@ -59,9 +58,4 @@ export default function Sidebar({ isOpen, onClose }) {
       </div>
     </>
   )
-}
-
-Sidebar.propTypes = {
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
 }

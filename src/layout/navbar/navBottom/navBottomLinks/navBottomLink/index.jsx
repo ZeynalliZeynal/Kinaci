@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import ExtendedLinks from './extendedLinks'
 
@@ -51,15 +50,8 @@ export default function NavBottomLink({ props }) {
             )}
           </span>
         )}
-      </NavLink>
+      </NavLink>{' '}
       {props.extendable && <ExtendedLinks props={props.extendable} />}
     </li>
   )
-}
-
-NavBottomLink.propTypes = {
-  props: PropTypes.object,
-  to: PropTypes.string,
-  pathName: PropTypes.string,
-  extendable: PropTypes.any,
 }

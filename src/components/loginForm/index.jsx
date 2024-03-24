@@ -1,14 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import PropTypes from 'prop-types'
+import { Fragment } from 'react'
 import logo from '~/assets/img/logo.svg'
 import ModalForm from '~/components/loginForm/modalForm/index.jsx'
-import { IoClose } from 'react-icons/io5'
-import { motion } from 'framer-motion'
+import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
 
 export default function LoginForm({ isOpen, closeModal }) {
-  const [isHovering, setIsHovering] = useState(false)
-
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -48,26 +44,7 @@ export default function LoginForm({ isOpen, closeModal }) {
                   </Dialog.Title>
                   <ModalForm onClose={closeModal} />
                 </Dialog.Panel>
-                <button
-                  className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5 group"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  <motion.span
-                    animate={isHovering ? 'hovering' : 'initial'}
-                    variants={{
-                      hovering: {
-                        rotate: 90,
-                      },
-                      initial: {
-                        rotate: 0,
-                      },
-                    }}
-                    className="size-6 text-white"
-                  >
-                    <IoClose />
-                  </motion.span>
-                </button>
+                <ModalCloseBtn />
               </div>
             </Transition.Child>
           </div>
@@ -75,9 +52,4 @@ export default function LoginForm({ isOpen, closeModal }) {
       </Dialog>
     </Transition>
   )
-}
-
-LoginForm.propTypes = {
-  isOpen: PropTypes.bool,
-  closeModal: PropTypes.func,
 }

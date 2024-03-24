@@ -2,7 +2,7 @@ import { useState } from 'react'
 import LoginForm from '~/components/loginForm/index.jsx'
 import { useNavigate } from 'react-router-dom'
 
-export default function ActionBtns({ estateItemID }) {
+export default function ActionBtns({ estateItem }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navigate = useNavigate()
@@ -18,11 +18,13 @@ export default function ActionBtns({ estateItemID }) {
           key={index}
           className={`w-full px-4 py-2 font-semibold border-2 rounded-button hover:text-white ${index === 0 ? 'border-blue-900 text-blue-900 hover:bg-blue-900' : 'border-orange-500 text-orange-500 hover:bg-orange-500'}`}
           onClick={() =>
-            index === 0 ? setIsOpen(true) : navigate(`estate/${estateItemID}`)
+            index === 0
+              ? setIsOpen(true)
+              : navigate(`estate/${estateItem?.selling_type}/${estateItem?.id}`)
           }
         >
           {isOpen && <LoginForm isOpen={isOpen} closeModal={handleModal} />}{' '}
-          {index === 0 ? 'Hızlı İletişim' : 'Detaylar'}
+          {index === 0 ? 'Tez əlaqə' : 'Detaylar'}
         </button>
       ))}
     </div>

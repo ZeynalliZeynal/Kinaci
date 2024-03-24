@@ -1,6 +1,5 @@
 import Tooltip from '~/components/Tooltip.jsx'
 import { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
 
 export default function ButtonWithTooltip({ isDisabled = true }) {
   const [isHovering, setIsHovering] = useState(false)
@@ -31,8 +30,4 @@ export default function ButtonWithTooltip({ isDisabled = true }) {
       </Tooltip>
     </button>
   )
-}
-
-ButtonWithTooltip.propTypes = {
-  isDisabled: PropTypes.bool,
 }

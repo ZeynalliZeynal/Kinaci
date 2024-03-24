@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
 import SelectContainer from '~/components/search/searchBar/selectContainer/index.jsx'
 import SearchInput from '~/components/search/searchInput/index.jsx'
@@ -7,6 +7,7 @@ import { GrSearch } from 'react-icons/gr'
 import DefaultBtn from '~/components/defaultBtn/index.jsx'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
+import { Transition } from '@headlessui/react'
 
 const baseURL = 'https://kinaci-server.onrender.com/data/selectInfo'
 
@@ -117,102 +118,98 @@ export default function SearchBar() {
             </div>
           </div>
         </div>
-        <motion.div
-          className="expanded-filter w-full gap-3 flex-col origin-top flex"
-          animate={isExpanded ? 'expanded' : 'hidden'}
-          variants={{
-            hidden: { scale: 0, height: 0, opacity: 0 },
-            expanded: {
-              scale: 1,
-              height: 'fit-content',
-              opacity: 1,
-            },
-          }}
-          transition={{
-            duration: 0.5,
-            ease: 'easeInOut',
-          }}
+        <Transition
+          as={Fragment}
+          show={isExpanded}
+          enter="ease-out duration-500"
+          enterFrom="scale-0 opacity-0"
+          enterTo="scale-100 opacity-100"
+          leave="ease-in duration-500"
+          leaveFrom="scale-100 opacity-1"
+          leaveTo="scale-0 opacity-0"
         >
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
-            <div className="flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
-                Mərtəbələrin sayı
-              </label>
-              <div className="flex">
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="0'dan" />
-                </div>
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="100'ə qədər" />
+          <div className="expanded-filter w-full gap-3 flex-col origin-top flex">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
+              <div className="flex-col gap-3">
+                <label className="cursor-default text-sm mb-3 inline-block">
+                  Mərtəbələrin sayı
+                </label>
+                <div className="flex">
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="0'dan" />
+                  </div>
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="100'ə qədər" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="flex gap-3">
-              <div className="w-full">
-                <SelectContainer
-                  value={badgeValue}
-                  options={badge}
-                  setValue={setBadgeValue}
-                  label="Etiketlər"
-                />
-              </div>
-            </div>
-            <div className="flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
-                Daşınmaz əmlak ID
-              </label>
-              <div className="flex">
-                <SearchInput type="text" placeholder="Nümunə: 5398" />
-              </div>
-            </div>
-          </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
-            <div className="constructor-year flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
-                Tikinti ili
-              </label>
-              <div className="flex">
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="2000'dən" />
-                </div>
-                <div className="w-1/2">
-                  <SearchInput
-                    type="text"
-                    placeholder={`${new Intl.DateTimeFormat('az-AZ', {
-                      year: 'numeric',
-                    }).format(new Date())}'a qədər`}
+              <div className="flex gap-3">
+                <div className="w-full">
+                  <SelectContainer
+                    value={badgeValue}
+                    options={badge}
+                    setValue={setBadgeValue}
+                    label="Etiketlər"
                   />
                 </div>
               </div>
-            </div>
-            <div className="distance-sea flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
-                Dənizə Məsafə
-              </label>
-              <div className="flex">
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="0'dan" />
-                </div>
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="1.000'ə qədər" />
+              <div className="flex-col gap-3">
+                <label className="cursor-default text-sm mb-3 inline-block">
+                  Daşınmaz əmlak ID
+                </label>
+                <div className="flex">
+                  <SearchInput type="text" placeholder="Nümunə: 5398" />
                 </div>
               </div>
             </div>
-            <div className="distance-airport flex-col gap-3">
-              <label className="cursor-default text-sm mb-3 inline-block">
-                Hava limanına məsafə (km)
-              </label>
-              <div className="flex">
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="0'dan" />
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
+              <div className="constructor-year flex-col gap-3">
+                <label className="cursor-default text-sm mb-3 inline-block">
+                  Tikinti ili
+                </label>
+                <div className="flex">
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="2000'dən" />
+                  </div>
+                  <div className="w-1/2">
+                    <SearchInput
+                      type="text"
+                      placeholder={`${new Intl.DateTimeFormat('az-AZ', {
+                        year: 'numeric',
+                      }).format(new Date())}'a qədər`}
+                    />
+                  </div>
                 </div>
-                <div className="w-1/2">
-                  <SearchInput type="text" placeholder="1.000'ə qədər" />
+              </div>
+              <div className="distance-sea flex-col gap-3">
+                <label className="cursor-default text-sm mb-3 inline-block">
+                  Dənizə Məsafə
+                </label>
+                <div className="flex">
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="0'dan" />
+                  </div>
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="1.000'ə qədər" />
+                  </div>
+                </div>
+              </div>
+              <div className="distance-airport flex-col gap-3">
+                <label className="cursor-default text-sm mb-3 inline-block">
+                  Hava limanına məsafə (km)
+                </label>
+                <div className="flex">
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="0'dan" />
+                  </div>
+                  <div className="w-1/2">
+                    <SearchInput type="text" placeholder="1.000'ə qədər" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </Transition>
       </div>
       <div className="buttons w-full flex flex-col md:flex-row justify-between pt-5">
         <div className="flex text-xs gap-2.5 py-2">
