@@ -1,6 +1,7 @@
 import { BsTelephoneFill } from 'react-icons/bs'
 import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { adminInfo } from '~/data/adminInfo'
+import { Link } from 'react-router-dom'
 
 export default function ContuctUsSection() {
   return (
@@ -16,14 +17,17 @@ export default function ContuctUsSection() {
             </p>
           </div>
           <div className="text-white font-medium flex flex-col sm:flex-row gap-8 items-center ">
-            <button className="bg-white border text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-white rounded-xl px-8 py-5 h-fit gap-3">
+            <Link
+              to="/contact"
+              className="bg-white border text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-white rounded-xl px-8 py-5 h-fit gap-3"
+            >
               Bizimlə əlaqə saxlayın
               <span className="size-4">
                 <FaArrowUpRightFromSquare />
               </span>
-            </button>
+            </Link>
             <a
-              href={adminInfo.tel}
+              href={`tel:${adminInfo.tel}`}
               className="bg-orange-500 border text-white hover:bg-orange-600 rounded-xl px-8 py-5 h-fit gap-3"
             >
               <span className="size-4">

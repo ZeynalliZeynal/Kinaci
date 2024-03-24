@@ -12,11 +12,7 @@ export default function Features({ estateItem }) {
             </span>
             <div className="grid">
               <span className="font-semibold">Yataq otağı</span>
-              <span>
-                {estateItem.bedrooms.map((bed, index) =>
-                  index !== estateItem.bedrooms.length - 1 ? bed + ' / ' : bed,
-                )}
-              </span>
+              <span>{estateItem.bedrooms}</span>
             </div>
           </li>
         )}{' '}
@@ -77,21 +73,15 @@ export default function Features({ estateItem }) {
             </div>
           </li>
         )}{' '}
-        {estateItem?.rooms && (
-          <li className="gap-4 w-full md:w-auto justify-start">
-            <span className="rounded-xl border border-blue-900 size-[50px] p-3">
-              <Svg svgType="room" />
-            </span>
-            <div className="grid">
-              <span className="font-semibold">Otaqlar</span>
-              <span>
-                {estateItem.rooms.map((bed, index) =>
-                  index !== estateItem.rooms.length - 1 ? bed + ' / ' : bed,
-                )}
-              </span>
-            </div>
-          </li>
-        )}{' '}
+        <li className="gap-4 w-full md:w-auto justify-start">
+          <span className="rounded-xl border border-blue-900 size-[50px] p-3">
+            <Svg svgType="room" />
+          </span>
+          <div className="grid">
+            <span className="font-semibold">Otaqlar</span>
+            <span>{estateItem?.rooms}</span>
+          </div>
+        </li>
         {estateItem?.balcony && (
           <li className="gap-4 w-full md:w-auto justify-start">
             <span className="rounded-xl border border-blue-900 size-[50px] p-3">
