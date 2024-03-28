@@ -5,17 +5,17 @@ import TrIcon from '~/assets/icon/turkey-64.png'
 export const langOptions = [
   {
     flag: `${AzeIcon}`,
-    title: 'AZE',
+    code: 'az',
     availability: true,
   },
   {
     flag: `${UsaIcon}`,
-    title: 'ENG',
+    code: 'en',
     availability: true,
   },
   {
     flag: `${TrIcon}`,
-    title: 'TR',
+    code: 'tr',
     availability: false,
   },
 ]

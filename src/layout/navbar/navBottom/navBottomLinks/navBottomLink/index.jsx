@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
 import ExtendedLinks from './extendedLinks'
+import { useTranslation } from 'react-i18next'
 
 export default function NavBottomLink({ props }) {
+  const { t } = useTranslation()
   return (
     <li className="h-full relative group">
       <NavLink to={props.to} className="font-semibold h-full">
@@ -16,7 +18,7 @@ export default function NavBottomLink({ props }) {
               },
             )}
           >
-            {props.pathName}{' '}
+            {t(props.pathName)}{' '}
             {props.extendable && (
               <span className={classNames({ 'text-orange-500': isActive })}>
                 {isActive ? (

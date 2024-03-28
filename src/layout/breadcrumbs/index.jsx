@@ -1,7 +1,10 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { PiCaretRight } from 'react-icons/pi'
+import { useTranslation } from 'react-i18next'
 
 export default function Breadcrumbs() {
+  const { t } = useTranslation()
+
   const location = useLocation()
   let currentLink = ''
 
@@ -21,13 +24,13 @@ export default function Breadcrumbs() {
       <div className="container">
         <div className="flex">
           <NavLink to="/" className="hover:text-blue-900 px-2 py-1">
-            <span>Ana Səhifə</span>
+            <span>{t('home')}</span>
           </NavLink>{' '}
           {crumbs.map((crumb, index) => {
             currentLink += `/${crumb}`
             const isLast = index === crumbs.length - 1
             return (
-              <span key={index}>
+              <span key={index} className="inline-flex items-center">
                 <span>
                   <PiCaretRight />
                 </span>{' '}
@@ -36,14 +39,14 @@ export default function Breadcrumbs() {
                     <span
                       className={`px-2 py-1 rounded-lg ${isLast ? 'bg-blue-900/5' : ''}`}
                     >
-                      {toCamelCase(crumb)}
+                      {toCamelCase(t(crumb))}
                     </span>
                   ) : (
                     <NavLink
                       to={currentLink}
                       className="px-2 py-1 hover:text-blue-900/80"
                     >
-                      {toCamelCase(crumb)}
+                      {toCamelCase(t(crumb))}
                     </NavLink>
                   )}{' '}
                 </span>

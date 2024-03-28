@@ -8,7 +8,6 @@ export default function EstateItem() {
   const [scrollToTop, setScrollToTop] = useState(true)
 
   const location = useLocation()
-  console.log(location.pathname)
   useEffect(() => {
     if (scrollToTop) {
       window.scrollTo(0, 0)
