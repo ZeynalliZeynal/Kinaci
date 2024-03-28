@@ -1,32 +1,13 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import Loader from '~/components/loader.jsx'
 import LeftSection from '~/pages/estate/estateItem/estateInfo/leftSection'
 import AsideSection from '~/pages/estate/estateItem/estateInfo/asideSection/index.jsx'
+import { useEstate } from '~/hooks/useEstate.js'
+import { useParams } from 'react-router-dom'
 
 export default function EstateInfo() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [estateItem, setEstateItem] = useState(null)
-
   const { id } = useParams()
+  const [estateItem, isLoading] = useEstate(id)
 
-  useEffect(() => {
-    const fetchEstateItem = async () => {
-      try {
-        setIsLoading(true)
-
-        const response = await axios.get(
-          `https://kinaci-server.onrender.com/data/estates/${id}`,
-        )
-        setIsLoading(false)
-        setEstateItem(response.data)
-      } catch (err) {
-        console.warn(err)
-      }
-    }
-    fetchEstateItem()
-  }, [id])
   return (
     <>
       {isLoading ? (

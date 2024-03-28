@@ -29,7 +29,7 @@ export default function SelectOptions({
     >
       {options?.map((option, index) => (
         <li
-          key={option.id}
+          key={index}
           className={classNames(
             'block w-full justify-start cursor-pointer py-2 rounded-button px-2.5 transition-colors',
             {

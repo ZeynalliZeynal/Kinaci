@@ -19,18 +19,3 @@ export const langOptions = [
     availability: false,
   },
 ]
-
-export const valueOptions = [
-  {
-    title: 'AZN',
-    availability: true,
-  },
-  {
-    title: 'USD',
-    availability: true,
-  },
-  {
-    title: 'TRY',
-    availability: false,
-  },
-]

@@ -2,7 +2,6 @@ import { HiBars3BottomLeft } from 'react-icons/hi2'
 import ContactLinks from '~/layout/navbar/navTop/contactLinks'
 import LangSelects from '~/layout/navbar/navTop/langSelects'
 import FavoriteButton from '~/layout/navbar/navTop/favouriteButton'
-import { langOptions, valueOptions } from '~/data/navbar/langOptions.jsx'
 import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx'
 import { useState } from 'react'
 
@@ -32,10 +31,8 @@ export default function NavTop() {
                 <div className="favourites hidden lg:block">
                   <FavoriteButton />
                 </div>
-                <div className="lang flex gap-2.5">
-                  {/* TODO: SOLVE THE BUG*/}
-                  <LangSelects data={langOptions} />
-                  <LangSelects data={valueOptions} />
+                <div className="lang flex gap-2.5 h-full">
+                  {/* TODO: SOLVE THE BUG*/} <LangSelects />
                 </div>
               </div>
             </div>

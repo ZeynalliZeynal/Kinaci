@@ -4,6 +4,7 @@ import EstateCards from '~/components/estateCards/index.jsx'
 
 export default function NewEstates({ estates }) {
   const [activeTab, setActiveTab] = useState('Satılır')
+
   return (
     <section className="bg-blue-700/5">
       <div className="container">

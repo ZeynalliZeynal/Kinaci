@@ -24,7 +24,6 @@ export default function Details({ estate }) {
   function handleIncreaseIndex() {
     if (selectedCurrencyIndex < currencyData.length - 1) {
       setSelectedCurrencyIndex((i) => i + 1)
-      console.log(selectedCurrencyIndex)
     } else if (selectedCurrencyIndex === currencyData.length - 1)
       setSelectedCurrencyIndex(0)
   }

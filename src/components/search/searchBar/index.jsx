@@ -30,7 +30,7 @@ export default function SearchBar() {
         const data = await response.data
         setEstateType(data.estateTypes)
         setRoom(data.rooms)
-        setPlace(data.location)
+        setCity(data.location)
         setBadge(data.badges)
       } catch (err) {
         console.warn(err)
@@ -39,6 +39,11 @@ export default function SearchBar() {
 
     fetchData()
   }, [])
+
+  useEffect(() => {
+    const allPlaces = [].concat(...cityValue.map((city) => city.place))
+    setPlace(allPlaces)
+  }, [cityValue, setPlace])
 
   function handleClearFilter() {
     setEstateTypeValue([])
@@ -76,17 +81,17 @@ export default function SearchBar() {
           <div className="flex gap-3">
             <div className="w-1/2">
               <SelectContainer
-                value={placeValue}
-                options={place}
-                setValue={setPlaceValue}
+                value={cityValue}
+                options={city}
+                setValue={setCityValue}
                 label="Şəhər"
               />
             </div>
             <div className="w-1/2">
               <SelectContainer
-                value={cityValue}
-                options={city}
-                setValue={setCityValue}
+                value={placeValue}
+                options={place}
+                setValue={setPlaceValue}
                 label="Məkan"
               />
             </div>

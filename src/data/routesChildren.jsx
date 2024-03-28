@@ -8,6 +8,7 @@ import Blog from '~/pages/blog'
 import NotFound from '~/pages/notFound'
 import ForSale from '~/pages/estate/forSale'
 import EstateItem from '~/pages/estate/estateItem/index.jsx'
+import ForRent from '~/pages/estate/forRent'
 
 const routesChildren = [
   {
@@ -24,7 +25,7 @@ const routesChildren = [
       },
       {
         path: 'forRent',
-        element: <ForSale />,
+        element: <ForRent />,
       },
     ],
   },
