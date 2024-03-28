@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useReducer } from 'react'
 import axios from 'axios'
 import SelectContainer from '~/components/search/searchBar/selectContainer/index.jsx'
 import SearchInput from '~/components/search/searchInput/index.jsx'
@@ -8,30 +8,27 @@ import DefaultBtn from '~/components/defaultBtn/index.jsx'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
 import { Transition } from '@headlessui/react'
+import { reducer } from '~/reducers/searchBarReducer.js'
 
 const baseURL = 'https://kinaci-server.onrender.com/data/selectInfo'
 
+const initialState = {
+  estateTypeValue: [],
+  roomValue: [],
+  cityValue: [],
+  placeValue: [],
+  badgeValue: [],
+  isExpanded: false,
+}
+
 export default function SearchBar() {
-  const [estateType, setEstateType] = useState([])
-  const [room, setRoom] = useState([])
-  const [place, setPlace] = useState([])
-  const [city, setCity] = useState([])
-  const [badge, setBadge] = useState([])
-  const [estateTypeValue, setEstateTypeValue] = useState([])
-  const [roomValue, setRoomValue] = useState([])
-  const [cityValue, setCityValue] = useState([])
-  const [placeValue, setPlaceValue] = useState([])
-  const [badgeValue, setBadgeValue] = useState([])
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [state, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(baseURL)
         const data = await response.data
-        setEstateType(data.estateTypes)
-        setRoom(data.rooms)
-        setCity(data.location)
-        setBadge(data.badges)
+        dispatch({ type: 'SET_DATA', payload: data })
       } catch (err) {
         console.warn(err)
       }
@@ -41,16 +38,12 @@ export default function SearchBar() {
   }, [])
 
   useEffect(() => {
-    const allPlaces = [].concat(...cityValue.map((city) => city.place))
-    setPlace(allPlaces)
-  }, [cityValue, setPlace])
+    const allPlaces = [].concat(...state.cityValue.map((city) => city.place))
+    dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
+  }, [state.cityValue])
 
   function handleClearFilter() {
-    setEstateTypeValue([])
-    setRoomValue([])
-    setCityValue([])
-    setPlaceValue([])
-    setBadgeValue([])
+    dispatch({ type: 'CLEAR_FILTER' })
   }
 
   return (
@@ -63,17 +56,27 @@ export default function SearchBar() {
           <div className="flex gap-3">
             <div className="w-7/12">
               <SelectContainer
-                value={estateTypeValue}
-                options={estateType}
-                setValue={setEstateTypeValue}
+                value={state.estateTypeValue}
+                options={state.estateTypes}
+                setValue={(newValue) =>
+                  dispatch({
+                    type: 'SET_VALUES',
+                    payload: { estateTypeValue: newValue },
+                  })
+                }
                 label="Əmlak növü"
               />
             </div>
             <div className="w-5/12">
               <SelectContainer
-                value={roomValue}
-                options={room}
-                setValue={setRoomValue}
+                value={state.roomValue}
+                options={state.rooms}
+                setValue={(newValue) =>
+                  dispatch({
+                    type: 'SET_VALUES',
+                    payload: { roomValue: newValue },
+                  })
+                }
                 label="Otaqların sayı"
               />
             </div>
@@ -81,17 +84,27 @@ export default function SearchBar() {
           <div className="flex gap-3">
             <div className="w-1/2">
               <SelectContainer
-                value={cityValue}
-                options={city}
-                setValue={setCityValue}
+                value={state.cityValue}
+                options={state.location}
+                setValue={(newValue) =>
+                  dispatch({
+                    type: 'SET_VALUES',
+                    payload: { cityValue: newValue },
+                  })
+                }
                 label="Şəhər"
               />
             </div>
             <div className="w-1/2">
               <SelectContainer
-                value={placeValue}
-                options={place}
-                setValue={setPlaceValue}
+                value={state.placeValue}
+                options={state.place}
+                setValue={(newValue) =>
+                  dispatch({
+                    type: 'SET_VALUES',
+                    payload: { placeValue: newValue },
+                  })
+                }
                 label="Məkan"
               />
             </div>
@@ -125,7 +138,7 @@ export default function SearchBar() {
         </div>
         <Transition
           as={Fragment}
-          show={isExpanded}
+          show={state.isExpanded}
           enter="ease-out duration-500"
           enterFrom="scale-0 opacity-0"
           enterTo="scale-100 opacity-100"
@@ -151,9 +164,14 @@ export default function SearchBar() {
               <div className="flex gap-3">
                 <div className="w-full">
                   <SelectContainer
-                    value={badgeValue}
-                    options={badge}
-                    setValue={setBadgeValue}
+                    value={state.badgeValue}
+                    options={state.badges}
+                    setValue={(newValue) =>
+                      dispatch({
+                        type: 'SET_VALUES',
+                        payload: { badgeValue: newValue },
+                      })
+                    }
                     label="Etiketlər"
                   />
                 </div>
@@ -221,10 +239,10 @@ export default function SearchBar() {
           <button
             type="button"
             className="gap-[6px]"
-            onClick={() => setIsExpanded((prev) => !prev)}
+            onClick={() => dispatch({ type: 'TOGGLE_EXPANDED' })}
           >
             <motion.span
-              animate={isExpanded ? 'expanded' : 'initial'}
+              animate={state.isExpanded ? 'expanded' : 'initial'}
               variants={{
                 initial: { rotate: 0 },
                 expanded: { rotate: 180 },
@@ -234,7 +252,7 @@ export default function SearchBar() {
                 ease: 'easeInOut',
               }}
               className={classNames('origin-center', {
-                'rotate-180': isExpanded,
+                'rotate-180': state.isExpanded,
               })}
             >
               <svg
