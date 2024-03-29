@@ -31,6 +31,8 @@ i18n
           blog: 'Bloq',
           appointment: 'Randevu Al',
           favourites: 'Bəyəndiklərim',
+          fullName: 'Ad & Soyad',
+          phone: 'Telefon nömrəsi',
         },
       },
       en: {
@@ -54,6 +56,8 @@ i18n
           blog: 'Blog',
           appointment: 'Book an appointment',
           favourites: 'My Favourites',
+          fullName: 'Name & Surname',
+          phone: 'Phone number',
         },
       },
     },

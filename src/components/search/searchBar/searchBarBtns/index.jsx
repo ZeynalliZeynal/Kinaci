@@ -4,7 +4,7 @@ import { TbTrashFilled } from 'react-icons/tb'
 import DefaultBtn from '~/components/defaultBtn/index.jsx'
 import { GrSearch } from 'react-icons/gr'
 
-export default function SearchBarBtns({ state, handleClearFilter }) {
+export default function SearchBarBtns({ state, handleClearFilter, dispatch }) {
   return (
     <div className="buttons w-full flex flex-col md:flex-row justify-between pt-5">
       <div className="flex text-xs gap-2.5 py-2">

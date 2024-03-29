@@ -27,52 +27,6 @@ export default function ModalForm({ onClose }) {
         <label htmlFor="email">E-Mail</label>
         <DefaultInput placeholder="johndoe@example.com" type="email" />
       </div>
-      {/*
-      <div className="grid gap-4">
-        <label htmlFor="estate">Əmlak növü</label>
-        <span className="border border-blue-900/25 rounded-button p-[18px]">
-          <input
-            className="placeholder:text-blue-900/50"
-            type="text"
-            name="estate"
-            id="estate"
-          />
-        </span>
-      </div>
-      <div className="grid gap-4">
-        <label htmlFor="city">Şəhər</label>
-        <span className="border border-blue-900/25 rounded-button p-[18px]">
-          <input
-            className="placeholder:text-blue-900/50"
-            type="text"
-            name="full name"
-            id="city"
-          />
-        </span>
-      </div>
-      <div className="grid gap-4">
-        <label htmlFor="cost">Qiymət</label>
-        <div className="flex gap-4">
-          <span className="border border-blue-900/25 rounded-button p-[18px]">
-            <input
-              className="placeholder:text-blue-900/50"
-              type="number"
-              name="value"
-              id="cost"
-              placeholder="0-dan"
-            />
-          </span>
-          <span className="border border-blue-900/25 rounded-button p-[18px]">
-            <input
-              className="placeholder:text-blue-900/50"
-              type="number"
-              name="value"
-              id="fullname"
-              placeholder="1000.000.000-a"
-            />
-          </span>
-        </div>
-      </div>*/}
       <div className="text-xxl">
         <DefaultBtn type="submit">Saxla və Göndər</DefaultBtn>
       </div>

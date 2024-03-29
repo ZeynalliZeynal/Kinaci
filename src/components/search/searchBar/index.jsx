@@ -33,7 +33,8 @@ export default function SearchBar() {
 
   useEffect(() => {
     const allPlaces = [].concat(...state.cityValue.map((city) => city.place))
-    dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
+    if (state.cityValue)
+      dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
   }, [state.cityValue])
 
   function handleClearFilter() {
@@ -46,7 +47,11 @@ export default function SearchBar() {
       onSubmit={(e) => e.preventDefault()}
     >
       <SearchBarFilters state={state} dispatch={dispatch} />
-      <SearchBarBtns state={state} handleClearFilter={handleClearFilter} />
+      <SearchBarBtns
+        state={state}
+        handleClearFilter={handleClearFilter}
+        dispatch={dispatch}
+      />
     </form>
   )
 }
