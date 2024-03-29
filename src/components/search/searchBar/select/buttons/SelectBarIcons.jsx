@@ -64,7 +64,8 @@ export function SelectBadge({ v, handleSelectOption }) {
         handleSelectOption(v)
       }}
     >
-      {v.label}
+      {v.label}{' '}
+      {/*
       <div className="w-4/12 flex">
         <span className="size-4">
           <svg
@@ -90,6 +91,7 @@ export function SelectBadge({ v, handleSelectOption }) {
           </svg>
         </span>
       </div>
+      */}
     </button>
   )
 }

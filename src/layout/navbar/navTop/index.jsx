@@ -32,7 +32,7 @@ export default function NavTop() {
                   <FavoriteButton />
                 </div>
                 <div className="lang flex gap-2.5 h-full">
-                  {/* TODO: SOLVE THE BUG*/} <LangSelects />
+                  <LangSelects />
                 </div>
               </div>
             </div>

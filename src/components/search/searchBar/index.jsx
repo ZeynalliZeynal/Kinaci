@@ -32,9 +32,9 @@ export default function SearchBar() {
   }, [])
 
   useEffect(() => {
+    // TODO: There is still a place value even if the city value is empty.
     const allPlaces = [].concat(...state.cityValue.map((city) => city.place))
-    if (state.cityValue)
-      dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
+    dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
   }, [state.cityValue])
 
   function handleClearFilter() {

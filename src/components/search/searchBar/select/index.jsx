@@ -64,7 +64,7 @@ export default function Select({ multiple, value, onChange, options }) {
     <div
       ref={containerRef}
       tabIndex={0}
-      className="relative transition-colors px-2.5 py-4 rounded-button border border-blue-900/25 focus:border-blue-900 bg-white w-full flex cursor-pointer text-xs"
+      className="relative transition-colors px-2.5 py-4 rounded-button border border-blue-900/25 focus:border-blue-900 bg-white w-full flex cursor-pointer text-xs max-h-[65px]"
       onClick={() => setIsOpen((prev) => !prev)}
       onBlur={() => setIsOpen(false)}
     >

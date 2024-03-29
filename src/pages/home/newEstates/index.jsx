@@ -1,8 +1,9 @@
 import TabBtns from '~/pages/home/newEstates/tabBtns/index.jsx'
 import { useState } from 'react'
 import EstateCards from '~/components/estateCards/index.jsx'
+import { ShowMoreButton } from '~/pages/home/ShowMoreButton.jsx'
 
-export default function NewEstates({ estates }) {
+export default function EstateSection({ estates, t }) {
   const [activeTab, setActiveTab] = useState('Satılır')
 
   return (
@@ -10,8 +11,8 @@ export default function NewEstates({ estates }) {
       <div className="container">
         <div className="flex justify-between mb-8">
           <div className="header text-blue-900">
-            <h2 className="text-h2 font-semibold">Yeni Əmlaklar</h2>
-            <p className="text-sm">En son eklenen gayrimenkuller</p>
+            <h2 className="text-h2 font-semibold">{t('newEstates')}</h2>
+            <p className="text-sm">{t('newEstatesParagraph')}</p>
           </div>
           <div className="tab-btns flex py-2.5 gap-2.5">
             <TabBtns
@@ -31,6 +32,7 @@ export default function NewEstates({ estates }) {
             <EstateCards estate={estate} key={estate.id} />
           ))}
         </div>
+        <ShowMoreButton />
       </div>
     </section>
   )
