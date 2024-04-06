@@ -3,6 +3,7 @@ import Footer from '~/layout/footer'
 import { Outlet, useLocation } from 'react-router-dom'
 import ContactUsSection from './contuctUsSection'
 import Breadcrumbs from '~/layout/breadcrumbs'
+import Cookies from '~/components/Cookies.jsx'
 
 export default function Layout() {
   const location = useLocation()
@@ -10,6 +11,7 @@ export default function Layout() {
     <>
       <Navbar /> {location.pathname !== '/' && <Breadcrumbs />} <Outlet />{' '}
       {location.pathname !== '/contact' && <ContactUsSection />} <Footer />
+      <Cookies />
     </>
   )
 }
