@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { IoClose } from 'react-icons/io5'
 import { useState } from 'react'
 
-export default function ModalCloseBtn({ onClose }) {
+export default function ModalCloseBtn({ onClose, inset = false }) {
   const [isHovering, setIsHovering] = useState(false)
   return (
     <button

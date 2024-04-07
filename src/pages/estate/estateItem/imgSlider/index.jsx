@@ -10,11 +10,19 @@ import ImgBtns from '~/pages/estate/estateItem/imgSlider/imgBtns/index.jsx'
 export default function ImgSlider({ estateItem }) {
   const [imageIndex, setImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const handleToggleModal = () => setIsModalOpen((prev) => !prev)
+
+  function handleOpenModal() {
+    setIsModalOpen(true)
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false)
+  }
+
   return (
     <>
       <ImgSliderModal
-        onToggleModal={handleToggleModal}
+        closeModal={handleCloseModal}
         isModalOpen={isModalOpen}
         estateItem={estateItem}
         imageIndex={imageIndex}
@@ -35,7 +43,7 @@ export default function ImgSlider({ estateItem }) {
           <button
             title="Zoom"
             className="absolute bottom-4 right-4 rounded-xl bg-white size-[50px] p-2 hover:bg-gray-100"
-            onClick={handleToggleModal}
+            onClick={handleOpenModal}
           >
             <CiZoomIn />
           </button>
@@ -46,7 +54,7 @@ export default function ImgSlider({ estateItem }) {
         <div className="print-hidden w-full bg-gradient-to-b from-[#fefefe] to-[#ededed] text-[#039] text-xxs grid grid-cols-2 py-2">
           <button
             className="py-2.5 font-medium flex gap-2 border-r border-[#ddd]"
-            onClick={handleToggleModal}
+            onClick={handleOpenModal}
           >
             <span className="size-4">
               <GoZoomIn />
