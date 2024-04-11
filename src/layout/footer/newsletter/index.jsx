@@ -1,5 +1,5 @@
-import DefaultInput from '~/components/loginForm/defaultInput'
-import DefaultBtn from '~/components/defaultBtn/index.jsx'
+import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
+import DefaultBtn from '~/components/DefaultBtn.jsx'
 
 export default function Newsletter() {
   return (

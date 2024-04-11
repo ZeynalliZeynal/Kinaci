@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import logo from '~/assets/img/logo.svg'
-import ModalForm from '~/components/loginForm/modalForm/index.jsx'
+import ModalForm from '~/components/loginForm/DefaultForm.jsx'
 import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
 import { useTranslation } from 'react-i18next'
 

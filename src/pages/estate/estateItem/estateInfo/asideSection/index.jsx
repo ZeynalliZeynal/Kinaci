@@ -1,7 +1,7 @@
 import ButtonWithTooltip from '~/pages/estate/estateItem/estateInfo/asideSection/buttonWithTooltip/index.jsx'
 import EstatePrice from '~/pages/estate/estateItem/estateInfo/asideSection/estatePrice/index.jsx'
 import UserInfo from './userInfo'
-import ContactIcons from '~/components/contactIcons'
+import ContactIcons from '~/components/ContactIcons.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 

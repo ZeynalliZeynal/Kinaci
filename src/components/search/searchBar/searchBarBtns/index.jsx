@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import classNames from 'classnames'
 import { TbTrashFilled } from 'react-icons/tb'
-import DefaultBtn from '~/components/defaultBtn/index.jsx'
+import DefaultBtn from '~/components/DefaultBtn.jsx'
 import { GrSearch } from 'react-icons/gr'
 
 export default function SearchBarBtns({ state, handleClearFilter, dispatch }) {

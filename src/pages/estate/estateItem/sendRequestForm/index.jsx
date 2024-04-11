@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import DefaultInput from '~/components/loginForm/defaultInput'
+import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
 import SelectContainer from '~/components/search/searchBar/selectContainer'
 import { motion } from 'framer-motion'
 import { RxCheck } from 'react-icons/rx'

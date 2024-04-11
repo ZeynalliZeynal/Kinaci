@@ -1,19 +1,20 @@
-import DefaultInput from '~/components/loginForm/defaultInput/index.jsx'
-import DefaultBtn from '~/components/defaultBtn/index.jsx'
+import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
+import DefaultBtn from '~/components/DefaultBtn.jsx'
 
-export default function ModalForm({ onClose }) {
+export default function DefaultForm({ onClose }) {
   function handleSubmit(e) {
     e.preventDefault()
-    onClose()
+    onClose && onClose()
   }
 
   return (
     <form
       className="flex flex-col gap-4 py-2"
+      method="dialog"
       onSubmit={(e) => handleSubmit(e)}
     >
       <div className="grid gap-4">
-        <label htmlFor="fullname">Ad & Soyad</label>
+        <label htmlFor="name">Ad & Soyad</label>
         <DefaultInput
           placeholder="Adınızı və soyadınızı daxil edin..."
           type="name"

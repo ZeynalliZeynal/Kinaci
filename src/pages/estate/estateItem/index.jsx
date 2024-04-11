@@ -2,12 +2,10 @@ import EstateInfo from '~/pages/estate/estateItem/estateInfo/index.jsx'
 import { useEffect, useState } from 'react'
 import Search from '~/components/search'
 import SendRequestForm from './sendRequestForm'
-import { useLocation } from 'react-router-dom'
 
 export default function EstateItem() {
   const [scrollToTop, setScrollToTop] = useState(true)
 
-  const location = useLocation()
   useEffect(() => {
     if (scrollToTop) {
       window.scrollTo(0, 0)

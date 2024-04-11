@@ -1,5 +1,5 @@
 import footerLogo from '~/assets/img/footer-logo.svg'
-import ContactIcons from '~/components/contactIcons'
+import ContactIcons from '~/components/ContactIcons.jsx'
 import FooterLinks from '~/layout/footer/footerLinks'
 import Newsletter from '~/layout/footer/newsletter/index.jsx'
 import CommunicationLinks from '~/layout/footer/communication/index.jsx'

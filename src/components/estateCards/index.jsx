@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ActionBtns from '~/components/estateCards/actionBtns'
-import Details from '~/components/estateCards/details'
-import Dots from '~/components/estateCards/dots'
+import ActionBtns from '~/components/estateCards/ActionBtns.jsx'
+import Details from '~/components/estateCards/Details.jsx'
+import Dots from '~/components/estateCards/Dots.jsx'
 import { useNavigate } from 'react-router-dom'
-import CardBadge from '~/components/estateCards/cardBadge/index.jsx'
+import CardBadge from '~/components/estateCards/CardBadge.jsx'
 import HeartBtn from '~/components/HeartBtn.jsx'
 
 export default function EstateCards({ estate }) {

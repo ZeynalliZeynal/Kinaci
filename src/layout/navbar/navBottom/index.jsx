@@ -1,7 +1,7 @@
 import Logo from '~/assets/img/logo.svg'
 import { NavLink } from 'react-router-dom'
 import NavBottomLinks from './navBottomLinks'
-import ContactIcons from '../../../components/contactIcons'
+import ContactIcons from '../../../components/ContactIcons.jsx'
 
 export default function NavBottom() {
   return (

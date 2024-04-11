@@ -62,14 +62,11 @@ export default function Certificates() {
             <div className="ps-8">
               <Swiper
                 ref={swiperRef}
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={32}
                 zoom={true}
                 centeredSlides={true}
                 loop={true}
-                scrollbar={{
-                  hide: true,
-                }}
                 navigation={{
                   prevEl: '.swiper-button-prev',
                   nextEl: '.swiper-button-next',
@@ -77,8 +74,8 @@ export default function Certificates() {
                 modules={[Zoom]}
               >
                 {certificates.map((c) => (
-                  <SwiperSlide key={c.id}>
-                    <span className="swiper-zoom-container">
+                  <SwiperSlide key={c.id} className="">
+                    <span className="swiper-zoom-container h-[400px]">
                       <img src={c.src} alt={c.title} />
                     </span>
                   </SwiperSlide>

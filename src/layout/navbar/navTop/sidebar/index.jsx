@@ -1,5 +1,5 @@
 import SidebarLink from './sidebarLinks'
-import ContactIcons from '~/components/contactIcons/index.jsx'
+import ContactIcons from '~/components/ContactIcons.jsx'
 import classNames from 'classnames'
 
 export default function Sidebar({ isOpen, onClose }) {

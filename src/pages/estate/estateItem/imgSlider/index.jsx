@@ -1,6 +1,6 @@
 import { GoPlay, GoZoomIn } from 'react-icons/go'
 import Features from './features'
-import CardBadge from '~/components/estateCards/cardBadge/index.jsx'
+import CardBadge from '~/components/estateCards/CardBadge.jsx'
 import { CiZoomIn } from 'react-icons/ci'
 import HeartBtn from '~/components/HeartBtn.jsx'
 import { useState } from 'react'

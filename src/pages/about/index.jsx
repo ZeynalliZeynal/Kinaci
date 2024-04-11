@@ -5,6 +5,7 @@ import StatisticsSection from '~/pages/about/StatisticsSection.jsx'
 import OurCrew from '~/pages/about/OurCrew.jsx'
 import VideoSection from '~/pages/about/VideoSection.jsx'
 import Certificates from '~/pages/about/Certificates.jsx'
+import FormSection from '~/pages/about/FormSection.jsx'
 
 export default function About() {
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function About() {
       <OurCrew />
       <VideoSection />
       <Certificates />
+      <FormSection />
     </main>
   )
 }

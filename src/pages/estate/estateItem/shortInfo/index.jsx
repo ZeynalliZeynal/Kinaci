@@ -10,7 +10,7 @@ export default function ShortInfo({ estateItem }) {
         <li className="justify-start">Mərtəbələr: {estateItem?.floors}</li>
         {estateItem?.distances.center && (
           <li className="justify-start">
-            `Mərkəzə: ${estateItem.distances.center}km`
+            Mərkəzə: {estateItem.distances.center}km
           </li>
         )}
         <li className="justify-start">Əmlak növü: {estateItem?.type}</li>
@@ -19,28 +19,27 @@ export default function ShortInfo({ estateItem }) {
         </li>
         {estateItem?.distances.airport && (
           <li className="justify-start">
-            `Hava Limanına: ${estateItem.distances.airport}km`
+            Hava Limanına: {estateItem.distances.airport}km
           </li>
         )}
         <li className="justify-start">Otaqlar: {estateItem?.rooms}</li>
         {estateItem?.sea_view && (
           <li className="justify-start">
-            `Dəniz mənzərəsi: ${estateItem.sea_view ? 'Bəli' : 'Xeyr'}`
+            Dəniz mənzərəsi: {estateItem.sea_view ? 'Bəli' : 'Xeyr'}
           </li>
         )}
         <li className="justify-start">Təklif: {estateItem?.offer}</li>
         {estateItem?.distances.sea && (
           <li className="justify-start">
-            `Dənizə: ${estateItem.distances.sea}km`
+            Dənizə: {estateItem.distances.sea}km
           </li>
         )}{' '}
         {estateItem?.constructor_date && (
           <li className="justify-start">
-            `Tikinti ili: ${' '}
+            Tikinti ili:{' '}
             {new Intl.DateTimeFormat('az-AZ', {
               year: 'numeric',
             }).format(new Date(estateItem.constructor_date))}{' '}
-            `
           </li>
         )}
         <li className="justify-start">
