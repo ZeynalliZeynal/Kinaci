@@ -20,7 +20,7 @@ export default function EstateSection({ estates, t, title, paragraph, bg }) {
       <div className="container">
         <div className="flex justify-between mb-8">
           <div className="header text-blue-900">
-            <h2 className="text-h2 font-semibold">{t(title)}</h2>
+            <h2>{t(title)}</h2>
             <p className="text-sm">{t(paragraph)}</p>
           </div>
           <div className="tab-btns flex py-2.5 gap-2.5">

@@ -18,7 +18,7 @@ export default function Cookies() {
       transition={{
         duration: 0.5,
       }}
-      className="fixed bottom-5 text-white w-full flex justify-center"
+      className="fixed z-50 bottom-5 text-white w-full flex justify-center"
     >
       <div className="bg-blue-900/90 rounded-[60px] text-sm overflow-hidden flex">
         <span className="py-5 px-7">

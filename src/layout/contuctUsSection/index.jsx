@@ -9,9 +9,7 @@ export default function ContuctUsSection() {
       <div className="container">
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
           <div className="grid gap-3 text-center sm:text-start">
-            <h2 className="text-h2 font-semibold">
-              Kömək lazımdır? Mütəxəssisimizlə danışın.
-            </h2>
+            <h2>Kömək lazımdır? Mütəxəssisimizlə danışın.</h2>
             <p className="text-sm">
               Mütəxəssislərimizlə danışın və ya daha çox mülkə baxın.
             </p>

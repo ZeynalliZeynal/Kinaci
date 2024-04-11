@@ -28,7 +28,7 @@ export default function OurCrew() {
       <div className="container">
         <div className="grid gap-12">
           <div className="text-blue-900 text-center">
-            <h2 className="text-h2 font-semibold mb-4">Bizim Heyət</h2>
+            <h2 className="mb-4">Bizim Heyət</h2>
             <p className="text-sm">Kinaci Group</p>
           </div>
           {isLoading ? (

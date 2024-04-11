@@ -16,7 +16,7 @@ export default function EstateInfo() {
         <section>
           <div className="container">
             <div className="header mb-6 px-2">
-              <h2 className="text-5xl font-semibold">{estateItem?.title}</h2>
+              <h2 className="text-5xl">{estateItem?.title}</h2>
               <p className="text-md">
                 {estateItem?.location.city}{' '}
                 {estateItem?.location.place && `/${estateItem?.location.place}`}

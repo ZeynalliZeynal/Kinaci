@@ -3,7 +3,7 @@ export default function InfoSection() {
     <section className="py-[55px] text-blue-900">
       <div className="container">
         <div className="grid grid-cols-2">
-          <h2 className="text-h2 font-semibold">
+          <h2>
             Kınacı Qrup, inşaat və gayrimenkul xidmətləri sektorunda 30 illik
             təcrübəyə sahib bir şirkətdir
           </h2>

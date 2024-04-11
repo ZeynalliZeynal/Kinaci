@@ -4,13 +4,11 @@ import { TfiSupport } from 'react-icons/tfi'
 
 export default function VideoSection() {
   return (
-    <section className="w-[1600px] rounded-lg bg-orange-100 mx-auto py-0">
+    <section className="w-[1600px] rounded-lg bg-orange-100 mx-auto py-0 my-[50px]">
       <div className="container">
         <div className="grid grid-cols-2">
           <div className="py-10">
-            <h2 className="text-h2 font-semibold">
-              Gəlin sizə uyğun olanı tapaq...
-            </h2>
+            <h2>Gəlin sizə uyğun olanı tapaq...</h2>
             <ul className="justify-start grid gap-8 pt-[70px]">
               <li className="grid grid-cols-[90px_1fr]">
                 <span className="w-[30px] mx-auto">
