@@ -34,7 +34,7 @@ export default function OurCrew() {
           {isLoading ? (
             <Loader />
           ) : (
-            <ul className="grid grid-cols-4">
+            <ul className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
               {crew.map((member) => (
                 <li
                   key={member?.id}

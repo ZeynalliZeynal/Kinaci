@@ -6,7 +6,7 @@ export default function FormSection() {
   return (
     <section className="py-[100px] bg-blue-50/50">
       <div className="container">
-        <div className="grid grid-cols-2">
+        <div className="grid md:grid-cols-2">
           <div className="py-[42px] px-[50px] bg-white rounded-xl">
             <div className="mb-6 text-blue-900">
               <h2>Məlumat almaq istəyirəm</h2>
@@ -15,7 +15,7 @@ export default function FormSection() {
             <DefaultForm />
           </div>
           <div
-            className="rounded-xl relative"
+            className="hidden md:block rounded-xl relative"
             style={{
               backgroundImage: `url(${FormBG})`,
               backgroundSize: 'cover',

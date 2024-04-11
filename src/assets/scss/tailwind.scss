@@ -126,3 +126,11 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.stats-text {
+  font-size: clamp(20px, 3vw, 55px);
+}
+
+.stats-title {
+  font-size: clamp(12px, 3vw, 18px);
+}

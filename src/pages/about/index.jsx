@@ -16,7 +16,7 @@ export default function About() {
       <section className="bg-orange-100 py-5">
         <Search />
       </section>
-      <section className="w-full img-banner h-[490px]" />
+      <section className="hidden md:block w-full img-banner h-[490px]" />
       <InfoSection />
       <StatisticsSection />
       <OurCrew />

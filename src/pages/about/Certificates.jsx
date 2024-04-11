@@ -41,8 +41,8 @@ export default function Certificates() {
   return (
     <section className="my-[50px] text-blue-900">
       <div className="container">
-        <div className="grid grid-cols-2 pe-8">
-          <div className="grid gap-8">
+        <div className="grid md:grid-cols-2 md:pe-8 grid-cols-1 gap-8">
+          <div className="grid gap-8 w-full">
             <h2>Sertifikatlarımız</h2>
             <p>
               Hər il minlərlə xarici vətəndaş Azərbaycanın daşınmaz əmlakını
@@ -58,8 +58,8 @@ export default function Certificates() {
               bağlanmış bütün müqavilələrə uyğunluğun təminatıdır.
             </p>
           </div>
-          <div className="ps-8">
-            <div className="ps-8">
+          <div className="md:ps-8 w-full">
+            <div className="md:ps-8">
               <Swiper
                 ref={swiperRef}
                 slidesPerView={2}

@@ -4,9 +4,9 @@ import { TfiSupport } from 'react-icons/tfi'
 
 export default function VideoSection() {
   return (
-    <section className="w-[1600px] rounded-lg bg-orange-100 mx-auto py-0 my-[50px]">
+    <section className="max-w-[1600px] rounded-lg bg-orange-100 mx-auto py-0 my-[50px]">
       <div className="container">
-        <div className="grid grid-cols-2">
+        <div className="grid lg:grid-cols-2">
           <div className="py-10">
             <h2>Gəlin sizə uyğun olanı tapaq...</h2>
             <ul className="justify-start grid gap-8 pt-[70px]">
@@ -45,7 +45,7 @@ export default function VideoSection() {
               </li>
             </ul>
           </div>
-          <div className="w-full h-full overflow-hidden rounded-tr-2xl rounded-br-2xl">
+          <div className="w-full lg:h-full overflow-hidden rounded-tr-2xl rounded-br-2xl h-[500px]">
             <iframe
               src="https://www.youtube.com/embed/X6h0rmZZpI4?si=UlONVdYFwHTHs2Oi"
               title="YouTube video player"

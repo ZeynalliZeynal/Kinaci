@@ -35,18 +35,22 @@ export default function StatisticsSection() {
     <ScrollTrigger onEnter={() => setCounterOn(true)}>
       <section>
         <div className="container">
-          <div className="relative">
-            <div>
-              <img src={statsBg} alt="Stats" />
-            </div>
-            <div className="absolute w-[270px] h-[210px] rounded-[1rem] bg-orange-100 flex justify-center items-center top-[30px] -left-[135px]">
-              <span className="w-[165px]">
+          <div
+            className="h-[500px] p-4 grid place-content-stretch lg:grid-cols-1 grid-cols-2 rounded-xl overflow-hidden"
+            style={{
+              backgroundImage: `url(${statsBg})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          >
+            <div className="w-[135px] h-[105px] rounded-[1rem] bg-orange-100 flex justify-center items-center">
+              <span className="w-[90px]">
                 <img src={kinaciLogo} alt="Kinaci" />
               </span>
             </div>
             {counterOn && (
-              <div className="absolute rounded-[1rem] bg-blue-900/50 bottom-4 h-[180px] left-4 right-4">
-                <ul className="text-white h-full items-center justify-evenly">
+              <div className="rounded-[1rem] bg-blue-900/50 lg:w-full lg:h-[180px] h-full w-fit lg:p-0 p-4 justify-self-end lg:place-self-end">
+                <ul className="text-white h-full items-center justify-evenly grid lg:grid-cols-5 overflow-y-scroll">
                   <li className="flex-col">
                     {isLoading ? (
                       <LoaderCircular />
@@ -58,13 +62,13 @@ export default function StatisticsSection() {
                       >
                         {({ countUpRef }) => (
                           <span
-                            className="text-6xl font-bold"
+                            className="stats-text font-bold"
                             ref={countUpRef}
                           />
                         )}
                       </CountUp>
                     )}{' '}
-                    <span className="text-xl">Məmnun Müştəri</span>
+                    <span className="stats-title">Məmnun Müştəri</span>
                   </li>
                   <li className="flex-col">
                     {isLoading ? (
@@ -73,13 +77,13 @@ export default function StatisticsSection() {
                       <CountUp start={0} end={stats?.officialSale} duration={2}>
                         {({ countUpRef }) => (
                           <span
-                            className="text-6xl font-bold"
+                            className="stats-text font-bold"
                             ref={countUpRef}
                           />
                         )}
                       </CountUp>
                     )}{' '}
-                    <span className="text-xl">Rəsmi satış</span>
+                    <span className="stats-title">Rəsmi satış</span>
                   </li>
                   <li className="flex-col">
                     {isLoading ? (
@@ -88,13 +92,13 @@ export default function StatisticsSection() {
                       <CountUp start={0} end={stats?.estateExpert} duration={2}>
                         {({ countUpRef }) => (
                           <span
-                            className="text-6xl font-bold"
+                            className="stats-text font-bold"
                             ref={countUpRef}
                           />
                         )}
                       </CountUp>
                     )}{' '}
-                    <span className="text-xl">Əmlak Eksperti</span>
+                    <span className="stats-title">Əmlak Eksperti</span>
                   </li>
                   <li className="flex-col">
                     {isLoading ? (
@@ -103,13 +107,13 @@ export default function StatisticsSection() {
                       <CountUp start={0} end={stats?.annualExp} duration={2}>
                         {({ countUpRef }) => (
                           <span
-                            className="text-6xl font-bold"
+                            className="stats-text font-bold"
                             ref={countUpRef}
                           />
                         )}
                       </CountUp>
                     )}{' '}
-                    <span className="text-xl">İllik Təcrübə</span>
+                    <span className="stats-title">İllik Təcrübə</span>
                   </li>
                   <li className="flex-col">
                     {isLoading ? (
@@ -122,13 +126,13 @@ export default function StatisticsSection() {
                       >
                         {({ countUpRef }) => (
                           <span
-                            className="text-6xl font-bold"
+                            className="stats-text font-bold"
                             ref={countUpRef}
                           />
                         )}
                       </CountUp>
                     )}{' '}
-                    <span className="text-xl">Əyalətdə Xidmət</span>
+                    <span className="stats-title">Əyalətdə Xidmət</span>
                   </li>
                 </ul>
               </div>
