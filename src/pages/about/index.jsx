@@ -13,7 +13,7 @@ export default function About() {
   }, [])
   return (
     <main>
-      <section className="bg-orange-100 py-5">
+      <section className="bg-orange-50">
         <Search />
       </section>
       <section className="hidden md:block w-full img-banner h-[490px]" />

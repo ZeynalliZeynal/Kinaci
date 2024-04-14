@@ -34,9 +34,9 @@ export default function SearchBar() {
   useEffect(() => {
     // TODO: There is still a place value even if the city value is empty.
     const allPlaces = [].concat(...state.cityValue.map((city) => city.place))
-    console.log(allPlaces)
     dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
   }, [state.cityValue])
+
   // asdas:5999/houses?type={``}
   function handleClearFilter() {
     dispatch({ type: 'CLEAR_FILTER' })

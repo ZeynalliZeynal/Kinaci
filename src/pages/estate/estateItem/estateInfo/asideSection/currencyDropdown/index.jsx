@@ -1,7 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react'
 import { IoChevronDown } from 'react-icons/io5'
 import { Fragment } from 'react'
-import currencyData from '~/data/currencyData.jsx'
+import currencyData from '~/data/currencyData.js'
 
 export default function CurrencyDropdown({
   selectedCurrency,

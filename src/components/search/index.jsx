@@ -3,7 +3,7 @@ import SearchBar from '~/components/search/searchBar/index.jsx'
 
 export default function Search() {
   return (
-    <div className="container">
+    <div className="container py-5">
       <SearchContainer />
       <SearchBar />
     </div>

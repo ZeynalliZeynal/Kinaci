@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Svg from '~/components/Svg.jsx'
 import Tooltip from '~/components/Tooltip.jsx'
-import currencyData from '~/data/currencyData.jsx'
+import currencyData from '~/data/currencyData.js'
 
 export default function Details({ estate }) {
   const [selectedCurrencyIndex, setSelectedCurrencyIndex] = useState(0)

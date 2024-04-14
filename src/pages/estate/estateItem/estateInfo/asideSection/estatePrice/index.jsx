@@ -1,6 +1,6 @@
 import CurrencyDropdown from '~/pages/estate/estateItem/estateInfo/asideSection/currencyDropdown/index.jsx'
 import { useState } from 'react'
-import currencyData from '~/data/currencyData.jsx'
+import currencyData from '~/data/currencyData.js'
 
 export default function EstatePrice({ estateItem }) {
   const [selectedCurrency, setSelectedCurrency] = useState(currencyData[0])
