@@ -11,7 +11,7 @@ export default function Layout() {
     <>
       <Navbar /> {location.pathname !== '/' && <Breadcrumbs />} <Outlet />{' '}
       {location.pathname !== '/contact' && <ContactUsSection />} <Footer />
-      <Cookies />
+      {/* <Cookies /> */}
     </>
   )
 }
