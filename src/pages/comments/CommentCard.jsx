@@ -32,7 +32,7 @@ export default function CommentCard({ comments, onToggleExpand }) {
                 : comment.comment.split(' ').slice(0, 20).join(' ') + '...'}
             </p>
             <button
-              className={`text-sm font-medium ${comment.isExpanded ? 'text-white hover:bg-neutral-600/15' : 'text-blue-500 hover:bg-blue-500/15'} rounded-lg py-1 px-2`}
+              className={`text-sm font-medium ${comment.isExpanded ? 'text-white hover:bg-neutral-600/15' : 'text-blue-500 hover:bg-blue-500/15'} rounded-lg py-1 px-2 duration-250`}
               onClick={() => onToggleExpand(comment.id)}
             >
               {comment.isExpanded ? 'Daralt' : 'Genişlət'}

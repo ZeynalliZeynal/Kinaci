@@ -37,7 +37,6 @@ export default function SearchBar() {
     dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
   }, [state.cityValue])
 
-  // asdas:5999/houses?type={``}
   function handleClearFilter() {
     dispatch({ type: 'CLEAR_FILTER' })
   }

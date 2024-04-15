@@ -9,7 +9,7 @@ export default function Comments() {
 
   return (
     <main>
-      <section>
+      <section className="bg-orange-50">
         <Search />
       </section>
       <section className="py-[50px]">
