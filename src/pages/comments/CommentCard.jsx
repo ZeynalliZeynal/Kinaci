@@ -1,9 +1,9 @@
 export default function CommentCard({ comments, onToggleExpand }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-[30px]">
       {comments.map((comment) => (
         <div
-          className={`grid grid-cols-[160px_1fr] gap-6 shadow-comments ${comment.isExpanded ? 'bg-orange-500 text-white' : 'bg-white'} rounded-xl p-[30px]`}
+          className={`grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-6 shadow-comments ${comment.isExpanded ? 'bg-orange-500 text-white' : 'bg-white'} rounded-xl p-[30px]`}
           key={comment.id}
         >
           <div>

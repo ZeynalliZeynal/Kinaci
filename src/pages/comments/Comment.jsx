@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
 import CommentSkeleton from '~/pages/comments/CommentSkeleton.jsx'
 import CommentCard from '~/pages/comments/CommentCard.jsx'
+import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
 
 const url = 'https://kinaci-server.onrender.com/data/comments'
 
@@ -42,6 +43,18 @@ export default function Comment() {
   const [isLoading, setIsLoading] = useState(false)
   const [{ comments }, dispatch] = useReducer(reducer, initialState)
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const commentsPerPage = 4
+
+  const indexOfLastComment = currentPage * commentsPerPage
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage
+  const currentComments = comments.slice(
+    indexOfFirstComment,
+    indexOfLastComment,
+  )
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   const handleToggleExpand = (commentId) => {
     // dispatch({ type: 'COLLAPSE_ALL' })
     dispatch({ type: 'TOGGLE_COMMENT', payload: commentId })
@@ -68,7 +81,17 @@ export default function Comment() {
       {isLoading ? (
         <CommentSkeleton />
       ) : (
-        <CommentCard comments={comments} onToggleExpand={handleToggleExpand} />
+        <div className="grid gap-8">
+          <CommentCard
+            comments={currentComments}
+            onToggleExpand={handleToggleExpand}
+          />
+          <PaginationButtons
+            commentsPerPage={commentsPerPage}
+            totalComments={comments.length}
+            paginate={paginate}
+          />
+        </div>
       )}
     </>
   )
