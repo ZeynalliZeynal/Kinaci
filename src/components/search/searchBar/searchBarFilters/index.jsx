@@ -60,8 +60,20 @@ export default function SearchBarFilters({ state, dispatch }) {
             Qiymət
           </label>
           <div className="grid grid-cols-2">
-            <SearchInput type="text" placeholder="0'dan" />
-            <SearchInput type="text" placeholder="1.000.000'a qədər" />
+            <SearchInput
+              property={'minPrice'}
+              initValue={state.minPrice}
+              dispatch={dispatch}
+              type="text"
+              placeholder="0'dan"
+            />
+            <SearchInput
+              property={'maxPrice'}
+              initValue={state.maxPrice}
+              dispatch={dispatch}
+              type="text"
+              placeholder="1.000.000'a qədər"
+            />
           </div>
         </div>
         <div className="grid gap-3">
@@ -69,8 +81,20 @@ export default function SearchBarFilters({ state, dispatch }) {
             Ölçü (m<sup>2</sup>)
           </label>
           <div className="grid grid-cols-2">
-            <SearchInput type="text" placeholder="0'dan" />
-            <SearchInput type="text" placeholder="100.000'ə qədər" />
+            <SearchInput
+              property={'minSize'}
+              initValue={state.minSize}
+              dispatch={dispatch}
+              type="text"
+              placeholder="0'dan"
+            />
+            <SearchInput
+              property={'maxSize'}
+              initValue={state.maxSize}
+              dispatch={dispatch}
+              type="text"
+              placeholder="100.000'ə qədər"
+            />
           </div>
         </div>
       </div>
@@ -91,8 +115,20 @@ export default function SearchBarFilters({ state, dispatch }) {
                 Mərtəbələrin sayı
               </label>
               <div className="grid grid-cols-2">
-                <SearchInput type="text" placeholder="0'dan" />
-                <SearchInput type="text" placeholder="100'ə qədər" />
+                <SearchInput
+                  property={'minFloor'}
+                  initValue={state.minFloor}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="0'dan"
+                />
+                <SearchInput
+                  property={'maxFloor'}
+                  initValue={state.maxFloor}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="100'ə qədər"
+                />
               </div>
             </div>
             <div className="grid gap-3">
@@ -112,7 +148,13 @@ export default function SearchBarFilters({ state, dispatch }) {
               <label className="cursor-default text-sm mb-3 inline-block">
                 Daşınmaz əmlak ID
               </label>
-              <SearchInput type="text" placeholder="Nümunə: 5398" />
+              <SearchInput
+                property={'estateId'}
+                initValue={state.estateId}
+                dispatch={dispatch}
+                type="text"
+                placeholder="Nümunə: 5398"
+              />
             </div>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
@@ -121,8 +163,17 @@ export default function SearchBarFilters({ state, dispatch }) {
                 Tikinti ili
               </label>
               <div className="grid grid-cols-2">
-                <SearchInput type="text" placeholder="2000'dən" />
                 <SearchInput
+                  property={'minConstructorDate'}
+                  initValue={state.minConstructorDate}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="2000'dən"
+                />
+                <SearchInput
+                  property={'maxConstructorDate'}
+                  initValue={state.maxConstructorDate}
+                  dispatch={dispatch}
                   type="text"
                   placeholder={`${new Intl.DateTimeFormat('az-AZ', {
                     year: 'numeric',
@@ -135,8 +186,20 @@ export default function SearchBarFilters({ state, dispatch }) {
                 Dənizə Məsafə
               </label>
               <div className="grid grid-cols-2">
-                <SearchInput type="text" placeholder="0'dan" />
-                <SearchInput type="text" placeholder="1.000'ə qədər" />
+                <SearchInput
+                  property={'minSeaDistance'}
+                  initValue={state.minSeaDistance}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="0'dan"
+                />
+                <SearchInput
+                  property={'maxSeaDistance'}
+                  initValue={state.maxSeaDistance}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="1.000'ə qədər"
+                />
               </div>
             </div>
             <div className="distance-airport flex-col gap-3">
@@ -144,8 +207,20 @@ export default function SearchBarFilters({ state, dispatch }) {
                 Hava limanına məsafə (km)
               </label>
               <div className="grid grid-cols-2">
-                <SearchInput type="text" placeholder="0'dan" />
-                <SearchInput type="text" placeholder="1.000'ə qədər" />
+                <SearchInput
+                  property={'minAirportDistance'}
+                  initValue={state.minAirportDistance}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="0'dan"
+                />
+                <SearchInput
+                  property={'maxAirportDistance'}
+                  initValue={state.maxAirportDistance}
+                  dispatch={dispatch}
+                  type="text"
+                  placeholder="1.000'ə qədər"
+                />
               </div>
             </div>
           </div>
