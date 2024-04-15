@@ -12,7 +12,7 @@ export default function Comments() {
       <section>
         <Search />
       </section>
-      <section>
+      <section className="py-[50px]">
         <div className="container">
           <Comment />
         </div>

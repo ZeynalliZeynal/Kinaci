@@ -1,22 +1,52 @@
 import { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
+import CommentSkeleton from '~/pages/comments/CommentSkeleton.jsx'
+import CommentCard from '~/pages/comments/CommentCard.jsx'
 
 const url = 'https://kinaci-server.onrender.com/data/comments'
 
 const initialState = {
   comments: [],
-  isExpanded: false,
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_COMMENTS':
-      return { ...state, comments: action.payload }
+      return {
+        ...state,
+        comments: action.payload.map((comment) => ({
+          ...comment,
+          isExpanded: false,
+        })),
+      }
+    case 'TOGGLE_COMMENT':
+      return {
+        ...state,
+        comments: state.comments.map((comment) =>
+          comment.id === action.payload
+            ? { ...comment, isExpanded: !comment.isExpanded }
+            : comment,
+        ),
+      }
+    case 'COLLAPSE_ALL':
+      return {
+        ...state,
+        comments: state.comments.map((comment) => ({
+          ...comment,
+          isExpanded: false,
+        })),
+      }
   }
 }
 export default function Comment() {
   const [isLoading, setIsLoading] = useState(false)
-  const [{ comments, isExpanded }, dispatch] = useReducer(reducer, initialState)
+  const [{ comments }, dispatch] = useReducer(reducer, initialState)
+
+  const handleToggleExpand = (commentId) => {
+    // dispatch({ type: 'COLLAPSE_ALL' })
+    dispatch({ type: 'TOGGLE_COMMENT', payload: commentId })
+  }
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -32,34 +62,14 @@ export default function Comment() {
     }
     fetchComments()
   }, [])
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
-      {comments?.map((comment) => (
-        <div
-          className="grid grid-cols-[160px_1fr] gap-6 shadow-comments rounded-xl p-[30px]"
-          key={comment.id}
-        >
-          <div>
-            <span className="rounded-full bg-blue-900/10 p-6">
-              <img src={comment.img} alt={comment.name} />
-            </span>
-          </div>
-          <div className="flex flex-col gap-8 text-blue-900 items-start">
-            <div>
-              <h4 className="font-semibold">{comment.name}</h4>
-              {comment.jobStatus && (
-                <p className="text-orange-500 text-sm">{comment.jobStatus}</p>
-              )}
-            </div>
-            <p className="text-sm">{comment.comment}</p>
-            <button
-              className={`text-sm font-medium ${isExpanded ? 'text-white' : 'text-blue-500'}`}
-            >
-              {isExpanded ? 'Daralt' : 'Genişlət'}
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
+    <>
+      {isLoading ? (
+        <CommentSkeleton />
+      ) : (
+        <CommentCard comments={comments} onToggleExpand={handleToggleExpand} />
+      )}
+    </>
   )
 }
