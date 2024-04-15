@@ -7,7 +7,6 @@ export default function PaginationButtons({
 }) {
   const [activePage, setActivePage] = useState(1)
   const pageNumbers = []
-  console.log(totalComments)
   for (let i = 1; i <= Math.ceil(totalComments / commentsPerPage); i++)
     pageNumbers.push(i)
   return (

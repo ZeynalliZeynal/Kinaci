@@ -49,7 +49,11 @@ export default function SearchBar() {
       className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <SearchBarFilters state={state} dispatch={dispatch} />
+      <SearchBarFilters
+        state={state}
+        setSearchParams={setSearchParams}
+        dispatch={dispatch}
+      />
       <SearchBarBtns
         state={state}
         handleClearFilter={handleClearFilter}

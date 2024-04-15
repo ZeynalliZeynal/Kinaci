@@ -3,7 +3,7 @@ import SearchInput from '~/components/search/searchInput/index.jsx'
 import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-export default function SearchBarFilters({ state, dispatch }) {
+export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
@@ -63,7 +63,7 @@ export default function SearchBarFilters({ state, dispatch }) {
             <SearchInput
               property={'minPrice'}
               initValue={state.minPrice}
-              dispatch={dispatch}
+              setSearchParams={setSearchParams}
               type="text"
               placeholder="0'dan"
             />
