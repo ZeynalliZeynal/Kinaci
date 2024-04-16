@@ -24,7 +24,7 @@ export default function EstateCards({ estate }) {
               key={index}
               className="card-img-slide shrink-0 w-full h-72 rounded cursor-pointer"
               onClick={() =>
-                navigate(`estate/${estate?.selling_type}/${estate?.id}`)
+                navigate(`/estate/${estate?.selling_type}/${estate?.id}`)
               }
             >
               <img src={image} alt={`Image ${index + 1}`} />

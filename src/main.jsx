@@ -4,8 +4,4 @@ import App from './App.jsx'
 import '~/assets/scss/tailwind.scss'
 import './i18n.js'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)

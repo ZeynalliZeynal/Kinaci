@@ -2,27 +2,36 @@ import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import { initialState, reducer } from '~/reducers/searchBarReducer.js'
 import SearchBarBtns from '~/components/search/searchBar/searchBarBtns/index.jsx'
-import SearchBarFilters from '~/components/search/searchBar/searchBarFilters/index.jsx'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import SearchBarFilters from '~/components/search/searchBar/searchBarFilters/index.jsx'
 
 const baseURL = 'https://kinaci-server.onrender.com/data/selectInfo'
 
 export default function SearchBar() {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
-  const [searchParams, setSearchParams] = useSearchParams({ ...initialState })
-
-  const filter = searchParams.get('minPrice')
-  console.log(filter)
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    navigate('/estate')
+    navigate(`/estate?${searchParams.toString()}`)
   }
 
   function handleClearFilter() {
-    dispatch({ type: 'CLEAR_FILTER' })
+    const newSearchParams = new URLSearchParams()
+    setSearchParams(newSearchParams)
+  }
+
+  function handleChange(property, newValue) {
+    dispatch({ type: 'SET_VALUES', payload: { [property]: newValue } })
+    setSearchParams(
+      (prev) => {
+        if (newValue === null || newValue === '') prev.delete(property)
+        else prev.set(property, newValue)
+        return prev
+      },
+      { replace: true },
+    )
   }
 
   useEffect(() => {
@@ -51,9 +60,12 @@ export default function SearchBar() {
     >
       <SearchBarFilters
         state={state}
+        searchParams={searchParams}
         setSearchParams={setSearchParams}
         dispatch={dispatch}
+        handleChange={handleChange}
       />
+
       <SearchBarBtns
         state={state}
         handleClearFilter={handleClearFilter}

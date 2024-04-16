@@ -8,7 +8,6 @@ export default function ServiceItem() {
     (service) => service.link === param.service,
   )
 
-  console.log(filteredServices)
   return (
     <main>
       <section className="bg-orange-50">

@@ -3,7 +3,12 @@ import SearchInput from '~/components/search/searchInput/index.jsx'
 import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
+export default function SearchBarFilters({
+  state,
+  dispatch,
+  handleChange,
+  searchParams,
+}) {
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
@@ -61,17 +66,17 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
-              property={'minPrice'}
-              initValue={state.minPrice}
-              setSearchParams={setSearchParams}
-              type="text"
+              type="number"
+              value={searchParams.get('minPrice') || ''}
+              property="minPrice"
+              handleChange={(newValue) => handleChange('minPrice', newValue)}
               placeholder="0'dan"
             />
             <SearchInput
-              property={'maxPrice'}
-              initValue={state.maxPrice}
-              dispatch={dispatch}
-              type="text"
+              type="number"
+              value={searchParams.get('maxPrice') || ''}
+              property="maxPrice"
+              handleChange={(newValue) => handleChange('maxPrice', newValue)}
               placeholder="1.000.000'a qədər"
             />
           </div>
@@ -82,17 +87,17 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
-              property={'minSize'}
-              initValue={state.minSize}
-              dispatch={dispatch}
-              type="text"
+              type="number"
+              value={searchParams.get('minSize') || ''}
+              property="minSize"
+              handleChange={(newValue) => handleChange('minSize', newValue)}
               placeholder="0'dan"
             />
             <SearchInput
-              property={'maxSize'}
-              initValue={state.maxSize}
-              dispatch={dispatch}
-              type="text"
+              type="number"
+              value={searchParams.get('maxSize') || ''}
+              property="maxSize"
+              handleChange={(newValue) => handleChange('maxSize', newValue)}
               placeholder="100.000'ə qədər"
             />
           </div>
@@ -116,17 +121,21 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
-                  property={'minFloor'}
-                  initValue={state.minFloor}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('minFloor') || ''}
+                  property="minFloor"
+                  handleChange={(newValue) =>
+                    handleChange('minFloor', newValue)
+                  }
                   placeholder="0'dan"
                 />
                 <SearchInput
-                  property={'maxFloor'}
-                  initValue={state.maxFloor}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('maxFloor') || ''}
+                  property="maxFloor"
+                  handleChange={(newValue) =>
+                    handleChange('maxFloor', newValue)
+                  }
                   placeholder="100'ə qədər"
                 />
               </div>
@@ -149,10 +158,10 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
                 Daşınmaz əmlak ID
               </label>
               <SearchInput
-                property={'estateId'}
-                initValue={state.estateId}
-                dispatch={dispatch}
-                type="text"
+                type="number"
+                value={searchParams.get('estateId') || ''}
+                property="estateId"
+                handleChange={(newValue) => handleChange('estateId', newValue)}
                 placeholder="Nümunə: 5398"
               />
             </div>
@@ -164,17 +173,21 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
-                  property={'minConstructorDate'}
-                  initValue={state.minConstructorDate}
-                  dispatch={dispatch}
-                  type="text"
+                  type="date"
+                  value={searchParams.get('minConstructorDate') || ''}
+                  property="minConstructorDate"
+                  handleChange={(newValue) =>
+                    handleChange('minConstructorDate', newValue)
+                  }
                   placeholder="2000'dən"
                 />
                 <SearchInput
-                  property={'maxConstructorDate'}
-                  initValue={state.maxConstructorDate}
-                  dispatch={dispatch}
-                  type="text"
+                  type="date"
+                  value={searchParams.get('maxConstructorDate') || ''}
+                  property="maxConstructorDate"
+                  handleChange={(newValue) =>
+                    handleChange('maxConstructorDate', newValue)
+                  }
                   placeholder={`${new Intl.DateTimeFormat('az-AZ', {
                     year: 'numeric',
                   }).format(new Date())}'a qədər`}
@@ -187,17 +200,21 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
-                  property={'minSeaDistance'}
-                  initValue={state.minSeaDistance}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('minSeaDistance') || ''}
+                  property="minSeaDistance"
+                  handleChange={(newValue) =>
+                    handleChange('minSeaDistance', newValue)
+                  }
                   placeholder="0'dan"
                 />
                 <SearchInput
-                  property={'maxSeaDistance'}
-                  initValue={state.maxSeaDistance}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('maxSeaDistance') || ''}
+                  property="maxSeaDistance"
+                  handleChange={(newValue) =>
+                    handleChange('maxSeaDistance', newValue)
+                  }
                   placeholder="1.000'ə qədər"
                 />
               </div>
@@ -208,17 +225,21 @@ export default function SearchBarFilters({ state, dispatch, setSearchParams }) {
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
-                  property={'minAirportDistance'}
-                  initValue={state.minAirportDistance}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('minAirportDistance') || ''}
+                  property="minAirportDistance"
+                  handleChange={(newValue) =>
+                    handleChange('minAirportDistance', newValue)
+                  }
                   placeholder="0'dan"
                 />
                 <SearchInput
-                  property={'maxAirportDistance'}
-                  initValue={state.maxAirportDistance}
-                  dispatch={dispatch}
-                  type="text"
+                  type="number"
+                  value={searchParams.get('maxAirportDistance') || ''}
+                  property="maxAirportDistance"
+                  handleChange={(newValue) =>
+                    handleChange('maxAirportDistance', newValue)
+                  }
                   placeholder="1.000'ə qədər"
                 />
               </div>
