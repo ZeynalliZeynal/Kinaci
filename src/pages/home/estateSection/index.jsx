@@ -18,7 +18,7 @@ export default function EstateSection({ estates, t, title, paragraph, bg }) {
   return (
     <section className={bg}>
       <div className="container">
-        <div className="flex justify-between mb-8">
+        <div className="grid md:flex justify-between mb-8">
           <div className="header text-blue-900">
             <h2>{t(title)}</h2>
             <p className="text-sm">{t(paragraph)}</p>

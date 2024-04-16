@@ -28,8 +28,24 @@ export default function EstatesCards() {
         if (estates.length < 6) setIsLoading(true)
         const res = await axios.get(baseURL)
         const data = res.data
+
+        const minConstructorDateParam = searchParams.get('minConstructorDate')
+        const maxConstructorDateParam = searchParams.get('maxConstructorDate')
+        const minConstructorDate = minConstructorDateParam
+          ? parseFloat(minConstructorDateParam)
+          : null
+        const maxConstructorDate = maxConstructorDateParam
+          ? parseFloat(maxConstructorDateParam)
+          : null
         const filteredEstates = data.filter((estate) => {
+          const constructorDate = new Date(
+            estate.constructor_date,
+          ).getFullYear()
           return (
+            (minConstructorDate === null ||
+              constructorDate >= minConstructorDate) &&
+            (maxConstructorDate === null ||
+              constructorDate <= maxConstructorDate) &&
             (searchParams.get('minPrice') === null ||
               estate.price >= searchParams.get('minPrice')) &&
             (searchParams.get('maxPrice') === null ||

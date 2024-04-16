@@ -12,54 +12,6 @@ export default function SearchBarFilters({
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <SelectContainer
-            value={state.estateTypeValue}
-            options={state.estateTypes}
-            setValue={(newValue) =>
-              dispatch({
-                type: 'SET_VALUES',
-                payload: { estateTypeValue: newValue },
-              })
-            }
-            label="Əmlak növü"
-          />
-          <SelectContainer
-            value={state.roomValue}
-            options={state.rooms}
-            setValue={(newValue) =>
-              dispatch({
-                type: 'SET_VALUES',
-                payload: { roomValue: newValue },
-              })
-            }
-            label="Otaqların sayı"
-          />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <SelectContainer
-            value={state.cityValue}
-            options={state.location}
-            setValue={(newValue) =>
-              dispatch({
-                type: 'SET_VALUES',
-                payload: { cityValue: newValue },
-              })
-            }
-            label="Şəhər"
-          />
-          <SelectContainer
-            value={state.placeValue}
-            options={state.place}
-            setValue={(newValue) =>
-              dispatch({
-                type: 'SET_VALUES',
-                payload: { placeValue: newValue },
-              })
-            }
-            label="Məkan"
-          />
-        </div>
         <div className="grid gap-3">
           <label className="cursor-default text-sm mb-3 inline-block">
             Qiymət
@@ -114,6 +66,54 @@ export default function SearchBarFilters({
         leaveTo="scale-0 opacity-0"
       >
         <div className="expanded-filter w-full gap-3 flex-col origin-top flex">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <SelectContainer
+              value={state.estateTypeValue}
+              options={state.estateTypes}
+              setValue={(newValue) =>
+                dispatch({
+                  type: 'SET_VALUES',
+                  payload: { estateTypeValue: newValue },
+                })
+              }
+              label="Əmlak növü"
+            />
+            <SelectContainer
+              value={state.roomValue}
+              options={state.rooms}
+              setValue={(newValue) =>
+                dispatch({
+                  type: 'SET_VALUES',
+                  payload: { roomValue: newValue },
+                })
+              }
+              label="Otaqların sayı"
+            />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <SelectContainer
+              value={state.cityValue}
+              options={state.location}
+              setValue={(newValue) =>
+                dispatch({
+                  type: 'SET_VALUES',
+                  payload: { cityValue: newValue },
+                })
+              }
+              label="Şəhər"
+            />
+            <SelectContainer
+              value={state.placeValue}
+              options={state.place}
+              setValue={(newValue) =>
+                dispatch({
+                  type: 'SET_VALUES',
+                  payload: { placeValue: newValue },
+                })
+              }
+              label="Məkan"
+            />
+          </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="grid gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">

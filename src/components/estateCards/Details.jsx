@@ -1,25 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Svg from '~/components/Svg.jsx'
-import Tooltip from '~/components/Tooltip.jsx'
 import currencyData from '~/data/currencyData.js'
 
 export default function Details({ estate }) {
   const [selectedCurrencyIndex, setSelectedCurrencyIndex] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
-  const tooltipTimeoutRef = useRef(null)
-
-  const handleMouseEnter = () => {
-    tooltipTimeoutRef.current = setTimeout(() => setIsHovering(true), 500)
-  }
-
-  const handleMouseLeave = () => {
-    clearTimeout(tooltipTimeoutRef.current)
-    setIsHovering(false)
-  }
-
-  useEffect(() => {
-    return () => clearTimeout(tooltipTimeoutRef.current) // Cleanup on unmount
-  }, [])
 
   function handleIncreaseIndex() {
     if (selectedCurrencyIndex < currencyData.length - 1) {
@@ -85,8 +69,6 @@ export default function Details({ estate }) {
       <button
         className="grid gap-2.5 justify-end cursor-pointer relative"
         onClick={handleIncreaseIndex}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         {estate?.feature.includes('endirim') && (
           <p className="text-center">
@@ -104,9 +86,6 @@ export default function Details({ estate }) {
           )}{' '}
           {estate?.selling_type === 'forRent' && `/${estate?.payment_type}`}
         </span>
-        <Tooltip position="bottom" isHovering={isHovering}>
-          Digər valyuta dəyərlərini görmək üçün klikləyin
-        </Tooltip>
       </button>
     </div>
   )
