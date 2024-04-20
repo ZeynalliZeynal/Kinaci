@@ -43,7 +43,7 @@ export const useFilteredEstates = (
             (searchParams.get('maxSize') === null ||
               estate.area <= searchParams.get('maxSize')) &&
             (searchParams.get('minFloor') === null ||
-              estate.floorsgti >= searchParams.get('minFloor')) &&
+              estate.floors >= searchParams.get('minFloor')) &&
             (searchParams.get('maxFloor') === null ||
               estate.floors <= searchParams.get('maxFloor')) &&
             (searchParams.get('minSeaDistance') === null ||
