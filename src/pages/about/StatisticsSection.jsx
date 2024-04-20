@@ -19,6 +19,7 @@ export default function StatisticsSection() {
         const res = await axios.get(url)
         const data = await res.data
         if (res.status === 200) {
+          console.log(data)
           setStats(data)
         }
       } catch (err) {
@@ -51,89 +52,21 @@ export default function StatisticsSection() {
             {counterOn && (
               <div className="rounded-[1rem] bg-blue-900/50 lg:w-full lg:h-[180px] h-full w-fit lg:p-0 p-4 justify-self-end lg:place-self-end">
                 <ul className="text-white h-full items-center justify-evenly grid lg:grid-cols-5 overflow-y-scroll">
-                  <li className="flex-col">
-                    {isLoading ? (
-                      <LoaderCircular />
-                    ) : (
-                      <CountUp
-                        start={0}
-                        end={stats?.pleasentCustomers}
-                        duration={2}
-                      >
-                        {({ countUpRef }) => (
-                          <span
-                            className="stats-text font-bold"
-                            ref={countUpRef}
-                          />
-                        )}
-                      </CountUp>
-                    )}{' '}
-                    <span className="stats-title">Məmnun Müştəri</span>
-                  </li>
-                  <li className="flex-col">
-                    {isLoading ? (
-                      <LoaderCircular />
-                    ) : (
-                      <CountUp start={0} end={stats?.officialSale} duration={2}>
-                        {({ countUpRef }) => (
-                          <span
-                            className="stats-text font-bold"
-                            ref={countUpRef}
-                          />
-                        )}
-                      </CountUp>
-                    )}{' '}
-                    <span className="stats-title">Rəsmi satış</span>
-                  </li>
-                  <li className="flex-col">
-                    {isLoading ? (
-                      <LoaderCircular />
-                    ) : (
-                      <CountUp start={0} end={stats?.estateExpert} duration={2}>
-                        {({ countUpRef }) => (
-                          <span
-                            className="stats-text font-bold"
-                            ref={countUpRef}
-                          />
-                        )}
-                      </CountUp>
-                    )}{' '}
-                    <span className="stats-title">Əmlak Eksperti</span>
-                  </li>
-                  <li className="flex-col">
-                    {isLoading ? (
-                      <LoaderCircular />
-                    ) : (
-                      <CountUp start={0} end={stats?.annualExp} duration={2}>
-                        {({ countUpRef }) => (
-                          <span
-                            className="stats-text font-bold"
-                            ref={countUpRef}
-                          />
-                        )}
-                      </CountUp>
-                    )}{' '}
-                    <span className="stats-title">İllik Təcrübə</span>
-                  </li>
-                  <li className="flex-col">
-                    {isLoading ? (
-                      <LoaderCircular />
-                    ) : (
-                      <CountUp
-                        start={0}
-                        end={stats?.servicePerYear}
-                        duration={2}
-                      >
-                        {({ countUpRef }) => (
-                          <span
-                            className="stats-text font-bold"
-                            ref={countUpRef}
-                          />
-                        )}
-                      </CountUp>
-                    )}{' '}
-                    <span className="stats-title">Əyalətdə Xidmət</span>
-                  </li>
+                  {stats?.map(({ number, title }) => (
+                    <li className="flex-col" key={title}>
+                      {isLoading ? (
+                        <LoaderCircular />
+                      ) : (
+                        <CountUp
+                          start={0}
+                          end={number}
+                          duration={2}
+                          className="stats-text font-bold"
+                        />
+                      )}{' '}
+                      <span className="stats-title text-center">{title}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
