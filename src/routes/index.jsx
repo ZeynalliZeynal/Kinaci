@@ -12,6 +12,7 @@ import Comments from '~/pages/comments/index.jsx'
 import Blog from '~/pages/blog/index.jsx'
 import NotFound from '~/pages/notFound/index.jsx'
 import ServiceItem from '~/pages/services/serviceItem/index.jsx'
+import BlogItem from '~/pages/blog/blogItem/index.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const routes = createBrowserRouter([
       {
         path: 'blog',
         element: <Blog />,
+      },
+      {
+        path: 'blog/:id',
+        element: <BlogItem />,
       },
       {
         path: '*',

@@ -1,14 +1,8 @@
 import { useState } from 'react'
 
-export default function PaginationButtons({
-  commentsPerPage,
-  totalComments,
-  paginate,
-}) {
+export default function PaginationButtons({ paginate, pageNumbers }) {
   const [activePage, setActivePage] = useState(1)
-  const pageNumbers = []
-  for (let i = 1; i <= Math.ceil(totalComments / commentsPerPage); i++)
-    pageNumbers.push(i)
+
   return (
     <ul className="gap-3">
       {pageNumbers.map((number) => (
