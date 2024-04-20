@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-export default function Dots({ images, imageIndex, setImageIndex }) {
+export default function Dots({ size, imageIndex, setImageIndex }) {
   return (
-    <div className="dots absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
-      {Array.from({ length: images.length }, (_, index) => (
+    <div className="dots flex gap-2">
+      {Array.from({ length: size }, (_, index) => (
         <button
           key={index}
           onClick={() => setImageIndex(index)}

@@ -1,4 +1,4 @@
-import Carousel from './carousel'
+import Carousel from './Carousel.jsx'
 import Search from '~/components/search/index.jsx'
 import Loader from '~/components/loader.jsx'
 import { useEstate } from '~/hooks/useEstate.js'
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main>
       <Carousel />
-      <section>
+      <section className="-mt-[164px] relative z-50">
         <Search />
       </section>
       {isLoading ? (

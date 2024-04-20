@@ -57,7 +57,7 @@ export default function EstatesCards() {
             (searchParams.get('maxSize') === null ||
               estate.area <= searchParams.get('maxSize')) &&
             (searchParams.get('minFloor') === null ||
-              estate.floors >= searchParams.get('minFloor')) &&
+              estate.floorsgti >= searchParams.get('minFloor')) &&
             (searchParams.get('maxFloor') === null ||
               estate.floors <= searchParams.get('maxFloor')) &&
             (searchParams.get('minSeaDistance') === null ||

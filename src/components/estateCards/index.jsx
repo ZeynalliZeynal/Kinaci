@@ -30,11 +30,13 @@ export default function EstateCards({ estate }) {
               <img src={image} alt={`Image ${index + 1}`} />
             </motion.div>
           ))}{' '}
-          <Dots
-            images={preview}
-            imageIndex={imageIndex}
-            setImageIndex={setImageIndex}
-          />
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
+            <Dots
+              size={preview.length}
+              imageIndex={imageIndex}
+              setImageIndex={setImageIndex}
+            />
+          </div>
           <span className="absolute top-2 left-2">
             <HeartBtn />
           </span>{' '}
