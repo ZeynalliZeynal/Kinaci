@@ -9,7 +9,6 @@ export const navLinks = [
     extendable: [
       { to: '/estate/forSale', pathName: 'forSale' },
       { to: '/estate/forRent', pathName: 'forRent' },
-      { to: '/estate/sold', pathName: 'sold' },
     ],
   },
   {

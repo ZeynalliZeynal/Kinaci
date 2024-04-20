@@ -1,104 +1,109 @@
 import EstateCards from '~/components/estateCards/index.jsx'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useReducer, useState } from 'react'
 import NoProduct from '~/components/NoProduct.jsx'
 import Lottie from 'lottie-react'
 import animationData from '~/assets/img/loadMore.json'
 import Loader from '~/components/loader.jsx'
 import { useSearchParams } from 'react-router-dom'
+import { BsFillGrid3X3GapFill } from 'react-icons/bs'
+import { FaList } from 'react-icons/fa'
+import Select from '~/components/search/searchBar/select/index.jsx'
+import { sortSelect } from '~/data/sortSelect.js'
+import { useFilteredEstates } from '~/hooks/useFilteredEstates.js'
+import { initialState, reducer } from '~/reducers/estatesCardsReducer.js'
 
-const baseURL = 'https://kinaci-server.onrender.com/data/estates'
 export default function EstatesCards() {
+  const [
+    { value, estates, isLoading, loadMore, visibleItems, totalItems, isListed },
+    dispatch,
+  ] = useReducer(reducer, initialState)
   const [searchParams] = useSearchParams()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  const [estates, setEstates] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [visibleItems, setVisibleItems] = useState(6)
-  const [totalItems, setTotalItems] = useState(0)
-  const [loadingMore, setLoadingMore] = useState(false)
-
+  useFilteredEstates(estates, dispatch, searchParams, visibleItems)
   const handleLoadMore = () => {
-    setLoadingMore(true)
-    setVisibleItems((prevState) => prevState + 6)
+    dispatch({ type: 'SET_LOADING_MORE', payload: true })
+    dispatch({ type: 'SET_VISIBLE_ITEMS' })
   }
 
   useEffect(() => {
-    const fetchEstates = async () => {
-      try {
-        if (estates.length < 6) setIsLoading(true)
-        const res = await axios.get(baseURL)
-        const data = res.data
-
-        const minConstructorDateParam = searchParams.get('minConstructorDate')
-        const maxConstructorDateParam = searchParams.get('maxConstructorDate')
-        const minConstructorDate = minConstructorDateParam
-          ? parseFloat(minConstructorDateParam)
-          : null
-        const maxConstructorDate = maxConstructorDateParam
-          ? parseFloat(maxConstructorDateParam)
-          : null
-        const filteredEstates = data.filter((estate) => {
-          const constructorDate = new Date(
-            estate.constructor_date,
-          ).getFullYear()
-          return (
-            (minConstructorDate === null ||
-              constructorDate >= minConstructorDate) &&
-            (maxConstructorDate === null ||
-              constructorDate <= maxConstructorDate) &&
-            (searchParams.get('minPrice') === null ||
-              estate.price >= searchParams.get('minPrice')) &&
-            (searchParams.get('maxPrice') === null ||
-              estate.price <= searchParams.get('maxPrice')) &&
-            (searchParams.get('estateId') === null ||
-              estate.id === +searchParams.get('estateId')) &&
-            (searchParams.get('minSize') === null ||
-              estate.area >= searchParams.get('minSize')) &&
-            (searchParams.get('maxSize') === null ||
-              estate.area <= searchParams.get('maxSize')) &&
-            (searchParams.get('minFloor') === null ||
-              estate.floorsgti >= searchParams.get('minFloor')) &&
-            (searchParams.get('maxFloor') === null ||
-              estate.floors <= searchParams.get('maxFloor')) &&
-            (searchParams.get('minSeaDistance') === null ||
-              estate.distances.sea >= searchParams.get('minSeaDistance')) &&
-            (searchParams.get('maxSeaDistance') === null ||
-              estate.distances.sea <= searchParams.get('maxSeaDistance')) &&
-            (searchParams.get('minAirportDistance') === null ||
-              estate.distances.airport >=
-                searchParams.get('minAirportDistance')) &&
-            (searchParams.get('maxAirportDistance') === null ||
-              estate.distances.airport <=
-                searchParams.get('maxAirportDistance'))
-          )
-        })
-
-        setTotalItems(filteredEstates.length)
-        setEstates(filteredEstates.slice(0, visibleItems))
-      } catch (err) {
-        console.warn(err)
-      } finally {
-        setIsLoading(false)
-        setLoadingMore(false)
-      }
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth)
     }
-    fetchEstates()
-  }, [estates.length, searchParams, visibleItems])
+    window.addEventListener('resize', handleWindowResize)
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (windowWidth <= 767)
+      dispatch({
+        type: 'SET_LISTED',
+        payload: false,
+      })
+  }, [windowWidth])
+
   return (
-    <section className="py-[50px] text-blue-900">
+    <section className="py-[50px] text-blue-900 bg-gray-100">
       <div className="container">
-        <div>
-          <h2 className="text-4xl">Azərbaycanda daşınmaz əmlak</h2>
-          <p className="text-sm mt-2.5">
-            <b>{totalItems}</b> nəticə tapıldı.
-          </p>
+        <div className="mb-7 grid grid-cols-1 lg:flex justify-between">
+          <div>
+            <h2 className="text-4xl">Azərbaycanda daşınmaz əmlak</h2>
+            <p className="text-sm mt-2.5">
+              <b>{totalItems}</b> nəticə tapıldı.
+            </p>
+          </div>
+          <div className="grid sm:flex h-fit gap-2 text-sm items-center">
+            <div className="items-center gap-4 hidden md:flex">
+              <span>Siyahı Tipi:</span>
+              <span className="flex bg-white rounded-xl px-[14px] py-2.5 gap-3">
+                <button
+                  className="size-5 text-orange-500 hover:drop-shadow-lg transition-all"
+                  onClick={() =>
+                    dispatch({
+                      type: 'SET_LISTED',
+                      payload: false,
+                    })
+                  }
+                >
+                  <BsFillGrid3X3GapFill />
+                </button>
+                <button
+                  className={`size-5 text-orange-500 hover:drop-shadow-lg transition-all`}
+                  onClick={() =>
+                    dispatch({
+                      type: 'SET_LISTED',
+                      payload: true,
+                    })
+                  }
+                >
+                  <FaList />
+                </button>
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span>Nəticələri sırala:</span>
+              <Select
+                options={sortSelect}
+                value={value}
+                onChange={(o) => dispatch({ type: 'SET_VALUE', payload: o })}
+              />
+            </div>
+          </div>
         </div>
         {isLoading ? (
           <Loader />
         ) : estates.length ? (
-          <div className="grid grid-cols-1 items-stretch md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className={`grid items-stretch gap-8 ${isListed ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '}`}
+          >
             {estates.map((estate) => (
-              <EstateCards estate={estate} key={estate.id} />
+              <EstateCards
+                estate={estate}
+                key={estate.id}
+                isListed={isListed}
+              />
             ))}
           </div>
         ) : (
@@ -106,7 +111,7 @@ export default function EstatesCards() {
         )}{' '}
         {estates.length < totalItems && (
           <div className="flex justify-center my-8">
-            {loadingMore ? (
+            {loadMore ? (
               <span className="size-12">
                 <Lottie animationData={animationData} />
               </span>

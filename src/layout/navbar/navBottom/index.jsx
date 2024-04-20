@@ -5,7 +5,7 @@ import ContactIcons from '../../../components/ContactIcons.jsx'
 
 export default function NavBottom() {
   return (
-    <nav className="h-[95px] shadow-navbar">
+    <nav className="h-[95px] shadow-navbar bg-white">
       <div className="container h-full">
         <div className="flex justify-between items-center h-full">
           <div className="w-1/2 lg:w-1/6">

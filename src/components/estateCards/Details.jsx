@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Svg from '~/components/Svg.jsx'
 import currencyData from '~/data/currencyData.js'
 
-export default function Details({ estate }) {
+export default function Details({ estate, isListed }) {
   const [selectedCurrencyIndex, setSelectedCurrencyIndex] = useState(0)
 
   function handleIncreaseIndex() {
@@ -30,12 +30,15 @@ export default function Details({ estate }) {
   }
 
   return (
-    <div className="details grid grid-cols-2">
-      <div className="text-xs grid gap-2.5">
+    <div className="details grid grid-cols-1 md:grid-cols-2">
+      <div className={`${isListed ? 'text-md' : 'text-xs'} grid gap-2.5`}>
         <h5>
-          {estate?.city} {estate?.place && `/${estate?.place}`}
+          {estate?.location.city}{' '}
+          {estate?.location.place && `/${estate?.location.place}`}
         </h5>
-        <div className="icons grid grid-cols-2 gap-4">
+        <div
+          className={`icons ${isListed ? 'flex' : 'grid grid-cols-2'} gap-4`}
+        >
           <div className="icon flex gap-2">
             <span className="size-4">
               <Svg svgType={'room'} />
@@ -65,9 +68,14 @@ export default function Details({ estate }) {
             </div>
           )}
         </div>
+        {isListed && (
+          <p className="line-clamp-2 leading-[200%] overflow-hidden whitespace-pre-wrap">
+            {estate.description}
+          </p>
+        )}
       </div>
       <button
-        className="grid gap-2.5 justify-end cursor-pointer relative"
+        className="grid gap-2.5 justify-start md:justify-end cursor-pointer relative"
         onClick={handleIncreaseIndex}
       >
         {estate?.feature.includes('endirim') && (
@@ -75,7 +83,7 @@ export default function Details({ estate }) {
             <del>{convertCurrency(estate?.price)}</del>
           </p>
         )}{' '}
-        <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button">
+        <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button text-sm">
           {convertCurrency(
             estate?.feature.includes('endirim')
               ? estate?.price -

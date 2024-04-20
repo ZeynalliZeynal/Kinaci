@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import CardBadge from '~/components/estateCards/CardBadge.jsx'
 import HeartBtn from '~/components/HeartBtn.jsx'
 
-export default function EstateCards({ estate }) {
+export default function EstateCards({ estate, isListed }) {
   const [imageIndex, setImageIndex] = useState(0)
 
   const { preview } = estate.assets
@@ -15,8 +15,10 @@ export default function EstateCards({ estate }) {
   const navigate = useNavigate()
 
   return (
-    <div className="card bg-white p-4 rounded-selectBtn hover:shadow-lg hover:-translate-y-2 transition-all grid">
-      <div className="card-head">
+    <div
+      className={`card bg-white p-4 rounded-selectBtn hover:shadow-lg hover:-translate-y-2 transition-all ${isListed ? 'flex gap-7 h-80' : 'grid'}`}
+    >
+      <div className={`card-head ${isListed ? 'w-[370px]' : ''}`}>
         <div className="card-img-slider-container flex overflow-hidden relative rounded-selectBtn">
           {preview.map((image, index) => (
             <motion.div
@@ -50,11 +52,13 @@ export default function EstateCards({ estate }) {
           </span>
         </div>
       </div>
-      <div className="card-body text-blue-900 grid">
-        <h4 className="card-title text-md font-semibold py-5">
+      <div className={`card-body text-blue-900 grid flex-1`}>
+        <h4
+          className={`card-title ${isListed ? 'text-xl' : 'text-md'} font-semibold py-2`}
+        >
           {estate.title}
         </h4>
-        <Details estate={estate} />
+        <Details estate={estate} isListed={isListed} />
         <ActionBtns estateItem={estate} />
       </div>
     </div>

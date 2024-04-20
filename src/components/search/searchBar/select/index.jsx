@@ -45,7 +45,7 @@ export default function Select({ multiple, value, onChange, options }) {
   }, [isOpen, highlightedIndex])
 
   function handleClearOptions() {
-    multiple ? onChange([]) : onChange({ label: 'Əmlakınızı seçin...' })
+    multiple ? onChange([]) : onChange({ label: 'Seçin...' })
   }
 
   function handleSelectOption(option) {
