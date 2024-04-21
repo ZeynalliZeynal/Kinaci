@@ -3,11 +3,16 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Search from '~/components/search/index.jsx'
 import BlogItemSection from '~/pages/blog/blogItem/BlogItemSection.jsx'
+import ShareBlog from '~/pages/blog/blogItem/ShareBlog.jsx'
+import OtherBlogs from '~/pages/blog/blogItem/OtherBlogs.jsx'
 
 export default function BlogItem() {
   const { id } = useParams()
   const [blogItem, setBlogItem] = useState(null)
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [id])
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -23,11 +28,13 @@ export default function BlogItem() {
     fetchBlogs()
   }, [id])
   return (
-    <main>
+    <main className="text-blue-900">
       <section className="bg-orange-50">
         <Search />
       </section>
       <BlogItemSection blog={blogItem} />
+      <ShareBlog blog={blogItem} />
+      <OtherBlogs blog={blogItem} />
     </main>
   )
 }
