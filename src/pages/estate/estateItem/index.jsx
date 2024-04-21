@@ -8,7 +8,7 @@ export default function EstateItem() {
 
   useEffect(() => {
     if (scrollToTop) {
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       setScrollToTop(false)
     }
   }, [scrollToTop])
