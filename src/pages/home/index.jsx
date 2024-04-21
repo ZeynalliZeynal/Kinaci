@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main>
       <Carousel />
-      <section className="-mt-[164px] relative z-50">
+      <section className="-mt-[188px] relative z-50">
         <Search />
       </section>
       {isLoading ? (
