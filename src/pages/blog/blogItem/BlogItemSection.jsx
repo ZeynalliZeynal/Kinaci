@@ -12,7 +12,7 @@ export default function BlogItemSection({ blog }) {
           <h2>{blog?.title}</h2>
           <div className="flex text-blue-900/70 text-xs items-center font-medium divide-x-2 divide-gray-200">
             <div className="flex items-center gap-2.5 pr-4">
-              <span className="size-10">
+              <span className="size-10 rounded-full overflow-hidden">
                 <img src={blog?.senderPhoto} alt={blog?.sentBy} />
               </span>
               <span>{blog?.sentBy}</span>
