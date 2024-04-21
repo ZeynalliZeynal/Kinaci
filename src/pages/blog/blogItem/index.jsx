@@ -27,7 +27,7 @@ export default function BlogItem() {
       <section className="bg-orange-50">
         <Search />
       </section>
-      <BlogItemSection />
+      <BlogItemSection blog={blogItem} />
     </main>
   )
 }
