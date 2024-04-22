@@ -79,7 +79,7 @@ export default function CommentsSection({ blog }) {
                 <label htmlFor="email" className="flex-1 font-medium">
                   Email
                   <DefaultInput
-                    type="text"
+                    type="email"
                     name="email"
                     handleChange={(e) =>
                       dispatch({ type: 'SET_VALUES', payload: { email: e } })
