@@ -29,7 +29,7 @@ export default function CommentsSection({ blog }) {
   return (
     <section>
       <div className="container">
-        <h3 className="text-lg font-semibold">
+        <h3 className="text-lg font-semibold mb-4">
           {blog?.comments ? `${blog?.comments.length} Şərh` : 'Şərh yoxdur'}
         </h3>
         <div className="grid">
@@ -59,63 +59,62 @@ export default function CommentsSection({ blog }) {
             )}
           </ul>
         </div>
-        <div className="grid">
+        <div className="grid border-t-2 border-gray-200 pt-7">
           <h3 className="text-lg font-semibold mb-5">Şərh yaz</h3>
-          <form
-            className="text-sm space-y-2.5"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <div className="flex gap-[30px]">
-              <label htmlFor="name" className="flex-1 font-medium">
-                Ad
-                <DefaultInput
-                  type="text"
-                  name="name"
-                  value={values.name}
-                  handleChange={(e) =>
-                    dispatch({ type: 'SET_VALUES', payload: { name: e } })
-                  }
-                  placeholder="Adınızı daxil edin"
+          <form className="text-sm" onSubmit={(e) => e.preventDefault()}>
+            <div className="space-y-2.5">
+              <div className="flex gap-[30px]">
+                <label htmlFor="name" className="flex-1 font-medium">
+                  Ad
+                  <DefaultInput
+                    type="text"
+                    name="name"
+                    value={values.name}
+                    handleChange={(e) =>
+                      dispatch({ type: 'SET_VALUES', payload: { name: e } })
+                    }
+                    placeholder="Adınızı daxil edin"
+                  />
+                </label>
+                <label htmlFor="email" className="flex-1 font-medium">
+                  Email
+                  <DefaultInput
+                    type="text"
+                    name="email"
+                    handleChange={(e) =>
+                      dispatch({ type: 'SET_VALUES', payload: { email: e } })
+                    }
+                    placeholder="Emailinizi daxil edin"
+                  />
+                </label>
+              </div>
+              <div className="flex gap-2.5">
+                <DefaultCheckbox
+                  isChecked={isChecked}
+                  setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
                 />
-              </label>
-              <label htmlFor="email" className="flex-1 font-medium">
-                Email
-                <DefaultInput
-                  type="text"
-                  name="email"
-                  handleChange={(e) =>
-                    dispatch({ type: 'SET_VALUES', payload: { email: e } })
-                  }
-                  placeholder="Emailinizi daxil edin"
-                />
-              </label>
-            </div>
-            <div className="flex gap-2.5">
-              <DefaultCheckbox
-                isChecked={isChecked}
-                setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
-              />
-              <p>
-                Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə
-                yadda saxla.
-              </p>
-            </div>
-            <div>
-              <label htmlFor="comment" className="flex-1 font-medium">
-                Şərh
-                <DefaultTextarea
-                  name="comment"
-                  value={values.comment}
-                  handleChange={(e) =>
-                    dispatch({ type: 'SET_VALUES', payload: { comment: e } })
-                  }
-                  placeholder="Şərh əlavə et"
-                />
-              </label>
+                <p>
+                  Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə
+                  yadda saxla.
+                </p>
+              </div>
+              <div>
+                <label htmlFor="comment" className="flex-1 font-medium">
+                  Şərh
+                  <DefaultTextarea
+                    name="comment"
+                    value={values.comment}
+                    handleChange={(e) =>
+                      dispatch({ type: 'SET_VALUES', payload: { comment: e } })
+                    }
+                    placeholder="Şərh əlavə et"
+                  />
+                </label>
+              </div>
             </div>
             <button
               type={'submit'}
-              className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
+              className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
               disabled={!values.comment}
             >
               Şərhi Göndər
