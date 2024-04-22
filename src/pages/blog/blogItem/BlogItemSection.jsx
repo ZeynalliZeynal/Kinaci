@@ -1,10 +1,6 @@
-import { az } from 'date-fns/locale'
-import { format } from 'date-fns'
+import moment from 'moment'
 
 export default function BlogItemSection({ blog }) {
-  const formattedDate = blog?.sentDate
-    ? format(new Date(blog?.sentDate), 'PPp', { locale: az })
-    : 'Loading...'
   return (
     <section>
       <div className="container">
@@ -22,7 +18,9 @@ export default function BlogItemSection({ blog }) {
                 i === blog.tags.length - 1 ? tag : tag + ', ',
               )}
             </div>
-            <time className="pl-4">{formattedDate}</time>
+            <time className="pl-4">
+              {moment(blog?.sentDate).format('MMMM DD YYYY, hh:mm a')}
+            </time>
           </div>
           <div className="mt-8">
             <div className="mb-10 rounded-xl overflow-hidden h-[600px]">

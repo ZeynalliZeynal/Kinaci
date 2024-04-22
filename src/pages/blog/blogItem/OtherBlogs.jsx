@@ -32,9 +32,11 @@ export default function OtherBlogs({ blog }) {
   return (
     <section>
       <div className="container">
-        <div className="grid grid-cols-[80px_1fr] gap-[30px] items-center pb-[54px] border-b-2 border-gray-200">
-          <div className="overflow-hidden rounded-full">
-            <img src={blog?.senderPhoto} alt={blog?.sentBy} />
+        <div className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-[30px] items-center pb-[54px] border-b-2 border-gray-200">
+          <div>
+            <span className="overflow-hidden rounded-full h-20 md:h-auto">
+              <img src={blog?.senderPhoto} alt={blog?.sentBy} />
+            </span>
           </div>
           <div className="grid">
             <h4 className="text-md font-semibold">{blog?.sentBy}</h4>
