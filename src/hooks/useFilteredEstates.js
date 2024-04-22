@@ -64,6 +64,7 @@ export const useFilteredEstates = (
           type: 'SET_ESTATES',
           payload: filteredEstates.slice(0, visibleItems),
         })
+        dispatch({ type: 'SET_LOADING_MORE', payload: false })
       } catch (err) {
         console.warn(err)
       } finally {
