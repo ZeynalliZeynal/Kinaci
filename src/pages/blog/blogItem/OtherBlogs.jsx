@@ -41,7 +41,7 @@ export default function OtherBlogs({ blog }) {
             <p className="text-sm">{blog?.senderInfo}</p>
           </div>
         </div>
-        <div className="flex justify-between py-[54px]">
+        <div className="flex justify-between py-[54px] border-b-2 border-gray-200">
           {prevBlog && (
             <Link to={`/blog/${prevBlog?.id}`} className="grid gap-3 group">
               <span className="flex items-center">
