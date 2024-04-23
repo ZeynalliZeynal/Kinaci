@@ -87,14 +87,17 @@ export default function CommentsSection({ blog }) {
     <section>
       <div className="container">
         <h3 className="text-lg font-semibold mb-4">
-          {comments.length ? `${comments.length} Şərh` : 'Şərh yoxdur'}
+          {comments.length > 0 ? `${comments.length} Şərh` : 'Şərh yoxdur'}
         </h3>
         {comments.length > 0 && (
-          <div className="grid">
-            <ul className="grid justify-start divide-y divide-gray-200">
+          <div className="flex">
+            <ul className="flex-col justify-start divide-y divide-gray-200 w-full">
               {comments.map(({ id, image, name, date, comment, replies }) => (
-                <li key={id} className="w-full gap-4 grid grid-cols-1 py-4">
-                  <div className="flex w-full justify-between items-end">
+                <li
+                  key={id}
+                  className="w-full gap-4 grid grid-cols-1 py-4 w-full"
+                >
+                  <div className="flex w-full justify-between items-end w-full">
                     <div className="flex gap-5">
                       <span className="size-[70px] rounded-full overflow-hidden">
                         <img src={image} alt={name} />
@@ -145,7 +148,7 @@ export default function CommentsSection({ blog }) {
                   />
                 </label>
               </div>
-              <div className="flex gap-2.5">
+              <div className="flex flex-col md:flex-row gap-2.5">
                 <DefaultCheckbox
                   isChecked={isChecked}
                   setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
