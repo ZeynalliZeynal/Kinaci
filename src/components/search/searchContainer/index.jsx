@@ -6,7 +6,7 @@ export default function SearchContainer() {
   return (
     <div className="search-container relative grid gap-5">
       <SelectCountry />
-      <div className="flex justify-between w-full text-sm">
+      <div className="flex justify-between w-full text-sm relative z-[70]">
         <SelectTabBtns />
         <LinkBtns />
       </div>

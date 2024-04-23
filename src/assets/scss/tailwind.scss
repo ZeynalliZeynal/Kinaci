@@ -23,11 +23,11 @@ h1 {
 }
 
 .sidebar-active {
-  @apply translate-x-0 z-30;
+  @apply translate-x-0 z-[999];
 }
 
 .overlay-active {
-  @apply backdrop-blur-sm z-30 visible;
+  @apply backdrop-blur-sm z-[990] visible;
 }
 
 .sidebar-container,

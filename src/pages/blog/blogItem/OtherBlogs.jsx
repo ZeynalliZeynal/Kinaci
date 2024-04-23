@@ -1,19 +1,25 @@
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const url = 'https://kinaci-server.onrender.com/data/blogs'
 
 export default function OtherBlogs({ blog }) {
   const [blogs, setBlogs] = useState([])
   const [indexOfCurrentBlog, setIndexOfCurrentBlog] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [blog?.id])
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const res = await axios.get(url)
         const data = res.data
+        setIsLoading(false)
         setBlogs(data)
         const index = data.findIndex((b) => b.id === blog?.id)
         setIndexOfCurrentBlog(index !== -1 ? index : 0)
@@ -45,22 +51,42 @@ export default function OtherBlogs({ blog }) {
         </div>
         <div className="flex justify-between py-[54px] border-b-2 border-gray-200">
           {prevBlog && (
-            <Link to={`/blog/${prevBlog?.id}`} className="grid gap-3 group">
+            <button
+              className="grid gap-3 group"
+              onClick={() => {
+                setIsLoading(true)
+                !isLoading && navigate(`/blog/${prevBlog?.id}`)
+              }}
+            >
               <span className="flex items-center">
                 <span className="size-4 group-hover:-translate-x-1 transition">
                   <GoChevronLeft />
                 </span>
-                <span className="text-md font-semibold">Əvvəlki Məqalə</span>{' '}
+                <span
+                  className={`text-md font-semibold px-2 py-1 ${isLoading ? 'text-red-600 bg-red-600/10 rounded-lg' : ''}`}
+                >
+                  {isLoading ? 'Məqalə yüklənir...' : 'Əvvəlki Məqalə'}
+                </span>
               </span>
               <p className="text-xs">
                 {prevBlog?.title.split(' ').slice(0, 3).join(' ') + '...'}
               </p>
-            </Link>
+            </button>
           )}{' '}
           {nextBlog && (
-            <Link to={`/blog/${nextBlog?.id}`} className="grid gap-3 group">
+            <button
+              onClick={() => {
+                setIsLoading(true)
+                !isLoading && navigate(`/blog/${nextBlog?.id}`)
+              }}
+              className="grid gap-3 group"
+            >
               <span className="flex items-center">
-                <span className="text-md font-semibold">Sonrakı Məqalə</span>{' '}
+                <span
+                  className={`text-md font-semibold px-2 py-1 ${isLoading ? 'text-red-600 bg-red-600/10 rounded-lg' : ''}`}
+                >
+                  {isLoading ? 'Məqalə yüklənir...' : 'Sonrakı Məqalə'}
+                </span>
                 <span className="size-4 group-hover:translate-x-1 transition">
                   <GoChevronRight />
                 </span>
@@ -68,7 +94,7 @@ export default function OtherBlogs({ blog }) {
               <p className="text-xs">
                 {nextBlog?.title.split(' ').slice(0, 3).join(' ') + '...'}
               </p>
-            </Link>
+            </button>
           )}
         </div>
       </div>

@@ -2,6 +2,7 @@ import SelectContainer from '~/components/search/searchBar/selectContainer/index
 import SearchInput from '~/components/search/searchInput/index.jsx'
 import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function SearchBarFilters({
   state,
@@ -9,12 +10,13 @@ export default function SearchBarFilters({
   handleChange,
   searchParams,
 }) {
+  const { t } = useTranslation()
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
         <div className="grid gap-3">
           <label className="cursor-default text-sm mb-3 inline-block">
-            Qiymət
+            {t('Qiymət')}
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
@@ -22,20 +24,20 @@ export default function SearchBarFilters({
               value={searchParams.get('minPrice') || ''}
               property="minPrice"
               handleChange={(newValue) => handleChange('minPrice', newValue)}
-              placeholder="0'dan"
+              placeholder="Min: 0"
             />
             <SearchInput
               type="number"
               value={searchParams.get('maxPrice') || ''}
               property="maxPrice"
               handleChange={(newValue) => handleChange('maxPrice', newValue)}
-              placeholder="1.000.000'a qədər"
+              placeholder="Max: 1.000.000"
             />
           </div>
         </div>
         <div className="grid gap-3">
           <label className="cursor-default text-sm mb-3 inline-block">
-            Ölçü (m<sup>2</sup>)
+            {t('Ölçü')} (m<sup>2</sup>)
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
@@ -43,14 +45,14 @@ export default function SearchBarFilters({
               value={searchParams.get('minSize') || ''}
               property="minSize"
               handleChange={(newValue) => handleChange('minSize', newValue)}
-              placeholder="0'dan"
+              placeholder="Min: 0"
             />
             <SearchInput
               type="number"
               value={searchParams.get('maxSize') || ''}
               property="maxSize"
               handleChange={(newValue) => handleChange('maxSize', newValue)}
-              placeholder="100.000'ə qədər"
+              placeholder="Max: 100.000"
             />
           </div>
         </div>
@@ -76,7 +78,7 @@ export default function SearchBarFilters({
                   payload: { estateTypeValue: newValue },
                 })
               }
-              label="Əmlak növü"
+              label={t('Əmlak növü')}
             />
             <SelectContainer
               value={state.roomValue}
@@ -87,7 +89,7 @@ export default function SearchBarFilters({
                   payload: { roomValue: newValue },
                 })
               }
-              label="Otaqların sayı"
+              label={t('Otaqların sayı')}
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -100,7 +102,7 @@ export default function SearchBarFilters({
                   payload: { cityValue: newValue },
                 })
               }
-              label="Şəhər"
+              label={t('Şəhər')}
             />
             <SelectContainer
               value={state.placeValue}
@@ -111,13 +113,13 @@ export default function SearchBarFilters({
                   payload: { placeValue: newValue },
                 })
               }
-              label="Məkan"
+              label={t('Məkan')}
             />
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="grid gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Mərtəbələrin sayı
+                {t('Mərtəbələrin sayı')}
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -127,7 +129,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('minFloor', newValue)
                   }
-                  placeholder="0'dan"
+                  placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
@@ -136,7 +138,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('maxFloor', newValue)
                   }
-                  placeholder="100'ə qədər"
+                  placeholder="Max: 100"
                 />
               </div>
             </div>
@@ -150,26 +152,26 @@ export default function SearchBarFilters({
                     payload: { badgeValue: newValue },
                   })
                 }
-                label="Etiketlər"
+                label={t('Etiketlər')}
               />
             </div>
             <div className="grid gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Daşınmaz əmlak ID
+                {t('Daşınmaz əmlak')} ID
               </label>
               <SearchInput
                 type="number"
                 value={searchParams.get('estateId') || ''}
                 property="estateId"
                 handleChange={(newValue) => handleChange('estateId', newValue)}
-                placeholder="Nümunə: 5398"
+                placeholder={`${t('Nümunə')}: 285326`}
               />
             </div>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="constructor-year flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Tikinti ili
+                {t('Tikinti ili')}
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -179,7 +181,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('minConstructorDate', newValue)
                   }
-                  placeholder="2000'dən"
+                  placeholder="Min: 2000"
                 />
                 <SearchInput
                   type="date"
@@ -188,15 +190,15 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('maxConstructorDate', newValue)
                   }
-                  placeholder={`${new Intl.DateTimeFormat('az-AZ', {
+                  placeholder={`Max: ${new Intl.DateTimeFormat('az-AZ', {
                     year: 'numeric',
-                  }).format(new Date())}'a qədər`}
+                  }).format(new Date())}`}
                 />
               </div>
             </div>
             <div className="distance-sea flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Dənizə Məsafə
+                {t('Dənizə Məsafə')} (km)
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -206,7 +208,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('minSeaDistance', newValue)
                   }
-                  placeholder="0'dan"
+                  placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
@@ -215,13 +217,13 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('maxSeaDistance', newValue)
                   }
-                  placeholder="1.000'ə qədər"
+                  placeholder="Max: 1.000"
                 />
               </div>
             </div>
             <div className="distance-airport flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                Hava limanına məsafə (km)
+                {t('Hava limanına məsafə')} (km)
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -231,7 +233,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('minAirportDistance', newValue)
                   }
-                  placeholder="0'dan"
+                  placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
@@ -240,7 +242,7 @@ export default function SearchBarFilters({
                   handleChange={(newValue) =>
                     handleChange('maxAirportDistance', newValue)
                   }
-                  placeholder="1.000'ə qədər"
+                  placeholder="Max: 1.000"
                 />
               </div>
             </div>

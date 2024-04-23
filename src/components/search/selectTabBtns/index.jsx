@@ -1,7 +1,9 @@
 import classNames from 'classnames'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function SelectTabBtns() {
+  const { t } = useTranslation()
   const [activeButton, setActiveButton] = useState('all')
 
   function handleSetActive(btnValue) {
@@ -15,21 +17,21 @@ export default function SelectTabBtns() {
         className="w-[100px] bg-gray-100 px-7 py-4 active:transform-none relative"
         data-label="all"
       >
-        <span className="z-[5] relative">Hamısı</span>
+        <span className="z-[5] relative">{t('Hamısı')}</span>
       </button>
       <button
         onClick={(e) => handleSetActive(e.currentTarget)}
         className="w-[100px] px-7 py-4 bg-gray-100 active:transform-none relative"
         data-label="rent"
       >
-        <span className="z-[5] relative">İcarə</span>
+        <span className="z-[5] relative">{t('İcarə')}</span>
       </button>
       <button
         onClick={(e) => handleSetActive(e.currentTarget)}
         className="w-[100px] px-7 py-4 bg-gray-100 active:transform-none relative"
         data-label="sale"
       >
-        <span className="z-[5] relative">Satılır</span>
+        <span className="z-[5] relative">{t('Satılır')}</span>
       </button>
       <div
         className={classNames(

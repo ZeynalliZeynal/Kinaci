@@ -1,30 +1,51 @@
 import SidebarLink from './sidebarLinks'
 import ContactIcons from '~/components/ContactIcons.jsx'
 import classNames from 'classnames'
+import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function Sidebar({ isOpen, onClose }) {
+  const location = useLocation()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    onClose()
+  }, [location.pathname])
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [isOpen])
+
   return (
     <>
       <div
         className={classNames(
-          'overlay fixed size-full backdrop-blur-sm z-10 invisible',
+          'overlay fixed size-full backdrop-blur-sm z-[990] invisible',
           {
             'overlay-active': isOpen,
           },
         )}
         onClick={() => onClose((prev) => !prev)}
-      ></div>
+      />
       <div
         className={classNames(
-          'sidebar-container fixed z-50 max-w-[400px] bg-white text-blue-900 -translate-x-full',
+          'sidebar-container fixed z-[999] max-w-[400px] bg-white text-blue-900 -translate-x-full',
           {
             'sidebar-active': isOpen,
           },
         )}
       >
-        <div className="main-window relative z-40">
+        <div className="main-window relative z-40 min-h-screen">
           <h3 className="flex items-center justify-between head px-[30px] py-[20px] text-3xl font-semibold border-b border-gray-200">
-            Tez keçidlər
+            {t('Tez keçidlər')}
             <button
               className="size-10 rounded-full bg-gray-100 p-3 hover:scale-125 transition-all"
               onClick={() => onClose((open) => !open)}
@@ -46,13 +67,13 @@ export default function Sidebar({ isOpen, onClose }) {
           </h3>
           <SidebarLink />
           <div className="customer-service flex flex-col items-start p-[30px] border-y border-gray-200">
-            <span className="text-sm">Müştəri Xidmətləri</span>
+            <span className="text-sm">{t('Müştəri Xidmətləri')}</span>
             <a href="tel:+994514586806" className="font-semibold text-md">
               +994(51) 458 68 06
             </a>
           </div>
           <div className="flex items-center p-[30px]">
-            Bizi izləyin <ContactIcons />
+            {t('Bizi izləyin')} <ContactIcons />
           </div>
         </div>
       </div>

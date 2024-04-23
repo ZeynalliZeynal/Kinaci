@@ -12,9 +12,6 @@ export default function BlogItem() {
   const [blogItem, setBlogItem] = useState(null)
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [id])
-  useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const res = await axios.get(

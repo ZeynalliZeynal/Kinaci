@@ -4,20 +4,22 @@ import { Fragment, useState } from 'react'
 import { countries } from '~/data/searchBar/countries.jsx'
 import { IoCheckmark } from 'react-icons/io5'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 export default function SelectCountry() {
   const [selectedCountry, setSelectedCountry] = useState(countries[0].name)
+  const { t } = useTranslation()
   return (
     <Listbox
       as="div"
       value={selectedCountry}
       onChange={setSelectedCountry}
-      className="relative"
+      className="relative z-[80] w-fit"
     >
       {({ open }) => (
         <>
           <Listbox.Button className="gap-1 bg-orange-500 text-white py-[11px] px-[30px] rounded-selectBtn hover:bg-orange-600 active:bg-orange-500">
-            {selectedCountry}{' '}
+            {t(selectedCountry)}{' '}
             <span
               className={classNames('select-icon size-4', {
                 'rotate-180': open,
@@ -54,7 +56,7 @@ export default function SelectCountry() {
                           },
                         )}
                       >
-                        {country.name}
+                        {t(country.name)}
                       </button>{' '}
                       {selected && (
                         <span className="absolute left-2.5">

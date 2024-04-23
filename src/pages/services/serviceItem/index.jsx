@@ -1,9 +1,14 @@
 import { useParams } from 'react-router-dom'
 import Search from '~/components/search/index.jsx'
 import services from '~/data/services.js'
+import { useEffect } from 'react'
 
 export default function ServiceItem() {
   const param = useParams()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [param.service])
   const filteredServices = services.find(
     (service) => service.link === param.service,
   )
