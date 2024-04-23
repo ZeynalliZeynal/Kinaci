@@ -5,8 +5,7 @@ import { usePagePagination } from '~/hooks/usePagePagination.js'
 import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
 import BlogSkeleton from '~/pages/blog/blogs/BlogSkeleton.jsx'
 import { Link } from 'react-router-dom'
-
-const url = 'https://kinaci-server.onrender.com/data/blogs'
+import { baseURL } from '~/data/consts.js'
 
 const initialState = {
   blogs: [],
@@ -37,7 +36,7 @@ export default function Blogs() {
     const fetchBlogs = async () => {
       try {
         dispatch({ type: 'SET_LOADING' })
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/blogs`)
         const data = res.data
         dispatch({ type: 'SET_BLOGS', payload: data })
       } catch (err) {

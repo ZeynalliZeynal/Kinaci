@@ -6,6 +6,7 @@ import BlogItemSection from '~/pages/blog/blogItem/BlogItemSection.jsx'
 import ShareBlog from '~/pages/blog/blogItem/ShareBlog.jsx'
 import OtherBlogs from '~/pages/blog/blogItem/OtherBlogs.jsx'
 import CommentsSection from '~/pages/blog/blogItem/Comments.jsx'
+import { baseURL } from '~/data/consts.js'
 
 export default function BlogItem() {
   const { id } = useParams()
@@ -14,9 +15,7 @@ export default function BlogItem() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get(
-          `https://kinaci-server.onrender.com/data/blogs/${id}`,
-        )
+        const res = await axios.get(`${baseURL}/data/blogs/${id}`)
         const data = res.data
         setBlogItem(data)
       } catch (err) {

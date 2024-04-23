@@ -4,8 +4,7 @@ import CommentSkeleton from '~/pages/comments/CommentSkeleton.jsx'
 import CommentCard from '~/pages/comments/CommentCard.jsx'
 import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
 import { usePagePagination } from '~/hooks/usePagePagination.js'
-
-const url = 'https://kinaci-server.onrender.com/data/comments'
+import { baseURL } from '~/data/consts.js'
 
 const initialState = {
   comments: [],
@@ -60,7 +59,7 @@ export default function Comment() {
     const fetchComments = async () => {
       try {
         setIsLoading(true)
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/comments`)
         const data = res.data
         dispatch({ type: 'SET_COMMENTS', payload: data })
       } catch (err) {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import axios from 'axios'
+import { baseURL } from '~/data/consts.js'
 
-const baseURL = 'https://kinaci-server.onrender.com/data/estates'
 export const useFilteredEstates = (
   estates,
   dispatch,
@@ -12,7 +12,7 @@ export const useFilteredEstates = (
     const fetchEstates = async () => {
       try {
         if (estates.length < 6) dispatch({ type: 'SET_LOADING', payload: true })
-        const res = await axios.get(baseURL)
+        const res = await axios.get(`${baseURL}/data/estates`)
         const data = res.data
 
         const minConstructorDateParam = searchParams.get('minConstructorDate')

@@ -1,9 +1,11 @@
 import moment from 'moment'
 import 'moment/locale/az.js'
 import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import DefaultCheckbox from '~/components/DefaultCheckbox.jsx'
 import { DefaultTextarea } from '~/components/DefaultTextarea.jsx'
+import axios from 'axios'
+import { baseURL } from '~/data/consts.js'
 
 const initialState = {
   values: {
@@ -11,6 +13,7 @@ const initialState = {
     email: '',
     comment: '',
   },
+  comments: [],
   isChecked: false,
 }
 
@@ -20,23 +23,74 @@ const reducer = (state, action) => {
       return { ...state, values: { ...state.values, ...action.payload } }
     case 'IS_CHECKED':
       return { ...state, isChecked: !state.isChecked }
+    case 'SET_COMMENTS':
+      return { ...state, comments: action.payload }
+    case 'RESET_VALUES':
+      return { ...initialState, comments: state.comments }
   }
 }
 
 export default function CommentsSection({ blog }) {
-  const [{ values, isChecked }, dispatch] = useReducer(reducer, initialState)
+  const [{ values, isChecked, comments }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  )
+
   moment.locale('az')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const blogId = blog?.id
+      const newComment = {
+        image:
+          'https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg',
+        name: values.name,
+        date: new Date().toISOString(),
+        email: values.email,
+        comment: values.comment,
+        replies: null,
+      }
+      const res = await axios.post(
+        `${baseURL}/data/blogs/${blogId}/comments`,
+        newComment,
+      )
+      dispatch({ type: 'SET_COMMENTS', payload: [...comments, res.data] })
+
+      dispatch({
+        type: 'RESET_VALUES',
+      })
+    } catch (error) {
+      console.error('Error adding comment:', error)
+    }
+  }
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const blogId = blog?.id
+        if (!blogId) return false
+        const res = await axios.get(`${baseURL}/data/blogs/${blogId}/comments`)
+        dispatch({ type: 'SET_COMMENTS', payload: res.data })
+      } catch (error) {
+        console.error('Error fetching comments:', error)
+      }
+    }
+
+    fetchComments()
+  }, [blog])
+
   return (
     <section>
       <div className="container">
         <h3 className="text-lg font-semibold mb-4">
-          {blog?.comments ? `${blog?.comments.length} Şərh` : 'Şərh yoxdur'}
+          {comments.length ? `${comments.length} Şərh` : 'Şərh yoxdur'}
         </h3>
-        <div className="grid">
-          <ul className="grid justify-start divide-y divide-gray-200">
-            {blog?.comments?.map(
-              ({ id, image, name, date, comment, replies }) => (
-                <li key={id} className="w-full gap-4 grid py-4">
+        {comments.length > 0 && (
+          <div className="grid">
+            <ul className="grid justify-start divide-y divide-gray-200">
+              {comments.map(({ id, image, name, date, comment, replies }) => (
+                <li key={id} className="w-full gap-4 grid grid-cols-1 py-4">
                   <div className="flex w-full justify-between items-end">
                     <div className="flex gap-5">
                       <span className="size-[70px] rounded-full overflow-hidden">
@@ -55,13 +109,13 @@ export default function CommentsSection({ blog }) {
                   </div>
                   <p className="text-sm">{comment}</p>
                 </li>
-              ),
-            )}
-          </ul>
-        </div>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="grid border-t-2 border-gray-200 pt-7">
           <h3 className="text-lg font-semibold mb-5">Şərh yaz</h3>
-          <form className="text-sm" onSubmit={(e) => e.preventDefault()}>
+          <form className="text-sm" onSubmit={handleSubmit}>
             <div className="space-y-2.5">
               <div className="flex gap-[30px]">
                 <label htmlFor="name" className="flex-1 font-medium">

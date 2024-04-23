@@ -4,15 +4,14 @@ import UserInfo from './userInfo'
 import ContactIcons from '~/components/ContactIcons.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { baseURL } from '~/data/consts.js'
 
 export default function AsideSection({ estateItem }) {
   const [regions, setRegions] = useState([])
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          'https://kinaci-server.onrender.com/data/selectInfo',
-        )
+        const res = await axios.get(`${baseURL}/data/selectInfo`)
         const data = await res.data
 
         setRegions(data.location)

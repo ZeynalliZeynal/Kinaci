@@ -2,8 +2,7 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
-const url = 'https://kinaci-server.onrender.com/data/blogs'
+import { baseURL } from '~/data/consts.js'
 
 export default function OtherBlogs({ blog }) {
   const [blogs, setBlogs] = useState([])
@@ -12,12 +11,12 @@ export default function OtherBlogs({ blog }) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [blog?.id])
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/blogs`)
         const data = res.data
         setIsLoading(false)
         setBlogs(data)

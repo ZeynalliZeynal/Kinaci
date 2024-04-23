@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from '~/components/loader.jsx'
-
-const url = 'https://kinaci-server.onrender.com/data/crewData'
+import { baseURL } from '~/data/consts.js'
 
 export default function OurCrew() {
   const [isLoading, setIsLoading] = useState(false)
@@ -11,7 +10,7 @@ export default function OurCrew() {
     const fetchCrew = async () => {
       try {
         setIsLoading(true)
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/crewData`)
         const data = await res.data
 
         if (res.status === 200) setCrew(data)

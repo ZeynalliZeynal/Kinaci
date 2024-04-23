@@ -4,6 +4,7 @@ import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
 import SelectContainer from '~/components/search/searchBar/selectContainer'
 import DefaultCheckbox from '~/components/DefaultCheckbox.jsx'
 import { DefaultTextarea } from '~/components/DefaultTextarea.jsx'
+import { baseURL } from '~/data/consts.js'
 
 export default function SendRequestForm() {
   const [isChecked, setIsChecked] = useState(false)
@@ -11,9 +12,7 @@ export default function SendRequestForm() {
   const [estateTypesValue, setEstateTypesValue] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(
-        'https://kinaci-server.onrender.com/data/selectInfo',
-      )
+      const res = await axios.get(`${baseURL}/data/selectInfo`)
       const data = await res.data
       setEstateTypes(data.estateTypes)
     }

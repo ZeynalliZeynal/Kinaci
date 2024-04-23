@@ -4,8 +4,7 @@ import { initialState, reducer } from '~/reducers/searchBarReducer.js'
 import SearchBarBtns from '~/components/search/searchBar/searchBarBtns/index.jsx'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import SearchBarFilters from '~/components/search/searchBar/searchBarFilters/index.jsx'
-
-const baseURL = 'https://kinaci-server.onrender.com/data/selectInfo'
+import { baseURL } from '~/data/consts.js'
 
 export default function SearchBar() {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -37,7 +36,7 @@ export default function SearchBar() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(baseURL)
+        const response = await axios.get(`${baseURL}/data/selectInfo`)
         const data = await response.data
         dispatch({ type: 'SET_DATA', payload: data })
       } catch (err) {

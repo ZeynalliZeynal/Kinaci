@@ -5,8 +5,7 @@ import kinaciLogo from '~/assets/img/logo.png'
 import CountUp from 'react-countup'
 import ScrollTrigger from 'react-scroll-trigger'
 import LoaderCircular from '~/components/LoaderCircular.jsx'
-
-const url = 'https://kinaci-server.onrender.com/data/statsData'
+import { baseURL } from '~/data/consts.js'
 
 export default function StatisticsSection() {
   const [isLoading, setIsLoading] = useState(false)
@@ -16,7 +15,7 @@ export default function StatisticsSection() {
     const fetchStatistics = async () => {
       try {
         setIsLoading(true)
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/statsData`)
         const data = await res.data
         if (res.status === 200) {
           console.log(data)
