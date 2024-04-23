@@ -43,18 +43,17 @@ export default function CommentsSection({ blog }) {
     e.preventDefault()
     try {
       setIsLoading(true)
-      const blogId = blog?.id
       const newComment = {
         image:
           'https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg',
-        name: values.name,
+        name: values.name.trim(),
         date: new Date().toISOString(),
-        email: values.email,
-        comment: values.comment,
+        email: values.email.trim(),
+        comment: values.comment.trim(),
         replies: null,
       }
       const res = await axios.post(
-        `${baseURL}/data/blogs/${blogId}/comments`,
+        `${baseURL}/data/blogs/${blog?.id}/comments`,
         newComment,
       )
       setIsLoading(false)
@@ -82,6 +81,10 @@ export default function CommentsSection({ blog }) {
 
     fetchComments()
   }, [blog])
+
+  useEffect(() => {
+    document.title = `Kinaci Bloq - ${blog?.id}`
+  }, [blog?.id])
 
   return (
     <section>
@@ -131,7 +134,10 @@ export default function CommentsSection({ blog }) {
                     name="name"
                     value={values.name}
                     handleChange={(e) =>
-                      dispatch({ type: 'SET_VALUES', payload: { name: e } })
+                      dispatch({
+                        type: 'SET_VALUES',
+                        payload: { name: e },
+                      })
                     }
                     placeholder="Adınızı daxil edin"
                   />
@@ -142,7 +148,10 @@ export default function CommentsSection({ blog }) {
                     type="email"
                     name="email"
                     handleChange={(e) =>
-                      dispatch({ type: 'SET_VALUES', payload: { email: e } })
+                      dispatch({
+                        type: 'SET_VALUES',
+                        payload: { email: e },
+                      })
                     }
                     placeholder="Emailinizi daxil edin"
                   />
@@ -165,7 +174,10 @@ export default function CommentsSection({ blog }) {
                     name="comment"
                     value={values.comment}
                     handleChange={(e) =>
-                      dispatch({ type: 'SET_VALUES', payload: { comment: e } })
+                      dispatch({
+                        type: 'SET_VALUES',
+                        payload: { comment: e },
+                      })
                     }
                     placeholder="Şərh əlavə et"
                   />
@@ -175,7 +187,7 @@ export default function CommentsSection({ blog }) {
             <button
               type={'submit'}
               className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
-              disabled={!values.comment}
+              disabled={!values.comment || isLoading}
             >
               {isLoading ? 'Göndərilir...' : 'Şərhi Göndər'}
             </button>
