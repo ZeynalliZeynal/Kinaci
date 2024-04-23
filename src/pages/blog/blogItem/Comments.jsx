@@ -1,7 +1,7 @@
 import moment from 'moment'
 import 'moment/locale/az.js'
 import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import DefaultCheckbox from '~/components/DefaultCheckbox.jsx'
 import { DefaultTextarea } from '~/components/DefaultTextarea.jsx'
 import axios from 'axios'
@@ -35,12 +35,14 @@ export default function CommentsSection({ blog }) {
     reducer,
     initialState,
   )
+  const [isLoading, setIsLoading] = useState(false)
 
   moment.locale('az')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setIsLoading(true)
       const blogId = blog?.id
       const newComment = {
         image:
@@ -55,6 +57,7 @@ export default function CommentsSection({ blog }) {
         `${baseURL}/data/blogs/${blogId}/comments`,
         newComment,
       )
+      setIsLoading(false)
       dispatch({ type: 'SET_COMMENTS', payload: [...comments, res.data] })
 
       dispatch({
@@ -171,7 +174,7 @@ export default function CommentsSection({ blog }) {
               className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
               disabled={!values.comment}
             >
-              Şərhi Göndər
+              {isLoading ? 'Göndərilir...' : 'Şərhi Göndər'}
             </button>
           </form>
         </div>
