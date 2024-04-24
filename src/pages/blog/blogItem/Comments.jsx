@@ -220,7 +220,11 @@ export default function CommentsSection({ blog }) {
               className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
               disabled={!values.comment || isLoading}
             >
-              {isLoading ? 'Göndərilir...' : 'Şərhi Göndər'}
+              {!values.comment || !values.name || !values.email
+                ? 'Formu doldur'
+                : isLoading
+                  ? 'Göndərilir...'
+                  : 'Şərhi Göndər'}
             </button>
           </form>
         </div>

@@ -1,7 +1,6 @@
 import Search from '~/components/search/index.jsx'
 import { useEffect } from 'react'
 import Blogs from '~/pages/blog/blogs/index.jsx'
-import ShareBlog from '~/pages/blog/blogItem/ShareBlog.jsx'
 
 export default function Blog() {
   useEffect(() => {
