@@ -54,7 +54,7 @@ export default function Blogs() {
         <h2 className="mb-8">Bloq</h2>
 
         <div className="grid grid-cols-[770px_1fr] gap-[50px]">
-          {isLoading ? (
+          {!blogs.length || isLoading ? (
             <BlogSkeleton />
           ) : (
             <div className="grid gap-[30px]">

@@ -26,7 +26,19 @@ const reducer = (state, action) => {
     case 'SET_COMMENTS':
       return { ...state, comments: action.payload }
     case 'RESET_VALUES':
-      return { ...initialState, comments: state.comments }
+      return {
+        ...initialState,
+        isChecked: state.isChecked,
+        comments: state.comments,
+      }
+    case 'SAVE_LOCAL_STORAGE':
+      localStorage.setItem('commentValues', JSON.stringify(action.payload))
+      return state
+    case 'REMOVE_LOCAL_STORAGE':
+      localStorage.removeItem('commentValues')
+      return state
+    default:
+      return state
   }
 }
 
@@ -50,7 +62,7 @@ export default function CommentsSection({ blog }) {
         date: new Date().toISOString(),
         email: values.email.trim(),
         comment: values.comment.trim(),
-        replies: null,
+        replies: [],
       }
       const res = await axios.post(
         `${baseURL}/data/blogs/${blog?.id}/comments`,
@@ -62,10 +74,31 @@ export default function CommentsSection({ blog }) {
       dispatch({
         type: 'RESET_VALUES',
       })
+
+      if (isChecked)
+        dispatch({
+          type: 'SAVE_LOCAL_STORAGE',
+          payload: { ...values, comment: '' },
+        })
+      else
+        dispatch({
+          type: 'REMOVE_LOCAL_STORAGE',
+        })
     } catch (error) {
       console.error('Error adding comment:', error)
     }
   }
+
+  useEffect(() => {
+    const storedValues = localStorage.getItem('commentValues')
+    if (storedValues) {
+      const { name, email } = JSON.parse(storedValues)
+      dispatch({
+        type: 'SET_VALUES',
+        payload: { name, email },
+      })
+    }
+  }, [comments])
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -96,11 +129,8 @@ export default function CommentsSection({ blog }) {
           <div className="flex">
             <ul className="flex-col justify-start divide-y divide-gray-200 w-full">
               {comments.map(({ id, image, name, date, comment, replies }) => (
-                <li
-                  key={id}
-                  className="w-full gap-4 grid grid-cols-1 py-4 w-full"
-                >
-                  <div className="flex w-full justify-between items-end w-full">
+                <li key={id} className="w-full gap-4 grid grid-cols-1 py-4">
+                  <div className="flex w-full justify-between items-end">
                     <div className="flex gap-5">
                       <span className="size-[70px] rounded-full overflow-hidden">
                         <img src={image} alt={name} />
@@ -108,7 +138,7 @@ export default function CommentsSection({ blog }) {
                       <div className="grid place-content-between py-1">
                         <h4 className="text-md font-semibold">{name}</h4>
                         <time className="text-xs">
-                          {moment(date).format('LLL')}
+                          {moment(date).startOf('seconds').fromNow()}
                         </time>
                       </div>
                     </div>
@@ -133,12 +163,12 @@ export default function CommentsSection({ blog }) {
                     type="text"
                     name="name"
                     value={values.name}
-                    handleChange={(e) =>
+                    handleChange={(e) => {
                       dispatch({
                         type: 'SET_VALUES',
                         payload: { name: e },
                       })
-                    }
+                    }}
                     placeholder="Adınızı daxil edin"
                   />
                 </label>
@@ -147,6 +177,7 @@ export default function CommentsSection({ blog }) {
                   <DefaultInput
                     type="email"
                     name="email"
+                    value={values.email}
                     handleChange={(e) =>
                       dispatch({
                         type: 'SET_VALUES',
