@@ -15,6 +15,7 @@ const initialState = {
     selectedTags: [],
   },
 
+  totalItems: 0,
   isLoading: false,
   currentPage: 1,
 }
@@ -29,11 +30,13 @@ const reducer = (state, action) => {
       return { ...state, values: action.payload }
     case 'SET_LOADING':
       return { ...state, isLoading: !state.isLoading }
+    case 'SET_TOTAL_ITEMS':
+      return { ...state, totalItems: action.payload }
   }
 }
 
 export default function Blogs() {
-  const [{ blogs, isLoading, tags }, dispatch] = useReducer(
+  const [{ blogs, isLoading, totalItems }, dispatch] = useReducer(
     reducer,
     initialState,
   )
@@ -70,7 +73,7 @@ export default function Blogs() {
               ))
           )
         })
-
+        dispatch({ type: 'SET_TOTAL_ITEMS', payload: filteredData.length })
         dispatch({ type: 'SET_BLOGS', payload: filteredData })
 
         const uniqueTags = Array.from(
@@ -89,7 +92,12 @@ export default function Blogs() {
   return (
     <section className="text-blue-900">
       <div className="container">
-        <h2 className="mb-8">Bloq</h2>
+        <div className="mb-8">
+          <h2>Bloq</h2>
+          <p className="text-sm">
+            <b>{totalItems}</b> nəticə tapıldı.
+          </p>
+        </div>
 
         <div className="flex xl:flex-row flex-col gap-[50px]">
           {!blogs.length || isLoading ? (
