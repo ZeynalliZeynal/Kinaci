@@ -5,7 +5,7 @@ export const initialState = {
   estates: [],
   isLoading: false,
   visibleItems: 6,
-  totalItems: 0,
+  totalItems: 'Loading...',
   loadMore: false,
   isListed: false,
 }

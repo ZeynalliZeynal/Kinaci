@@ -16,7 +16,7 @@ const initialState = {
     selectedTags: [],
   },
 
-  totalItems: 0,
+  totalItems: 'Loading...',
   isLoading: false,
   currentPage: 1,
 }
@@ -96,7 +96,13 @@ export default function Blogs() {
         <div className="mb-8">
           <h2>Bloq</h2>
           <p className="text-sm">
-            <b>{totalItems}</b> nəticə tapıldı.
+            {typeof totalItems === 'string' ? (
+              <b>{totalItems}</b>
+            ) : (
+              <>
+                <b>{totalItems}</b> nəticə tapıldı.
+              </>
+            )}
           </p>
         </div>
 
