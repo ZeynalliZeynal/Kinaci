@@ -6,6 +6,7 @@ import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
 import BlogSkeleton from '~/pages/blog/blogs/BlogSkeleton.jsx'
 import { Link, useSearchParams } from 'react-router-dom'
 import { baseURL } from '~/data/consts.js'
+import NoProduct from '~/components/NoProduct.jsx'
 
 const initialState = {
   blogs: [],
@@ -101,7 +102,13 @@ export default function Blogs() {
 
         <div className="flex xl:flex-row flex-col gap-[50px]">
           {!blogs.length || isLoading ? (
-            <BlogSkeleton />
+            totalItems !== 0 ? (
+              <BlogSkeleton />
+            ) : (
+              <div className="w-full xl:w-[770px]">
+                <NoProduct />
+              </div>
+            )
           ) : (
             <div className="grid w-full xl:w-[770px] order-2 xl:order-1 gap-[30px]">
               {currentItems.map(({ id, title, tags, image, description }) => (
