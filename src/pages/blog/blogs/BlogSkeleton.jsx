@@ -2,7 +2,7 @@ import Skeleton from '~/components/Skeleton.jsx'
 
 const BlogSkeleton = () => {
   return (
-    <div className="grid gap-[30px]">
+    <div className="grid w-full xl:w-[770px] order-2 xl:order-1 gap-[30px]">
       {Array.from({ length: 6 }, (_, i) => (
         <div key={i} className="shadow-blogs rounded-xl">
           <div className="h-[450px]">

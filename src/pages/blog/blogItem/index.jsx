@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Search from '~/components/search/index.jsx'
-import BlogItemSection from '~/pages/blog/blogItem/BlogItemSection.jsx'
-import ShareBlog from '~/pages/blog/blogItem/ShareBlog.jsx'
-import OtherBlogs from '~/pages/blog/blogItem/OtherBlogs.jsx'
-import CommentsSection from '~/pages/blog/blogItem/Comments.jsx'
-import { baseURL } from '~/data/consts.js'
+import Search from '~/components/search'
+import BlogItemSection from './BlogItemSection'
+import ShareBlog from './ShareBlog'
+import OtherBlogs from './OtherBlogs'
+import CommentSection from './commentSection'
+import { baseURL } from '~/data/consts'
 
 export default function BlogItem() {
   const { id } = useParams()
@@ -32,7 +32,7 @@ export default function BlogItem() {
       <BlogItemSection blog={blogItem} />
       <ShareBlog blog={blogItem} />
       <OtherBlogs blog={blogItem} />
-      <CommentsSection blog={blogItem} />
+      <CommentSection blog={blogItem} />
     </main>
   )
 }

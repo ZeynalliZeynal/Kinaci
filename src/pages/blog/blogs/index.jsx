@@ -4,11 +4,17 @@ import axios from 'axios'
 import { usePagePagination } from '~/hooks/usePagePagination.js'
 import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
 import BlogSkeleton from '~/pages/blog/blogs/BlogSkeleton.jsx'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { baseURL } from '~/data/consts.js'
 
 const initialState = {
   blogs: [],
+  tags: [],
+  values: {
+    title: '',
+    selectedTags: [],
+  },
+
   isLoading: false,
   currentPage: 1,
 }
@@ -17,13 +23,22 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_BLOGS':
       return { ...state, blogs: action.payload }
+    case 'SET_TAGS':
+      return { ...state, tags: action.payload }
+    case 'SET_VALUES':
+      return { ...state, values: action.payload }
     case 'SET_LOADING':
       return { ...state, isLoading: !state.isLoading }
   }
 }
 
 export default function Blogs() {
-  const [{ blogs, isLoading }, dispatch] = useReducer(reducer, initialState)
+  const [{ blogs, isLoading, tags }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  )
+
+  const [searchParams] = useSearchParams()
 
   const itemsPerPage = 6
 
@@ -38,7 +53,30 @@ export default function Blogs() {
         dispatch({ type: 'SET_LOADING' })
         const res = await axios.get(`${baseURL}/data/blogs`)
         const data = res.data
-        dispatch({ type: 'SET_BLOGS', payload: data })
+
+        const filteredData = data.filter((blog) => {
+          console.log(searchParams.get('blogTags'))
+          return (
+            (searchParams.get('blogTitle') === null ||
+              blog.title
+                .toLowerCase()
+                .includes(searchParams.get('blogTitle').toLowerCase())) &&
+            (searchParams.get('blogTags') === null ||
+              blog.tags.some((tag) =>
+                searchParams
+                  .get('blogTags')
+                  .toLowerCase()
+                  .includes(tag.toLowerCase()),
+              ))
+          )
+        })
+
+        dispatch({ type: 'SET_BLOGS', payload: filteredData })
+
+        const uniqueTags = Array.from(
+          new Set(data.flatMap((blog) => blog.tags)),
+        )
+        dispatch({ type: 'SET_TAGS', payload: uniqueTags })
       } catch (err) {
         console.warn(err)
       } finally {
@@ -46,18 +84,18 @@ export default function Blogs() {
       }
     }
     fetchBlogs()
-  }, [])
+  }, [searchParams])
 
   return (
     <section className="text-blue-900">
       <div className="container">
         <h2 className="mb-8">Bloq</h2>
 
-        <div className="grid grid-cols-[770px_1fr] gap-[50px]">
+        <div className="flex xl:flex-row flex-col gap-[50px]">
           {!blogs.length || isLoading ? (
             <BlogSkeleton />
           ) : (
-            <div className="grid gap-[30px]">
+            <div className="grid w-full xl:w-[770px] order-2 xl:order-1 gap-[30px]">
               {currentItems.map(({ id, title, tags, image, description }) => (
                 <Link
                   to={`/blog/${id}`}
