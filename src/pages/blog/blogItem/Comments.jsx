@@ -13,6 +13,7 @@ const initialState = {
     email: '',
     comment: '',
   },
+  countSymbols: 50,
   comments: [],
   isChecked: false,
 }
@@ -37,13 +38,18 @@ const reducer = (state, action) => {
     case 'REMOVE_LOCAL_STORAGE':
       localStorage.removeItem('commentValues')
       return state
+    case 'COUNT_SYMBOLS':
+      return {
+        ...state,
+        countSymbols: initialState.countSymbols - action.payload,
+      }
     default:
       return state
   }
 }
 
 export default function CommentsSection({ blog }) {
-  const [{ values, isChecked, comments }, dispatch] = useReducer(
+  const [{ values, isChecked, comments, countSymbols }, dispatch] = useReducer(
     reducer,
     initialState,
   )
@@ -204,15 +210,22 @@ export default function CommentsSection({ blog }) {
                   <DefaultTextarea
                     name="comment"
                     value={values.comment}
-                    handleChange={(e) =>
-                      dispatch({
-                        type: 'SET_VALUES',
-                        payload: { comment: e },
-                      })
-                    }
+                    handleChange={(e) => {
+                      if (e.length <= initialState.countSymbols) {
+                        dispatch({
+                          type: 'SET_VALUES',
+                          payload: { comment: e },
+                        })
+                        dispatch({ type: 'COUNT_SYMBOLS', payload: e.length })
+                      }
+                    }}
                     placeholder="Şərh əlavə et"
                   />
                 </label>
+                <span className="text-xs w-full text-end text-blue-900/60">
+                  {countSymbols === 0 ? 'Limit reached' : countSymbols}{' '}
+                  {countSymbols !== 0 && `/ ${initialState.countSymbols}`}
+                </span>
               </div>
             </div>
             <button
