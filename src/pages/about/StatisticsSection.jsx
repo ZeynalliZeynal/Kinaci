@@ -18,7 +18,6 @@ export default function StatisticsSection() {
         const res = await axios.get(`${baseURL}/data/statsData`)
         const data = await res.data
         if (res.status === 200) {
-          console.log(data)
           setStats(data)
         }
       } catch (err) {
