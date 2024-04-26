@@ -34,7 +34,7 @@ export default function CategoriesTags({ tags }) {
         {tags?.map((tag) => (
           <li key={tag}>
             <button
-              className={`border border-blue-900/15 rounded-full px-5 leading-[270%] ${searchParams.get('blogTags') && (searchParams.get('blogTags').includes(tag) ? 'bg-blue-900 text-white' : 'text-blue-900 bg-white')}`}
+              className={`border border-blue-900/15 rounded-full px-5 leading-[270%] hover:-translate-y-1 ${searchParams.get('blogTags') && (searchParams.get('blogTags').includes(tag) ? 'bg-blue-900 text-white' : 'text-blue-900 bg-white')}`}
               data-tag={tag}
               onClick={() => handleSelectTag(tag)}
             >
