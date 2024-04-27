@@ -24,7 +24,6 @@ export const useFilteredEstates = (
           ? parseFloat(maxConstructorDateParam)
           : null
 
-        console.log(searchParams.get('estateTypes'))
         const filteredEstates = data.filter((estate) => {
           const constructorDate = new Date(
             estate.constructor_date,
