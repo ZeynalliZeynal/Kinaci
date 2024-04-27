@@ -14,7 +14,7 @@ export default function AsideSection({ estateItem }) {
         const res = await axios.get(`${baseURL}/data/selectInfo`)
         const data = await res.data
 
-        setRegions(data.location)
+        setRegions(data.cities)
       } catch (error) {
         console.warn(error)
       }
