@@ -20,7 +20,7 @@ export default function BlogComment({ comments }) {
                       </time>
                     </div>
                   </div>
-                  <button className="h-fit rounded-lg text-xs font-semibold text-blue-500 items-end hover:bg-blue-500/15 py-1 px-2">
+                  <button className="h-fit rounded-lg text-xs font-semibold text-blue-500 items-end hover:bg-blue-500/15 py-1 px-2 disabled">
                     Cavab ver
                   </button>
                 </div>

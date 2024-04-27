@@ -9,28 +9,24 @@ export default function Actions() {
         alacaqsınız.
       </p>
       <div className="favourite text-md md:flex-row flex-col flex justify-start gap-4">
-        {Array.from({ length: 2 }, (_, index) => (
-          <button
-            className={`rounded-xl px-5 py-3 border hover:text-white ${index === 0 ? 'border-blue-400 text-blue-400 hover:bg-blue-400' : 'border-red-600 text-red-600 hover:bg-red-600'}`}
-            key={index}
-          >
-            {index === 0 ? (
-              <span className="inline-flex items-center gap-2">
-                Müqayisə et
-                <span className="size-4">
-                  <Svg svgType="compare" />
-                </span>
+        <button className="rounded-xl px-5 py-3 border hover:text-white border-blue-400 text-blue-400 hover:bg-blue-400 disabled">
+          <span className="inline-flex items-center gap-2">
+            Müqayisə et
+            <span className="size-4">
+              <Svg svgType="compare" />
+            </span>
+          </span>
+        </button>
+        <button className="rounded-xl px-5 py-3 border hover:text-white border-red-600 text-red-600 hover:bg-red-600">
+          <span className="inline-flex items-center gap-2">
+            <span className="inline-flex items-center gap-2">
+              Seçilmişlərə əlavə et
+              <span className="size-4">
+                <Svg svgType="heart" />
               </span>
-            ) : (
-              <span className="inline-flex items-center gap-2">
-                Seçilmişlərə əlavə et
-                <span className="size-4">
-                  <Svg svgType="heart" />
-                </span>
-              </span>
-            )}
-          </button>
-        ))}
+            </span>
+          </span>
+        </button>
       </div>
     </div>
   )

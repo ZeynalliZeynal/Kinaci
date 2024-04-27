@@ -61,7 +61,7 @@ export default function ImgSlider({ estateItem }) {
             </span>
             Böyük Foto
           </button>
-          <button className="py-2.5 font-medium flex gap-2 border-l border-white">
+          <button className="py-2.5 font-medium flex gap-2 border-l border-white disabled">
             <span className="size-4">
               <GoPlay />
             </span>

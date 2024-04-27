@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import axios from 'axios'
 import { baseURL } from '~/data/consts.js'
+import { useParams } from 'react-router-dom'
 
 export const useFilteredEstates = (
   estates,
@@ -8,6 +9,7 @@ export const useFilteredEstates = (
   searchParams,
   visibleItems,
 ) => {
+  const { sellingType } = useParams()
   useEffect(() => {
     const fetchEstates = async () => {
       try {
@@ -29,6 +31,8 @@ export const useFilteredEstates = (
             estate.constructor_date,
           ).getFullYear()
           return (
+            (sellingType === undefined ||
+              estate.selling_type === sellingType) &&
             (minConstructorDate === null ||
               constructorDate >= minConstructorDate) &&
             (maxConstructorDate === null ||
@@ -101,5 +105,5 @@ export const useFilteredEstates = (
       }
     }
     fetchEstates()
-  }, [estates.length, searchParams, visibleItems])
+  }, [estates.length, searchParams, visibleItems, sellingType])
 }

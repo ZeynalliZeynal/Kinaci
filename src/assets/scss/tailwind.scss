@@ -138,3 +138,7 @@ section {
 .stats-title {
   font-size: clamp(12px, 3vw, 18px);
 }
+
+.disabled {
+  @apply opacity-50 cursor-not-allowed;
+}

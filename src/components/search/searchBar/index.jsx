@@ -6,14 +6,16 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import SearchBarFilters from '~/components/search/searchBar/searchBarFilters/index.jsx'
 import { baseURL } from '~/data/consts.js'
 
-export default function SearchBar() {
+export default function SearchBar({ sellingType }) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
-    navigate(`/estate?${searchParams.toString()}`)
+    navigate(
+      `/estate${sellingType ? `/${sellingType}` : ''}?${searchParams.toString()}`,
+    )
   }
 
   useEffect(() => {
