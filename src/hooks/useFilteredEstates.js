@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import axios from 'axios'
-import { baseURL } from '~/data/consts.js'
+import { baseURL } from '~/data/consts'
 import { useParams } from 'react-router-dom'
 
 export const useFilteredEstates = (
@@ -93,11 +93,24 @@ export const useFilteredEstates = (
           )
         })
 
-        dispatch({ type: 'SET_TOTAL_ITEMS', payload: filteredEstates.length })
+        const sortByParam = searchParams.get('sortBy')
+
+        let sortedEstates = [...filteredEstates]
+
+        if (sortByParam) {
+          sortedEstates.sort((a, b) => {
+            if (sortByParam.includes('Artan')) return a.price - b.price
+            else if (sortByParam.includes('Azalan')) return b.price - a.price
+          })
+        }
+        dispatch({
+          type: 'SET_TOTAL_ITEMS',
+          payload: sortedEstates.length,
+        })
         dispatch({ type: 'SET_LOADING', payload: false })
         dispatch({
           type: 'SET_ESTATES',
-          payload: filteredEstates.slice(0, visibleItems),
+          payload: sortedEstates.slice(0, visibleItems),
         })
         dispatch({ type: 'SET_LOADING_MORE', payload: false })
       } catch (err) {

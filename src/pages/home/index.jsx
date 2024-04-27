@@ -1,10 +1,10 @@
-import Carousel from './Carousel.jsx'
-import Search from '~/components/search/index.jsx'
-import Loader from '~/components/loader.jsx'
-import { useEstate } from '~/hooks/useEstate.js'
+import Carousel from './Carousel'
+import Search from '~/components/search'
+import Loader from '~/components/loader'
+import { useEstate } from '~/hooks/useEstate'
 import { useTranslation } from 'react-i18next'
-import EstateSection from '~/pages/home/estateSection/index.jsx'
-import { useScrollTop } from '~/hooks/useScrollTop.js'
+import EstateSection from '~/pages/home/estateSection'
+import { useScrollTop } from '~/hooks/useScrollTop'
 
 export default function Home() {
   const [estates, isLoading] = useEstate()
@@ -37,6 +37,7 @@ export default function Home() {
             estates={newEstates}
             title="newEstates"
             paragraph="newEstatesParagraph"
+            buttonLink="tags=Yeni"
           />
           <EstateSection
             t={t}
@@ -44,6 +45,7 @@ export default function Home() {
             estates={promotionalEstates}
             title="promotionalEstates"
             paragraph="promotionalEstatesParagraph"
+            buttonLink="tags=Endirim"
           />
           <EstateSection
             t={t}
@@ -51,6 +53,7 @@ export default function Home() {
             estates={specialEstates}
             title="specialEstates"
             paragraph="specialEstatesParagraph"
+            buttonLink="tags=Sərfəli"
           />
         </>
       )}

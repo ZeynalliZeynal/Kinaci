@@ -28,6 +28,7 @@ export const useBlogs = (dispatch) => {
           )
         })
         dispatch({ type: 'SET_TOTAL_ITEMS', payload: filteredData.length })
+        dispatch({ type: 'SET_LOADING' })
         dispatch({ type: 'SET_BLOGS', payload: filteredData })
 
         const uniqueTags = Array.from(
@@ -36,8 +37,6 @@ export const useBlogs = (dispatch) => {
         dispatch({ type: 'SET_TAGS', payload: uniqueTags })
       } catch (err) {
         console.warn(err)
-      } finally {
-        dispatch({ type: 'SET_LOADING' })
       }
     }
     fetchBlogs()

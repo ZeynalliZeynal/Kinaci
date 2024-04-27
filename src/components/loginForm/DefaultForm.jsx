@@ -14,19 +14,24 @@ export default function DefaultForm({ onClose }) {
       onSubmit={(e) => handleSubmit(e)}
     >
       <div className="grid gap-4">
-        <label htmlFor="name">Ad & Soyad</label>
+        <label htmlFor="fullName">Ad & Soyad</label>
         <DefaultInput
           placeholder="Adınızı və soyadınızı daxil edin..."
-          type="name"
+          type="text"
+          name="fullName"
         />
       </div>
       <div className="grid gap-4">
         <label htmlFor="tel">Telefon nömrəsi</label>
-        <DefaultInput placeholder="+994** *** ****" type="tel" />
+        <DefaultInput placeholder="+994** *** ****" type="tel" name="tel" />
       </div>
       <div className="grid gap-4">
         <label htmlFor="email">E-Mail</label>
-        <DefaultInput placeholder="johndoe@example.com" type="email" />
+        <DefaultInput
+          placeholder="johndoe@example.com"
+          type="email"
+          name="email"
+        />
       </div>
       <div className="text-xxl">
         <DefaultBtn type="submit">Saxla və Göndər</DefaultBtn>

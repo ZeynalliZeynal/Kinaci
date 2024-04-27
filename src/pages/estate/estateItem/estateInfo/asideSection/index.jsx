@@ -5,6 +5,7 @@ import ContactIcons from '~/components/ContactIcons.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { baseURL } from '~/data/consts.js'
+import { Link } from 'react-router-dom'
 
 export default function AsideSection({ estateItem }) {
   const [regions, setRegions] = useState([])
@@ -45,7 +46,8 @@ export default function AsideSection({ estateItem }) {
             <ul className="gap-2.5 flex-col text-md mt-5 justify-start">
               {regions.map((region, index) => (
                 <li key={index} className="w-full justify-start">
-                  <button
+                  <Link
+                    to={`/estate?cities=${region.label}`}
                     className={
                       estateItem?.location.city === region.label
                         ? 'font-semibold'
@@ -53,7 +55,7 @@ export default function AsideSection({ estateItem }) {
                     }
                   >
                     {region.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

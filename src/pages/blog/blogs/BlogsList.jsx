@@ -16,10 +16,10 @@ export default function BlogsList({ currentItems, pageNumbers, paginate }) {
               <img src={image} alt={title} />
             </div>
             <time className="shadow-date absolute -bottom-[35px] right-[35px] size-[70px] bg-white rounded-xl grid justify-center place-content-center text-center">
-              <span className="text-xs">{moment(sentDate).format('MMMM')}</span>
               <span className="text-3xl font-semibold">
                 {moment(sentDate).format('DD')}
               </span>
+              <span className="text-xs">{moment(sentDate).format('MMMM')}</span>
             </time>
           </div>
           <div className="px-[30px] py-5 space-y-4">

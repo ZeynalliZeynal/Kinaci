@@ -4,7 +4,14 @@ import { ShowMoreButton } from '~/pages/home/ShowMoreButton.jsx'
 import TabBtns from '~/pages/home/estateSection/tabBtns/index.jsx'
 import NoProduct from '~/components/NoProduct.jsx'
 
-export default function EstateSection({ estates, t, title, paragraph, bg }) {
+export default function EstateSection({
+  estates,
+  t,
+  title,
+  paragraph,
+  bg,
+  buttonLink,
+}) {
   const [activeSellingType, setActiveSellingType] = useState('forSale')
   const [filteredEstates, setFilteredEstates] = useState(estates)
 
@@ -47,7 +54,7 @@ export default function EstateSection({ estates, t, title, paragraph, bg }) {
         ) : (
           <NoProduct />
         )}{' '}
-        <ShowMoreButton />
+        <ShowMoreButton buttonLink={buttonLink} />
       </div>
     </section>
   )

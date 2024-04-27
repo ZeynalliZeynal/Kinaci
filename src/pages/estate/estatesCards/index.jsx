@@ -1,16 +1,16 @@
-import EstateCards from '~/components/estateCards/index.jsx'
+import EstateCards from '~/components/estateCards'
 import { useEffect, useReducer, useState } from 'react'
-import NoProduct from '~/components/NoProduct.jsx'
+import NoProduct from '~/components/NoProduct'
 import Lottie from 'lottie-react'
 import animationData from '~/assets/img/loadMore.json'
 import Loader from '~/components/loader.jsx'
 import { useSearchParams } from 'react-router-dom'
 import { BsFillGrid3X3GapFill } from 'react-icons/bs'
 import { FaList } from 'react-icons/fa'
-import Select from '~/components/search/searchBar/select/index.jsx'
-import { sortSelect } from '~/data/sortSelect.js'
-import { useFilteredEstates } from '~/hooks/useFilteredEstates.js'
-import { initialState, reducer } from '~/reducers/estatesCardsReducer.js'
+import Select from '~/components/search/searchBar/select'
+import { sortSelect } from '~/data/sortSelect'
+import { useFilteredEstates } from '~/hooks/useFilteredEstates'
+import { initialState, reducer } from '~/reducers/estatesCardsReducer'
 
 export default function EstatesCards() {
   const [
@@ -84,11 +84,7 @@ export default function EstatesCards() {
             </div>
             <div className="flex items-center gap-4">
               <span>Nəticələri sırala:</span>
-              <Select
-                options={sortSelect}
-                value={value}
-                onChange={(o) => dispatch({ type: 'SET_VALUE', payload: o })}
-              />
+              <Select options={sortSelect} value={value} property="sortBy" />
             </div>
           </div>
         </div>
