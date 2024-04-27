@@ -1,13 +1,15 @@
 import Search from '~/components/search/index.jsx'
 import { useEffect } from 'react'
-import InfoSection from '~/pages/about/InfoSection.jsx'
-import StatisticsSection from '~/pages/about/StatisticsSection.jsx'
-import OurCrew from '~/pages/about/OurCrew.jsx'
-import VideoSection from '~/pages/about/VideoSection.jsx'
-import Certificates from '~/pages/about/Certificates.jsx'
-import FormSection from '~/pages/about/FormSection.jsx'
+import InfoSection from './InfoSection'
+import StatisticsSection from './StatisticsSection'
+import OurCrew from './OurCrew'
+import VideoSection from './VideoSection'
+import Certificates from './Certificates'
+import FormSection from './FormSection'
+import { useScrollTop } from '~/hooks/useScrollTop.js'
 
 export default function About() {
+  useScrollTop()
   useEffect(() => {
     document.title = 'Kinaci - Şirkət haqqında'
   }, [])

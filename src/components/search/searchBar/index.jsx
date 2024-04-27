@@ -8,29 +8,12 @@ import { baseURL } from '~/data/consts.js'
 
 export default function SearchBar() {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
     navigate(`/estate?${searchParams.toString()}`)
-  }
-
-  function handleClearFilter() {
-    const newSearchParams = new URLSearchParams()
-    setSearchParams(newSearchParams)
-  }
-
-  function handleChange(property, newValue) {
-    dispatch({ type: 'SET_VALUES', payload: { [property]: newValue } })
-    setSearchParams(
-      (prev) => {
-        if (newValue === null || newValue === '') prev.delete(property)
-        else prev.set(property, newValue)
-        return prev
-      },
-      { replace: true },
-    )
   }
 
   useEffect(() => {
@@ -46,30 +29,15 @@ export default function SearchBar() {
 
     fetchData()
   }, [])
-  useEffect(() => {
-    // TODO: There is still a place value even if the city value is empty.
-    const allPlaces = [].concat(...state.cityValue.map((city) => city.place))
-    dispatch({ type: 'SET_VALUES', payload: { place: allPlaces } })
-  }, [state.cityValue])
 
   return (
     <form
       className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <SearchBarFilters
-        state={state}
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-        dispatch={dispatch}
-        handleChange={handleChange}
-      />
+      <SearchBarFilters state={state} />
 
-      <SearchBarBtns
-        state={state}
-        handleClearFilter={handleClearFilter}
-        dispatch={dispatch}
-      />
+      <SearchBarBtns state={state} dispatch={dispatch} />
     </form>
   )
 }

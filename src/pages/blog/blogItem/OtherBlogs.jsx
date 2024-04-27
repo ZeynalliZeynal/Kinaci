@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { baseURL } from '~/data/consts.js'
+import { useScrollTop } from '~/hooks/useScrollTop.js'
 
 export default function OtherBlogs({ blog }) {
   const [blogs, setBlogs] = useState([])
@@ -10,9 +11,7 @@ export default function OtherBlogs({ blog }) {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [blog?.id])
+  useScrollTop('instant')
   useEffect(() => {
     const fetchBlogs = async () => {
       try {

@@ -23,6 +23,8 @@ export const useFilteredEstates = (
         const maxConstructorDate = maxConstructorDateParam
           ? parseFloat(maxConstructorDateParam)
           : null
+
+        console.log(searchParams.get('estateTypes'))
         const filteredEstates = data.filter((estate) => {
           const constructorDate = new Date(
             estate.constructor_date,
@@ -55,11 +57,41 @@ export const useFilteredEstates = (
                 searchParams.get('minAirportDistance')) &&
             (searchParams.get('maxAirportDistance') === null ||
               estate.distances.airport <=
-                searchParams.get('maxAirportDistance'))
+                searchParams.get('maxAirportDistance')) &&
+            (searchParams.get('estateTypes') === null ||
+              searchParams
+                .get('estateTypes')
+                .toLowerCase()
+                .includes(estate.type.toLowerCase())) &&
+            (searchParams.get('cities') === null ||
+              searchParams
+                .get('cities')
+                .toLowerCase()
+                .includes(estate.location.city.toLowerCase())) &&
+            (searchParams.get('places') === null ||
+              searchParams
+                .get('places')
+                .toLowerCase()
+                .includes(estate.location.place?.toLowerCase())) &&
+            (searchParams.get('tags') === null ||
+              estate.feature
+                .split(' ')
+                .some((tag) =>
+                  searchParams
+                    .get('tags')
+                    .toLowerCase()
+                    .includes(tag.toLowerCase()),
+                )) &&
+            (searchParams.get('rooms') === null ||
+              searchParams
+                .get('rooms')
+                .toLowerCase()
+                .includes(estate.rooms.toString().toLowerCase()))
           )
         })
 
         dispatch({ type: 'SET_TOTAL_ITEMS', payload: filteredEstates.length })
+        dispatch({ type: 'SET_LOADING', payload: false })
         dispatch({
           type: 'SET_ESTATES',
           payload: filteredEstates.slice(0, visibleItems),
@@ -67,9 +99,6 @@ export const useFilteredEstates = (
         dispatch({ type: 'SET_LOADING_MORE', payload: false })
       } catch (err) {
         console.warn(err)
-      } finally {
-        dispatch({ type: 'SET_LOADING', payload: false })
-        dispatch({ type: 'SET_LOADING', payload: false })
       }
     }
     fetchEstates()

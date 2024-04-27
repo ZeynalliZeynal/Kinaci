@@ -4,12 +4,7 @@ import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 
-export default function SearchBarFilters({
-  state,
-  dispatch,
-  handleChange,
-  searchParams,
-}) {
+export default function SearchBarFilters({ state }) {
   const { t } = useTranslation()
   return (
     <div className="flex gap-3 flex-wrap">
@@ -21,16 +16,12 @@ export default function SearchBarFilters({
           <div className="grid grid-cols-2">
             <SearchInput
               type="number"
-              value={searchParams.get('minPrice') || ''}
               property="minPrice"
-              handleChange={(newValue) => handleChange('minPrice', newValue)}
               placeholder="Min: 0"
             />
             <SearchInput
               type="number"
-              value={searchParams.get('maxPrice') || ''}
               property="maxPrice"
-              handleChange={(newValue) => handleChange('maxPrice', newValue)}
               placeholder="Max: 1.000.000"
             />
           </div>
@@ -42,16 +33,12 @@ export default function SearchBarFilters({
           <div className="grid grid-cols-2">
             <SearchInput
               type="number"
-              value={searchParams.get('minSize') || ''}
               property="minSize"
-              handleChange={(newValue) => handleChange('minSize', newValue)}
               placeholder="Min: 0"
             />
             <SearchInput
               type="number"
-              value={searchParams.get('maxSize') || ''}
               property="maxSize"
-              handleChange={(newValue) => handleChange('maxSize', newValue)}
               placeholder="Max: 100.000"
             />
           </div>
@@ -70,49 +57,25 @@ export default function SearchBarFilters({
         <div className="expanded-filter w-full gap-3 flex-col origin-top flex">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <SelectContainer
-              value={state.estateTypeValue}
-              options={state.estateTypes}
-              setValue={(newValue) =>
-                dispatch({
-                  type: 'SET_VALUES',
-                  payload: { estateTypeValue: newValue },
-                })
-              }
+              property="estateTypes"
+              options={state.estateTypes} // setValue={(newValue) => handleChange('estateTypes', newValue)}
               label={t('Əmlak növü')}
             />
             <SelectContainer
-              value={state.roomValue}
+              property="rooms"
               options={state.rooms}
-              setValue={(newValue) =>
-                dispatch({
-                  type: 'SET_VALUES',
-                  payload: { roomValue: newValue },
-                })
-              }
               label={t('Otaqların sayı')}
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <SelectContainer
-              value={state.cityValue}
-              options={state.location}
-              setValue={(newValue) =>
-                dispatch({
-                  type: 'SET_VALUES',
-                  payload: { cityValue: newValue },
-                })
-              }
+              property="cities"
+              options={state.cities}
               label={t('Şəhər')}
             />
             <SelectContainer
-              value={state.placeValue}
-              options={state.place}
-              setValue={(newValue) =>
-                dispatch({
-                  type: 'SET_VALUES',
-                  payload: { placeValue: newValue },
-                })
-              }
+              property="places"
+              options={state.places}
               label={t('Məkan')}
             />
           </div>
@@ -124,34 +87,20 @@ export default function SearchBarFilters({
               <div className="grid grid-cols-2">
                 <SearchInput
                   type="number"
-                  value={searchParams.get('minFloor') || ''}
                   property="minFloor"
-                  handleChange={(newValue) =>
-                    handleChange('minFloor', newValue)
-                  }
                   placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
-                  value={searchParams.get('maxFloor') || ''}
                   property="maxFloor"
-                  handleChange={(newValue) =>
-                    handleChange('maxFloor', newValue)
-                  }
                   placeholder="Max: 100"
                 />
               </div>
             </div>
             <div className="grid gap-3">
               <SelectContainer
-                value={state.badgeValue}
+                property="tags"
                 options={state.badges}
-                setValue={(newValue) =>
-                  dispatch({
-                    type: 'SET_VALUES',
-                    payload: { badgeValue: newValue },
-                  })
-                }
                 label={t('Etiketlər')}
               />
             </div>
@@ -161,9 +110,7 @@ export default function SearchBarFilters({
               </label>
               <SearchInput
                 type="number"
-                value={searchParams.get('estateId') || ''}
                 property="estateId"
-                handleChange={(newValue) => handleChange('estateId', newValue)}
                 placeholder={`${t('Nümunə')}: 285326`}
               />
             </div>
@@ -176,20 +123,12 @@ export default function SearchBarFilters({
               <div className="grid grid-cols-2">
                 <SearchInput
                   type="date"
-                  value={searchParams.get('minConstructorDate') || ''}
                   property="minConstructorDate"
-                  handleChange={(newValue) =>
-                    handleChange('minConstructorDate', newValue)
-                  }
                   placeholder="Min: 2000"
                 />
                 <SearchInput
                   type="date"
-                  value={searchParams.get('maxConstructorDate') || ''}
                   property="maxConstructorDate"
-                  handleChange={(newValue) =>
-                    handleChange('maxConstructorDate', newValue)
-                  }
                   placeholder={`Max: ${new Intl.DateTimeFormat('az-AZ', {
                     year: 'numeric',
                   }).format(new Date())}`}
@@ -203,20 +142,12 @@ export default function SearchBarFilters({
               <div className="grid grid-cols-2">
                 <SearchInput
                   type="number"
-                  value={searchParams.get('minSeaDistance') || ''}
                   property="minSeaDistance"
-                  handleChange={(newValue) =>
-                    handleChange('minSeaDistance', newValue)
-                  }
                   placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
-                  value={searchParams.get('maxSeaDistance') || ''}
                   property="maxSeaDistance"
-                  handleChange={(newValue) =>
-                    handleChange('maxSeaDistance', newValue)
-                  }
                   placeholder="Max: 1.000"
                 />
               </div>
@@ -228,20 +159,12 @@ export default function SearchBarFilters({
               <div className="grid grid-cols-2">
                 <SearchInput
                   type="number"
-                  value={searchParams.get('minAirportDistance') || ''}
                   property="minAirportDistance"
-                  handleChange={(newValue) =>
-                    handleChange('minAirportDistance', newValue)
-                  }
                   placeholder="Min: 0"
                 />
                 <SearchInput
                   type="number"
-                  value={searchParams.get('maxAirportDistance') || ''}
                   property="maxAirportDistance"
-                  handleChange={(newValue) =>
-                    handleChange('maxAirportDistance', newValue)
-                  }
                   placeholder="Max: 1.000"
                 />
               </div>

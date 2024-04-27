@@ -1,11 +1,4 @@
 export const initialState = {
-  // * Select values
-  estateTypeValue: [],
-  roomValue: [],
-  cityValue: [],
-  placeValue: [],
-  badgeValue: [],
-
   // * Input values
   minPrice: '',
   maxPrice: '',

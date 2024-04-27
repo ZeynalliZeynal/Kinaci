@@ -4,11 +4,10 @@ import Loader from '~/components/loader.jsx'
 import { useEstate } from '~/hooks/useEstate.js'
 import { useTranslation } from 'react-i18next'
 import EstateSection from '~/pages/home/estateSection/index.jsx'
-import { useEffect, useState } from 'react'
+import { useScrollTop } from '~/hooks/useScrollTop.js'
 
 export default function Home() {
   const [estates, isLoading] = useEstate()
-  const [scrollToTop, setScrollToTop] = useState(true)
   const { t } = useTranslation()
   const newEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Yeni',
@@ -20,12 +19,7 @@ export default function Home() {
     (newEstates) => newEstates.feature === 'Sərfəli',
   )
 
-  useEffect(() => {
-    if (scrollToTop) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setScrollToTop(false)
-    }
-  }, [scrollToTop])
+  useScrollTop()
 
   return (
     <main>

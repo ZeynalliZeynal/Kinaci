@@ -3,97 +3,127 @@ import {
   ClearButton,
   SelectBadge,
 } from '~/components/search/searchBar/select/buttons/SelectBarIcons.jsx'
-import { useEffect, useRef, useState } from 'react'
-import SelectOptions from '~/components/search/searchBar/select/selectOptions/index.jsx'
+import { motion } from 'framer-motion'
+import { useEffect, useReducer, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { searchParamsArray } from '~/functions/searchParamsArray.js'
 
-export default function Select({ multiple, value, onChange, options }) {
-  const [isOpen, setIsOpen] = useState(false)
+const initialState = {
+  isOpen: false,
+  highlightedIndex: 0,
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'isOpen':
+      return {
+        ...state,
+        isOpen: action.payload,
+      }
+    case 'setHighlightedIndex':
+      return {
+        ...state,
+        highlightedIndex: action.payload,
+      }
+    default:
+      return state
+  }
+}
+
+export default function Select({ multiple, property, options }) {
+  const [{ isOpen, highlightedIndex }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  )
+  const [searchParams, setSearchParams] = useSearchParams()
   const containerRef = useRef(null)
-  const [highlightedIndex, setHighlightedIndex] = useState(0)
+
+  const paramsValues = searchParams.get(property)
+  const paramsValuesArray = paramsValues
+    ? paramsValues.includes(',')
+      ? paramsValues.split(',')
+      : [paramsValues]
+    : []
+
+  const handleClearOptions = () => {
+    setSearchParams((prev) => {
+      prev.delete(property)
+      return prev
+    })
+  }
+
+  const handleSelectOption = (e, option) => {
+    e.stopPropagation()
+    if (multiple) {
+      searchParamsArray(paramsValues, setSearchParams, property, option)
+    } else {
+      if (paramsValues !== option)
+        setSearchParams((prev) => {
+          prev.set(property, option)
+          return prev
+        })
+    }
+
+    dispatch({ type: 'isOpen', payload: false })
+  }
+
+  const isOptionSelected = (option) => {
+    return paramsValues && paramsValues.includes(option)
+  }
 
   useEffect(() => {
-    function handler(e) {
-      if (e.target !== containerRef.current) return false
-      switch (e.code) {
-        case 'Enter':
-          setIsOpen((prev) => !prev)
-          if (isOpen) handleSelectOption(options[highlightedIndex])
-          break
-        case 'ArrowUp':
-        case 'ArrowDown': {
-          if (!isOpen) {
-            setIsOpen(true)
-            break
-          }
-          const newValue = highlightedIndex + (e.code === 'ArrowDown' ? 1 : -1)
-          if (newValue >= 0 && newValue < options.length) {
-            setHighlightedIndex(newValue)
-          }
-          break
-        }
-        case 'Escape':
-          setIsOpen(false)
-          break
-      }
-    }
-
-    containerRef.current?.addEventListener('keydown', handler)
-
-    return () => {
-      containerRef.current?.removeEventListener('keydown', handler)
-    }
-  }, [isOpen, highlightedIndex])
-
-  function handleClearOptions() {
-    multiple ? onChange([]) : onChange({ label: 'Seçin...' })
-  }
-
-  function handleSelectOption(option) {
-    if (multiple) {
-      if (value.includes(option)) onChange(value.filter((o) => o !== option))
-      else onChange([...value, option])
-    } else if (option !== value) onChange(option)
-    setIsOpen(false)
-  }
-
-  function isOptionSelected(option) {
-    return multiple ? value.includes(option) : option === value
-  }
+    if (isOpen) dispatch({ type: 'setHighlightedIndex', payload: 0 })
+  }, [isOpen])
 
   return (
     <div
       ref={containerRef}
       tabIndex={0}
       className="relative transition-colors px-2.5 py-4 rounded-button border border-blue-900/25 focus:border-blue-900 bg-white w-full flex cursor-pointer text-xs max-h-[65px]"
-      onClick={() => setIsOpen((prev) => !prev)}
-      onBlur={() => setIsOpen(false)}
+      onClick={() => dispatch({ type: 'isOpen', payload: !isOpen })}
+      onBlur={() => dispatch({ type: 'isOpen', payload: false })}
     >
       <span className="grow ps-2.5 flex flex-wrap gap-2 overflow-y-scroll max-h-[100px]">
         {multiple
-          ? value.map((v) => (
+          ? paramsValuesArray.map((paramValue) => (
               <SelectBadge
-                key={v.id}
-                v={v}
-                handleSelectOption={handleSelectOption}
+                key={paramValue}
+                value={paramValue}
+                onSelectBadge={handleSelectOption}
               />
             ))
-          : value?.label}
+          : paramsValues}
       </span>
       <div className="flex">
-        {value.length !== 0 && (
-          <ClearButton onClearOptions={handleClearOptions} />
-        )}{' '}
-        <span className="mx-2 w-0.5 bg-blue-900/20"></span>
+        <ClearButton onClearOptions={handleClearOptions} />
+        <span className="mx-2 w-0.5 bg-blue-900/20" />
         <Caret isOpen={isOpen} />
       </div>
-      <SelectOptions
-        isOpen={isOpen}
-        options={options}
-        onSelectOption={handleSelectOption}
-        isOptionSelected={isOptionSelected}
-        highlightedIndex={highlightedIndex}
-        setHighlightedIndex={setHighlightedIndex}
-      />
+      <motion.ul
+        animate={isOpen ? 'open' : 'initial'}
+        variants={{
+          initial: { rotateX: -90, opacity: 0 },
+          open: { rotateX: 0, opacity: 1 },
+        }}
+        transition={{
+          ease: 'easeInOut',
+          duration: 0.3,
+        }}
+        className="origin-top gap-2 absolute z-50 mt-2 flex-col top-full left-0 items-start bg-white w-full px-2.5 py-4 rounded-button border border-blue-900/25 overflow-y-scroll max-h-[200px] justify-start"
+      >
+        {options?.map((option, index) => (
+          <li
+            key={option.label}
+            className={`block w-full justify-start cursor-pointer py-2 rounded-button px-2.5 transition-colors ${isOptionSelected(option.label) ? 'relative after:absolute after:content-[""] after:bottom-0 after:left-2.5 after:rounded after:w-1/2 after:h-0.5 after:bg-orange-500' : ''} ${highlightedIndex === index ? 'bg-orange-50' : ''}`}
+            onMouseEnter={() =>
+              dispatch({ type: 'setHighlightedIndex', payload: index })
+            }
+            onClick={(e) => handleSelectOption(e, option.label)}
+          >
+            {option.label}
+          </li>
+        ))}
+      </motion.ul>
     </div>
   )
 }

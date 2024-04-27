@@ -4,9 +4,15 @@ import { TbTrashFilled } from 'react-icons/tb'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
 import { GrSearch } from 'react-icons/gr'
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
 
-export default function SearchBarBtns({ state, handleClearFilter, dispatch }) {
+export default function SearchBarBtns({ state, dispatch }) {
   const { t } = useTranslation()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const handleClearFilter = () => {
+    const newSearchParams = new URLSearchParams()
+    setSearchParams(newSearchParams)
+  }
   return (
     <div className="buttons w-full flex flex-col md:flex-row justify-between pt-5">
       <div className="flex text-xs gap-2.5 py-2">

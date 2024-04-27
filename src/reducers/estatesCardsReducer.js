@@ -1,7 +1,4 @@
-import { sortSelect } from '~/data/sortSelect.js'
-
 export const initialState = {
-  value: sortSelect[0],
   estates: [],
   isLoading: false,
   visibleItems: 6,

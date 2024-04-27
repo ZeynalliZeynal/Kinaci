@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import LoginForm from '~/components/loginForm/index.jsx'
 import { adminInfo } from '~/data/adminInfo/index.jsx'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function NavigateLinks() {
   const [isOpen, setIsOpen] = useState(false)
-
-  const navigate = useNavigate()
 
   function handleModal() {
     setIsOpen((prev) => !prev)
@@ -23,12 +21,15 @@ export default function NavigateLinks() {
           Onlayn Baxış
         </a>
         <Link
-          to="/services/freeTour"
+          to="/services/onlineTour"
           className="rounded-button py-6 w-full bg-blue-900"
         >
           Pulsuz tur
         </Link>
-        <button className="rounded-button py-6 w-full bg-blue-900 bg-orange-500">
+        <button
+          className="rounded-button py-6 w-full bg-blue-900 bg-orange-500"
+          onClick={handleModal}
+        >
           Qiymət Siyahısını Alın
         </button>
       </div>
