@@ -6,10 +6,15 @@ import HeartBtn from '~/components/HeartBtn.jsx'
 import { useState } from 'react'
 import ImgSliderModal from '~/pages/estate/estateItem/imgSlider/imgSliderModal/index.jsx'
 import ImgBtns from '~/pages/estate/estateItem/imgSlider/imgBtns/index.jsx'
+import { useSwapSlide } from '~/hooks/useSwapSlide.js'
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi'
 
 export default function ImgSlider({ estateItem }) {
-  const [imageIndex, setImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const [goPrev, goNext, imageIndex, setImageIndex] = useSwapSlide(
+    estateItem?.assets.img.length,
+  )
 
   function handleOpenModal() {
     setIsModalOpen(true)
@@ -30,6 +35,24 @@ export default function ImgSlider({ estateItem }) {
       />
       <div className="img-slider">
         <div className="img-container relative rounded overflow-hidden">
+          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white z-50">
+            <button
+              className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
+              onClick={goPrev}
+            >
+              <span className="size-12">
+                <HiArrowSmLeft />
+              </span>
+            </button>
+            <button
+              className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
+              onClick={goNext}
+            >
+              <span className="size-12">
+                <HiArrowSmRight />
+              </span>
+            </button>
+          </div>
           <div className="img h-[530px] backdrop-blur-xl bg-blue-900/10">
             <img
               src={estateItem?.assets.img[imageIndex]}

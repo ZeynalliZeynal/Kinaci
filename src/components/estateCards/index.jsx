@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ActionBtns from '~/components/estateCards/ActionBtns.jsx'
 import Details from '~/components/estateCards/Details.jsx'
@@ -6,13 +5,17 @@ import Dots from '~/components/estateCards/Dots.jsx'
 import { useNavigate } from 'react-router-dom'
 import CardBadge from '~/components/estateCards/CardBadge.jsx'
 import HeartBtn from '~/components/HeartBtn.jsx'
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi'
+import { useSwapSlide } from '~/hooks/useSwapSlide.js'
 
 export default function EstateCards({ estate, isListed }) {
-  const [imageIndex, setImageIndex] = useState(0)
-
   const { preview } = estate.assets
 
   const navigate = useNavigate()
+
+  const [goPrev, goNext, imageIndex, setImageIndex] = useSwapSlide(
+    preview.length,
+  )
 
   return (
     <div
@@ -38,6 +41,24 @@ export default function EstateCards({ estate, isListed }) {
               imageIndex={imageIndex}
               setImageIndex={setImageIndex}
             />
+          </div>
+          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white">
+            <button
+              className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
+              onClick={goPrev}
+            >
+              <span className="size-6">
+                <HiArrowSmLeft />
+              </span>
+            </button>
+            <button
+              className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
+              onClick={goNext}
+            >
+              <span className="size-6">
+                <HiArrowSmRight />
+              </span>
+            </button>
           </div>
           <span className="absolute top-2 left-2">
             <HeartBtn />

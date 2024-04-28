@@ -100,7 +100,7 @@ section {
 
 /* Scroll bar Style */
 ::-webkit-scrollbar {
-  @apply size-1;
+  @apply size-2;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -140,5 +140,5 @@ section {
 }
 
 .disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply pointer-events-none select-none relative before:absolute before:z-20 before:-top-[13px] before:left-1/2 before:-translate-x-1/2 before:content-['🚫'] before:rounded-lg before:text-white before:font-medium after:absolute after:inset-0 after:rounded-xl after:z-10 after:bg-white/40 after:backdrop-blur-[1px];
 }

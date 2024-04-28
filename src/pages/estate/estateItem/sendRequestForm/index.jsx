@@ -10,6 +10,7 @@ export default function SendRequestForm() {
   const [isChecked, setIsChecked] = useState(false)
   const [estateTypes, setEstateTypes] = useState([])
   const [estateTypesValue, setEstateTypesValue] = useState([])
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(`${baseURL}/data/selectInfo`)
@@ -81,7 +82,7 @@ export default function SendRequestForm() {
           <div className="grid grid-cols-1 sm:grid-cols-[20px_1fr] gap-1.5 justify-start items-center">
             <DefaultCheckbox
               isChecked={isChecked}
-              setIsChecked={setIsChecked}
+              setIsChecked={() => setIsChecked((prevState) => !prevState)}
             />
             <span className="text-xs sm:text-sm">
               Müraciət və ərizə ilə bağlı{' '}

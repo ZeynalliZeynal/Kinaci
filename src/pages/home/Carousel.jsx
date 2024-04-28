@@ -1,23 +1,16 @@
 import { motion } from 'framer-motion'
 import { bannerCarouselImages as images } from '~/data/bannerCarouselImages.js'
-import { useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import Dots from '~/components/estateCards/Dots.jsx'
 import { useTranslation } from 'react-i18next'
+import { useSwapSlide } from '~/hooks/useSwapSlide.js'
 
 export default function Carousel() {
-  const [imageIndex, setImageIndex] = useState(0)
   const { t } = useTranslation()
-  const handleNext = () => {
-    setImageIndex((prevState) =>
-      imageIndex < images.length - 1 ? prevState + 1 : (prevState = 0),
-    )
-  }
-  const handlePrev = () => {
-    setImageIndex((prevState) =>
-      imageIndex > 0 ? prevState - 1 : (prevState = images.length - 1),
-    )
-  }
+
+  const [handlePrev, handleNext, imageIndex, setImageIndex] = useSwapSlide(
+    images.length,
+  )
 
   return (
     <section className="overflow-hidden">

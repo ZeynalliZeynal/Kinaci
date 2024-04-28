@@ -6,7 +6,7 @@ export default function ModalCloseBtn({ onClose, inset = false }) {
   const [isHovering, setIsHovering] = useState(false)
   return (
     <button
-      className="size-12 bg-orange-500 rounded-full absolute -top-5 -right-5 group"
+      className="size-12 bg-orange-500 rounded-xl absolute top-5 right-5 group"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onClick={onClose}
