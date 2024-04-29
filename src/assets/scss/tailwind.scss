@@ -103,6 +103,10 @@ section {
   @apply size-2;
 }
 
+.small-scrollbar::-webkit-scrollbar {
+  @apply size-1;
+}
+
 ::-webkit-scrollbar-thumb {
   @apply bg-orange-500 rounded-full;
 }

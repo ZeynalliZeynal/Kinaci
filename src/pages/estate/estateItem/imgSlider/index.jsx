@@ -35,7 +35,7 @@ export default function ImgSlider({ estateItem }) {
       />
       <div className="img-slider">
         <div className="img-container relative rounded overflow-hidden">
-          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white z-50">
+          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white z-50 opacity-50">
             <button
               className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
               onClick={goPrev}
@@ -70,8 +70,8 @@ export default function ImgSlider({ estateItem }) {
           >
             <CiZoomIn />
           </button>
-          <span className="absolute top-4 right-4 rounded-xl bg-white/30 size-[50px] p-2">
-            <HeartBtn />
+          <span className="absolute top-4 right-4 rounded-lg bg-blue-900/30 size-[50px] p-2">
+            <HeartBtn estate={estateItem} />
           </span>
         </div>
         <div className="print-hidden w-full bg-gradient-to-b from-[#fefefe] to-[#ededed] text-[#039] text-xxs grid grid-cols-2 py-2">

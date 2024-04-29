@@ -3,7 +3,7 @@ import NavBottom from './navBottom'
 
 export default function Navbar() {
   return (
-    <header>
+    <header className="text-blue-900">
       <NavTop />
       <NavBottom />
     </header>

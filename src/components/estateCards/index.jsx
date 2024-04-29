@@ -42,7 +42,7 @@ export default function EstateCards({ estate, isListed }) {
               setImageIndex={setImageIndex}
             />
           </div>
-          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white">
+          <div className="px-5 absolute flex justify-between w-full top-1/2 left-1/2 -translate-x-1/2 text-white opacity-50">
             <button
               className="rounded-full items-center bg-blue-900 p-1 hover:text-blue-900 hover:bg-white"
               onClick={goPrev}
@@ -60,8 +60,8 @@ export default function EstateCards({ estate, isListed }) {
               </span>
             </button>
           </div>
-          <span className="absolute top-2 left-2">
-            <HeartBtn />
+          <span className="absolute top-2 left-2 rounded-lg bg-blue-900/30 p-2">
+            <HeartBtn estate={estate} />
           </span>{' '}
           {estate.feature && (
             <span className="absolute top-2 right-2 text-md">

@@ -1,9 +1,9 @@
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import ContactLinks from '~/layout/navbar/navTop/contactLinks'
 import LangSelects from '~/layout/navbar/navTop/langSelects'
-import FavoriteButton from '~/layout/navbar/navTop/favouriteButton'
 import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx'
 import { useState } from 'react'
+import AddToFav from '~/redux/features/addToFav/AddToFav.jsx'
 
 export default function NavTop() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,7 @@ export default function NavTop() {
             <div className="w-4/12 lg:w-5/12">
               <div className="flex items-center justify-end gap-2.5">
                 <div className="favourites hidden lg:block">
-                  <FavoriteButton />
+                  <AddToFav />
                 </div>
                 <div className="lang flex gap-2.5 h-full">
                   <LangSelects />
