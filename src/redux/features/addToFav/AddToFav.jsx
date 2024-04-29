@@ -11,7 +11,6 @@ import { emptyList } from '~/redux/features/addToFav/addToFavSlice.js'
 export default function AddToFav() {
   const { t } = useTranslation()
   const addedItems = useSelector((state) => state.addToFav.addedItems)
-  console.log(addedItems)
   const dispatch = useDispatch()
 
   return (
