@@ -34,7 +34,7 @@ export default function LoginForm({ isOpen, closeModal }) {
               leaveTo="opacity-0 scale-95"
             >
               <div className="relative w-[742px] transition-all">
-                <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-20 text-blue-900">
+                <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-10 sm:p-20 text-blue-900">
                   <Dialog.Title
                     as="h3"
                     className="text-[30px] font-semibold mb-3"

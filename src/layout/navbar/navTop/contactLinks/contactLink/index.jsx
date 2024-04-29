@@ -19,7 +19,8 @@ export default function ContactLink({ data }) {
       ) : (
         <>
           <button className={data.styles} onClick={handleModal}>
-            <span>{data.icon}</span> {t(data.text)}
+            <span>{data.icon}</span>
+            <span className="hidden sm:inline-block">{t(data.text)}</span>
           </button>
           <LoginForm isOpen={isOpen} closeModal={handleModal} />
         </>

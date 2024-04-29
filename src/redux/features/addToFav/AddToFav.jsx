@@ -17,7 +17,7 @@ export default function AddToFav() {
   return (
     <Popover className="relative">
       <Popover.Button className="primary-button bg-red-600 text-white outline-none">
-        {t('favourites')}{' '}
+        <span className="hidden sm:inline-block">{t('favourites')}</span>
         <span className="relative size-5">
           <ImHeart />
           <span className="text-xxs absolute bg-white -top-1.5 -right-2.5 rounded-full text-red-600 font-bold size-5 border-2 border-red-500 inline-flex justify-center items-center">
