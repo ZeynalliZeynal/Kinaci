@@ -18,7 +18,7 @@ export default function LeftSection({ estateItem }) {
       <div className="rounded-xl bg-white shadow-section">
         <ImgSlider estateItem={estateItem} />
         <div className="body px-8">
-          <Actions />
+          <Actions estate={estateItem} />
           <ShortInfo estateItem={estateItem} />{' '}
           {estateItem?.facility_infrastructure && (
             <InfrastructureInfo estateItem={estateItem} />
