@@ -2,13 +2,11 @@ import Carousel from './Carousel'
 import Search from '~/components/search'
 import Loader from '~/components/loader'
 import { useEstate } from '~/hooks/useEstate'
-import { useTranslation } from 'react-i18next'
 import EstateSection from '~/pages/home/estateSection'
 import { useScrollTop } from '~/hooks/useScrollTop'
 
 export default function Home() {
   const [estates, isLoading] = useEstate()
-  const { t } = useTranslation()
   const newEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Yeni',
   )
@@ -32,27 +30,24 @@ export default function Home() {
       ) : (
         <>
           <EstateSection
-            t={t}
             bg="bg-blue-700/5"
             estates={newEstates}
-            title="newEstates"
-            paragraph="newEstatesParagraph"
+            title="Yeni əmlaklar"
+            paragraph="Son əlavə edilmiş əmlaklar"
             buttonLink="tags=Yeni"
           />
           <EstateSection
-            t={t}
             bg="bg-orange-500/5"
             estates={promotionalEstates}
-            title="promotionalEstates"
-            paragraph="promotionalEstatesParagraph"
+            title="Kampaniyalı daşınmaz əmlaklar"
+            paragraph="Ən sərfəli qiymətlər"
             buttonLink="tags=Endirim"
           />
           <EstateSection
-            t={t}
             bg="bg-blue-700/5"
             estates={specialEstates}
-            title="specialEstates"
-            paragraph="specialEstatesParagraph"
+            title="Ən Yaxşı Təkliflər"
+            paragraph="Sizə özəl təkliflərimiz"
             buttonLink="tags=Sərfəli"
           />
         </>

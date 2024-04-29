@@ -2,16 +2,14 @@ import SelectContainer from '~/components/search/searchBar/selectContainer/index
 import SearchInput from '~/components/search/searchInput/index.jsx'
 import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { useTranslation } from 'react-i18next'
 
 export default function SearchBarFilters({ state }) {
-  const { t } = useTranslation()
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
         <div className="grid gap-3">
           <label className="cursor-default text-sm mb-3 inline-block">
-            {t('Qiymət')}
+            Qiymət
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
@@ -28,7 +26,7 @@ export default function SearchBarFilters({ state }) {
         </div>
         <div className="grid gap-3">
           <label className="cursor-default text-sm mb-3 inline-block">
-            {t('Ölçü')} (m<sup>2</sup>)
+            Ölçü (m<sup>2</sup>)
           </label>
           <div className="grid grid-cols-2">
             <SearchInput
@@ -59,30 +57,30 @@ export default function SearchBarFilters({ state }) {
             <SelectContainer
               property="estateTypes"
               options={state.estateTypes} // setValue={(newValue) => handleChange('estateTypes', newValue)}
-              label={t('Əmlak növü')}
+              label="Əmlak növü"
             />
             <SelectContainer
               property="rooms"
               options={state.rooms}
-              label={t('Otaqların sayı')}
+              label="Otaqların sayı"
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <SelectContainer
               property="cities"
               options={state.cities}
-              label={t('Şəhər')}
+              label="Şəhər"
             />
             <SelectContainer
               property="places"
               options={state.places}
-              label={t('Məkan')}
+              label="Məkan"
             />
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="grid gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                {t('Mərtəbələrin sayı')}
+                Mərtəbələrin sayı
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -101,24 +99,24 @@ export default function SearchBarFilters({ state }) {
               <SelectContainer
                 property="tags"
                 options={state.badges}
-                label={t('Etiketlər')}
+                label="Etiketlər"
               />
             </div>
             <div className="grid gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                {t('Daşınmaz əmlak')} ID
+                Daşınmaz əmlak ID
               </label>
               <SearchInput
                 type="number"
                 property="estateId"
-                placeholder={`${t('Nümunə')}: 285326`}
+                placeholder="Nümunə: 285326"
               />
             </div>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
             <div className="constructor-year flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                {t('Tikinti ili')}
+                Tikinti ili
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -137,7 +135,7 @@ export default function SearchBarFilters({ state }) {
             </div>
             <div className="distance-sea flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                {t('Dənizə Məsafə')} (km)
+                Dənizə Məsafə (km)
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput
@@ -154,7 +152,7 @@ export default function SearchBarFilters({ state }) {
             </div>
             <div className="distance-airport flex-col gap-3">
               <label className="cursor-default text-sm mb-3 inline-block">
-                {t('Hava limanına məsafə')} (km)
+                Hava limanına məsafə (km)
               </label>
               <div className="grid grid-cols-2">
                 <SearchInput

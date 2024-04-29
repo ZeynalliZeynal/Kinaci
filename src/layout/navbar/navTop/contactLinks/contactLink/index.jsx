@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import LoginForm from '~/components/loginForm/index.jsx'
-import { useTranslation } from 'react-i18next'
 
 export default function ContactLink({ data }) {
-  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
   function handleModal() {
@@ -20,7 +18,7 @@ export default function ContactLink({ data }) {
         <>
           <button className={data.styles} onClick={handleModal}>
             <span>{data.icon}</span>
-            <span className="hidden sm:inline-block">{t(data.text)}</span>
+            <span className="hidden sm:inline-block">{data.text}</span>
           </button>
           <LoginForm isOpen={isOpen} closeModal={handleModal} />
         </>

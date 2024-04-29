@@ -51,7 +51,13 @@ export default function EstatesCards() {
           <div>
             <h2 className="text-4xl">Azərbaycanda daşınmaz əmlak</h2>
             <p className="text-sm mt-2.5">
-              <b>{totalItems}</b> nəticə tapıldı.
+              {typeof totalItems === 'string' ? (
+                <b>{totalItems}</b>
+              ) : (
+                <>
+                  <b>{totalItems}</b> nəticə tapıldı.
+                </>
+              )}
             </p>
           </div>
           <div className="grid sm:flex h-fit gap-2 text-sm items-center">

@@ -14,7 +14,7 @@ export default function LeftSection({ estateItem }) {
   }
 
   return (
-    <div className="grid gap-3 text-blue-900 px-2 order-2 md:order-first">
+    <div className="grid gap-3 text-blue-900 px-2">
       <div className="rounded-xl bg-white shadow-section">
         <ImgSlider estateItem={estateItem} />
         <div className="body px-8">

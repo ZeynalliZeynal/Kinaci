@@ -92,7 +92,7 @@ export default function Details({ estate, isListed }) {
                     100
               : estate?.price,
           )}{' '}
-          {estate?.selling_type === 'forRent' && `/${estate?.payment_type}`}
+          {estate?.selling_type === 'forRent' && ` / ${estate?.payment_type}`}
         </span>
       </button>
     </div>

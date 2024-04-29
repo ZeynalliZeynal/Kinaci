@@ -3,7 +3,7 @@ import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { adminInfo } from '~/data/adminInfo'
 import { Link } from 'react-router-dom'
 
-export default function ContuctUsSection() {
+export default function ContactUsSection() {
   return (
     <section className="print-hidden bg-orange-100 py-[50px] text-blue-900">
       <div className="container">

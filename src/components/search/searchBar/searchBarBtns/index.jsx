@@ -3,11 +3,9 @@ import classNames from 'classnames'
 import { TbTrashFilled } from 'react-icons/tb'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
 import { GrSearch } from 'react-icons/gr'
-import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 export default function SearchBarBtns({ state, dispatch }) {
-  const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
   const handleClearFilter = () => {
     const newSearchParams = new URLSearchParams()
@@ -48,7 +46,7 @@ export default function SearchBarBtns({ state, dispatch }) {
               />
             </svg>
           </motion.span>
-          {t('Daha çox filtr')}
+          Daha çox filtr
         </button>
         <button
           type="button"
@@ -58,7 +56,7 @@ export default function SearchBarBtns({ state, dispatch }) {
           <span className="size-3">
             <TbTrashFilled />
           </span>{' '}
-          {t('Hamısını sıfırla')}
+          Hamısını sıfırla
         </button>
       </div>
       <div className="text-md">
@@ -66,7 +64,7 @@ export default function SearchBarBtns({ state, dispatch }) {
           <span>
             <GrSearch />
           </span>{' '}
-          {t('Axtar')}
+          Axtar
         </DefaultBtn>
       </div>
     </div>

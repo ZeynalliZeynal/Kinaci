@@ -3,10 +3,8 @@ import { Fragment } from 'react'
 import logo from '~/assets/img/logo.svg'
 import ModalForm from '~/components/loginForm/DefaultForm.jsx'
 import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
-import { useTranslation } from 'react-i18next'
 
 export default function LoginForm({ isOpen, closeModal }) {
-  const { t } = useTranslation()
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={closeModal}>
@@ -42,7 +40,7 @@ export default function LoginForm({ isOpen, closeModal }) {
                     <div className="w-[150px] mb-4">
                       <img src={`${logo}`} alt="Kinaci" />
                     </div>
-                    {t('appointment')}
+                    Randevu Al
                   </Dialog.Title>
                   <ModalForm onClose={closeModal} />
                 </Dialog.Panel>

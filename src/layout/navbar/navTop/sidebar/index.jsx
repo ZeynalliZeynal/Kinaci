@@ -3,11 +3,9 @@ import ContactIcons from '~/components/ContactIcons.jsx'
 import classNames from 'classnames'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 
 export default function Sidebar({ isOpen, onClose }) {
   const location = useLocation()
-  const { t } = useTranslation()
 
   useEffect(() => {
     onClose()
@@ -45,7 +43,7 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         <div className="main-window relative z-40 min-h-screen">
           <h3 className="flex items-center justify-between head px-[30px] py-[20px] text-3xl font-semibold border-b border-gray-200">
-            {t('Tez keçidlər')}
+            Tez keçidlər
             <button
               className="size-10 rounded-full bg-gray-100 p-3 hover:scale-125 transition-all"
               onClick={() => onClose((open) => !open)}
@@ -67,13 +65,13 @@ export default function Sidebar({ isOpen, onClose }) {
           </h3>
           <SidebarLink />
           <div className="customer-service flex flex-col items-start p-[30px] border-y border-gray-200">
-            <span className="text-sm">{t('Müştəri Xidmətləri')}</span>
+            <span className="text-sm">Müştəri Xidmətləri</span>
             <a href="tel:+994514586806" className="font-semibold text-md">
               +994(51) 458 68 06
             </a>
           </div>
           <div className="flex items-center p-[30px]">
-            {t('Bizi izləyin')} <ContactIcons />
+            Bizi izləyin <ContactIcons />
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import ContactLinks from '~/layout/navbar/navTop/contactLinks'
-import LangSelects from '~/layout/navbar/navTop/langSelects'
 import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx'
 import { useState } from 'react'
 import AddToFav from '~/redux/features/addToFav/AddToFav.jsx'
@@ -30,9 +29,6 @@ export default function NavTop() {
               <div className="flex items-center justify-end gap-2.5">
                 <div className="favourites">
                   <AddToFav />
-                </div>
-                <div className="lang flex gap-2.5 h-full">
-                  <LangSelects />
                 </div>
               </div>
             </div>

@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
@@ -9,14 +8,13 @@ import { ImHeart } from 'react-icons/im'
 import { emptyList } from '~/redux/features/addToFav/addToFavSlice.js'
 
 export default function AddToFav() {
-  const { t } = useTranslation()
   const addedItems = useSelector((state) => state.addToFav.addedItems)
   const dispatch = useDispatch()
 
   return (
     <Popover className="relative">
       <Popover.Button className="primary-button bg-red-600 text-white outline-none">
-        <span className="hidden sm:inline-block">{t('favourites')}</span>
+        <span className="hidden sm:inline-block">Bəyəndiklərim</span>
         <span className="relative size-5">
           <ImHeart />
           <span className="text-xxs absolute bg-white -top-1.5 -right-2.5 rounded-full text-red-600 font-bold size-5 border-2 border-red-500 inline-flex justify-center items-center">

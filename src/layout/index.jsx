@@ -1,7 +1,7 @@
 import Navbar from '~/layout/navbar'
 import Footer from '~/layout/footer'
 import { Outlet, useLocation } from 'react-router-dom'
-import ContactUsSection from './contuctUsSection'
+import ContactUsSection from './contactUsSection'
 import Breadcrumbs from '~/layout/breadcrumbs'
 import { useIntersectionObserver } from '~/hooks/useIntersectionObserver.js'
 import GoToTopButton from '~/components/GoToTopButton.jsx'

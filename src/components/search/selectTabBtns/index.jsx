@@ -1,10 +1,8 @@
 import classNames from 'classnames'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
 export default function SelectTabBtns({ setSellingType }) {
-  const { t } = useTranslation()
   const { sellingType } = useParams()
   const [activeButton, setActiveButton] = useState(sellingType)
 
@@ -19,21 +17,21 @@ export default function SelectTabBtns({ setSellingType }) {
         onClick={(e) => handleSetActive(e.currentTarget)}
         className="w-[100px] bg-gray-100 px-7 py-4 active:transform-none relative"
       >
-        <span className="z-[5] relative">{t('Hamısı')}</span>
+        <span className="z-[5] relative">Hamısı</span>
       </button>
       <button
         onClick={(e) => handleSetActive(e.currentTarget)}
         className="w-[100px] px-7 py-4 bg-gray-100 active:transform-none relative"
         data-label="forRent"
       >
-        <span className="z-[5] relative">{t('İcarə')}</span>
+        <span className="z-[5] relative">İcarə</span>
       </button>
       <button
         onClick={(e) => handleSetActive(e.currentTarget)}
         className="w-[100px] px-7 py-4 bg-gray-100 active:transform-none relative"
         data-label="forSale"
       >
-        <span className="z-[5] relative">{t('Satılır')}</span>
+        <span className="z-[5] relative">Satılır</span>
       </button>
       <div
         className={classNames(

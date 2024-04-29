@@ -1,10 +1,12 @@
 import Search from '~/components/search/index.jsx'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import EstatesCards from '~/pages/estate/estatesCards/index.jsx'
-import { useScrollTop } from '~/hooks/useScrollTop.js'
 
 export default function Estate() {
-  useScrollTop()
+  const ref = useRef()
+  useEffect(() => {
+    if (ref.current) ref.current.scrollIntoView({ behavior: 'smooth' })
+  }, [])
   useEffect(() => {
     document.title = 'Kinaci - Əmlak'
   }, [])
@@ -13,7 +15,9 @@ export default function Estate() {
       <section className="bg-blue-900">
         <Search />
       </section>
-      <EstatesCards />
+      <div ref={ref}>
+        <EstatesCards />
+      </div>
     </main>
   )
 }

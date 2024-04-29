@@ -6,7 +6,6 @@ import NoProduct from '~/components/NoProduct.jsx'
 
 export default function EstateSection({
   estates,
-  t,
   title,
   paragraph,
   bg,
@@ -27,18 +26,18 @@ export default function EstateSection({
       <div className="container">
         <div className="grid md:flex justify-between mb-8">
           <div className="header text-blue-900">
-            <h2>{t(title)}</h2>
-            <p className="text-sm">{t(paragraph)}</p>
+            <h2>{title}</h2>
+            <p className="text-sm">{paragraph}</p>
           </div>
           <div className="tab-btns flex py-2.5 gap-2.5">
             <TabBtns
-              text={'Satılır'}
-              sellingType={'forSale'}
+              text="Satılır"
+              sellingType="forSale"
               activeSellingType={activeSellingType}
               setActiveSellingType={setActiveSellingType}
             />
             <TabBtns
-              text={'Kirayə'}
+              text="İcarə"
               sellingType={'forRent'}
               activeSellingType={activeSellingType}
               setActiveSellingType={setActiveSellingType}
