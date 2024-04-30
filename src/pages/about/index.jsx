@@ -6,10 +6,10 @@ import OurCrew from './OurCrew'
 import VideoSection from './VideoSection'
 import Certificates from './Certificates'
 import FormSection from './FormSection'
-import { useScrollTop } from '~/hooks/useScrollTop.js'
+import { useScrollToRef } from '~/hooks/useScrollTo.js'
 
 export default function About() {
-  useScrollTop()
+  const ref = useScrollToRef()
   useEffect(() => {
     document.title = 'Kinaci - Şirkət haqqında'
   }, [])
@@ -18,7 +18,10 @@ export default function About() {
       <section className="bg-orange-50">
         <Search />
       </section>
-      <section className="hidden md:block w-full img-banner h-[490px]" />
+      <section
+        ref={ref}
+        className="hidden md:block w-full img-banner h-[490px]"
+      />
       <InfoSection />
       <StatisticsSection />
       <OurCrew />

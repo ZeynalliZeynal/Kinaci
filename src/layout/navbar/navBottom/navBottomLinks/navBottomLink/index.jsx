@@ -16,7 +16,7 @@ export default function NavBottomLink({ props }) {
               },
             )}
           >
-            {props.pathName}{' '}
+            {props.name}{' '}
             {props.extendable && (
               <span className={classNames({ 'text-orange-500': isActive })}>
                 {isActive ? (

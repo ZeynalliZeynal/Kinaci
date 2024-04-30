@@ -10,7 +10,7 @@ export default function SidebarLink({ props }) {
       >
         {({ isActive }) => (
           <span className={classNames({ 'text-orange-500': isActive })}>
-            {props.pathName}
+            {props.name}
           </span>
         )}
       </NavLink>{' '}

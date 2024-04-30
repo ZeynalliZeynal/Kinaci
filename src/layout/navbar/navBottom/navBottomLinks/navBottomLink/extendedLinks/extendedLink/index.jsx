@@ -7,7 +7,7 @@ export default function ExtendedLink({ props }) {
       <NavLink to={props.to} className="font-base h-full hover:text-orange-500">
         {({ isActive }) => (
           <span className={classNames({ 'text-orange-500': isActive })}>
-            {props.pathName}
+            {props.name}
           </span>
         )}
       </NavLink>

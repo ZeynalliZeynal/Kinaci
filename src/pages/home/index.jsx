@@ -3,7 +3,7 @@ import Search from '~/components/search'
 import Loader from '~/components/loader'
 import { useEstate } from '~/hooks/useEstate'
 import EstateSection from '~/pages/home/estateSection'
-import { useScrollTop } from '~/hooks/useScrollTop'
+import { useScrollToTop } from '~/hooks/useScrollTo.js'
 
 export default function Home() {
   const [estates, isLoading] = useEstate()
@@ -17,7 +17,7 @@ export default function Home() {
     (newEstates) => newEstates.feature === 'Sərfəli',
   )
 
-  useScrollTop()
+  useScrollToTop()
 
   return (
     <main>

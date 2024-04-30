@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom'
 import NavBottomLinks from './navBottomLinks'
 import ContactIcons from '../../../components/ContactIcons.jsx'
 
-export default function NavBottom() {
+export default function NavBottom({ isHidden }) {
   return (
-    <nav className="h-[95px] shadow-navbar bg-white">
+    <nav
+      className={`h-[95px] shadow-navbar bg-white transition-transform duration-300 relative z-[988] ${isHidden ? '-translate-y-[152px] ' : ''}`}
+    >
       <div className="container h-full">
         <div className="flex justify-between items-center h-full">
           <div className="w-1/2 lg:w-1/6">

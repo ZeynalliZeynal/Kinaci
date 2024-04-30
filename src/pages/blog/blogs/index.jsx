@@ -6,12 +6,14 @@ import NoProduct from '~/components/NoProduct.jsx'
 import { useBlogs } from '~/hooks/useBlogs.js'
 import BlogsList from '~/pages/blog/blogs/BlogsList.jsx'
 import { initialState, reducer } from '~/reducers/blogsReducer.js'
+import { useScrollToRef } from '~/hooks/useScrollTo.js'
 
 export default function Blogs() {
   const [{ blogs, isLoading, totalItems }, dispatch] = useReducer(
     reducer,
     initialState,
   )
+  const ref = useScrollToRef()
 
   const itemsPerPage = 6
 
@@ -23,7 +25,7 @@ export default function Blogs() {
   useBlogs(dispatch)
 
   return (
-    <section className="text-blue-900">
+    <section ref={ref} className="text-blue-900">
       <div className="container">
         <div className="mb-8">
           <h2>Bloq</h2>

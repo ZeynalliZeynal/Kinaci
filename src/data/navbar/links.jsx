@@ -20,7 +20,7 @@ export const links = [
     styles:
       'primary-button group text-orange-500 bg-white border-orange-500 border hover:bg-orange-500 hover:text-white',
     icon: <LuCalendarClock />,
-    text: 'appointment',
+    text: 'Randevu Al',
     isBtn: true,
   },
 ]

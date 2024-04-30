@@ -1,12 +1,10 @@
 import Search from '~/components/search/index.jsx'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import EstatesCards from '~/pages/estate/estatesCards/index.jsx'
+import { useScrollToRef } from '~/hooks/useScrollTo.js'
 
 export default function Estate() {
-  const ref = useRef()
-  useEffect(() => {
-    if (ref.current) ref.current.scrollIntoView({ behavior: 'smooth' })
-  }, [])
+  const ref = useScrollToRef()
   useEffect(() => {
     document.title = 'Kinaci - Əmlak'
   }, [])

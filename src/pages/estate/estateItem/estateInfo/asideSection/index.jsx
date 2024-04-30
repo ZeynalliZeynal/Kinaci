@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 
 export default function AsideSection({ estateItem }) {
   const [regions, setRegions] = useState([])
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +25,7 @@ export default function AsideSection({ estateItem }) {
     fetchData()
   }, [])
   return (
-    <aside className="px-2 mb-5">
+    <aside className="px-2 mb-5 text-blue-900">
       <div className="container">
         <div className="grid gap-4">
           <div className="estate-id py-4 w-full text-orange-600 rounded-xl bg-orange-200 font-semibold flex justify-center">
