@@ -6,7 +6,7 @@ import ContactIcons from '../../../components/ContactIcons.jsx'
 export default function NavBottom({ isHidden }) {
   return (
     <nav
-      className={`h-[95px] shadow-navbar bg-white transition-transform duration-300 relative z-[988] ${isHidden ? '-translate-y-[152px] ' : ''}`}
+      className={`h-[95px] shadow-navbar bg-white transition-transform duration-300 relative z-[688] ${isHidden ? '-translate-y-[152px] ' : ''}`}
     >
       <div className="container h-full">
         <div className="flex justify-between items-center h-full">

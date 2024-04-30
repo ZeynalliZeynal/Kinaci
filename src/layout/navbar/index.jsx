@@ -19,7 +19,7 @@ export default function Navbar() {
   }, [prevScrollPos])
   return (
     <header
-      className={`text-blue-900 sticky top-0 z-[990] transition-transform duration-300 ${isHidden ? '-translate-y-full' : ''}`}
+      className={`text-blue-900 sticky top-0 z-[690] transition-transform duration-300 ${isHidden ? '-translate-y-full' : ''}`}
     >
       <NavTop />
       <NavBottom isHidden={isHidden} />

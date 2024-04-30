@@ -9,7 +9,7 @@ export default function NavTop() {
   return (
     <>
       <Sidebar isOpen={isOpen} onClose={setIsOpen} />
-      <nav className={'h-[57px] bg-blue-50 text-sm sticky top-0 z-[989]'}>
+      <nav className={'h-[57px] bg-blue-50 text-sm sticky top-0 z-[689]'}>
         <div className="container h-full">
           <div className="flex items-center justify-between h-full">
             <div className="w-1/2 lg:w-7/12">
