@@ -44,7 +44,7 @@ export default function LoginForm({ isOpen, closeModal }) {
                   </Dialog.Title>
                   <ModalForm onClose={closeModal} />
                 </Dialog.Panel>
-                <ModalCloseBtn />
+                <ModalCloseBtn onClose={closeModal} />
               </div>
             </Transition.Child>
           </div>
