@@ -7,19 +7,20 @@ export default function DownloadBtns() {
     sectionToPrint.focus() // Focus the element for better printing behavior
     window.print()
   }
+
   return (
-    <div id="print-hidden" className="mt-8 text-md flex justify-center gap-8">
-      <a
-        href="#"
-        className={`rounded-xl px-12 py-4 border hover:text-white hover:bg-orange-500 border-orange-500 text-orange-500`}
-      >
+    <div
+      id="print-hidden"
+      className="mt-8 text-md flex justify-center gap-8 py-8"
+    >
+      <button className="rounded-xl px-12 py-4 border hover:text-white hover:bg-orange-500 border-orange-500 text-orange-500 disabled">
         <span className="inline-flex items-center gap-2">
           <span className="size-4">
             <FaDownload />
           </span>
           PDF yüklə
         </span>
-      </a>
+      </button>
 
       <button
         className={`rounded-xl px-12 py-4 border hover:text-white hover:bg-orange-500 border-orange-500 text-orange-500`}

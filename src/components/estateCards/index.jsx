@@ -60,8 +60,10 @@ export default function EstateCards({ estate, isListed }) {
               </span>
             </button>
           </div>
-          <span className="absolute top-2 left-2 rounded-lg bg-blue-900/30 p-2">
-            <HeartBtn estate={estate} />
+          <span className="absolute top-4 left-4 rounded-lg bg-blue-900/30 p-2 size-10 inline-flex justify-center items-center">
+            <span className="size-7 inline-flex justify-center items-center">
+              <HeartBtn estate={estate} />
+            </span>
           </span>{' '}
           {estate.feature && (
             <span className="absolute top-2 right-2 text-md">

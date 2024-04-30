@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  addedItems: [],
+  addedItems: localStorage.getItem('addedItems')
+    ? JSON.parse(localStorage.getItem('addedItems'))
+    : [],
 }
 
 export const addToFavSlice = createSlice({
@@ -17,9 +19,12 @@ export const addToFavSlice = createSlice({
         state.addedItems = state.addedItems.filter(
           (item) => item.id !== action.payload.id,
         )
+
+      localStorage.setItem('addedItems', JSON.stringify(state.addedItems))
     },
     emptyList: (state) => {
       state.addedItems = []
+      localStorage.removeItem('addedItems')
     },
   },
 })
