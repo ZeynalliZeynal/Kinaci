@@ -31,7 +31,7 @@ export default function AddToFav() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute top-[135%] left-1/2 -translate-x-1/2 z-[80] w-[250px] max-h-[300px] overflow-y-auto small-scrollbar">
+        <Popover.Panel className="absolute top-[135%] right-0 z-[80] w-[250px] max-h-[300px] overflow-y-auto small-scrollbar">
           <ul className="p-3 text-sm bg-blue-900 text-white rounded-xl flex-col gap-3">
             {addedItems.length !== 0 ? (
               <>

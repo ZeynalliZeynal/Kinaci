@@ -17,6 +17,7 @@ export default function HeartBtn({ estate }) {
       onClick={() => dispatch(addItem(estate))}
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
+      onBlur={() => setIsActive(false)}
     >
       {!isActive && isAdded ? (
         <ImHeart />
