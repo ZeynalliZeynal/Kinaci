@@ -1,6 +1,20 @@
 import moment from 'moment'
+import axios from 'axios'
+import { baseURL } from '~/data/consts.js'
 
-export default function BlogComment({ comments }) {
+export default function BlogComment({ comments, blogId, dispatch }) {
+  const handlePostReply = async (id) => {
+    try {
+      const getRes = await axios.get(
+        `${baseURL}/data/blogs/${blogId}/comments/${id}/replies`,
+      )
+
+      dispatch({ type: 'SET_REPLIES', payload: getRes.data })
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+
   return (
     <>
       {comments.length > 0 && (
@@ -20,11 +34,19 @@ export default function BlogComment({ comments }) {
                       </time>
                     </div>
                   </div>
-                  <button className="h-fit rounded-lg text-xs font-semibold text-blue-500 items-end hover:bg-blue-500/15 py-1 px-2 disabled">
+                  <button
+                    className="h-fit rounded-lg text-xs font-semibold text-blue-500 items-end hover:bg-blue-500/15 py-1 px-2"
+                    onClick={() => handlePostReply(id)}
+                  >
                     Cavab ver
                   </button>
                 </div>
                 <p className="text-sm">{comment}</p>
+                <ul>
+                  {replies?.map((reply) => (
+                    <li key={reply.id}>{reply.comment}</li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

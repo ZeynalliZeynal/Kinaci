@@ -6,6 +6,7 @@ export const initialState = {
   },
   countSymbols: 500,
   comments: [],
+  replies: [],
   isChecked: false,
 }
 
@@ -17,6 +18,8 @@ export const reducer = (state, action) => {
       return { ...state, isChecked: !state.isChecked }
     case 'SET_COMMENTS':
       return { ...state, comments: action.payload }
+    case 'SET_REPLIES':
+      return { ...state, replies: action.payload }
     case 'RESET_VALUES':
       return {
         ...initialState,

@@ -8,10 +8,8 @@ import BlogComment from '../commentSection/BlogComment'
 import CommentForm from '../commentSection/CommentForm'
 
 export default function CommentSection({ blog }) {
-  const [{ values, isChecked, comments, countSymbols }, dispatch] = useReducer(
-    reducer,
-    initialState,
-  )
+  const [{ values, isChecked, comments, countSymbols, replies }, dispatch] =
+    useReducer(reducer, initialState)
 
   moment.locale('az')
 
@@ -51,7 +49,12 @@ export default function CommentSection({ blog }) {
         <h3 className="text-lg font-semibold mb-4">
           {comments.length > 0 ? `${comments.length} Şərh` : 'Şərh yoxdur'}
         </h3>
-        <BlogComment comments={comments} />
+        <BlogComment
+          comments={comments}
+          blogId={blog?.id}
+          replies={replies}
+          dispatch={dispatch}
+        />
         <div className="grid border-t-2 border-gray-200 pt-7">
           <h3 className="text-lg font-semibold mb-5">Şərh yaz</h3>
           <CommentForm

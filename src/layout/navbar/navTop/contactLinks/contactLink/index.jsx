@@ -4,10 +4,6 @@ import LoginForm from '~/components/loginForm/index.jsx'
 export default function ContactLink({ data }) {
   const [isOpen, setIsOpen] = useState(false)
 
-  function handleModal() {
-    setIsOpen(!isOpen)
-  }
-
   return (
     <li className={!data.isBtn ? 'hidden lg:flex' : ''}>
       {!data.isBtn ? (
@@ -16,11 +12,11 @@ export default function ContactLink({ data }) {
         </a>
       ) : (
         <>
-          <button className={data.styles} onClick={handleModal}>
+          <button className={data.styles} onClick={() => setIsOpen(true)}>
             <span>{data.icon}</span>
             <span className="hidden sm:inline-block">{data.text}</span>
           </button>
-          <LoginForm isOpen={isOpen} closeModal={handleModal} />
+          <LoginForm isOpen={isOpen} closeModal={() => setIsOpen(false)} />
         </>
       )}
     </li>

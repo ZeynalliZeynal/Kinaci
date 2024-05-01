@@ -1,1 +1,1 @@
-export const baseURL = 'https://kinaci-server.onrender.com'
+export const baseURL = 'http://localhost:3000'

@@ -45,7 +45,7 @@ export default function AsideSection({ estateItem }) {
               Digər Bölgələrdəki Əmlaklar
             </h3>
             <ul className="gap-2.5 flex-col text-md mt-5 justify-start">
-              {regions.map((region, index) => (
+              {regions?.map((region, index) => (
                 <li key={index} className="w-full justify-start">
                   <Link
                     to={`/estate?cities=${region.label}`}

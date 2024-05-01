@@ -11,7 +11,7 @@ export default function DownloadBtns() {
   return (
     <div
       id="print-hidden"
-      className="mt-8 text-md flex justify-center gap-8 py-8"
+      className="mt-8 text-md flex justify-center gap-8 py-8 flex-col sm:flex-row"
     >
       <button className="rounded-xl px-12 py-4 border hover:text-white hover:bg-orange-500 border-orange-500 text-orange-500 disabled">
         <span className="inline-flex items-center gap-2">
