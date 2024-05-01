@@ -4,6 +4,7 @@ import Loader from '~/components/loader'
 import { useEstate } from '~/hooks/useEstate'
 import EstateSection from '~/pages/home/estateSection'
 import { useScrollToTop } from '~/hooks/useScrollTo.js'
+import OffersSection from '~/pages/home/OffersSection.jsx'
 
 export default function Home() {
   const [estates, isLoading] = useEstate()
@@ -51,7 +52,8 @@ export default function Home() {
             buttonLink="tags=Sərfəli"
           />
         </>
-      )}
+      )}{' '}
+      <OffersSection />
     </main>
   )
 }

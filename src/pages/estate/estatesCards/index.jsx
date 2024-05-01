@@ -27,6 +27,15 @@ export default function EstatesCards() {
   }
 
   useEffect(() => {
+    const isListedStored = localStorage.getItem('isListed')
+    if (isListedStored)
+      dispatch({
+        type: 'SET_LISTED',
+        payload: JSON.parse(isListedStored),
+      })
+  }, [])
+
+  useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth)
     }
@@ -47,7 +56,7 @@ export default function EstatesCards() {
   return (
     <section className="py-[50px] text-blue-900 bg-gray-100">
       <div className="container">
-        <div className="mb-7 grid grid-cols-1 lg:flex justify-between">
+        <div className="mb-7 grid grid-cols-1 lg:flex justify-between gap-4">
           <div>
             <h2 className="text-4xl">Azərbaycanda daşınmaz əmlak</h2>
             <p className="text-sm mt-2.5">
@@ -66,23 +75,26 @@ export default function EstatesCards() {
               <span className="flex bg-white rounded-xl px-[14px] py-2.5 gap-3">
                 <button
                   className="size-5 text-orange-500 hover:drop-shadow-lg transition-all"
-                  onClick={() =>
+                  onClick={() => {
                     dispatch({
                       type: 'SET_LISTED',
                       payload: false,
                     })
-                  }
+
+                    localStorage.setItem('isListed', JSON.stringify(false))
+                  }}
                 >
                   <BsFillGrid3X3GapFill />
                 </button>
                 <button
                   className={`size-5 text-orange-500 hover:drop-shadow-lg transition-all`}
-                  onClick={() =>
+                  onClick={() => {
                     dispatch({
                       type: 'SET_LISTED',
                       payload: true,
                     })
-                  }
+                    localStorage.setItem('isListed', JSON.stringify(true))
+                  }}
                 >
                   <FaList />
                 </button>
