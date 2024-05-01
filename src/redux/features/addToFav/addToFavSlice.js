@@ -6,7 +6,7 @@ const initialState = {
     : [],
 }
 
-export const addToFavSlice = createSlice({
+const addToFavSlice = createSlice({
   name: 'addToFav',
   initialState,
   reducers: {

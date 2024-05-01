@@ -1,6 +1,7 @@
 import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
 
+// TODO: login and signup
 export default function DefaultForm({ onClose }) {
   function handleSubmit(e) {
     e.preventDefault()

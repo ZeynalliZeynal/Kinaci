@@ -5,11 +5,10 @@ import { baseURL } from '~/data/consts.js'
 export default function BlogComment({ comments, blogId, dispatch }) {
   const handlePostReply = async (id) => {
     try {
-      const getRes = await axios.get(
+      const res = await axios.get(
         `${baseURL}/data/blogs/${blogId}/comments/${id}/replies`,
       )
-
-      dispatch({ type: 'SET_REPLIES', payload: getRes.data })
+      console.log(res.data)
     } catch (err) {
       console.warn(err)
     }

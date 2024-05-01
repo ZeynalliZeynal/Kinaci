@@ -8,8 +8,10 @@ import BlogComment from '../commentSection/BlogComment'
 import CommentForm from '../commentSection/CommentForm'
 
 export default function CommentSection({ blog }) {
-  const [{ values, isChecked, comments, countSymbols, replies }, dispatch] =
-    useReducer(reducer, initialState)
+  const [{ values, isChecked, comments, countSymbols }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  )
 
   moment.locale('az')
 
@@ -52,7 +54,6 @@ export default function CommentSection({ blog }) {
         <BlogComment
           comments={comments}
           blogId={blog?.id}
-          replies={replies}
           dispatch={dispatch}
         />
         <div className="grid border-t-2 border-gray-200 pt-7">
