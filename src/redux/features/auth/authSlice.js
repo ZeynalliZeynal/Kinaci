@@ -8,6 +8,8 @@ const initialState = {
       userName: 'zzeyn04',
       fullName: 'Zeynalli Zeynal',
       password: 'zzeyn_04',
+      email: 'zzeynalli446@gmail.com',
+      tel: '+994514586806',
     },
   ],
 }
