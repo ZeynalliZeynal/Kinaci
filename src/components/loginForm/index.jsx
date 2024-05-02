@@ -1,10 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import logo from '~/assets/img/logo.svg'
-import ModalForm from '~/components/loginForm/DefaultForm.jsx'
+import DefaultForm from '~/components/loginForm/DefaultForm.jsx'
 import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
 
 export default function LoginForm({ isOpen, closeModal }) {
+  const [error, setError] = useState('')
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={closeModal}>
@@ -34,15 +35,22 @@ export default function LoginForm({ isOpen, closeModal }) {
               <div className="relative w-[742px] transition-all">
                 <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-10 sm:p-20 text-blue-900">
                   <Dialog.Title
-                    as="h3"
-                    className="text-[30px] font-semibold mb-3"
+                    as="div"
+                    className="flex justify-between items-center"
                   >
-                    <div className="w-[150px] mb-4">
-                      <img src={`${logo}`} alt="Kinaci" />
+                    <div>
+                      <div className="w-[150px] mb-4">
+                        <img src={`${logo}`} alt="Kinaci" />
+                      </div>
+                      <h3 className="text-[30px] font-semibold mb-3">Hesab</h3>
                     </div>
-                    Randevu Al
+                    <span className="text-red-500 text-sm">{error}</span>
                   </Dialog.Title>
-                  <ModalForm onClose={closeModal} />
+                  <DefaultForm
+                    onClose={closeModal}
+                    setError={setError}
+                    error={error}
+                  />
                 </Dialog.Panel>
 
                 <ModalCloseBtn onClose={closeModal} />

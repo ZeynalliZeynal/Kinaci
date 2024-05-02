@@ -1,18 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  activeAccount: null,
-  accounts: [
-    {
-      id: 1,
-      userName: 'zzeyn04',
-      fullName: 'Zeynalli Zeynal',
-      password: 'zzeyn_04',
-      email: 'zzeynalli446@gmail.com',
-      tel: '+994514586806',
-    },
-  ],
+  activeAccount: localStorage.getItem('activeAccount')
+    ? JSON.parse(localStorage.getItem('activeAccount'))
+    : null,
+  accounts: localStorage.getItem('accounts')
+    ? JSON.parse(localStorage.getItem('accounts'))
+    : [],
 }
+console.log(initialState)
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -21,12 +17,21 @@ export const authSlice = createSlice({
     signUp: (state, action) => {
       state.activeAccount = action.payload
       state.accounts.push(action.payload)
+      localStorage.setItem('activeAccount', JSON.stringify(action.payload))
+      localStorage.setItem('accounts', JSON.stringify(state.accounts))
     },
     login: (state, action) => {
-      state.activeAccount = action.payload
+      state.activeAccount = state.accounts.find(
+        (acc) => acc.email === action.payload.email,
+      )
+      localStorage.setItem('activeAccount', JSON.stringify(state.activeAccount))
+    },
+    logout: (state) => {
+      state.activeAccount = null
+      localStorage.removeItem('activeAccount')
     },
   },
 })
 
-export const { signUp, login } = authSlice.actions
+export const { signUp, login, logout } = authSlice.actions
 export default authSlice.reducer

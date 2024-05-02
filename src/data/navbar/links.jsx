@@ -1,7 +1,7 @@
 import { IoMailOutline } from 'react-icons/io5'
 import { BsTelephone } from 'react-icons/bs'
-import { LuCalendarClock } from 'react-icons/lu'
 import { adminInfo } from '~/data/adminInfo/index.jsx'
+import { FiLogIn } from 'react-icons/fi'
 
 export const links = [
   {
@@ -19,8 +19,8 @@ export const links = [
   {
     styles:
       'primary-button group text-orange-500 bg-white border-orange-500 border hover:bg-orange-500 hover:text-white',
-    icon: <LuCalendarClock />,
-    text: 'Randevu Al',
+    icon: <FiLogIn />,
+    text: 'Daxil ol',
     isBtn: true,
   },
 ]
