@@ -1,12 +1,14 @@
 import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
-import { login, signUp } from '~/redux/features/auth/authSlice.js'
+import { useEffect, useState } from 'react'
+import { fetchUsers, login, postUser } from '~/redux/features/auth/authSlice.js'
+
+// TODO: handle status
 
 export default function DefaultForm({ onClose, setError, error }) {
-  const currentAccount = useSelector((state) => state.auth.activeAccount)
   const accounts = useSelector((state) => state.auth.accounts)
+  const usersStatus = useSelector((state) => state.auth.status)
 
   const initialState = {
     id: accounts.length ? accounts[accounts.length - 1].id + 1 : 1,
@@ -23,15 +25,13 @@ export default function DefaultForm({ onClose, setError, error }) {
 
   const dispatch = useDispatch()
 
-  console.log(currentAccount)
-
   const handleRegisterType = () => {
     setRegistrationType(registrationType === 'signup' ? 'login' : 'signup')
     setError('')
     setAddedAccount(initialState)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const doesPropertyExist = (prop) => {
       return accounts.find((acc) => acc[prop] === addedAccount[prop]) || false
@@ -44,7 +44,7 @@ export default function DefaultForm({ onClose, setError, error }) {
         !doesPropertyExist('tel') &&
         !doesPropertyExist('password')
       ) {
-        dispatch(signUp(addedAccount))
+        dispatch(postUser(addedAccount))
         onClose && onClose()
         setError('')
         setAddedAccount(initialState)
@@ -65,6 +65,13 @@ export default function DefaultForm({ onClose, setError, error }) {
       }
     }
   }
+
+  useEffect(() => {
+    if (usersStatus === 'idle') {
+      dispatch(fetchUsers())
+    }
+  }, [usersStatus, dispatch])
+  console.log(accounts)
 
   return (
     <form
