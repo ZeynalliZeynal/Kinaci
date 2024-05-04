@@ -1,5 +1,5 @@
 import ImgSlider from '~/pages/estate/estateItem/imgSlider/index.jsx'
-import Actions from '~/pages/estate/estateItem/actions/index.jsx'
+import Actions from '~/redux/features/addToFav/actions/index.jsx'
 import ShortInfo from '~/pages/estate/estateItem/shortInfo/index.jsx'
 import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo/index.jsx'
 import NavigateLinks from '~/pages/estate/estateItem/navigateLinks/index.jsx'

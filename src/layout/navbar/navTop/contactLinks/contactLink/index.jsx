@@ -1,4 +1,4 @@
-import Registration from '~/components/Registeration.jsx'
+import Registration from '~/redux/features/auth/Registeration.jsx'
 
 export default function ContactLink({ data }) {
   return (

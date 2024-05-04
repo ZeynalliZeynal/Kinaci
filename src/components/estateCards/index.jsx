@@ -4,7 +4,7 @@ import Details from '~/components/estateCards/Details.jsx'
 import Dots from '~/components/estateCards/Dots.jsx'
 import { useNavigate } from 'react-router-dom'
 import CardBadge from '~/components/estateCards/CardBadge.jsx'
-import HeartBtn from '~/components/HeartBtn.jsx'
+import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx'
 import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi'
 import { useSwapSlide } from '~/hooks/useSwapSlide.js'
 

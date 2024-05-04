@@ -1,4 +1,4 @@
-import DefaultForm from '~/components/loginForm/DefaultForm.jsx'
+import DefaultForm from '~/redux/features/auth/DefaultForm.jsx'
 import FormBG from '~/assets/img/formBg.jpg'
 import KinaciWhiteLogo from '~/assets/img/KinaciLogoWhite.svg'
 

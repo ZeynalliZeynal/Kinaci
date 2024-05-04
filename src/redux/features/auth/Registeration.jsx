@@ -3,18 +3,20 @@ import { Fragment, useState } from 'react'
 import { logout } from '~/redux/features/auth/authSlice.js'
 import { FiLogOut } from 'react-icons/fi'
 import LoginForm from '~/components/loginForm/index.jsx'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useActiveAccount, useStatus } from '~/redux/selectors.js'
 
 export default function Registration({ data }) {
   const [isOpen, setIsOpen] = useState(false)
-  const activeAccount = useSelector((state) => state.auth.activeAccount)
+  const activeAccount = useActiveAccount()
+  const status = useStatus()
   const dispatch = useDispatch()
   return (
     <>
       {activeAccount ? (
         <Menu as="div" className="relative text-white">
           <Menu.Button className="font-semibold px-3 py-1 rounded-3xl bg-gradient-to-r from-red-600 to-yellow-500 via-orange-500 outline-none hover:rounded-lg duration-300">
-            @{activeAccount.userName}
+            {status === 'pending' ? 'Loading...' : `@${activeAccount.userName}`}
           </Menu.Button>
           <Transition
             as={Fragment}

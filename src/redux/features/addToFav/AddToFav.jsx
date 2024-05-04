@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { TbHeartPlus } from 'react-icons/tb'
-import HeartBtn from '~/components/HeartBtn.jsx'
+import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx'
 import { ImHeart } from 'react-icons/im'
 import { emptyList } from '~/redux/features/addToFav/addToFavSlice.js'
 

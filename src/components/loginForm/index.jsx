@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import logo from '~/assets/img/logo.svg'
-import DefaultForm from '~/components/loginForm/DefaultForm.jsx'
+import DefaultForm from '~/redux/features/auth/DefaultForm.jsx'
 import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
 
 export default function LoginForm({ isOpen, closeModal }) {

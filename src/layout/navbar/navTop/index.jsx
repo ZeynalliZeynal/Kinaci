@@ -2,7 +2,7 @@ import { HiBars3BottomLeft } from 'react-icons/hi2'
 import ContactLinks from '~/layout/navbar/navTop/contactLinks'
 import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx'
 import { useState } from 'react'
-import AddToFav from '~/components/AddToFav.jsx'
+import AddToFav from '~/redux/features/addToFav/AddToFav.jsx'
 
 export default function NavTop() {
   const [isOpen, setIsOpen] = useState(false)

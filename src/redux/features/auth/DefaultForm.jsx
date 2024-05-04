@@ -1,14 +1,13 @@
 import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
-import { fetchUsers, login, postUser } from '~/redux/features/auth/authSlice.js'
-
-// TODO: handle status
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { login, postUser } from '~/redux/features/auth/authSlice.js'
+import { useAccounts, useStatus } from '~/redux/selectors.js'
 
 export default function DefaultForm({ onClose, setError, error }) {
-  const accounts = useSelector((state) => state.auth.accounts)
-  const usersStatus = useSelector((state) => state.auth.status)
+  const accounts = useAccounts()
+  const status = useStatus()
 
   const initialState = {
     id: accounts.length ? accounts[accounts.length - 1].id + 1 : 1,
@@ -45,6 +44,7 @@ export default function DefaultForm({ onClose, setError, error }) {
         !doesPropertyExist('password')
       ) {
         dispatch(postUser(addedAccount))
+        console.log(status)
         onClose && onClose()
         setError('')
         setAddedAccount(initialState)
@@ -65,13 +65,6 @@ export default function DefaultForm({ onClose, setError, error }) {
       }
     }
   }
-
-  useEffect(() => {
-    if (usersStatus === 'idle') {
-      dispatch(fetchUsers())
-    }
-  }, [usersStatus, dispatch])
-  console.log(accounts)
 
   return (
     <form
@@ -156,7 +149,11 @@ export default function DefaultForm({ onClose, setError, error }) {
           className="px-2 py-1 text-sm bg-yellow-200 rounded-xl text-yellow-800 font-semibold hover:rounded-lg"
           onClick={handleRegisterType}
         >
-          {registrationType === 'signup' ? 'Daxil ol' : 'Qeydiyyatdan keç'}
+          {registrationType === 'signup'
+            ? 'Daxil ol'
+            : status === 'pending'
+              ? 'Loading...'
+              : 'Qeydiyyatdan keç'}
         </button>
       </div>
     </form>

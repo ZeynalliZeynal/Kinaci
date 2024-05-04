@@ -36,9 +36,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // signUp: (state, action) => {
-    //   state.activeAccount = action.payload
-    // },
     login: (state, action) => {
       state.activeAccount = state.accounts.find(
         (acc) => acc.email === action.payload.email,
@@ -68,5 +65,5 @@ const authSlice = createSlice({
   },
 })
 
-export const { signUp, login, logout } = authSlice.actions
+export const { login, logout } = authSlice.actions
 export default authSlice.reducer
