@@ -2,7 +2,7 @@ export const initialState = {
   values: {
     name: '',
     email: '',
-    comment: '',
+    text: '',
   },
   countSymbols: 500,
   comments: [],

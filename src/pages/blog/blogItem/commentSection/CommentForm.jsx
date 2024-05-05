@@ -103,12 +103,12 @@ export default function CommentForm({
             Şərh
             <DefaultTextarea
               name="comment"
-              value={values.comment}
+              value={values.text}
               handleChange={(e) => {
                 if (e.length <= initialState.countSymbols) {
                   dispatch({
                     type: 'SET_VALUES',
-                    payload: { comment: e },
+                    payload: { text: e },
                   })
                   dispatch({ type: 'COUNT_SYMBOLS', payload: e.length })
                 }
@@ -117,7 +117,7 @@ export default function CommentForm({
             />
           </label>
           <span className="text-xs w-full text-end text-blue-900/60">
-            {countSymbols === 0 ? 'Limit reached' : countSymbols}{' '}
+            {countSymbols === 0 ? 'Limitə çatıldı' : countSymbols}{' '}
             {countSymbols !== 0 && `/ ${initialState.countSymbols}`}
           </span>
         </div>

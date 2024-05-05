@@ -1,15 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { Popover, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
-import { TbHeartPlus } from 'react-icons/tb'
-import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx'
-import { ImHeart } from 'react-icons/im'
-import { emptyList } from '~/redux/features/addToFav/addToFavSlice.js'
+import { useDispatch } from 'react-redux';
+import { Popover, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { TbHeartPlus } from 'react-icons/tb';
+import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx';
+import { ImHeart } from 'react-icons/im';
+import { deleteFavorites } from '~/redux/features/addToFav/addToFavSlice.js';
+import {
+  useActiveAccount,
+  useFavStatus,
+  useUserFavorites,
+} from '~/redux/selectors.js';
 
 export default function AddToFav() {
-  const addedItems = useSelector((state) => state.addToFav.addedItems)
-  const dispatch = useDispatch()
+  const addedItems = useUserFavorites();
+  const activeAccount = useActiveAccount();
+  const dispatch = useDispatch();
+  const status = useFavStatus();
 
   return (
     <Popover className="relative">
@@ -37,20 +44,17 @@ export default function AddToFav() {
               <>
                 <button
                   className="font-semibold gap-2.5 text-white bg-red-600 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-white"
-                  onClick={() => dispatch(emptyList())}
+                  onClick={() => dispatch(deleteFavorites(activeAccount.id))}
                 >
                   Hamısını sil
                 </button>
-                {addedItems.map((estate) => (
-                  <li key={estate?.id} className="w-full gap-2.5">
-                    <button
-                      className="text-red-600"
-                      onClick={() => dispatch(addedItems(estate?.id))}
-                    >
+                {addedItems.map((estate, index) => (
+                  <li key={index} className="w-full gap-2.5">
+                    <div>
                       <span className="size-5">
                         <HeartBtn estate={estate} />
                       </span>
-                    </button>
+                    </div>
                     <Link
                       to={`/estate/${estate?.selling_type}/${estate?.id}`}
                       className="hover:text-red-600 hover:underline font-medium flex-grow justify-start"
@@ -80,5 +84,5 @@ export default function AddToFav() {
         </Popover.Panel>
       </Transition>
     </Popover>
-  )
+  );
 }

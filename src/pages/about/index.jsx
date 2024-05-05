@@ -5,7 +5,7 @@ import StatisticsSection from './StatisticsSection'
 import OurCrew from './OurCrew'
 import VideoSection from './VideoSection'
 import Certificates from './Certificates'
-import FormSection from './FormSection'
+import FormSection from '../../redux/features/auth/FormSection.jsx'
 import { useScrollToRef } from '~/hooks/useScrollTo.js'
 
 export default function About() {

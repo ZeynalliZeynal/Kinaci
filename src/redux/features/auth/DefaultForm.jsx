@@ -1,13 +1,13 @@
-import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
-import DefaultBtn from '~/components/DefaultBtn.jsx'
-import { useDispatch } from 'react-redux'
-import { useState } from 'react'
-import { login, postUser } from '~/redux/features/auth/authSlice.js'
-import { useAccounts, useStatus } from '~/redux/selectors.js'
+import DefaultInput from '~/components/loginForm/DefaultInput.jsx';
+import DefaultBtn from '~/components/DefaultBtn.jsx';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { login, postUser } from '~/redux/features/auth/authSlice.js';
+import { useAccounts, useStatus } from '~/redux/selectors.js';
 
-export default function DefaultForm({ onClose, setError, error }) {
-  const accounts = useAccounts()
-  const status = useStatus()
+export default function DefaultForm({ onClose, setError }) {
+  const accounts = useAccounts();
+  const status = useStatus();
 
   const initialState = {
     id: accounts.length ? accounts[accounts.length - 1].id + 1 : 1,
@@ -16,25 +16,25 @@ export default function DefaultForm({ onClose, setError, error }) {
     email: '',
     tel: '',
     password: '',
-  }
+  };
 
-  const [addedAccount, setAddedAccount] = useState(initialState)
+  const [addedAccount, setAddedAccount] = useState(initialState);
 
-  const [registrationType, setRegistrationType] = useState('login')
+  const [registrationType, setRegistrationType] = useState('login');
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleRegisterType = () => {
-    setRegistrationType(registrationType === 'signup' ? 'login' : 'signup')
-    setError('')
-    setAddedAccount(initialState)
-  }
+    setRegistrationType(registrationType === 'signup' ? 'login' : 'signup');
+    setError('');
+    setAddedAccount(initialState);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const doesPropertyExist = (prop) => {
-      return accounts.find((acc) => acc[prop] === addedAccount[prop]) || false
-    }
+      return accounts.find((acc) => acc[prop] === addedAccount[prop]) || false;
+    };
     if (registrationType === 'signup') {
       if (
         !doesPropertyExist('userName') &&
@@ -43,13 +43,12 @@ export default function DefaultForm({ onClose, setError, error }) {
         !doesPropertyExist('tel') &&
         !doesPropertyExist('password')
       ) {
-        dispatch(postUser(addedAccount))
-        console.log(status)
-        onClose && onClose()
-        setError('')
-        setAddedAccount(initialState)
+        dispatch(postUser(addedAccount));
+        onClose && onClose();
+        setError('');
+        setAddedAccount(initialState);
       } else {
-        setError('Tələblərdən ən azı biri artıq istifadə olunur')
+        setError('Tələblərdən ən azı biri artıq istifadə olunur');
       }
     } else {
       if (
@@ -57,14 +56,14 @@ export default function DefaultForm({ onClose, setError, error }) {
         doesPropertyExist('password') &&
         doesPropertyExist('email')
       ) {
-        dispatch(login(addedAccount))
-        onClose && onClose()
-        setError('')
+        dispatch(login(addedAccount));
+        onClose && onClose();
+        setError('');
       } else {
-        setError('Belə bir hesab yoxdur')
+        setError('Belə bir hesab yoxdur');
       }
     }
-  }
+  };
 
   return (
     <form
@@ -157,5 +156,5 @@ export default function DefaultForm({ onClose, setError, error }) {
         </button>
       </div>
     </form>
-  )
+  );
 }

@@ -8,7 +8,6 @@ export default function BlogComment({ comments, blogId, dispatch }) {
       const res = await axios.get(
         `${baseURL}/data/blogs/${blogId}/comments/${id}/replies`,
       )
-      console.log(res.data)
     } catch (err) {
       console.warn(err)
     }
