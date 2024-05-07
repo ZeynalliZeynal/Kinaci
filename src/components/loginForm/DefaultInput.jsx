@@ -5,6 +5,7 @@ export default function DefaultInput({
   value,
   handleChange,
   pattern,
+  disabled,
 }) {
   return (
     <span className="transition-colors my-2.5 px-2.5 py-4 rounded-xl border border-blue-900/25 focus-within:border-blue-900 bg-white w-full flex text-xs h-[50px] cursor-default">
@@ -18,7 +19,8 @@ export default function DefaultInput({
         placeholder={placeholder}
         required
         pattern={pattern ? pattern : null}
+        disabled={disabled}
       />
     </span>
-  )
+  );
 }

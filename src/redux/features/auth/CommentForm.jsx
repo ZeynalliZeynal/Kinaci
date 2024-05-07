@@ -1,10 +1,11 @@
-import DefaultInput from '~/components/loginForm/DefaultInput.jsx'
-import DefaultCheckbox from '~/components/DefaultCheckbox.jsx'
-import { DefaultTextarea } from '~/components/DefaultTextarea.jsx'
-import { initialState } from '~/reducers/commentsReducer.js'
-import axios from 'axios'
-import { baseURL } from '~/data/consts.js'
-import { useState } from 'react'
+import DefaultInput from '~/components/loginForm/DefaultInput.jsx';
+import DefaultCheckbox from '~/components/DefaultCheckbox.jsx';
+import { DefaultTextarea } from '~/components/DefaultTextarea.jsx';
+import { initialState } from '~/reducers/commentsReducer.js';
+import axios from 'axios';
+import { baseURL } from '~/data/consts.js';
+import { useEffect, useState } from 'react';
+import { useActiveAccount } from '~/redux/selectors.js';
 
 export default function CommentForm({
   blog,
@@ -14,44 +15,56 @@ export default function CommentForm({
   isChecked,
   countSymbols,
 }) {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const activeAccount = useActiveAccount();
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       const newComment = {
         image:
           'https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg',
-        name: values.name.trim(),
+        name: activeAccount ? activeAccount.fullName : values.name.trim(),
         date: new Date().toISOString(),
-        email: values.email.trim(),
-        comment: values.comment.trim(),
+        email: activeAccount ? activeAccount.email : values.email.trim(),
+        comment: values.text.trim(),
         replies: [],
-      }
+      };
       const res = await axios.post(
         `${baseURL}/data/blogs/${blog?.id}/comments`,
         newComment,
-      )
-      setIsLoading(false)
-      dispatch({ type: 'SET_COMMENTS', payload: [...comments, res.data] })
+      );
+      setIsLoading(false);
+      dispatch({ type: 'SET_COMMENTS', payload: [...comments, res.data] });
 
       dispatch({
         type: 'RESET_VALUES',
-      })
+      });
 
       if (isChecked)
         dispatch({
           type: 'SAVE_LOCAL_STORAGE',
           payload: { ...values, comment: '' },
-        })
+        });
       else
         dispatch({
           type: 'REMOVE_LOCAL_STORAGE',
-        })
+        });
     } catch (error) {
-      console.error('Error adding comment:', error)
+      console.error('Error adding comment:', error);
     }
-  }
+  };
+
+  useEffect(() => {
+    if (activeAccount)
+      dispatch({
+        type: 'SET_VALUES',
+        payload: {
+          name: activeAccount.fullName,
+          email: activeAccount.email,
+        },
+      });
+  }, [activeAccount]);
 
   return (
     <form className="text-sm" onSubmit={handleSubmit}>
@@ -67,9 +80,10 @@ export default function CommentForm({
                 dispatch({
                   type: 'SET_VALUES',
                   payload: { name: e },
-                })
+                });
               }}
               placeholder="Adınızı daxil edin"
+              disabled={activeAccount}
             />
           </label>
           <label htmlFor="email" className="flex-1 font-medium">
@@ -85,19 +99,22 @@ export default function CommentForm({
                 })
               }
               placeholder="Emailinizi daxil edin"
+              disabled={activeAccount}
             />
           </label>
         </div>
-        <div className="flex flex-col md:flex-row gap-2.5">
-          <DefaultCheckbox
-            isChecked={isChecked}
-            setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
-          />
-          <p>
-            Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə yadda
-            saxla.
-          </p>
-        </div>
+        {!activeAccount && (
+          <div className="flex flex-col md:flex-row gap-2.5">
+            <DefaultCheckbox
+              isChecked={isChecked}
+              setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
+            />
+            <p>
+              Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə yadda
+              saxla.
+            </p>
+          </div>
+        )}
         <div>
           <label htmlFor="comment" className="flex-1 font-medium">
             Şərh
@@ -109,8 +126,8 @@ export default function CommentForm({
                   dispatch({
                     type: 'SET_VALUES',
                     payload: { text: e },
-                  })
-                  dispatch({ type: 'COUNT_SYMBOLS', payload: e.length })
+                  });
+                  dispatch({ type: 'COUNT_SYMBOLS', payload: e.length });
                 }
               }}
               placeholder="Şərh əlavə et"
@@ -124,15 +141,15 @@ export default function CommentForm({
       </div>
       <button
         type={'submit'}
-        className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.comment ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
-        disabled={!values.comment || isLoading}
+        className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px] ${!values.text ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
+        disabled={!values.text || isLoading}
       >
-        {!values.comment || !values.name || !values.email
+        {!values.text || !values.name || !values.email
           ? 'Formu doldur'
           : isLoading
             ? 'Göndərilir...'
             : 'Şərhi Göndər'}
       </button>
     </form>
-  )
+  );
 }
