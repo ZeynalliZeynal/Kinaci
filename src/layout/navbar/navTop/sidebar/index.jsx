@@ -1,26 +1,26 @@
-import SidebarLink from './sidebarLinks'
-import ContactIcons from '~/components/ContactIcons.jsx'
-import classNames from 'classnames'
-import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import SidebarLink from './sidebarLinks';
+import ContactIcons from '~/components/ContactIcons.jsx';
+import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Sidebar({ isOpen, onClose }) {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    onClose()
-  }, [location.pathname])
+    onClose();
+  }, [location.pathname]);
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('overflow-hidden')
+      document.body.classList.add('overflow-hidden');
     } else {
-      document.body.classList.remove('overflow-hidden')
+      document.body.classList.remove('overflow-hidden');
     }
 
     return () => {
-      document.body.classList.remove('overflow-hidden')
-    }
-  }, [isOpen])
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function Sidebar({ isOpen, onClose }) {
           },
         )}
       >
-        <div className="main-window relative z-40 min-h-screen">
+        <div className="main-window relative z-40 min-h-screen max-h-screen overflow-y-auto">
           <h3 className="flex items-center justify-between head px-[30px] py-[20px] text-3xl font-semibold border-b border-gray-200">
             Tez keçidlər
             <button
@@ -76,5 +76,5 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </div>
     </>
-  )
+  );
 }
