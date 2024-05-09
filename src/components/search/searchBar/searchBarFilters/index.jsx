@@ -1,7 +1,7 @@
-import SelectContainer from '~/components/search/searchBar/selectContainer/index.jsx'
-import SearchInput from '~/components/search/searchInput/index.jsx'
-import { Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import SelectContainer from '~/components/search/searchBar/selectContainer/index.jsx';
+import SearchInput from '~/components/search/searchInput/index.jsx';
+import { Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
 export default function SearchBarFilters({ state }) {
   return (
@@ -19,13 +19,9 @@ export default function SearchBarFilters({ state }) {
               type="number"
               name="price"
               property="minPrice"
-              placeholder="Min: 0"
+              placeholder="Min"
             />
-            <SearchInput
-              type="number"
-              property="maxPrice"
-              placeholder="Max: 1.000.000"
-            />
+            <SearchInput type="number" property="maxPrice" placeholder="Max" />
           </div>
         </div>
         <div className="grid gap-3">
@@ -40,13 +36,9 @@ export default function SearchBarFilters({ state }) {
               type="number"
               name="size"
               property="minSize"
-              placeholder="Min: 0"
+              placeholder="Min"
             />
-            <SearchInput
-              type="number"
-              property="maxSize"
-              placeholder="Max: 100.000"
-            />
+            <SearchInput type="number" property="maxSize" placeholder="Max" />
           </div>
         </div>
       </div>
@@ -98,12 +90,12 @@ export default function SearchBarFilters({ state }) {
                   type="number"
                   name="floor"
                   property="minFloor"
-                  placeholder="Min: 0"
+                  placeholder="Min"
                 />
                 <SearchInput
                   type="number"
                   property="maxFloor"
-                  placeholder="Max: 100"
+                  placeholder="Max"
                 />
               </div>
             </div>
@@ -142,15 +134,9 @@ export default function SearchBarFilters({ state }) {
                   type="date"
                   name="year"
                   property="minConstructorDate"
-                  placeholder="Min: 2000"
+                  placeholder="Min"
                 />
-                <SearchInput
-                  type="date"
-                  property="maxConstructorDate"
-                  placeholder={`Max: ${new Intl.DateTimeFormat('az-AZ', {
-                    year: 'numeric',
-                  }).format(new Date())}`}
-                />
+                <SearchInput type="date" property="maxConstructorDate" />
               </div>
             </div>
             <div className="distance-sea flex-col gap-3">
@@ -165,12 +151,12 @@ export default function SearchBarFilters({ state }) {
                   type="number"
                   name="sea"
                   property="minSeaDistance"
-                  placeholder="Min: 0"
+                  placeholder="Min"
                 />
                 <SearchInput
                   type="number"
                   property="maxSeaDistance"
-                  placeholder="Max: 1.000"
+                  placeholder="Max"
                 />
               </div>
             </div>
@@ -186,12 +172,12 @@ export default function SearchBarFilters({ state }) {
                   type="number"
                   name="airport"
                   property="minAirportDistance"
-                  placeholder="Min: 0"
+                  placeholder="Min"
                 />
                 <SearchInput
                   type="number"
                   property="maxAirportDistance"
-                  placeholder="Max: 1.000"
+                  placeholder="Max"
                 />
               </div>
             </div>
@@ -199,5 +185,5 @@ export default function SearchBarFilters({ state }) {
         </div>
       </Transition>
     </div>
-  )
+  );
 }

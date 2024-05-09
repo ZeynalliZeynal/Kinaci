@@ -1,24 +1,29 @@
-import Carousel from './Carousel'
-import Search from '~/components/search'
-import Loader from '~/components/loader'
-import { useEstate } from '~/hooks/useEstate'
-import EstateSection from '~/pages/home/estateSection'
-import { useScrollToTop } from '~/hooks/useScrollTo.js'
-import OffersSection from '~/pages/home/OffersSection.jsx'
+import Carousel from './Carousel';
+import Search from '~/components/search';
+import Loader from '~/components/loader';
+import { useEstate } from '~/hooks/useEstate';
+import EstateSection from '~/pages/home/estateSection';
+import { useScrollToTop } from '~/hooks/useScrollTo.js';
+import OffersSection from '~/pages/home/OffersSection.jsx';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const [estates, isLoading] = useEstate()
+  const [estates, isLoading] = useEstate();
   const newEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Yeni',
-  )
+  );
   const promotionalEstates = estates.filter((newEstates) =>
     newEstates.feature.includes('endirim'),
-  )
+  );
   const specialEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Sərfəli',
-  )
+  );
 
-  useScrollToTop()
+  useScrollToTop();
+
+  useEffect(() => {
+    document.title = 'Kinaci - Ana Səhifə';
+  }, []);
 
   return (
     <main>
@@ -55,5 +60,5 @@ export default function Home() {
       )}{' '}
       <OffersSection />
     </main>
-  )
+  );
 }

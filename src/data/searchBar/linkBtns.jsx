@@ -9,8 +9,4 @@ export const linkBtns = [
     bgColor: 'teal-link-btn',
     to: '/services/studyTour',
   },
-  {
-    text: 'Sual ver',
-    bgColor: 'red-link-btn',
-  },
-]
+];

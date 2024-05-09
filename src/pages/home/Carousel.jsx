@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion'
-import { bannerCarouselImages as images } from '~/data/bannerCarouselImages.js'
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
-import Dots from '~/components/estateCards/Dots.jsx'
-import { useSwapSlide } from '~/hooks/useSwapSlide.js'
+import { motion } from 'framer-motion';
+import { bannerCarouselImages as images } from '~/data/bannerCarouselImages.js';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import Dots from '~/components/estateCards/Dots.jsx';
+import { useSwapSlide } from '~/hooks/useSwapSlide.js';
 
 export default function Carousel() {
   const [handlePrev, handleNext, imageIndex, setImageIndex] = useSwapSlide(
     images.length,
-  )
+  );
 
   return (
     <section className="overflow-hidden">
@@ -25,7 +25,7 @@ export default function Carousel() {
             }}
           >
             <div className="absolute inset-0 bg-blue-900/60 z-10" />
-            <div className="text-white text-center relative z-20 max-w-[600px] md:px-0 px-16">
+            <div className="text-white text-center relative z-20 max-w-[400px] sm:max-w-[600px] md:px-0 px-16">
               <h1 className="text lg:text-h1 md:text-[40px] sm:text-[30px] text-5xl">
                 {title}
               </h1>
@@ -57,5 +57,5 @@ export default function Carousel() {
         </div>
       </div>
     </section>
-  )
+  );
 }
