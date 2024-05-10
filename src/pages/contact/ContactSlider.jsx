@@ -29,8 +29,22 @@ export default function ContactSlider() {
         <Swiper
           ref={swiperRef}
           loop={true}
-          slidesPerView={4}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={50}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+          }}
           className="mySwiper h-60 my-5 relative"
         >
           {contactCarouselImages.map((image, index) => {
