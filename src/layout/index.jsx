@@ -12,6 +12,11 @@ export default function Layout() {
 
   return (
     <>
+<<<<<<< HEAD
+      <Navbar /> {location.pathname !== '/' && <Breadcrumbs />} <Outlet />{' '}
+      {location.pathname !== '/contact' && <ContactUsSection />} <Footer />
+      {/* <Cookies /> */}
+=======
       <Navbar /> {location.pathname !== '/' && <Breadcrumbs />}
       <main ref={ref}>
         {isVisible && <GoToTopButton />} <Outlet />{' '}
@@ -19,6 +24,7 @@ export default function Layout() {
         <Footer />
       </main>
       {/*<Cookies />*/}
+>>>>>>> 00385137b357eac4cff807eacaa3e97f3dc8982a
     </>
   );
 }
