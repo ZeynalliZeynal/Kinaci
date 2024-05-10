@@ -9,7 +9,6 @@ const position = [32.08960103931366, 36.49760354536997];
 
 export default function ContactLocation() {
   const activeAccount = useActiveAccount();
-  console.log(activeAccount);
   const [isOpen, setIsOpen] = useState(false);
 
   const mapContainer = useRef(null);
@@ -36,7 +35,7 @@ export default function ContactLocation() {
       <LoginForm isOpen={isOpen} closeModal={() => setIsOpen(false)} />
       <section>
         <div className="container">
-          <div className="grid grid-cols-2 gap-6 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div ref={mapContainer} className="h-[300px] rounded-xl" />
             <div className="flex flex-col gap-4">
               <h2>Sizdən eşitməyi çox istərdik.</h2>

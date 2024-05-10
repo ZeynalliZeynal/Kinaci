@@ -32,8 +32,6 @@ export const useFilteredEstates = (
             ? estate.floors.slice(0, estate.floors.indexOf('/'))
             : estate.floors;
 
-          console.log(searchParams.get('minFloor'));
-
           const constructorDate = new Date(
             estate.constructor_date,
           ).getFullYear();
