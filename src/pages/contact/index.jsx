@@ -8,8 +8,8 @@ export default function Contact() {
   }, []);
 
   return (
-    <main>
-      <section>
+    <main className="text-blue-900">
+      <section className="bg-orange-50">
         <Search />
       </section>
       <ContactLocation />
