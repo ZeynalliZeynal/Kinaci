@@ -2,6 +2,9 @@ import Search from '~/components/search/index.jsx';
 import { useEffect } from 'react';
 import ContactLocation from '~/pages/contact/ContactLocation.jsx';
 import VisitOffice from './VisitOffice';
+import ContactSlider from './ContactSlider';
+
+
 
 export default function Contact() {
   useEffect(() => {
@@ -15,6 +18,7 @@ export default function Contact() {
       </section>
       <ContactLocation />
       <VisitOffice />
+      <ContactSlider />
     </main>
   );
 }
