@@ -23,7 +23,7 @@ export default function ContactSlider() {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper h-60"
+                className="mySwiper h-60 my-5"
             >
                 {contactCarouselImages.map(image => {
                     return <SwiperSlide>

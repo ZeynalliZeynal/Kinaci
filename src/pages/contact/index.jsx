@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import ContactLocation from '~/pages/contact/ContactLocation.jsx';
 import VisitOffice from './VisitOffice';
 import ContactSlider from './ContactSlider';
+import BankInfo from './BankInfo';
 
 
 
@@ -19,6 +20,7 @@ export default function Contact() {
       <ContactLocation />
       <VisitOffice />
       <ContactSlider />
+      <BankInfo />
     </main>
   );
 }
