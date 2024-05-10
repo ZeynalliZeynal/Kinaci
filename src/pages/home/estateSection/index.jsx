@@ -4,7 +4,13 @@ import { ShowMoreButton } from '~/pages/home/ShowMoreButton.jsx'
 import TabBtns from '~/pages/home/estateSection/tabBtns/index.jsx'
 import NoProduct from '~/components/NoProduct.jsx'
 
-export default function EstateSection({ estates, t, title, paragraph, bg }) {
+export default function EstateSection({
+  estates,
+  title,
+  paragraph,
+  bg,
+  buttonLink,
+}) {
   const [activeSellingType, setActiveSellingType] = useState('forSale')
   const [filteredEstates, setFilteredEstates] = useState(estates)
 
@@ -18,20 +24,20 @@ export default function EstateSection({ estates, t, title, paragraph, bg }) {
   return (
     <section className={bg}>
       <div className="container">
-        <div className="flex justify-between mb-8">
+        <div className="grid md:flex justify-between mb-8">
           <div className="header text-blue-900">
-            <h2>{t(title)}</h2>
-            <p className="text-sm">{t(paragraph)}</p>
+            <h2>{title}</h2>
+            <p className="text-sm">{paragraph}</p>
           </div>
           <div className="tab-btns flex py-2.5 gap-2.5">
             <TabBtns
-              text={'Satılır'}
-              sellingType={'forSale'}
+              text="Satılır"
+              sellingType="forSale"
               activeSellingType={activeSellingType}
               setActiveSellingType={setActiveSellingType}
             />
             <TabBtns
-              text={'Kirayə'}
+              text="İcarə"
               sellingType={'forRent'}
               activeSellingType={activeSellingType}
               setActiveSellingType={setActiveSellingType}
@@ -47,7 +53,7 @@ export default function EstateSection({ estates, t, title, paragraph, bg }) {
         ) : (
           <NoProduct />
         )}{' '}
-        <ShowMoreButton />
+        <ShowMoreButton buttonLink={buttonLink} />
       </div>
     </section>
   )

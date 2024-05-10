@@ -2,8 +2,6 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from '~/layout'
 import Home from '~/pages/home/index.jsx'
 import Estate from '~/pages/estate/index.jsx'
-import ForSale from '~/pages/estate/forSale/index.jsx'
-import ForRent from '~/pages/estate/forRent/index.jsx'
 import EstateItem from '~/pages/estate/estateItem/index.jsx'
 import About from '~/pages/about/index.jsx'
 import Services from '~/pages/services/index.jsx'
@@ -12,6 +10,7 @@ import Comments from '~/pages/comments/index.jsx'
 import Blog from '~/pages/blog/index.jsx'
 import NotFound from '~/pages/notFound/index.jsx'
 import ServiceItem from '~/pages/services/serviceItem/index.jsx'
+import BlogItem from '~/pages/blog/blogItem/index.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -25,19 +24,15 @@ const routes = createBrowserRouter([
       {
         path: 'estate',
         element: <Estate />,
-        children: [
-          {
-            path: 'forSale',
-            element: <ForSale />,
-          },
-          {
-            path: 'forRent',
-            element: <ForRent />,
-          },
-        ],
       },
-      { path: 'estate/:sellingType/:id', element: <EstateItem /> },
-      { path: 'estate/:sellingType/:id', element: <EstateItem /> },
+      {
+        path: 'estate/:sellingType',
+        element: <Estate />,
+      },
+      {
+        path: 'estate/:sellingType/:id',
+        element: <EstateItem />,
+      },
       {
         path: 'about',
         element: <About />,
@@ -61,6 +56,10 @@ const routes = createBrowserRouter([
       {
         path: 'blog',
         element: <Blog />,
+      },
+      {
+        path: 'blog/:id',
+        element: <BlogItem />,
       },
       {
         path: '*',

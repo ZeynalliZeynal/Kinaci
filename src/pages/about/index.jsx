@@ -1,13 +1,15 @@
 import Search from '~/components/search/index.jsx'
 import { useEffect } from 'react'
-import InfoSection from '~/pages/about/InfoSection.jsx'
-import StatisticsSection from '~/pages/about/StatisticsSection.jsx'
-import OurCrew from '~/pages/about/OurCrew.jsx'
-import VideoSection from '~/pages/about/VideoSection.jsx'
-import Certificates from '~/pages/about/Certificates.jsx'
-import FormSection from '~/pages/about/FormSection.jsx'
+import InfoSection from './InfoSection'
+import StatisticsSection from './StatisticsSection'
+import OurCrew from './OurCrew'
+import VideoSection from './VideoSection'
+import Certificates from './Certificates'
+import FormSection from '../../redux/features/auth/FormSection.jsx'
+import { useScrollToRef } from '~/hooks/useScrollTo.js'
 
 export default function About() {
+  const ref = useScrollToRef()
   useEffect(() => {
     document.title = 'Kinaci - Şirkət haqqında'
   }, [])
@@ -16,7 +18,10 @@ export default function About() {
       <section className="bg-orange-50">
         <Search />
       </section>
-      <section className="hidden md:block w-full img-banner h-[490px]" />
+      <section
+        ref={ref}
+        className="hidden md:block w-full img-banner h-[490px]"
+      />
       <InfoSection />
       <StatisticsSection />
       <OurCrew />

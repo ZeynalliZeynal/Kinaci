@@ -1,11 +1,12 @@
-import Logo from '~/assets/img/logo.svg'
-import { NavLink } from 'react-router-dom'
-import NavBottomLinks from './navBottomLinks'
-import ContactIcons from '../../../components/ContactIcons.jsx'
+import Logo from '~/assets/img/logo.svg';
+import { NavLink } from 'react-router-dom';
+import NavBottomLinks from './navBottomLinks';
+import ContactIcons from '../../../components/ContactIcons.jsx';
 
 export default function NavBottom() {
+  // transition-transform duration-300 relative z-[688] ${isHidden ? '-translate-y-[152px] ' : ''}
   return (
-    <nav className="h-[95px] shadow-navbar">
+    <nav className={`h-[95px] shadow-navbar bg-white`}>
       <div className="container h-full">
         <div className="flex justify-between items-center h-full">
           <div className="w-1/2 lg:w-1/6">
@@ -24,5 +25,5 @@ export default function NavBottom() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

@@ -3,8 +3,14 @@ import classNames from 'classnames'
 import { TbTrashFilled } from 'react-icons/tb'
 import DefaultBtn from '~/components/DefaultBtn.jsx'
 import { GrSearch } from 'react-icons/gr'
+import { useSearchParams } from 'react-router-dom'
 
-export default function SearchBarBtns({ state, handleClearFilter, dispatch }) {
+export default function SearchBarBtns({ state, dispatch }) {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const handleClearFilter = () => {
+    const newSearchParams = new URLSearchParams()
+    setSearchParams(newSearchParams)
+  }
   return (
     <div className="buttons w-full flex flex-col md:flex-row justify-between pt-5">
       <div className="flex text-xs gap-2.5 py-2">
@@ -49,15 +55,15 @@ export default function SearchBarBtns({ state, handleClearFilter, dispatch }) {
         >
           <span className="size-3">
             <TbTrashFilled />
-          </span>
-          Bütün filtrləri sıfırlayın
+          </span>{' '}
+          Hamısını sıfırla
         </button>
       </div>
       <div className="text-md">
         <DefaultBtn type="submit">
           <span>
             <GrSearch />
-          </span>
+          </span>{' '}
           Axtar
         </DefaultBtn>
       </div>

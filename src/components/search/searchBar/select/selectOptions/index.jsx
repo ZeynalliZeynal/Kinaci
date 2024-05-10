@@ -1,19 +1,7 @@
 import { motion } from 'framer-motion'
 import classNames from 'classnames'
-import { useEffect } from 'react'
 
-export default function SelectOptions({
-  isOpen,
-  options,
-  onSelectOption,
-  isOptionSelected,
-  highlightedIndex,
-  setHighlightedIndex,
-}) {
-  useEffect(() => {
-    setHighlightedIndex(0)
-  }, [isOpen])
-
+export default function SelectOptions() {
   return (
     <motion.ul
       animate={isOpen ? 'open' : 'initial'}
@@ -29,7 +17,7 @@ export default function SelectOptions({
     >
       {options?.map((option, index) => (
         <li
-          key={option.id}
+          key={option}
           className={classNames(
             'block w-full justify-start cursor-pointer py-2 rounded-button px-2.5 transition-colors',
             {
@@ -44,7 +32,7 @@ export default function SelectOptions({
           }}
           onMouseEnter={() => setHighlightedIndex(index)}
         >
-          {option.label}
+          {option}
         </li>
       ))}
     </motion.ul>

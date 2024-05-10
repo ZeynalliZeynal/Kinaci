@@ -23,7 +23,7 @@ export default function ImgSliderModal({
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10 w-full h-full"
+        className="relative z-[900] w-full h-full"
         onClose={closeModal}
       >
         <Transition.Child as={Fragment} {...modalTransition}>

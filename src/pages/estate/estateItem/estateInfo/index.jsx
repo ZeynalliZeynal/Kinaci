@@ -3,17 +3,24 @@ import LeftSection from '~/pages/estate/estateItem/estateInfo/leftSection'
 import AsideSection from '~/pages/estate/estateItem/estateInfo/asideSection/index.jsx'
 import { useEstate } from '~/hooks/useEstate.js'
 import { useParams } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 
 export default function EstateInfo() {
   const { id } = useParams()
   const [estateItem, isLoading] = useEstate(id)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (ref.current && !isLoading)
+      ref.current.scrollIntoView({ behavior: 'smooth' })
+  }, [isLoading])
 
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
-        <section>
+        <section ref={ref}>
           <div className="container">
             <div className="header mb-6 px-2">
               <h2 className="text-5xl">{estateItem?.title}</h2>

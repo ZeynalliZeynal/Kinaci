@@ -1,5 +1,6 @@
 import Search from '~/components/search/index.jsx'
 import { useEffect } from 'react'
+import Blogs from '~/pages/blog/blogs/index.jsx'
 
 export default function Blog() {
   useEffect(() => {
@@ -7,9 +8,10 @@ export default function Blog() {
   }, [])
   return (
     <main>
-      <section>
+      <section className="bg-orange-50">
         <Search />
       </section>
+      <Blogs />
     </main>
   )
 }

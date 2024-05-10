@@ -1,15 +1,14 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import logo from '~/assets/img/logo.svg'
-import ModalForm from '~/components/loginForm/DefaultForm.jsx'
+import DefaultForm from '~/redux/features/auth/DefaultForm.jsx'
 import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
-import { useTranslation } from 'react-i18next'
 
 export default function LoginForm({ isOpen, closeModal }) {
-  const { t } = useTranslation()
+  const [error, setError] = useState('')
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeModal}>
+      <Dialog as="div" className="relative z-[999]" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -34,19 +33,27 @@ export default function LoginForm({ isOpen, closeModal }) {
               leaveTo="opacity-0 scale-95"
             >
               <div className="relative w-[742px] transition-all">
-                <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-20 text-blue-900">
+                <Dialog.Panel className="w-full transform text-left rounded-selectBtn bg-white shadow-xl transition-all p-10 sm:p-20 text-blue-900">
                   <Dialog.Title
-                    as="h3"
-                    className="text-[30px] font-semibold mb-3"
+                    as="div"
+                    className="flex justify-between items-center"
                   >
-                    <div className="w-[150px] mb-4">
-                      <img src={`${logo}`} alt="Kinaci" />
+                    <div>
+                      <div className="w-[150px] mb-4">
+                        <img src={`${logo}`} alt="Kinaci" />
+                      </div>
+                      <h3 className="text-[30px] font-semibold mb-3">Hesab</h3>
                     </div>
-                    {t('appointment')}
+                    <span className="text-red-500 text-sm">{error}</span>
                   </Dialog.Title>
-                  <ModalForm onClose={closeModal} />
+                  <DefaultForm
+                    onClose={closeModal}
+                    setError={setError}
+                    error={error}
+                  />
                 </Dialog.Panel>
-                <ModalCloseBtn />
+
+                <ModalCloseBtn onClose={closeModal} />
               </div>
             </Transition.Child>
           </div>

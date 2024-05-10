@@ -20,7 +20,9 @@ export default function ActionBtns({ estateItem }) {
           onClick={() =>
             index === 0
               ? setIsOpen(true)
-              : navigate(`estate/${estateItem?.selling_type}/${estateItem?.id}`)
+              : navigate(
+                  `/estate/${estateItem?.selling_type}/${estateItem?.id}`,
+                )
           }
         >
           {isOpen && <LoginForm isOpen={isOpen} closeModal={handleModal} />}{' '}

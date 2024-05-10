@@ -1,25 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Svg from '~/components/Svg.jsx'
-import Tooltip from '~/components/Tooltip.jsx'
 import currencyData from '~/data/currencyData.js'
 
-export default function Details({ estate }) {
+export default function Details({ estate, isListed }) {
   const [selectedCurrencyIndex, setSelectedCurrencyIndex] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
-  const tooltipTimeoutRef = useRef(null)
-
-  const handleMouseEnter = () => {
-    tooltipTimeoutRef.current = setTimeout(() => setIsHovering(true), 500)
-  }
-
-  const handleMouseLeave = () => {
-    clearTimeout(tooltipTimeoutRef.current)
-    setIsHovering(false)
-  }
-
-  useEffect(() => {
-    return () => clearTimeout(tooltipTimeoutRef.current) // Cleanup on unmount
-  }, [])
 
   function handleIncreaseIndex() {
     if (selectedCurrencyIndex < currencyData.length - 1) {
@@ -46,12 +30,15 @@ export default function Details({ estate }) {
   }
 
   return (
-    <div className="details grid grid-cols-2">
-      <div className="text-xs grid gap-2.5">
+    <div className="details grid grid-cols-1 md:grid-cols-2">
+      <div className={`${isListed ? 'text-md' : 'text-xs'} grid gap-2.5`}>
         <h5>
-          {estate?.city} {estate?.place && `/${estate?.place}`}
+          {estate?.location.city}{' '}
+          {estate?.location.place && `/${estate?.location.place}`}
         </h5>
-        <div className="icons grid grid-cols-2 gap-4">
+        <div
+          className={`icons ${isListed ? 'flex' : 'grid grid-cols-2'} gap-4`}
+        >
           <div className="icon flex gap-2">
             <span className="size-4">
               <Svg svgType={'room'} />
@@ -81,19 +68,22 @@ export default function Details({ estate }) {
             </div>
           )}
         </div>
+        {isListed && (
+          <p className="line-clamp-2 leading-[200%] overflow-hidden whitespace-pre-wrap">
+            {estate.description}
+          </p>
+        )}
       </div>
       <button
-        className="grid gap-2.5 justify-end cursor-pointer relative"
+        className="grid gap-2.5 justify-start md:justify-end cursor-pointer relative"
         onClick={handleIncreaseIndex}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         {estate?.feature.includes('endirim') && (
           <p className="text-center">
             <del>{convertCurrency(estate?.price)}</del>
           </p>
         )}{' '}
-        <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button">
+        <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button text-sm">
           {convertCurrency(
             estate?.feature.includes('endirim')
               ? estate?.price -
@@ -102,11 +92,8 @@ export default function Details({ estate }) {
                     100
               : estate?.price,
           )}{' '}
-          {estate?.selling_type === 'forRent' && `/${estate?.payment_type}`}
+          {estate?.selling_type === 'forRent' && ` / ${estate?.payment_type}`}
         </span>
-        <Tooltip position="bottom" isHovering={isHovering}>
-          Digər valyuta dəyərlərini görmək üçün klikləyin
-        </Tooltip>
       </button>
     </div>
   )

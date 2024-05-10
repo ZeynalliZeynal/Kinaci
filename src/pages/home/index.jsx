@@ -1,27 +1,34 @@
-import Carousel from './carousel'
-import Search from '~/components/search/index.jsx'
-import Loader from '~/components/loader.jsx'
-import { useEstate } from '~/hooks/useEstate.js'
-import { useTranslation } from 'react-i18next'
-import EstateSection from '~/pages/home/estateSection/index.jsx'
+import Carousel from './Carousel';
+import Search from '~/components/search';
+import Loader from '~/components/loader';
+import { useEstate } from '~/hooks/useEstate';
+import EstateSection from '~/pages/home/estateSection';
+import { useScrollToTop } from '~/hooks/useScrollTo.js';
+import OffersSection from '~/pages/home/OffersSection.jsx';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const [estates, isLoading] = useEstate()
-  const { t } = useTranslation()
+  const [estates, isLoading] = useEstate();
   const newEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Yeni',
-  )
+  );
   const promotionalEstates = estates.filter((newEstates) =>
     newEstates.feature.includes('endirim'),
-  )
+  );
   const specialEstates = estates.filter(
     (newEstates) => newEstates.feature === 'Sərfəli',
-  )
+  );
+
+  useScrollToTop();
+
+  useEffect(() => {
+    document.title = 'Kinaci - Ana Səhifə';
+  }, []);
 
   return (
     <main>
       <Carousel />
-      <section>
+      <section className="-mt-[122px] relative">
         <Search />
       </section>
       {isLoading ? (
@@ -29,28 +36,29 @@ export default function Home() {
       ) : (
         <>
           <EstateSection
-            t={t}
             bg="bg-blue-700/5"
             estates={newEstates}
-            title="newEstates"
-            paragraph="newEstatesParagraph"
+            title="Yeni əmlaklar"
+            paragraph="Son əlavə edilmiş əmlaklar"
+            buttonLink="tags=Yeni"
           />
           <EstateSection
-            t={t}
             bg="bg-orange-500/5"
             estates={promotionalEstates}
-            title="promotionalEstates"
-            paragraph="promotionalEstatesParagraph"
+            title="Kampaniyalı daşınmaz əmlaklar"
+            paragraph="Ən sərfəli qiymətlər"
+            buttonLink="tags=Endirim"
           />
           <EstateSection
-            t={t}
             bg="bg-blue-700/5"
             estates={specialEstates}
-            title="specialEstates"
-            paragraph="specialEstatesParagraph"
+            title="Ən Yaxşı Təkliflər"
+            paragraph="Sizə özəl təkliflərimiz"
+            buttonLink="tags=Sərfəli"
           />
         </>
-      )}
+      )}{' '}
+      <OffersSection />
     </main>
-  )
+  );
 }

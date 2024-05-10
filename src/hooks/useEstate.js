@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
-const baseURL = 'https://kinaci-server.onrender.com/data/estates'
+import { baseURL } from '~/data/consts.js'
 
 export const useEstate = (id) => {
   const [estateItem, setEstateItem] = useState(null)
@@ -14,11 +13,11 @@ export const useEstate = (id) => {
       try {
         if (id) {
           // Fetch estate item if ID is present
-          const response = await axios.get(`${baseURL}/${id}`)
+          const response = await axios.get(`${baseURL}/data/estates/${id}`)
           setEstateItem(response.data)
         } else {
           // Fetch all estates if no ID
-          const response = await axios.get(baseURL)
+          const response = await axios.get(`${baseURL}/data/estates`)
           setEstates(response.data)
         }
       } catch (err) {

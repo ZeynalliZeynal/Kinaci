@@ -5,17 +5,8 @@ export const linkBtns = [
     to: '/estate',
   },
   {
-    text: 'Türk vətəndaşlığı',
-    bgColor: 'orange-link-btn',
-    to: '/estate',
-  },
-  {
-    text: 'Məlumat Turunuza Başla',
+    text: 'Bilik Turuna başla',
     bgColor: 'teal-link-btn',
     to: '/services/studyTour',
   },
-  {
-    text: 'Sual ver',
-    bgColor: 'red-link-btn',
-  },
-]
+];

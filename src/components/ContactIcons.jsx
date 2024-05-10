@@ -8,7 +8,7 @@ export default function ContactIcons() {
           className={`contact-icons rounded-full overflow-hidden ${link.type}`}
           key={index}
         >
-          <a href="#" className="p-2 rounded-full">
+          <a href="#" className="p-1 sm:p-2 rounded-full">
             <span className="size-[18px]">{link.icon}</span>
           </a>
         </li>

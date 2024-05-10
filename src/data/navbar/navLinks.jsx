@@ -1,53 +1,61 @@
 export const navLinks = [
   {
     to: '/',
-    pathName: 'home',
+    name: 'Ana Səhifə',
   },
   {
     to: '/estate',
-    pathName: 'estate',
+    name: 'Əmlak',
     extendable: [
-      { to: '/estate/forSale', pathName: 'forSale' },
-      { to: '/estate/forRent', pathName: 'forRent' },
-      { to: '/estate/sold', pathName: 'sold' },
+      { to: '/estate/forSale', name: 'Satılır' },
+      { to: '/estate/forRent', name: 'İcarəyə verilir' },
     ],
   },
   {
     to: '/about',
-    pathName: 'about',
+    name: 'Şirkət haqqında',
   },
   {
     to: '/services',
-    pathName: 'services',
+    name: 'Xidmətlərimiz',
     extendable: [
-      { to: '/services/freeSelection', pathName: 'freeSelection' },
+      {
+        to: '/services/freeSelection',
+        name: 'Pulsuz əmlak seçimi',
+      },
       {
         to: '/services/estateInvestments',
-        pathName: 'estateInvestments',
+        name: 'Daşınmaz Əmlak İnvestisiyaları',
       },
-      { to: '/services/studyTour', pathName: 'studyTour' },
-      { to: '/services/salesService', pathName: 'salesService' },
-      { to: '/services/onlineTour', pathName: 'onlineTour' },
+      { to: '/services/studyTour', name: 'Tədris Turu' },
+      {
+        to: '/services/salesService',
+        name: 'Satış sonrası xidmət',
+      },
+      {
+        to: '/services/onlineTour',
+        name: 'Onlayn tur',
+      },
       {
         to: '/services/portfolioSelection',
-        pathName: 'portfolioSelection',
+        name: 'Portfolioların fərdi seçimi',
       },
       {
         to: '/services/supportPurchase',
-        pathName: 'supportPurchase',
+        name: 'Satınalma zamanı dəstək',
       },
     ],
   },
   {
     to: '/contact',
-    pathName: 'contact',
+    name: 'Əlaqə',
   },
   {
     to: '/comments',
-    pathName: 'comments',
+    name: 'Şərhlər',
   },
   {
     to: '/blog',
-    pathName: 'blog',
+    name: 'Bloq',
   },
 ]

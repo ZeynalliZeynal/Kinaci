@@ -8,8 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti'
 import { Zoom } from 'swiper/modules'
-
-const url = 'https://kinaci-server.onrender.com/data/certificates'
+import { baseURL } from '~/data/consts.js'
 
 export default function Certificates() {
   const [certificates, setCertificates] = useState([])
@@ -17,7 +16,7 @@ export default function Certificates() {
   useEffect(() => {
     const fetchCertificates = async () => {
       try {
-        const res = await axios.get(url)
+        const res = await axios.get(`${baseURL}/data/certificates`)
         const data = await res.data
         setCertificates(data)
       } catch (err) {

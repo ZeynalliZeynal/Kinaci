@@ -11,7 +11,11 @@ body {
 }
 
 h2 {
-  @apply text-h2 font-semibold;
+  @apply text-h2 font-semibold text-blue-900;
+}
+
+h1 {
+  @apply text-h1 font-semibold;
 }
 
 .primary-button {
@@ -19,11 +23,11 @@ h2 {
 }
 
 .sidebar-active {
-  @apply translate-x-0 z-30;
+  @apply translate-x-0 z-[999];
 }
 
 .overlay-active {
-  @apply backdrop-blur-sm z-30 visible;
+  @apply backdrop-blur-sm z-[990] visible;
 }
 
 .sidebar-container,
@@ -75,7 +79,7 @@ button:active {
 }
 
 section {
-  @apply pt-6;
+  @apply py-6;
 }
 
 .blue-link-btn {
@@ -96,6 +100,10 @@ section {
 
 /* Scroll bar Style */
 ::-webkit-scrollbar {
+  @apply size-2;
+}
+
+.small-scrollbar::-webkit-scrollbar {
   @apply size-1;
 }
 
@@ -133,4 +141,8 @@ section {
 
 .stats-title {
   font-size: clamp(12px, 3vw, 18px);
+}
+
+.disabled {
+  @apply pointer-events-none select-none relative before:absolute before:z-20 before:-top-[13px] before:left-1/2 before:-translate-x-1/2 before:content-['🚫'] before:rounded-lg before:text-white before:font-medium after:absolute after:inset-0 after:rounded-xl after:z-10 after:bg-white/40 after:backdrop-blur-[1px];
 }

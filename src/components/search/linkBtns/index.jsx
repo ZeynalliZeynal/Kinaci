@@ -3,7 +3,7 @@ import { linkBtns } from '~/data/searchBar/linkBtns.jsx'
 
 export default function LinkBtns() {
   return (
-    <ul className="gap-2 hidden lg:flex">
+    <ul className="gap-2 hidden md:flex">
       {linkBtns.map((link, i) => (
         <LinkBtn bgColor={link.bgColor} key={i} to={link.to}>
           {link.text}

@@ -1,28 +1,47 @@
-import SidebarLink from './sidebarLinks'
-import ContactIcons from '~/components/ContactIcons.jsx'
-import classNames from 'classnames'
+import SidebarLink from './sidebarLinks';
+import ContactIcons from '~/components/ContactIcons.jsx';
+import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Sidebar({ isOpen, onClose }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    onClose();
+  }, [location.pathname]);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isOpen]);
+
   return (
     <>
       <div
         className={classNames(
-          'overlay fixed size-full backdrop-blur-sm z-10 invisible',
+          'overlay fixed size-full backdrop-blur-sm z-[990] invisible',
           {
             'overlay-active': isOpen,
           },
         )}
         onClick={() => onClose((prev) => !prev)}
-      ></div>
+      />
       <div
         className={classNames(
-          'sidebar-container fixed z-50 max-w-[400px] bg-white text-blue-900 -translate-x-full',
+          'sidebar-container fixed z-[999] max-w-[400px] bg-white text-blue-900 -translate-x-full',
           {
             'sidebar-active': isOpen,
           },
         )}
       >
-        <div className="main-window relative z-40">
+        <div className="main-window relative z-40 min-h-screen max-h-screen overflow-y-auto">
           <h3 className="flex items-center justify-between head px-[30px] py-[20px] text-3xl font-semibold border-b border-gray-200">
             Tez keçidlər
             <button
@@ -57,5 +76,5 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </div>
     </>
-  )
+  );
 }

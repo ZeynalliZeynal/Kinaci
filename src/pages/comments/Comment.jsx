@@ -3,8 +3,8 @@ import axios from 'axios'
 import CommentSkeleton from '~/pages/comments/CommentSkeleton.jsx'
 import CommentCard from '~/pages/comments/CommentCard.jsx'
 import PaginationButtons from '~/pages/comments/PaginationButtons.jsx'
-
-const url = 'https://kinaci-server.onrender.com/data/comments'
+import { usePagePagination } from '~/hooks/usePagePagination.js'
+import { baseURL } from '~/data/consts.js'
 
 const initialState = {
   comments: [],
@@ -43,17 +43,12 @@ export default function Comment() {
   const [isLoading, setIsLoading] = useState(false)
   const [{ comments }, dispatch] = useReducer(reducer, initialState)
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const commentsPerPage = 4
+  const itemsPerPage = 4
 
-  const indexOfLastComment = currentPage * commentsPerPage
-  const indexOfFirstComment = indexOfLastComment - commentsPerPage
-  const currentComments = comments.slice(
-    indexOfFirstComment,
-    indexOfLastComment,
+  const [currentItems, pageNumbers, paginate] = usePagePagination(
+    comments,
+    itemsPerPage,
   )
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   const handleToggleExpand = (commentId) => {
     // dispatch({ type: 'COLLAPSE_ALL' })
@@ -64,8 +59,8 @@ export default function Comment() {
     const fetchComments = async () => {
       try {
         setIsLoading(true)
-        const res = await axios.get(url)
-        const data = await res.data
+        const res = await axios.get(`${baseURL}/data/comments`)
+        const data = res.data
         dispatch({ type: 'SET_COMMENTS', payload: data })
       } catch (err) {
         console.warn(err)
@@ -83,14 +78,10 @@ export default function Comment() {
       ) : (
         <div className="grid gap-8">
           <CommentCard
-            comments={currentComments}
+            comments={currentItems}
             onToggleExpand={handleToggleExpand}
           />
-          <PaginationButtons
-            commentsPerPage={commentsPerPage}
-            totalComments={comments.length}
-            paginate={paginate}
-          />
+          <PaginationButtons pageNumbers={pageNumbers} paginate={paginate} />
         </div>
       )}
     </>

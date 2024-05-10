@@ -4,18 +4,19 @@ import UserInfo from './userInfo'
 import ContactIcons from '~/components/ContactIcons.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { baseURL } from '~/data/consts.js'
+import { Link } from 'react-router-dom'
 
 export default function AsideSection({ estateItem }) {
   const [regions, setRegions] = useState([])
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          'https://kinaci-server.onrender.com/data/selectInfo',
-        )
+        const res = await axios.get(`${baseURL}/data/selectInfo`)
         const data = await res.data
 
-        setRegions(data.location)
+        setRegions(data.cities)
       } catch (error) {
         console.warn(error)
       }
@@ -24,7 +25,7 @@ export default function AsideSection({ estateItem }) {
     fetchData()
   }, [])
   return (
-    <aside className="px-2 mb-5">
+    <aside className="px-2 mb-5 text-blue-900">
       <div className="container">
         <div className="grid gap-4">
           <div className="estate-id py-4 w-full text-orange-600 rounded-xl bg-orange-200 font-semibold flex justify-center">
@@ -44,9 +45,10 @@ export default function AsideSection({ estateItem }) {
               Digər Bölgələrdəki Əmlaklar
             </h3>
             <ul className="gap-2.5 flex-col text-md mt-5 justify-start">
-              {regions.map((region, index) => (
+              {regions?.map((region, index) => (
                 <li key={index} className="w-full justify-start">
-                  <button
+                  <Link
+                    to={`/estate?cities=${region.label}`}
                     className={
                       estateItem?.location.city === region.label
                         ? 'font-semibold'
@@ -54,7 +56,7 @@ export default function AsideSection({ estateItem }) {
                     }
                   >
                     {region.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

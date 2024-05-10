@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom'
-import LoginForm from '~/components/loginForm/index.jsx'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import LoginForm from '~/components/loginForm/index.jsx';
+import { useState } from 'react';
 
 export default function LinkBtn({
   onAction,
@@ -9,15 +9,11 @@ export default function LinkBtn({
   children,
   to,
 }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   function handleNavigate() {
-    navigate(to)
-  }
-
-  function handleModal() {
-    setIsOpen(!isOpen)
+    navigate(to);
   }
 
   return (
@@ -25,12 +21,12 @@ export default function LinkBtn({
       <li>
         <button
           className={`primary-button text-${color} ${bgColor}`}
-          onClick={to ? handleNavigate : handleModal}
+          onClick={to ? handleNavigate : () => setIsOpen(true)}
         >
           {children}
         </button>
       </li>
-      <LoginForm isOpen={isOpen} closeModal={handleModal} />
+      <LoginForm isOpen={isOpen} closeModal={() => setIsOpen(false)} />
     </>
-  )
+  );
 }

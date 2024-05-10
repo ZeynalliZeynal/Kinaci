@@ -1,11 +1,11 @@
 export const countries = [
   {
     id: 1,
-    name: 'Türkiyə',
+    name: 'Azərbaycan',
   },
   {
     id: 2,
-    name: 'Azərbaycan',
+    name: 'Türkiyə',
   },
   {
     id: 3,

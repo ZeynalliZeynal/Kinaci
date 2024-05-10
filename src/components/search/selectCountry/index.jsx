@@ -12,7 +12,7 @@ export default function SelectCountry() {
       as="div"
       value={selectedCountry}
       onChange={setSelectedCountry}
-      className="relative"
+      className="relative z-[80] w-fit"
     >
       {({ open }) => (
         <>

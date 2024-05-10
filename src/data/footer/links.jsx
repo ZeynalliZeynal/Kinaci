@@ -4,7 +4,7 @@ export const links = [
     to: '/about',
   },
   {
-    text: 'Türkiyədə daşınmaz əmlak',
+    text: 'Azərbaycanda daşınmaz əmlak',
     to: '/estate',
   },
   {
