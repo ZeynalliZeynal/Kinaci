@@ -28,6 +28,7 @@ export default function ContactSlider() {
       <div className="container max-w-full">
         <Swiper
           ref={swiperRef}
+          loop={true}
           slidesPerView={4}
           spaceBetween={30}
           className="mySwiper h-60 my-5 relative"
@@ -40,7 +41,7 @@ export default function ContactSlider() {
             );
           })}
           <button
-            className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full p-2 swiper-button-prev z-50 text-blue-900 bg-white/50"
+            className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full p-2 swiper-button-prev hover:bg-white z-50 text-blue-900 bg-white/50"
             onClick={handlePrevSlide}
           >
             <span className="size-6">
@@ -48,7 +49,7 @@ export default function ContactSlider() {
             </span>
           </button>
           <button
-            className="absolute top-1/2 -translate-y-1/2 right-4 rounded-full p-2 swiper-button-next z-50 text-blue-900 bg-white/50"
+            className="absolute top-1/2 -translate-y-1/2 right-4 rounded-full p-2 swiper-button-next hover:bg-white z-50 text-blue-900 bg-white/50"
             onClick={handleNextSlide}
           >
             <span className="size-6">
