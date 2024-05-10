@@ -1,6 +1,7 @@
 import Search from '~/components/search/index.jsx';
 import { useEffect } from 'react';
 import ContactLocation from '~/pages/contact/ContactLocation.jsx';
+import VisitOffice from './VisitOffice';
 
 export default function Contact() {
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function Contact() {
         <Search />
       </section>
       <ContactLocation />
+      <VisitOffice />
     </main>
   );
 }
