@@ -1,38 +1,36 @@
-import ButtonWithTooltip from '~/pages/estate/estateItem/estateInfo/asideSection/buttonWithTooltip/index.jsx'
-import EstatePrice from '~/pages/estate/estateItem/estateInfo/asideSection/estatePrice/index.jsx'
-import UserInfo from './userInfo'
-import ContactIcons from '~/components/ContactIcons.jsx'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { baseURL } from '~/data/consts.js'
-import { Link } from 'react-router-dom'
+import EstatePrice from '~/pages/estate/estateItem/estateInfo/asideSection/estatePrice/index.jsx';
+import UserInfo from './userInfo';
+import ContactIcons from '~/components/ContactIcons.jsx';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { baseURL } from '~/data/consts.js';
+import { Link } from 'react-router-dom';
 
 export default function AsideSection({ estateItem }) {
-  const [regions, setRegions] = useState([])
+  const [regions, setRegions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseURL}/data/selectInfo`)
-        const data = await res.data
+        const res = await axios.get(`${baseURL}/data/selectInfo`);
+        const data = await res.data;
 
-        setRegions(data.cities)
+        setRegions(data.cities);
       } catch (error) {
-        console.warn(error)
+        console.warn(error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
   return (
     <aside className="px-2 mb-5 text-blue-900">
-      <div className="container">
+      <div className="container sticky top-4">
         <div className="grid gap-4">
           <div className="estate-id py-4 w-full text-orange-600 rounded-xl bg-orange-200 font-semibold flex justify-center">
             Əmlak nömrəsi: {estateItem?.id}
           </div>
           <EstatePrice estateItem={estateItem} />
-          <ButtonWithTooltip />
           <UserInfo estateItem={estateItem} />
           <div className="print-hidden shadow-section rounded-xl p-[30px] bg-white">
             <h3 className="text-4xl font-semibold">Məzmunu Paylaşın</h3>
@@ -64,5 +62,5 @@ export default function AsideSection({ estateItem }) {
         </div>
       </div>
     </aside>
-  )
+  );
 }

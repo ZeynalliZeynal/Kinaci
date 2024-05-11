@@ -4,10 +4,12 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 import LoginForm from '~/components/loginForm/index.jsx';
 import { useActiveAccount } from '~/redux/selectors.js';
 import { adminInfo } from '~/data/adminInfo/index.jsx';
+import { useScrollToRef } from '~/hooks/useScrollTo.js';
 
 const position = [32.08960103931366, 36.49760354536997];
 
 export default function ContactLocation() {
+  const ref = useScrollToRef();
   const activeAccount = useActiveAccount();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +35,7 @@ export default function ContactLocation() {
   return (
     <>
       <LoginForm isOpen={isOpen} closeModal={() => setIsOpen(false)} />
-      <section>
+      <section ref={ref}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div ref={mapContainer} className="h-[300px] rounded-xl" />

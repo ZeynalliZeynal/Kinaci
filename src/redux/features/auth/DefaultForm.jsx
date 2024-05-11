@@ -141,7 +141,7 @@ export default function DefaultForm({ onClose, setError }) {
           {registrationType === 'signup' ? 'Qeydiyyatdan kec' : 'Daxil ol'}
         </DefaultBtn>
       </div>
-      <div className="flex w-full justify-between items-center">
+      <div className="flex w-full justify-between sm:items-center items-start sm:flex-row flex-col gap-3">
         {registrationType === 'signup' ? 'Hesabınız var?' : 'Hesabınız yoxdur?'}
         <button
           type="button"

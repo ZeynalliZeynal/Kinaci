@@ -45,7 +45,7 @@ export default function ContactSlider() {
               spaceBetween: 20,
             },
           }}
-          className="mySwiper h-60 my-5 relative"
+          className="mySwiper h-[300px] my-5 relative"
         >
           {contactCarouselImages.map((image, index) => {
             return (

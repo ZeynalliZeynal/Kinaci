@@ -116,10 +116,10 @@ export default function CommentForm({
           </div>
         )}
         <div>
-          <label htmlFor="comment" className="flex-1 font-medium">
+          <label htmlFor="text" className="flex-1 font-medium">
             Şərh
             <DefaultTextarea
-              name="comment"
+              name="text"
               value={values.text}
               handleChange={(e) => {
                 if (e.length <= initialState.countSymbols) {

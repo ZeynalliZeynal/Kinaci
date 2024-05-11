@@ -1,6 +1,8 @@
-import { blogShare } from '~/data/blogShare.jsx'
+import { blogShare } from '~/data/blogShare.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export default function ShareBlog({ blog }) {
+  const navigate = useNavigate();
   return (
     <section>
       <div className="container">
@@ -24,7 +26,10 @@ export default function ShareBlog({ blog }) {
           <ul className="gap-2 justify-start sm:justify-end">
             {blog?.tags.map((tag) => (
               <li key={tag}>
-                <button className="bg-orange-500/10 px-[18px] py-3 rounded-full font-medium">
+                <button
+                  className="bg-orange-500/10 px-[18px] py-3 rounded-full font-medium"
+                  onClick={() => navigate(`/blog?blogTags=${tag}`)}
+                >
                   {tag}
                 </button>
               </li>
@@ -33,5 +38,5 @@ export default function ShareBlog({ blog }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
