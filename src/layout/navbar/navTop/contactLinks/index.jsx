@@ -1,5 +1,5 @@
-import { links } from '~/data/navbar/links.jsx'
-import ContactLink from './contactLink'
+import { links } from '~/data/navbar/links.jsx';
+import ContactLink from './ContactLink.jsx';
 
 export default function ContactLinks() {
   return (
@@ -8,5 +8,5 @@ export default function ContactLinks() {
         <ContactLink data={link} key={index} />
       ))}
     </ul>
-  )
+  );
 }

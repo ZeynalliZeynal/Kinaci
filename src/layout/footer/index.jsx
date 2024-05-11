@@ -1,8 +1,8 @@
-import footerLogo from '~/assets/img/footer-logo.svg'
-import ContactIcons from '~/components/ContactIcons.jsx'
-import FooterLinks from '~/layout/footer/footerLinks'
-import Newsletter from '~/layout/footer/newsletter/index.jsx'
-import CommunicationLinks from '~/layout/footer/communication/index.jsx'
+import footerLogo from '~/assets/img/footer-logo.svg';
+import ContactIcons from '~/components/ContactIcons.jsx';
+import FooterLinks from '~/layout/footer/FooterLinks.jsx';
+import Newsletter from '~/layout/footer/NewSettler.jsx';
+import CommunicationLinks from '~/layout/footer/Communication.jsx';
 
 export default function Footer() {
   return (
@@ -53,5 +53,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
