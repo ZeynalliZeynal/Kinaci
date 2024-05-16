@@ -114,10 +114,7 @@ export default function CommentForm({
                 dispatch({ type: 'IS_CHECKED', payload: !isChecked })
               }
             />
-            <p>
-              Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə yadda
-              saxla.
-            </p>
+            <p>Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu yadda saxla.</p>
           </div>
         )}
         <div>
