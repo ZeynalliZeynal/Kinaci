@@ -15,8 +15,8 @@ export default function CommentForm({
   isChecked,
   countSymbols,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   const activeAccount = useActiveAccount();
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -51,12 +51,12 @@ export default function CommentForm({
           type: 'REMOVE_LOCAL_STORAGE',
         });
     } catch (error) {
-      console.error('Error adding comment:', error);
+      console.error('Error adding comment: ', error);
     }
   };
 
   useEffect(() => {
-    if (activeAccount)
+    if (activeAccount) {
       dispatch({
         type: 'SET_VALUES',
         payload: {
@@ -64,6 +64,9 @@ export default function CommentForm({
           email: activeAccount.email,
         },
       });
+
+      dispatch({ type: 'IS_CHECKED', payload: true });
+    }
   }, [activeAccount]);
 
   return (
@@ -107,7 +110,9 @@ export default function CommentForm({
           <div className="flex flex-col md:flex-row gap-2.5">
             <DefaultCheckbox
               isChecked={isChecked}
-              setIsChecked={() => dispatch({ type: 'IS_CHECKED' })}
+              setIsChecked={() =>
+                dispatch({ type: 'IS_CHECKED', payload: !isChecked })
+              }
             />
             <p>
               Növbəti dəfə şərh yazmaq üçün adım və e-poçtumu bu brauzerdə yadda
