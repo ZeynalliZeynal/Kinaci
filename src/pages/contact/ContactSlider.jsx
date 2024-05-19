@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
 
 // import required modules
 import { contactCarouselImages } from '~/data/contactCarouselImage';
 import { useRef } from 'react';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
+import { Autoplay } from 'swiper/modules';
 
 export default function ContactSlider() {
   const swiperRef = useRef(null);
@@ -31,6 +31,11 @@ export default function ContactSlider() {
           loop={true}
           slidesPerView={1}
           spaceBetween={50}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
           breakpoints={{
             640: {
               slidesPerView: 1,
