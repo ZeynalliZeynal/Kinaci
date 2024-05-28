@@ -55,7 +55,7 @@ export default function ContactSlider() {
           {contactCarouselImages.map((image, index) => {
             return (
               <SwiperSlide key={index}>
-                <img src={image.src} alt={`Image #${index + 1}`} />
+                <img src={image} alt={`Image #${index + 1}`} />
               </SwiperSlide>
             );
           })}
