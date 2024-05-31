@@ -1,10 +1,10 @@
-import Navbar from '~/layout/navbar/index.jsx';
-import Footer from '~/layout/footer/index.jsx';
 import { Outlet, useLocation } from 'react-router-dom';
-import ContactUsSection from './ContactUsSection.jsx';
-import Breadcrumbs from '~/layout/Breadcrumbs.jsx';
 import { useIntersectionObserver } from '~/hooks/useIntersectionObserver.js';
-import GoToTopButton from '~/components/GoToTopButton.jsx';
+import Navbar from '~/layout/navbar';
+import Footer from '~/layout/footer';
+import ContactUsSection from './ContactUsSection';
+import Breadcrumbs from '~/layout/Breadcrumbs';
+import GoToTopButton from '~/components/GoToTopButton';
 
 export default function Layout() {
   const [isVisible, ref] = useIntersectionObserver();

@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import routes from '~/routes/index.jsx';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useActiveAccount } from '~/redux/selectors.js';
 import {
@@ -8,6 +8,7 @@ import {
   fetchFavorites,
 } from '~/redux/features/addToFav/addToFavSlice.js';
 import { fetchUsers } from '~/redux/features/auth/authSlice.js';
+import FullPageLoading from '~/components/FullPageLoading.jsx';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,5 +19,9 @@ export default function App() {
     if (activeAccount) dispatch(fetchFavorites(activeAccount.id));
     else dispatch(emptyList());
   }, [activeAccount]);
-  return <RouterProvider router={routes} />;
+  return (
+    <Suspense fallback={<FullPageLoading />}>
+      <RouterProvider router={routes} />;
+    </Suspense>
+  );
 }
