@@ -21,7 +21,7 @@ export default function App() {
   }, [activeAccount]);
   return (
     <Suspense fallback={<FullPageLoading />}>
-      <RouterProvider router={routes} />;
+      <RouterProvider router={routes} />
     </Suspense>
   );
 }

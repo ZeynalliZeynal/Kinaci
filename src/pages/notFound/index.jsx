@@ -4,9 +4,11 @@ import logo from '~/assets/img/logo.svg';
 import bg from '~/assets/img/not-found-bg.jpg';
 import Lottie from 'lottie-react';
 import { IoIosReturnLeft } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 
 export default function NotFound() {
+  const error = useRouteError();
+
   useEffect(() => {
     document.title = 'Kinaci - 404';
   }, []);
@@ -25,8 +27,10 @@ export default function NotFound() {
             <Link to="/" className="w-[300px]">
               <img src={logo} alt="Kinaci" />
             </Link>
-            <div className="text-6xl font-semibold text-center">
-              Axtardığınız səhifə tapılmadı
+            <div className="text-5xl font-semibold text-center">
+              {error.data}
+              <br />
+              Status Kodu: {error.status}
             </div>
             <div className="w-[400px] mx-auto">
               <Lottie animationData={notFound} />
