@@ -18,11 +18,14 @@ export default function HeartBtn({ estate }) {
     addedItem = addedItems?.find((item) => item.id === estate?.id);
     isAdded = estate && addedItem && estate.id === addedItem.id;
   }
+
   const status = useFavStatus();
 
   const dispatch = useDispatch();
 
   const handleAddItem = () => {
+    console.log(activeAccount, estate);
+    console.log(addedItems, isAdded);
     if (activeAccount)
       dispatch(postFavorites({ userId: activeAccount.id, favObj: estate }));
     else setIsOpen(true);

@@ -53,7 +53,7 @@ const addToFavSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const existingItem = state.addedItems.find(
+      const existingItem = state.addedItems?.find(
         (item) => item.id === action.payload.id,
       );
       if (!existingItem) state.addedItems.push(action.payload);
@@ -69,23 +69,25 @@ const addToFavSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFavorites.pending, (state, action) => {
+      .addCase(fetchFavorites.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.addedItems = action.payload;
       })
-      .addCase(postFavorites.pending, (state, action) => {
+      .addCase(postFavorites.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(postFavorites.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        const existingItem = state.addedItems.find(
-          (item) => item.id === action.payload.id,
-        );
-        if (!existingItem) state.addedItems.push(action.payload);
-        else if (existingItem)
+        const existingItem = state.addedItems
+          ? state.addedItems.find((item) => item.id === action.payload.id)
+          : {};
+        if (!existingItem) {
+          console.log(action.payload);
+          state.addedItems.push(action.payload);
+        } else if (existingItem && state.addedItems)
           state.addedItems = state.addedItems.filter(
             (item) => item.id !== action.payload.id,
           );
@@ -100,5 +102,5 @@ const addToFavSlice = createSlice({
   },
 });
 
-export const { addItem, emptyList } = addToFavSlice.actions;
+export const { emptyList } = addToFavSlice.actions;
 export default addToFavSlice.reducer;

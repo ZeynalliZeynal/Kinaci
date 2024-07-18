@@ -13,12 +13,12 @@ import FullPageLoading from '~/components/FullPageLoading.jsx';
 export default function App() {
   const dispatch = useDispatch();
   const activeAccount = useActiveAccount();
-
+  console.log(activeAccount);
   useEffect(() => {
     dispatch(fetchUsers());
-    if (activeAccount) dispatch(fetchFavorites(activeAccount.id));
+    if (activeAccount) dispatch(fetchFavorites(activeAccount?.id));
     else dispatch(emptyList());
-  }, [activeAccount]);
+  }, [activeAccount, dispatch]);
   return (
     <Suspense fallback={<FullPageLoading />}>
       <RouterProvider router={routes} />

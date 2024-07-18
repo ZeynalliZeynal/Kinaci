@@ -35,6 +35,7 @@ export default function DefaultForm({ onClose, setError }) {
     const doesPropertyExist = (prop) => {
       return accounts.find((acc) => acc[prop] === addedAccount[prop]) || false;
     };
+
     if (registrationType === 'signup') {
       if (
         !doesPropertyExist('userName') &&

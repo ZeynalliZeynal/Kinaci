@@ -41,7 +41,7 @@ export default function Sidebar({ isOpen, onClose }) {
           },
         )}
       >
-        <div className="main-window relative z-40 min-h-screen max-h-screen overflow-y-auto">
+        <div className="main-window relative z-40 min-h-screen max-h-screen overflow- -auto">
           <h3 className="flex items-center justify-between head px-[30px] py-[20px] text-3xl font-semibold border-b border-gray-200">
             Tez keçidlər
             <button

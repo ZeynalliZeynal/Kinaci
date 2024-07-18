@@ -57,20 +57,20 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsers.pending, (state, action) => {
+      .addCase(fetchUsers.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.accounts = action.payload;
       })
-      .addCase(postUser.pending, (state, action) => {
+      .addCase(postUser.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(postUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.activeAccount = action.payload;
-
+        state.accounts = [...state.accounts, action.payload];
         localStorage.setItem(
           'activeAccount',
           JSON.stringify(state.activeAccount),

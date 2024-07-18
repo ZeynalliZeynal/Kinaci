@@ -9,7 +9,9 @@ export default function Actions({ estate }) {
   const [isOpen, setIsOpen] = useState(false);
   const activeAccount = useActiveAccount();
   const addedItems = useSelector((state) => state.addToFav.addedItems);
-  const addedItem = addedItems.find((item) => item.id === estate?.id);
+  const addedItem = addedItems
+    ? addedItems.find((item) => item.id === estate?.id)
+    : {};
   const isAdded = estate?.id === addedItem?.id;
   const dispatch = useDispatch();
 
