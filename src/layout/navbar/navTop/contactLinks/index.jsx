@@ -1,5 +1,6 @@
 import { links } from '~/data/navbar/links.jsx';
 import ContactLink from './ContactLink.jsx';
+import Registration from '~/redux/features/auth/Registeration.jsx';
 
 export default function ContactLinks() {
   return (
@@ -7,6 +8,7 @@ export default function ContactLinks() {
       {links.map((link, index) => (
         <ContactLink data={link} key={index} />
       ))}
+      <Registration />
     </ul>
   );
 }

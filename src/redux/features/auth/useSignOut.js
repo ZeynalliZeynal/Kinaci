@@ -1,12 +1,14 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { signOut as signOutApi } from '~/services/apiAuth.js';
 import { toast } from 'sonner';
 
 export const useSignOut = () => {
+  const queryClient = useQueryClient();
+
   const { mutate: signOut, isPending: isSigningOut } = useMutation({
     mutationFn: signOutApi,
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
+      queryClient.setQueriesData(['user'], null);
       toast.success(`Çıxış uğurlu oldu. Tezliklə görüşənədək, İstifadəçi`);
     },
     onError: () => {

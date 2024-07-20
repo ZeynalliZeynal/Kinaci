@@ -1,16 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { signIn as signInApi } from '~/services/apiAuth.js';
+import { signUp as signUpApi } from '~/services/apiAuth.js';
 import { toast } from 'sonner';
 
-export const useSignIn = () => {
+export const useSignUp = () => {
   const queryClient = useQueryClient();
 
-  const { mutate: signIn, isPending: isSigningIn } = useMutation({
-    mutationFn: signInApi,
+  const { mutate: signUp, isPending: isSigningUp } = useMutation({
+    mutationFn: signUpApi,
     onSuccess: (data) => {
       queryClient.setQueryData(['user'], data.user);
       console.log(data);
-      toast.success(`Uğurla daxil olun. Yenidən xoş gəlmisiniz, İstifadəçi.`);
+      toast.success(
+        `Uğurla daxil olundu. Xoş gəlmisiniz, ${data.user.user_metadata.fullName}.`,
+      );
     },
     onError: () => {
       toast.error(
@@ -19,5 +21,5 @@ export const useSignIn = () => {
     },
   });
 
-  return { signIn, isSigningIn };
+  return { signUp, isSigningUp };
 };

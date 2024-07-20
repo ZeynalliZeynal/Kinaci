@@ -1,144 +1,92 @@
-import DefaultInput from '~/components/loginForm/DefaultInput.jsx';
 import DefaultBtn from '~/components/DefaultBtn.jsx';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { login, postUser } from '~/redux/features/auth/authSlice.js';
-import { useAccounts, useStatus } from '~/redux/selectors.js';
+import { useForm } from 'react-hook-form';
+import { useSignUp } from './useSignUp';
+import { useSignIn } from './useSignIn';
+import SpinnerMini from '~/components/SpinnerMini';
 
 export default function DefaultForm({ onClose, setError }) {
-  const accounts = useAccounts();
-  const status = useStatus();
+  const { register, handleSubmit, reset } = useForm();
 
-  const initialState = {
-    id: accounts.length ? accounts[accounts.length - 1].id + 1 : 1,
-    userName: '',
-    fullName: '',
-    email: '',
-    tel: '',
-    password: '',
-  };
-
-  const [addedAccount, setAddedAccount] = useState(initialState);
+  const { signUp, isSigningUp } = useSignUp();
+  const { signIn, isSigningIn } = useSignIn();
 
   const [registrationType, setRegistrationType] = useState('login');
-
-  const dispatch = useDispatch();
 
   const handleRegisterType = () => {
     setRegistrationType(registrationType === 'signup' ? 'login' : 'signup');
     setError('');
-    setAddedAccount(initialState);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const doesPropertyExist = (prop) => {
-      return accounts.find((acc) => acc[prop] === addedAccount[prop]) || false;
-    };
-    if (registrationType === 'signup') {
-      if (
-        !doesPropertyExist('userName') &&
-        !doesPropertyExist('fullName') &&
-        !doesPropertyExist('email') &&
-        !doesPropertyExist('tel') &&
-        !doesPropertyExist('password')
-      ) {
-        dispatch(postUser(addedAccount));
-        onClose && onClose();
-        setError('');
-        setAddedAccount(initialState);
-      } else {
-        setError('Tələblərdən ən azı biri artıq istifadə olunur');
-      }
-    } else {
-      if (
-        doesPropertyExist('userName') &&
-        doesPropertyExist('password') &&
-        doesPropertyExist('email')
-      ) {
-        dispatch(login(addedAccount));
-        onClose && onClose();
-        setError('');
-      } else {
-        setError('Belə bir hesab yoxdur');
-      }
-    }
+  const onSubmit = ({ fullName, email, password }) => {
+    if (registrationType === 'signup') signUp({ fullName, email, password });
+    else if (registrationType === 'login') signIn({ email, password });
+    reset();
+    if (!isSigningIn || !isSigningUp) onClose();
   };
 
   return (
     <form
       className="flex flex-col gap-4 py-2"
       method="dialog"
-      onSubmit={(e) => handleSubmit(e)}
+      onSubmit={handleSubmit(onSubmit)}
     >
       {registrationType === 'signup' && (
         <div className="grid gap-4">
           <label htmlFor="fullName">Ad & Soyad</label>
-          <DefaultInput
-            placeholder="Adınızı və soyadınızı daxil edin..."
-            type="text"
-            name="fullName"
-            value={addedAccount.fullName}
-            handleChange={(value) =>
-              setAddedAccount({ ...addedAccount, fullName: value })
-            }
-          />
-        </div>
-      )}
-      <div className="grid gap-4">
-        <label htmlFor="username">İstifadəçi adı</label>
-        <DefaultInput
-          placeholder="johndoe01"
-          type="text"
-          name="username"
-          value={addedAccount.userName}
-          pattern=".*\d.*\d.*"
-          handleChange={(value) =>
-            setAddedAccount({ ...addedAccount, userName: value })
-          }
-        />
-      </div>
-      {registrationType === 'signup' && (
-        <div className="grid gap-4">
-          <label htmlFor="tel">Telefon nömrəsi</label>
-          <DefaultInput
-            placeholder="+994** *** ****"
-            type="tel"
-            name="tel"
-            value={addedAccount.tel}
-            handleChange={(value) =>
-              setAddedAccount({ ...addedAccount, tel: value })
-            }
-          />
+          <span className="transition-colors my-2.5 px-2.5 py-4 rounded-xl border border-blue-900/25 focus-within:border-blue-900 bg-white w-full flex text-xs h-[50px] cursor-default">
+            <input
+              className="placeholder:text-blue-900/50"
+              type="text"
+              autoComplete="name"
+              placeholder="John Doe"
+              {...register('fullName', {
+                required: 'Ad və soyad tələb olunur',
+              })}
+            />
+          </span>
         </div>
       )}
       <div className="grid gap-4">
         <label htmlFor="email">E-Mail</label>
-        <DefaultInput
-          placeholder="johndoe@example.com"
-          type="email"
-          name="email"
-          value={addedAccount.email}
-          handleChange={(value) =>
-            setAddedAccount({ ...addedAccount, email: value })
-          }
-        />
+        <span className="transition-colors my-2.5 px-2.5 py-4 rounded-xl border border-blue-900/25 focus-within:border-blue-900 bg-white w-full flex text-xs h-[50px] cursor-default">
+          <input
+            className="placeholder:text-blue-900/50"
+            type="email"
+            autoComplete="email"
+            placeholder="johndoe@john.doe"
+            {...register('email', {
+              required: 'E-mail tələb olunur',
+            })}
+          />
+        </span>
       </div>
       <div className="grid gap-4">
         <label htmlFor="password">Şifrə</label>
-        <DefaultInput
-          placeholder="Ən azı 6 simvol"
-          type="password"
-          name="password"
-          value={addedAccount.password}
-          handleChange={(value) =>
-            setAddedAccount({ ...addedAccount, password: value })
-          }
-        />
+        <span className="transition-colors my-2.5 px-2.5 py-4 rounded-xl border border-blue-900/25 focus-within:border-blue-900 bg-white w-full flex text-xs h-[50px] cursor-default">
+          <input
+            className="placeholder:text-blue-900/50"
+            type="password"
+            autoComplete="new-password"
+            {...register('password', {
+              required: 'Şifrə tələb olunur',
+              min: {
+                value: 6,
+                message: 'Ən azı 6 simvol tələb olunur',
+              },
+            })}
+          />
+        </span>
       </div>
       <div className="text-xxl">
         <DefaultBtn type="submit">
-          {registrationType === 'signup' ? 'Qeydiyyatdan kec' : 'Daxil ol'}
+          {isSigningIn || isSigningUp ? (
+            <SpinnerMini />
+          ) : registrationType === 'signup' ? (
+            'Qeydiyyatdan kec'
+          ) : (
+            'Daxil ol'
+          )}
         </DefaultBtn>
       </div>
       <div className="flex w-full justify-between sm:items-center items-start sm:flex-row flex-col gap-3">

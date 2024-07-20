@@ -1,7 +1,7 @@
-import { IoMailOutline } from 'react-icons/io5'
-import { BsTelephone } from 'react-icons/bs'
-import { adminInfo } from '~/data/adminInfo/index.jsx'
-import { FiLogIn } from 'react-icons/fi'
+import { IoMailOutline } from 'react-icons/io5';
+import { BsTelephone } from 'react-icons/bs';
+import { adminInfo } from '~/data/adminInfo/index.jsx';
+import { FiLogIn } from 'react-icons/fi';
 
 export const links = [
   {
@@ -16,11 +16,4 @@ export const links = [
     icon: <BsTelephone />,
     text: '+90(544) 138 07 07',
   },
-  {
-    styles:
-      'primary-button group text-orange-500 bg-white border-orange-500 border hover:bg-orange-500 hover:text-white',
-    icon: <FiLogIn />,
-    text: 'Daxil ol',
-    isBtn: true,
-  },
-]
+];

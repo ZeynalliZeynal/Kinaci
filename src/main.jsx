@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import '~/assets/scss/tailwind.scss';
 import App from '~/App.jsx';
 import { Provider } from 'react-redux';
-import { store } from '~/redux/store.js';
+import { store } from '~/redux/features/auth/store.js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'sonner';
@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </Provider>
       <Toaster richColors position="bottom-right" />
-      <ReactQueryDevtools buttonPosition="bottom-right" />
+      <ReactQueryDevtools buttonPosition="bottom-right" position="right" />
     </QueryClientProvider>
   </React.StrictMode>,
 );

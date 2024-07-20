@@ -1,11 +1,11 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import logo from '~/assets/img/logo.svg'
-import DefaultForm from '~/redux/features/auth/DefaultForm.jsx'
-import ModalCloseBtn from '~/components/ModalCloseBtn.jsx'
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import logo from '~/assets/img/logo.svg';
+import DefaultForm from '~/redux/features/auth/DefaultForm.jsx';
+import ModalCloseBtn from '~/components/ModalCloseBtn.jsx';
 
 export default function LoginForm({ isOpen, closeModal }) {
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={closeModal}>
@@ -60,5 +60,5 @@ export default function LoginForm({ isOpen, closeModal }) {
         </div>
       </Dialog>
     </Transition>
-  )
+  );
 }

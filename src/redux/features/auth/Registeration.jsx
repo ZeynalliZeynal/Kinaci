@@ -1,22 +1,24 @@
-import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import { logout } from '~/redux/features/auth/authSlice.js'
-import { FiLogOut } from 'react-icons/fi'
-import LoginForm from '~/components/loginForm/index.jsx'
-import { useDispatch } from 'react-redux'
-import { useActiveAccount, useStatus } from '~/redux/selectors.js'
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import LoginForm from '~/components/loginForm/index.jsx';
+import { useDispatch } from 'react-redux';
+import { useUser } from './useUser';
+import SpinnerMini from '~/components/SpinnerMini';
+import { useSignOut } from './useSignOut';
 
-export default function Registration({ data }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const activeAccount = useActiveAccount()
-  const status = useStatus()
-  const dispatch = useDispatch()
+export default function Registration() {
+  const { user, isPending, isAuthenticated } = useUser();
+  const [isOpen, setIsOpen] = useState(false);
+  const { signOut, isSigningOut } = useSignOut();
+  const dispatch = useDispatch();
+  if (isPending) return <SpinnerMini />;
   return (
     <>
-      {activeAccount ? (
+      {isAuthenticated ? (
         <Menu as="div" className="relative text-white">
           <Menu.Button className="font-semibold px-3 py-1 rounded-3xl bg-gradient-to-r from-red-600 to-yellow-500 via-orange-500 outline-none hover:rounded-lg duration-300">
-            {status === 'pending' ? 'Loading...' : `@${activeAccount.userName}`}
+            @{user.user_metadata.fullName.replaceAll(' ', '')}
           </Menu.Button>
           <Transition
             as={Fragment}
@@ -31,11 +33,15 @@ export default function Registration({ data }) {
               <div className="flex flex-col bg-blue-900 rounded-xl p-3">
                 <button
                   className="w-full gap-2 hover:bg-white/10 p-2 rounded-lg justify-start"
-                  onClick={() => dispatch(logout())}
+                  onClick={() => signOut()}
                 >
-                  <span>
-                    <FiLogOut />
-                  </span>
+                  {isSigningOut ? (
+                    <SpinnerMini />
+                  ) : (
+                    <span>
+                      <FiLogOut />
+                    </span>
+                  )}
                   Çıxış
                 </button>
               </div>
@@ -43,12 +49,17 @@ export default function Registration({ data }) {
           </Transition>
         </Menu>
       ) : (
-        <button className={data.styles} onClick={() => setIsOpen(true)}>
-          <span>{data.icon}</span>
-          <span className="hidden sm:inline-block">{data.text}</span>
+        <button
+          className="primary-button group text-orange-500 bg-white border-orange-500 border hover:bg-orange-500 hover:text-white"
+          onClick={() => setIsOpen(true)}
+        >
+          <span>
+            <FiLogIn />
+          </span>
+          <span className="hidden sm:inline-block">Daxil ol</span>
         </button>
-      )}{' '}
+      )}
       <LoginForm isOpen={isOpen} closeModal={() => setIsOpen(false)} />
     </>
-  )
+  );
 }
