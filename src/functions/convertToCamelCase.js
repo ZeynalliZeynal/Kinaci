@@ -1,4 +1,4 @@
-export const toCamelCase = (string) => {
+export const toCamelCase = (string = '') => {
   const words = string.toLowerCase().split(' ');
 
   let capitilize;

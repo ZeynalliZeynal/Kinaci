@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import EstateCards from '~/components/estateCards/index.jsx';
 import { ShowMoreButton } from '~/pages/home/ShowMoreButton.jsx';
 import NoProduct from '~/components/NoProduct.jsx';
@@ -8,18 +8,18 @@ import Loader from '~/components/loader';
 
 export default function EstateSection({
   filter,
+  queryKey,
   title,
   paragraph,
   bg,
   buttonLink,
 }) {
-  const [activeSellingType, setActiveSellingType] = useState('forSale');
+  const [activeSellingType, setActiveSellingType] = useState('For Sale');
 
-  const { filteredEstates, isPending } = useEstates(
-    {
-      filter: { field: filter, value: activeSellingType },
-    },
-    activeSellingType,
+  const { estates, isPending } = useEstates({ filter }, queryKey);
+
+  const filteredEstates = estates?.filter(
+    (e) => e.status === activeSellingType,
   );
 
   if (isPending) return <Loader />;

@@ -1,21 +1,25 @@
-import { motion } from 'framer-motion'
-import ActionBtns from '~/components/estateCards/ActionBtns.jsx'
-import Details from '~/components/estateCards/Details.jsx'
-import Dots from '~/components/estateCards/Dots.jsx'
-import { useNavigate } from 'react-router-dom'
-import CardBadge from '~/components/estateCards/CardBadge.jsx'
-import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx'
-import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi'
-import { useSwapSlide } from '~/hooks/useSwapSlide.js'
+import { motion } from 'framer-motion';
+import ActionBtns from '~/components/estateCards/ActionBtns.jsx';
+import Details from '~/components/estateCards/Details.jsx';
+import Dots from '~/components/estateCards/Dots.jsx';
+import { useNavigate } from 'react-router-dom';
+import CardBadge from '~/components/estateCards/CardBadge.jsx';
+import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx';
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
+import { useSwapSlide } from '~/hooks/useSwapSlide.js';
+import { toCamelCase } from '~/functions/convertToCamelCase.js';
 
-export default function EstateCards({ estate, isListed }) {
-  const { preview } = estate.assets
+export default function EstateCards({ estate = {}, isListed }) {
+  const preview = estate.images?.slice(0, 3);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const title =
+    `${estate.status === 'For Sale' ? 'Satılır' : 'İcarəyə verilir'} ${estate.rooms} ${estate.types?.label} ${estate.area} ${estate.places?.label ? estate.places.label : ''}`.trim();
 
   const [goPrev, goNext, imageIndex, setImageIndex] = useSwapSlide(
-    preview.length,
-  )
+    preview?.length,
+  );
 
   return (
     <div
@@ -23,13 +27,13 @@ export default function EstateCards({ estate, isListed }) {
     >
       <div className={`card-head ${isListed ? 'w-[370px]' : ''}`}>
         <div className="card-img-slider-container flex overflow-hidden relative rounded-selectBtn">
-          {preview.map((image, index) => (
+          {preview?.map((image, index) => (
             <motion.div
               animate={{ x: `${-100 * imageIndex}%` }}
               key={index}
               className="card-img-slide shrink-0 w-full h-72 rounded cursor-pointer"
               onClick={() =>
-                navigate(`/estate/${estate?.selling_type}/${estate?.id}`)
+                navigate(`/estate/${toCamelCase(estate.status)}/${estate.id}`)
               }
             >
               <img src={image} alt={`Image ${index + 1}`} />
@@ -37,7 +41,7 @@ export default function EstateCards({ estate, isListed }) {
           ))}{' '}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
             <Dots
-              size={preview.length}
+              size={preview?.length}
               imageIndex={imageIndex}
               setImageIndex={setImageIndex}
             />
@@ -65,7 +69,7 @@ export default function EstateCards({ estate, isListed }) {
               <HeartBtn estate={estate} />
             </span>
           </span>{' '}
-          {estate.feature && (
+          {estate.feature_id && (
             <span className="absolute top-2 right-2 text-md">
               <CardBadge estate={estate} />
             </span>
@@ -79,11 +83,11 @@ export default function EstateCards({ estate, isListed }) {
         <h4
           className={`card-title ${isListed ? 'text-xl' : 'text-md'} font-semibold py-2`}
         >
-          {estate.title}
+          {title}
         </h4>
         <Details estate={estate} isListed={isListed} />
         <ActionBtns estateItem={estate} />
       </div>
     </div>
-  )
+  );
 }

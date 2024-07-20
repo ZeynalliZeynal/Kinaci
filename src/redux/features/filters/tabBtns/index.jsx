@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 export default function TabBtns({
   text,
@@ -15,10 +15,9 @@ export default function TabBtns({
             activeSellingType === sellingType,
         },
       )}
-      onClick={(e) => setActiveSellingType(e.target.dataset.sellingType)}
-      data-selling-type={sellingType}
+      onClick={() => setActiveSellingType(sellingType)}
     >
       {text}
     </button>
-  )
+  );
 }

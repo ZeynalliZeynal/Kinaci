@@ -1,12 +1,11 @@
 import Carousel from './Carousel';
 import Search from '~/components/search';
-import Loader from '~/components/loader';
 import { useEstate } from '~/hooks/useEstate';
-import EstateSection from '~/redux/features/estates/estateSection';
 import { useScrollToTop } from '~/hooks/useScrollTo.js';
 import OffersSection from '~/pages/home/OffersSection.jsx';
 import { useEffect } from 'react';
-import EstateSections from '~/redux/features/estates/EstateSections';
+import NewEstatesSection from '~/redux/features/estates/NewEstatesSection.jsx';
+import AffordableEstatesSection from '~/redux/features/estates/AffordableEstatesSection.jsx';
 
 export default function Home() {
   const [estates, isLoading] = useEstate();
@@ -32,7 +31,8 @@ export default function Home() {
       <section className="-mt-[122px] relative">
         <Search />
       </section>
-      <EstateSections />
+      <NewEstatesSection />
+      <AffordableEstatesSection />
       <OffersSection />
     </main>
   );
