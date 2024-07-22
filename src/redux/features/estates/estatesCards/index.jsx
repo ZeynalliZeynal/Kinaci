@@ -1,57 +1,69 @@
-import EstateCards from '~/components/estateCards'
-import { useEffect, useReducer, useState } from 'react'
-import NoProduct from '~/components/NoProduct'
-import Lottie from 'lottie-react'
-import animationData from '~/assets/img/loadMore.json'
-import Loader from '~/components/loader.jsx'
-import { useSearchParams } from 'react-router-dom'
-import { BsFillGrid3X3GapFill } from 'react-icons/bs'
-import { FaList } from 'react-icons/fa'
-import Select from '~/components/search/searchBar/select'
-import { sortSelect } from '~/data/sortSelect'
-import { useFilteredEstates } from '~/hooks/useFilteredEstates'
-import { initialState, reducer } from '~/reducers/estatesCardsReducer'
+import EstateCards from '~/components/estateCards';
+import { useEffect, useReducer, useState } from 'react';
+import NoProduct from '~/components/NoProduct';
+import Lottie from 'lottie-react';
+import animationData from '~/assets/img/loadMore.json';
+import Loader from '~/components/loader.jsx';
+import { useSearchParams } from 'react-router-dom';
+import { BsFillGrid3X3GapFill } from 'react-icons/bs';
+import { FaList } from 'react-icons/fa';
+import Select from '~/components/search/searchBar/select';
+import { sortSelect } from '~/data/sortSelect';
+import { useFilteredEstates } from '../useFilteredEstates';
+import { initialState, reducer } from '~/reducers/estatesCardsReducer';
+import { useEstates } from '../useEstates';
+import { useEstateTypes } from '../../filters/useEstateTypes';
 
 export default function EstatesCards() {
   const [
-    { value, estates, isLoading, loadMore, visibleItems, totalItems, isListed },
+    { value, isLoading, loadMore, visibleItems, totalItems, isListed },
     dispatch,
-  ] = useReducer(reducer, initialState)
-  const [searchParams] = useSearchParams()
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  ] = useReducer(reducer, initialState);
+  const [searchParams] = useSearchParams();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useFilteredEstates(estates, dispatch, searchParams, visibleItems)
-  const handleLoadMore = () => {
-    dispatch({ type: 'SET_LOADING_MORE', payload: true })
-    dispatch({ type: 'SET_VISIBLE_ITEMS' })
-  }
+  const { filteredEstates, isPending } = useFilteredEstates({
+    minPrice: searchParams.get('minPrice'),
+    maxPrice: searchParams.get('maxPrice'),
+    minSize: searchParams.get('minSize'),
+    maxSize: searchParams.get('maxSize'),
+    minFloor: searchParams.get('minFloor'),
+    maxFloor: searchParams.get('maxFloor'),
+    estateId: searchParams.get('estateId'),
+    minConstructorDate: new Date(
+      searchParams.get('minConstructorDate'),
+    ).toISOString(),
+    maxConstructorDate: new Date(
+      searchParams.get('maxConstructorDate'),
+    ).toISOString(),
+  });
 
   useEffect(() => {
-    const isListedStored = localStorage.getItem('isListed')
+    const isListedStored = localStorage.getItem('isListed');
     if (isListedStored)
       dispatch({
         type: 'SET_LISTED',
         payload: JSON.parse(isListedStored),
-      })
-  }, [])
+      });
+  }, []);
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleWindowResize)
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleWindowResize);
     return () => {
-      window.removeEventListener('resize', handleWindowResize)
-    }
-  }, [])
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (windowWidth <= 767)
       dispatch({
         type: 'SET_LISTED',
         payload: false,
-      })
-  }, [windowWidth])
+      });
+  }, [windowWidth]);
 
   return (
     <section className="py-[50px] text-blue-900 bg-gray-100">
@@ -60,12 +72,12 @@ export default function EstatesCards() {
           <div>
             <h2 className="text-4xl">Azərbaycanda daşınmaz əmlak</h2>
             <p className="text-sm mt-2.5">
-              {typeof totalItems === 'string' ? (
-                <b>{totalItems}</b>
-              ) : (
+              {filteredEstates?.length ? (
                 <>
-                  <b>{totalItems}</b> nəticə tapıldı.
+                  <b>{filteredEstates.length}</b> nəticə tapıldı.
                 </>
+              ) : (
+                'Loading'
               )}
             </p>
           </div>
@@ -79,9 +91,9 @@ export default function EstatesCards() {
                     dispatch({
                       type: 'SET_LISTED',
                       payload: false,
-                    })
+                    });
 
-                    localStorage.setItem('isListed', JSON.stringify(false))
+                    localStorage.setItem('isListed', JSON.stringify(false));
                   }}
                 >
                   <BsFillGrid3X3GapFill />
@@ -92,8 +104,8 @@ export default function EstatesCards() {
                     dispatch({
                       type: 'SET_LISTED',
                       payload: true,
-                    })
-                    localStorage.setItem('isListed', JSON.stringify(true))
+                    });
+                    localStorage.setItem('isListed', JSON.stringify(true));
                   }}
                 >
                   <FaList />
@@ -106,13 +118,13 @@ export default function EstatesCards() {
             </div>
           </div>
         </div>
-        {isLoading ? (
+        {isPending ? (
           <Loader />
-        ) : estates.length ? (
+        ) : filteredEstates?.length ? (
           <div
             className={`grid items-stretch gap-8 ${isListed ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '}`}
           >
-            {estates.map((estate) => (
+            {filteredEstates?.map((estate) => (
               <EstateCards
                 estate={estate}
                 key={estate.id}
@@ -122,24 +134,8 @@ export default function EstatesCards() {
           </div>
         ) : (
           <NoProduct />
-        )}{' '}
-        {estates.length < totalItems && (
-          <div className="flex justify-center my-8">
-            {loadMore ? (
-              <span className="size-12">
-                <Lottie animationData={animationData} />
-              </span>
-            ) : (
-              <button
-                onClick={handleLoadMore}
-                className="px-4 py-3 rounded-xl hover:bg-orange-600 text-white font-semibold bg-orange-500"
-              >
-                Daha çox
-              </button>
-            )}
-          </div>
         )}
       </div>
     </section>
-  )
+  );
 }

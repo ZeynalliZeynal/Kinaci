@@ -87,7 +87,7 @@ export default function Details({ estate, isListed }) {
         <span className="px-4 py-2 bg-blue-700 text-white font-semibold inline-flex items-center rounded-button text-sm">
           {convertCurrency(
             estate.features?.label === 'Endirim'
-              ? estate?.price - (estate?.price * estate.feature.value) / 100
+              ? estate?.price - (estate?.price * estate?.feature?.value) / 100
               : estate.price,
           )}{' '}
           {toCamelCase(estate.status) === 'forRent' &&

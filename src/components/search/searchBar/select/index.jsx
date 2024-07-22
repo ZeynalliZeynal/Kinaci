@@ -2,16 +2,16 @@ import {
   Caret,
   ClearButton,
   SelectBadge,
-} from '~/components/search/searchBar/select/buttons/SelectBarIcons.jsx'
-import { motion } from 'framer-motion'
-import { useEffect, useReducer, useRef } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { searchParamsArray } from '~/functions/searchParamsArray.js'
+} from '~/components/search/searchBar/select/buttons/SelectBarIcons.jsx';
+import { motion } from 'framer-motion';
+import { useEffect, useReducer, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { searchParamsArray } from '~/functions/searchParamsArray.js';
 
 const initialState = {
   isOpen: false,
   highlightedIndex: 0,
-}
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,61 +19,61 @@ const reducer = (state, action) => {
       return {
         ...state,
         isOpen: action.payload,
-      }
+      };
     case 'setHighlightedIndex':
       return {
         ...state,
         highlightedIndex: action.payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default function Select({ multiple, property, options }) {
+export default function Select({ multiple, property, options = [] }) {
   const [{ isOpen, highlightedIndex }, dispatch] = useReducer(
     reducer,
     initialState,
-  )
-  const [searchParams, setSearchParams] = useSearchParams()
-  const containerRef = useRef(null)
+  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const containerRef = useRef(null);
 
-  const paramsValues = searchParams.get(property)
+  const paramsValues = searchParams.get(property);
   const paramsValuesArray = paramsValues
     ? paramsValues.includes(',')
       ? paramsValues.split(',')
       : [paramsValues]
-    : []
+    : [];
 
   const handleClearOptions = () => {
     setSearchParams((prev) => {
-      prev.delete(property)
-      return prev
-    })
-  }
+      prev.delete(property);
+      return prev;
+    });
+  };
 
   const handleSelectOption = (e, option) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (multiple) {
-      searchParamsArray(paramsValues, setSearchParams, property, option)
+      searchParamsArray(paramsValues, setSearchParams, property, option);
     } else {
       if (paramsValues !== option)
         setSearchParams((prev) => {
-          prev.set(property, option)
-          return prev
-        })
+          prev.set(property, option);
+          return prev;
+        });
     }
 
-    dispatch({ type: 'isOpen', payload: false })
-  }
+    dispatch({ type: 'isOpen', payload: false });
+  };
 
   const isOptionSelected = (option) => {
-    return paramsValues && paramsValues.includes(option)
-  }
+    return paramsValues && paramsValues.includes(option);
+  };
 
   useEffect(() => {
-    if (isOpen) dispatch({ type: 'setHighlightedIndex', payload: 0 })
-  }, [isOpen])
+    if (isOpen) dispatch({ type: 'setHighlightedIndex', payload: 0 });
+  }, [isOpen]);
 
   return (
     <div
@@ -125,5 +125,5 @@ export default function Select({ multiple, property, options }) {
         ))}
       </motion.ul>
     </div>
-  )
+  );
 }

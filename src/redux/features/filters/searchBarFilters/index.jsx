@@ -2,8 +2,19 @@ import SelectContainer from '~/components/search/searchBar/selectContainer/index
 import SearchInput from '~/components/search/searchInput/index.jsx';
 import { Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { useEstateTypes } from '../useEstateTypes';
+import { useEstateRooms } from '../useEstateRooms';
+import { useEstateCities } from '../useEstateCities';
+import { useEstatePlaces } from '../useEstatePlaces';
+import { useEstateFeatures } from '../useEstateFeatures';
 
 export default function SearchBarFilters({ state }) {
+  const { features, isPending: isLoadingFeatures } = useEstateFeatures();
+  const { types, isPending: isLoadingTypes } = useEstateTypes();
+  const { rooms, isPending: isLoadingRooms } = useEstateRooms();
+  const { cities, isPending: isLoadingCities } = useEstateCities();
+  const { places, isPending: isLoadingPlaces } = useEstatePlaces();
+
   return (
     <div className="flex gap-3 flex-wrap">
       <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
@@ -56,25 +67,29 @@ export default function SearchBarFilters({ state }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <SelectContainer
               property="estateTypes"
-              options={state.estateTypes} // setValue={(newValue) => handleChange('estateTypes', newValue)}
+              options={types}
               label="Əmlak növü"
+              isLoading={isLoadingTypes}
             />
             <SelectContainer
               property="rooms"
-              options={state.rooms}
+              options={rooms}
               label="Otaqların sayı"
+              isLoading={isLoadingRooms}
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <SelectContainer
               property="cities"
-              options={state.cities}
+              options={cities}
               label="Şəhər"
+              isLoading={isLoadingCities}
             />
             <SelectContainer
               property="places"
-              options={state.places}
+              options={places}
               label="Məkan"
+              isLoading={isLoadingPlaces}
             />
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-3">
@@ -102,8 +117,9 @@ export default function SearchBarFilters({ state }) {
             <div className="grid gap-3">
               <SelectContainer
                 property="tags"
-                options={state.badges}
+                options={features}
                 label="Etiketlər"
+                isLoading={isLoadingFeatures}
               />
             </div>
             <div className="grid gap-3">
@@ -136,47 +152,10 @@ export default function SearchBarFilters({ state }) {
                   property="minConstructorDate"
                   placeholder="Min"
                 />
-                <SearchInput type="date" property="maxConstructorDate" />
-              </div>
-            </div>
-            <div className="distance-sea flex-col gap-3">
-              <label
-                htmlFor="sea"
-                className="cursor-default text-sm mb-3 inline-block"
-              >
-                Dənizə Məsafə (km)
-              </label>
-              <div className="grid grid-cols-2">
                 <SearchInput
-                  type="number"
-                  name="sea"
-                  property="minSeaDistance"
-                  placeholder="Min"
-                />
-                <SearchInput
-                  type="number"
-                  property="maxSeaDistance"
-                  placeholder="Max"
-                />
-              </div>
-            </div>
-            <div className="distance-airport flex-col gap-3">
-              <label
-                htmlFor="airport"
-                className="cursor-default text-sm mb-3 inline-block"
-              >
-                Hava limanına məsafə (km)
-              </label>
-              <div className="grid grid-cols-2">
-                <SearchInput
-                  type="number"
-                  name="airport"
-                  property="minAirportDistance"
-                  placeholder="Min"
-                />
-                <SearchInput
-                  type="number"
-                  property="maxAirportDistance"
+                  type="date"
+                  name="year"
+                  property="maxConstructorDate"
                   placeholder="Max"
                 />
               </div>

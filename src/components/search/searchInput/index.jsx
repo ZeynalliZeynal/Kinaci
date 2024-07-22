@@ -19,7 +19,11 @@ export default function SearchInput({ type, placeholder, property, name }) {
         name={name}
         id={name}
         value={searchParams.get(property) || ''}
-        onChange={(e) => e.target.value >= 0 && handleChange(e.target.value)}
+        onChange={(e) =>
+          type === 'number'
+            ? e.target.value >= 0 && handleChange(e.target.value)
+            : handleChange(e.target.value)
+        }
         placeholder={placeholder}
       />
     </div>
