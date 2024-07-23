@@ -48,6 +48,10 @@ export const getFilteredEstates = async (filters) => {
     if (filters.rooms) query = query.in('room', filters.rooms.split(','));
     if (filters.cities) query = query.in('city', filters.cities.split(','));
     if (filters.places) query = query.in('place', filters.places.split(','));
+    if (filters.sortBy)
+      query = query.order('price', {
+        ascending: filters.sortBy.includes('Artan'),
+      });
   }
 
   const { data, error } = await query;

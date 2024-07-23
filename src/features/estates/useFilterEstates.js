@@ -26,6 +26,7 @@ export const useFilterEstates = () => {
           rooms: searchParams.get('rooms'),
           cities: searchParams.get('cities'),
           places: searchParams.get('places'),
+          sortBy: searchParams.get('sortBy'),
         }
       : null,
   );
