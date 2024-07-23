@@ -6,7 +6,7 @@ import FullPageLoading from '~/components/FullPageLoading.jsx';
 export default function App() {
   return (
     <Suspense fallback={<FullPageLoading />}>
-      <RouterProvider router={routes} />;
+      <RouterProvider router={routes} />
     </Suspense>
   );
 }

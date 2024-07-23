@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy } from 'react';
-import { Layout } from 'lucide-react';
 
 const Home = lazy(() => import('~/pages/home'));
 const Estate = lazy(() => import('~/pages/estate'));
@@ -13,6 +12,7 @@ const Blog = lazy(() => import('~/pages/blog'));
 const NotFound = lazy(() => import('~/pages/notFound'));
 const ServiceItem = lazy(() => import('~/pages/services/serviceItem'));
 const BlogItem = lazy(() => import('~/features/blogs/blogItem'));
+const Layout = lazy(() => import('~/layout'));
 
 const routes = createBrowserRouter([
   {

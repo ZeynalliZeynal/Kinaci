@@ -6,7 +6,6 @@ import OurCrew from '../../features/crew/OurCrew.jsx';
 import VideoSection from './VideoSection';
 import Certificates from '../../features/certificates/Certificates.jsx';
 import { useScrollToRef } from '~/hooks/useScrollTo.js';
-import FormSection from '~/features/auth/FormSection.jsx';
 
 export default function About() {
   const ref = useScrollToRef();
@@ -27,7 +26,6 @@ export default function About() {
       <OurCrew />
       <VideoSection />
       <Certificates />
-      <FormSection />
     </main>
   );
 }
