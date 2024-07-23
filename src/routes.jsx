@@ -1,16 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from '~/layout/index.jsx';
-import Home from '~/pages/home/index.jsx';
-import Estate from '~/pages/estate/index.jsx';
-import EstateItem from '~/pages/estate/estateItem/index.jsx';
-import About from '~/pages/about/index.jsx';
-import Services from '~/pages/services/index.jsx';
-import Contact from '~/pages/contact/index.jsx';
-import Comments from '~/pages/comments/index.jsx';
-import Blog from '~/pages/blog/index.jsx';
-import NotFound from '~/pages/notFound/index.jsx';
-import ServiceItem from '~/pages/services/serviceItem/index.jsx';
-import BlogItem from '~/features/blogs/blogItem/index.jsx';
+import { lazy } from 'react';
+import { Layout } from 'lucide-react';
+
+const Home = lazy(() => import('~/pages/home'));
+const Estate = lazy(() => import('~/pages/estate'));
+const EstateItem = lazy(() => import('~/pages/estate/estateItem'));
+const About = lazy(() => import('~/pages/about'));
+const Services = lazy(() => import('~/pages/services'));
+const Contact = lazy(() => import('~/pages/contact'));
+const Comments = lazy(() => import('~/pages/comments'));
+const Blog = lazy(() => import('~/pages/blog'));
+const NotFound = lazy(() => import('~/pages/notFound'));
+const ServiceItem = lazy(() => import('~/pages/services/serviceItem'));
+const BlogItem = lazy(() => import('~/features/blogs/blogItem'));
 
 const routes = createBrowserRouter([
   {
