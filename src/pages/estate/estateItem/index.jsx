@@ -1,6 +1,6 @@
 import EstateInfo from '~/pages/estate/estateItem/estateInfo/index.jsx';
 import Search from '~/components/search';
-import SendRequestForm from '../../../redux/features/auth/SendRequestForm.jsx';
+import SendRequestForm from '~/features/auth/SendRequestForm.jsx';
 
 export default function EstateItem() {
   return (

@@ -1,24 +1,12 @@
 import Carousel from './Carousel';
 import Search from '~/components/search';
-import Loader from '~/components/loader';
-import { useEstate } from '~/hooks/useEstate';
-import EstateSection from '~/pages/home/estateSection';
 import { useScrollToTop } from '~/hooks/useScrollTo.js';
 import OffersSection from '~/pages/home/OffersSection.jsx';
 import { useEffect } from 'react';
+import NewEstatesSection from '~/features/estates/NewEstatesSection.jsx';
+import AffordableEstatesSection from '~/features/estates/AffordableEstatesSection.jsx';
 
 export default function Home() {
-  const [estates, isLoading] = useEstate();
-  const newEstates = estates.filter(
-    (newEstates) => newEstates.feature === 'Yeni',
-  );
-  const promotionalEstates = estates.filter((newEstates) =>
-    newEstates.feature.includes('endirim'),
-  );
-  const specialEstates = estates.filter(
-    (newEstates) => newEstates.feature === 'Sərfəli',
-  );
-
   useScrollToTop();
 
   useEffect(() => {
@@ -31,33 +19,8 @@ export default function Home() {
       <section className="-mt-[122px] relative">
         <Search />
       </section>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <EstateSection
-            bg="bg-blue-700/5"
-            estates={newEstates}
-            title="Yeni əmlaklar"
-            paragraph="Son əlavə edilmiş əmlaklar"
-            buttonLink="tags=Yeni"
-          />
-          <EstateSection
-            bg="bg-orange-500/5"
-            estates={promotionalEstates}
-            title="Kampaniyalı daşınmaz əmlaklar"
-            paragraph="Ən sərfəli qiymətlər"
-            buttonLink="tags=Endirim"
-          />
-          <EstateSection
-            bg="bg-blue-700/5"
-            estates={specialEstates}
-            title="Ən Yaxşı Təkliflər"
-            paragraph="Sizə özəl təkliflərimiz"
-            buttonLink="tags=Sərfəli"
-          />
-        </>
-      )}{' '}
+      <NewEstatesSection />
+      <AffordableEstatesSection />
       <OffersSection />
     </main>
   );

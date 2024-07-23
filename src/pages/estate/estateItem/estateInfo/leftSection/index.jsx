@@ -1,9 +1,9 @@
 import ImgSlider from '~/pages/estate/estateItem/imgSlider/index.jsx';
-import Actions from '~/redux/features/addToFav/actions/index.jsx';
 import ShortInfo from '~/pages/estate/estateItem/shortInfo/index.jsx';
 import InfrastructureInfo from '~/pages/estate/estateItem/infrastructureInfo/index.jsx';
 import NavigateLinks from '~/pages/estate/estateItem/navigateLinks/index.jsx';
 import DownloadBtns from '~/pages/estate/estateItem/downloadBtns/index.jsx';
+import Actions from '~/features/wishlist/actions/index.jsx';
 
 export default function LeftSection({ estateItem }) {
   return (

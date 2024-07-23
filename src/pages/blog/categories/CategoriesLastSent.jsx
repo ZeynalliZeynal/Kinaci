@@ -1,13 +1,13 @@
-import CategorySectionContainer from '~/pages/blog/categories/CategorySectionContainer.jsx'
-import { Link } from 'react-router-dom'
-import moment from 'moment'
+import CategorySectionContainer from '~/pages/blog/categories/CategorySectionContainer.jsx';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export default function CategoriesLastSent({ blogs }) {
   return (
     <CategorySectionContainer>
       <h4 className="font-semibold">Ən son bloglar</h4>
       <ul className="text-blue-900 grid grid-cols-1 gap-5 mt-5">
-        {blogs.slice(0, 3).map(({ id, title, image, sentDate }) => (
+        {blogs?.slice(0, 3).map(({ id, title, image, created_at }) => (
           <li key={id}>
             <Link
               to={`/blog/${id}`}
@@ -19,7 +19,7 @@ export default function CategoriesLastSent({ blogs }) {
               <div className="flex flex-col text-sm">
                 <h5 className="line-clamp-2">{title}</h5>
                 <time className="opacity-75">
-                  {moment(sentDate).format('D MMMM YYYY')}
+                  {moment(created_at).format('D MMMM YYYY')}
                 </time>
               </div>
             </Link>
@@ -27,5 +27,5 @@ export default function CategoriesLastSent({ blogs }) {
         ))}
       </ul>
     </CategorySectionContainer>
-  )
+  );
 }

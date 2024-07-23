@@ -1,37 +1,21 @@
 import CategoriesSearch from '~/pages/blog/categories/CategoriesSearch.jsx';
 import CategoriesLastSent from '~/pages/blog/categories/CategoriesLastSent.jsx';
 import CategoriesTags from '~/pages/blog/categories/CategoriesTags.jsx';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { baseURL } from '~/data/consts.js';
+import { useBlogs } from '~/features/blogs/useBlogs.js';
 
 export default function Categories() {
-  const [blogs, setBlogs] = useState([]);
-  const [tags, setTags] = useState([]);
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const res = await axios.get(`${baseURL}/data/blogs`);
-        const data = res.data;
+  const { blogs } = useBlogs();
 
-        setBlogs(data);
+  const allTags = blogs?.flatMap((blog) => blog.tags);
 
-        const uniqueTags = Array.from(
-          new Set(data.flatMap((blog) => blog.tags)),
-        );
-        setTags(uniqueTags);
-      } catch (err) {
-        console.warn(err);
-      }
-    };
-    fetchBlogs();
-  }, []);
+  const uniqueTagsArray = Array.from(new Set(allTags));
+
   return (
     <aside className="flex-1 xl:order-2 order-1 space-y-[30px]">
       <div className="sticky top-16">
         <CategoriesSearch />
         <CategoriesLastSent blogs={blogs} />
-        <CategoriesTags tags={tags} />
+        <CategoriesTags tags={uniqueTagsArray} />
       </div>
     </aside>
   );

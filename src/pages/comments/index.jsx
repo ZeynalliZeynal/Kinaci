@@ -1,14 +1,14 @@
-import Search from '~/components/search/index.jsx'
-import { useEffect } from 'react'
-import Comment from '~/pages/comments/Comment.jsx'
-import { useScrollToRef } from '~/hooks/useScrollTo.js'
+import Search from '~/components/search/index.jsx';
+import { useEffect } from 'react';
+import Reviews from '~/features/reviews/Reviews.jsx';
+import { useScrollToRef } from '~/hooks/useScrollTo.js';
 
 export default function Comments() {
-  const ref = useScrollToRef()
+  const ref = useScrollToRef();
 
   useEffect(() => {
-    document.title = 'Kinaci - Şərhlər'
-  }, [])
+    document.title = 'Kinaci - Şərhlər';
+  }, []);
 
   return (
     <main>
@@ -17,9 +17,9 @@ export default function Comments() {
       </section>
       <section ref={ref} className="py-[50px]">
         <div className="container">
-          <Comment />
+          <Reviews />
         </div>
       </section>
     </main>
-  )
+  );
 }

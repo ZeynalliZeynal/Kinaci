@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 export default function CardBadge({ estate }) {
   return (
@@ -8,10 +8,10 @@ export default function CardBadge({ estate }) {
         'bg-red-600': estate?.feature === 'Sərfəli',
         'special-badge': estate?.feature === 'Dəbdəbəli',
         'bg-teal-500': estate?.feature === 'Mərkəz',
-        'bg-blue-400': estate?.feature.includes('endirim'),
+        'bg-blue-400': estate?.feature === 'Endirim',
       })}
     >
       {estate?.feature.toUpperCase()}
     </span>
-  )
+  );
 }
