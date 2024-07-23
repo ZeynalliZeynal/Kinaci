@@ -1,21 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
+
 import ActionBtns from '~/components/estateCards/ActionBtns.jsx';
 import Details from '~/components/estateCards/Details.jsx';
 import Dots from '~/components/estateCards/Dots.jsx';
-import { useNavigate } from 'react-router-dom';
 import CardBadge from '~/components/estateCards/CardBadge.jsx';
-import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx';
-import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 import { useSwapSlide } from '~/hooks/useSwapSlide.js';
 import { toCamelCase } from '~/functions/convertToCamelCase.js';
+import HeartBtn from '~/features/wishlist/HeartBtn.jsx';
 
 export default function EstateCards({ estate = {}, isListed }) {
   const preview = estate.images?.slice(0, 3);
 
   const navigate = useNavigate();
-
-  const title =
-    `${estate.status === 'For Sale' ? 'Satılır' : 'İcarəyə verilir'} ${estate.rooms} ${estate.types?.label} ${estate.area} ${estate.places?.label ? estate.places.label : ''}`.trim();
 
   const [goPrev, goNext, imageIndex, setImageIndex] = useSwapSlide(
     preview?.length,
@@ -69,7 +67,7 @@ export default function EstateCards({ estate = {}, isListed }) {
               <HeartBtn estate={estate} />
             </span>
           </span>{' '}
-          {estate.feature_id && (
+          {estate.feature && (
             <span className="absolute top-2 right-2 text-md">
               <CardBadge estate={estate} />
             </span>
@@ -83,7 +81,7 @@ export default function EstateCards({ estate = {}, isListed }) {
         <h4
           className={`card-title ${isListed ? 'text-xl' : 'text-md'} font-semibold py-2`}
         >
-          {title}
+          {estate.title}
         </h4>
         <Details estate={estate} isListed={isListed} />
         <ActionBtns estateItem={estate} />

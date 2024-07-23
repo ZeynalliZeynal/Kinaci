@@ -1,7 +1,7 @@
 import Search from '~/components/search/index.jsx';
 import { useEffect } from 'react';
-import EstatesCards from '~/redux/features/estates/estatesCards/index.jsx';
 import { useScrollToRef } from '~/hooks/useScrollTo.js';
+import EstatesCards from '~/features/estates/estatesCards/index.jsx';
 
 export default function Estate() {
   const ref = useScrollToRef();

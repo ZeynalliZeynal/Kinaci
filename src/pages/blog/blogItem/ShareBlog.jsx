@@ -1,8 +1,11 @@
 import { blogShare } from '~/data/blogShare.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useBlog } from '~/features/blogs/useBlog.js';
 
-export default function ShareBlog({ blog }) {
+export default function ShareBlog() {
+  const { blog } = useBlog();
   const navigate = useNavigate();
+
   return (
     <section>
       <div className="container">
@@ -24,7 +27,7 @@ export default function ShareBlog({ blog }) {
           </div>
           {/*TODO: Navigate to /blog when click happens*/}
           <ul className="gap-2 justify-start sm:justify-end">
-            {blog?.tags.map((tag) => (
+            {blog?.tags?.map((tag) => (
               <li key={tag}>
                 <button
                   className="bg-orange-500/10 px-[18px] py-3 rounded-full font-medium"

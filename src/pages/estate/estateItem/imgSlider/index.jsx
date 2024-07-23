@@ -1,27 +1,27 @@
-import { GoPlay, GoZoomIn } from 'react-icons/go'
-import Features from './features'
-import CardBadge from '~/components/estateCards/CardBadge.jsx'
-import { CiZoomIn } from 'react-icons/ci'
-import HeartBtn from '~/redux/features/addToFav/HeartBtn.jsx'
-import { useState } from 'react'
-import ImgSliderModal from '~/pages/estate/estateItem/imgSlider/imgSliderModal/index.jsx'
-import ImgBtns from '~/pages/estate/estateItem/imgSlider/imgBtns/index.jsx'
-import { useSwapSlide } from '~/hooks/useSwapSlide.js'
-import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi'
+import { GoPlay, GoZoomIn } from 'react-icons/go';
+import Features from './features';
+import CardBadge from '~/components/estateCards/CardBadge.jsx';
+import { CiZoomIn } from 'react-icons/ci';
+import { useState } from 'react';
+import ImgSliderModal from '~/pages/estate/estateItem/imgSlider/imgSliderModal/index.jsx';
+import ImgBtns from '~/pages/estate/estateItem/imgSlider/imgBtns/index.jsx';
+import { useSwapSlide } from '~/hooks/useSwapSlide.js';
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
+import HeartBtn from '~/features/wishlist/HeartBtn.jsx';
 
 export default function ImgSlider({ estateItem }) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [goPrev, goNext, imageIndex, setImageIndex] = useSwapSlide(
-    estateItem?.assets.img.length,
-  )
+    estateItem?.images.length,
+  );
 
   function handleOpenModal() {
-    setIsModalOpen(true)
+    setIsModalOpen(true);
   }
 
   function handleCloseModal() {
-    setIsModalOpen(false)
+    setIsModalOpen(false);
   }
 
   return (
@@ -55,7 +55,7 @@ export default function ImgSlider({ estateItem }) {
           </div>
           <div className="img h-[530px] backdrop-blur-xl bg-blue-900/10">
             <img
-              src={estateItem?.assets.img[imageIndex]}
+              src={estateItem?.images[imageIndex]}
               alt="Carousel"
               className="object-contain"
             />
@@ -99,5 +99,5 @@ export default function ImgSlider({ estateItem }) {
         <Features estateItem={estateItem} />
       </div>
     </>
-  )
+  );
 }

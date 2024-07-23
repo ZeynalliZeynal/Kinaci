@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import * as maptilersdk from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import LoginForm from '~/components/loginForm/index.jsx';
-import { useActiveAccount } from '~/redux/selectors.js';
 import { adminInfo } from '~/data/adminInfo/index.jsx';
 import { useScrollToRef } from '~/hooks/useScrollTo.js';
+import { useUser } from '~/features/auth/useUser.js';
 
 const position = [32.08960103931366, 36.49760354536997];
 
 export default function ContactLocation() {
   const ref = useScrollToRef();
-  const activeAccount = useActiveAccount();
+  const { isAuthenticated } = useUser();
   const [isOpen, setIsOpen] = useState(false);
 
   const mapContainer = useRef(null);
@@ -47,7 +47,7 @@ export default function ContactLocation() {
                 yoxdur. Tortor eleifend diam indi içir. İndi bu urna ilə
                 hamiləsiniz.
               </p>
-              {activeAccount ? (
+              {isAuthenticated ? (
                 <a
                   href={`tel:${adminInfo.tel}`}
                   className="px-3 py-2 bg-blue-500 text-white rounded-xl w-fit font-semibold"

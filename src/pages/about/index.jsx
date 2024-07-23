@@ -1,18 +1,18 @@
-import Search from '~/components/search/index.jsx'
-import { useEffect } from 'react'
-import InfoSection from './InfoSection'
-import StatisticsSection from './StatisticsSection'
-import OurCrew from './OurCrew'
-import VideoSection from './VideoSection'
-import Certificates from './Certificates'
-import FormSection from '../../redux/features/auth/FormSection.jsx'
-import { useScrollToRef } from '~/hooks/useScrollTo.js'
+import Search from '~/components/search/index.jsx';
+import { useEffect } from 'react';
+import InfoSection from './InfoSection';
+import StatisticsSection from '../../features/stats/StatisticsSection.jsx';
+import OurCrew from '../../features/crew/OurCrew.jsx';
+import VideoSection from './VideoSection';
+import Certificates from '../../features/certificates/Certificates.jsx';
+import { useScrollToRef } from '~/hooks/useScrollTo.js';
+import FormSection from '~/features/auth/FormSection.jsx';
 
 export default function About() {
-  const ref = useScrollToRef()
+  const ref = useScrollToRef();
   useEffect(() => {
-    document.title = 'Kinaci - Şirkət haqqında'
-  }, [])
+    document.title = 'Kinaci - Şirkət haqqında';
+  }, []);
   return (
     <main>
       <section className="bg-orange-50">
@@ -29,5 +29,5 @@ export default function About() {
       <Certificates />
       <FormSection />
     </main>
-  )
+  );
 }

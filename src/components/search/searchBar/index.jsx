@@ -1,10 +1,8 @@
-import { useEffect, useReducer } from 'react';
-import axios from 'axios';
+import { useReducer } from 'react';
 import { initialState, reducer } from '~/reducers/searchBarReducer.js';
 import SearchBarBtns from '~/components/search/searchBar/searchBarBtns/index.jsx';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import SearchBarFilters from '~/redux/features/filters/searchBarFilters/index.jsx';
-import { baseURL } from '~/data/consts.js';
+import SearchBarFilters from '~/features/filters/searchBarFilters/index.jsx';
 
 export default function SearchBar({ sellingType }) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -17,20 +15,6 @@ export default function SearchBar({ sellingType }) {
       `/estate${sellingType ? `/${sellingType}` : ''}?${searchParams.toString()}`,
     );
   }
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(`${baseURL}/data/selectInfo`);
-        const data = await response.data;
-        dispatch({ type: 'SET_DATA', payload: data });
-      } catch (err) {
-        console.warn(err);
-      }
-    }
-
-    fetchData();
-  }, []);
 
   return (
     <form

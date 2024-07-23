@@ -1,4 +1,4 @@
-import { supabase } from '~/services/supabase.js';
+import { adminAuthClient, supabase } from '~/services/supabase.js';
 
 export const signUp = async ({ fullName, email, password, avatar }) => {
   const { data, error } = await supabase.auth.signUp({
@@ -44,4 +44,12 @@ export const getCurrentUser = async () => {
   if (error) throw new Error(error.message);
 
   return user.user;
+};
+
+export const getUser = async (id) => {
+  const { data, error } = await adminAuthClient.auth.admin.getUserById(id);
+
+  if (error) throw new Error(error.message);
+
+  return data.user;
 };

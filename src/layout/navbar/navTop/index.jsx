@@ -1,11 +1,11 @@
-import { HiBars3BottomLeft } from 'react-icons/hi2'
-import ContactLinks from '~/layout/navbar/navTop/contactLinks'
-import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx'
-import { useState } from 'react'
-import AddToFav from '~/redux/features/addToFav/AddToFav.jsx'
+import { HiBars3BottomLeft } from 'react-icons/hi2';
+import ContactLinks from '~/layout/navbar/navTop/contactLinks';
+import Sidebar from '~/layout/navbar/navTop/sidebar/index.jsx';
+import { useState } from 'react';
+import AddToFav from '~/features/wishlist/AddToFav.jsx';
 
 export default function NavTop() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Sidebar isOpen={isOpen} onClose={setIsOpen} />
@@ -36,5 +36,5 @@ export default function NavTop() {
         </div>
       </nav>
     </>
-  )
+  );
 }

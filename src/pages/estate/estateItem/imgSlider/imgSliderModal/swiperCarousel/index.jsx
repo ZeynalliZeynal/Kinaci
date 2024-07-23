@@ -1,10 +1,10 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Mousewheel, Navigation, Pagination, Zoom } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel, Navigation, Pagination, Zoom } from 'swiper/modules';
 
-import 'swiper/css'
-import 'swiper/css/zoom'
-import 'swiper/css/pagination'
-import 'swiper/css/thumbs'
+import 'swiper/css';
+import 'swiper/css/zoom';
+import 'swiper/css/pagination';
+import 'swiper/css/thumbs';
 
 export default function SwiperCarousel({
   estateItem,
@@ -12,8 +12,8 @@ export default function SwiperCarousel({
   setImageIndex,
 }) {
   const handleSlideChange = (swiper) => {
-    setImageIndex(swiper.activeIndex)
-  }
+    setImageIndex(swiper.activeIndex);
+  };
 
   return (
     <div className="w-full h-full relative">
@@ -36,7 +36,7 @@ export default function SwiperCarousel({
         modules={[Navigation, Zoom, Mousewheel, Pagination]}
         onSlideChange={handleSlideChange}
       >
-        {estateItem?.assets.img.map((imgUrl, i) => (
+        {estateItem?.images.map((imgUrl, i) => (
           <SwiperSlide key={imgUrl}>
             <div className="swiper-zoom-container bg-neutral-300">
               <img
@@ -51,9 +51,9 @@ export default function SwiperCarousel({
       <div className="absolute bottom-8 w-full grid justify-center z-50 text-blue-900">
         <div className="w-fit p-2 text-xs bg-white rounded-xl">
           <span>{imageIndex + 1}</span> /{' '}
-          <span>{estateItem?.assets.img.length}</span>
+          <span>{estateItem?.images.length}</span>
         </div>
       </div>
     </div>
-  )
+  );
 }
