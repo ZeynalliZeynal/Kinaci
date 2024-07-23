@@ -3,18 +3,32 @@ import { useUser } from '~/features/auth/useUser.js';
 import { usePostComment } from '~/features/blogs/usePostComment.js';
 import SpinnerMini from '~/components/SpinnerMini.jsx';
 import { useBlog } from '~/features/blogs/useBlog.js';
+import { useContext } from 'react';
+import { ReplyContext } from '~/features/blogs/blogItem/index.jsx';
+import { usePostReply } from '~/features/blogs/usePostReply.js';
 
 export default function CommentForm() {
-  const { handleSubmit, register, reset, getValues, formState } = useForm();
+  const { replyTo, setReplyTo } = useContext(ReplyContext);
+  const { handleSubmit, register, reset, formState } = useForm();
   const { blog } = useBlog();
   const { errors } = formState;
 
-  const { isAuthenticated, user } = useUser();
+  const { user } = useUser();
 
-  const { post, isPosting } = usePostComment();
+  const { post: postComment, isPosting: isPostingComment } = usePostComment();
+  const { post: postReply, isPosting: isPostingReply } = usePostReply();
 
   const onSubmit = ({ comment }) => {
-    post({ user_id: user?.id, blog_id: blog?.id, comment });
+    if (!replyTo?.userId)
+      postComment({ user_id: user?.id, blog_id: blog?.id, comment });
+    else {
+      postReply({
+        user_id: user?.id,
+        comment_id: replyTo.commentId,
+        reply: comment,
+      });
+      setReplyTo(null);
+    }
     reset();
   };
 
@@ -47,7 +61,7 @@ export default function CommentForm() {
         type={'submit'}
         className={`select-none px-[30px] py-3 rounded-lg border-2 border-blue-900 bg-white text-md font-semibold hover:bg-blue-900 hover:text-white mt-[30px]`}
       >
-        {isPosting ? <SpinnerMini /> : 'Şərhi Göndər'}
+        {isPostingComment || isPostingReply ? <SpinnerMini /> : 'Şərhi Göndər'}
       </button>
     </form>
   );

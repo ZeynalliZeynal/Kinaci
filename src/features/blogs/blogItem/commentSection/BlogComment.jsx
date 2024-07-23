@@ -1,6 +1,7 @@
 import { useComments } from '~/features/blogs/useComments.js';
-import BlogCommentItem from '~/pages/blog/blogItem/commentSection/BlogCommentItem.jsx';
+import BlogCommentItem from '~/features/blogs/blogItem/commentSection/BlogCommentItem.jsx';
 import Skeleton from '~/components/Skeleton.jsx';
+import BlogCommentReplies from '~/features/blogs/blogItem/commentSection/BlogCommentReplies.jsx';
 
 export default function BlogComment({ blog }) {
   const { comments, isPending } = useComments(blog?.id);
@@ -18,10 +19,11 @@ export default function BlogComment({ blog }) {
                 <li key={id} className="w-full gap-4 grid grid-cols-1 py-4">
                   <BlogCommentItem
                     commentId={id}
-                    userId={user_id}
+                    commenterId={user_id}
                     createdAt={created_at}
                   />
                   <p className="text-sm">{comment}</p>
+                  <BlogCommentReplies commentId={id} />
                 </li>
               ))}
             </ul>

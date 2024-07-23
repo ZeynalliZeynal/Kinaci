@@ -3,7 +3,6 @@ import { useBlog } from '~/features/blogs/useBlog.js';
 
 export default function BlogItemSection() {
   const { blog, isPending, user } = useBlog();
-  console.log(blog?.user_id);
 
   return (
     <section>

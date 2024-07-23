@@ -64,7 +64,7 @@ export const deleteComment = async (commentId) => {
 
 export const getReplies = async (comment_id) => {
   const { data, error } = await supabase
-    .from('comments')
+    .from('replies')
     .select('*')
     .eq('comment_id', comment_id);
 
@@ -75,7 +75,7 @@ export const getReplies = async (comment_id) => {
 
 export const postReply = async (newReply) => {
   const { data, error } = await supabase
-    .from('comments')
+    .from('replies')
     .insert([newReply])
     .select();
 
@@ -86,7 +86,7 @@ export const postReply = async (newReply) => {
 
 export const deleteReply = async (commentId) => {
   const { data, error } = await supabase
-    .from('comments')
+    .from('replies')
     .delete()
     .eq('id', commentId);
 
